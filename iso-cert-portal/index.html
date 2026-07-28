@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO-Cert Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Pirata+One&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-en: 'Inter', sans-serif;
+            --font-ar: 'IBM Plex Sans Arabic', sans-serif;
+            --font-gothic: 'Pirata One', cursive;
+            --font-signature: 'Dancing Script', cursive;
+        }
+        body { 
+            font-family: var(--font-en); 
+            transition: font-family 0.2s ease;
+        }
+        [dir="rtl"], 
+        [dir="rtl"] :not(.font-gothic):not(.font-signature):not(svg):not(i):not([class*="icon"]):not(.lucide) {
+            font-family: var(--font-ar) !important;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        /* Certificate specific styles */
+        .cert-container {
+            width: 794px;
+            height: 1123px;
+            background: white;
+            position: relative;
+            box-sizing: border-box;
+            color: #0f172a;
+            overflow: hidden;
+            display: flex;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+        .font-gothic { font-family: var(--font-gothic); }
+        .font-signature { font-family: var(--font-signature); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+</body>
+</html>
