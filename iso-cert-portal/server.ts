@@ -1,7 +1,14 @@
 import express from "express";
 import path from "path";
+import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
+
+// Node doesn't read .env files on its own; layer .env then .env.local
+// (matching Vite's own precedence) so GEMINI_API_KEY reaches process.env
+// whether it was set here or by the hosting platform's real env vars.
+dotenv.config();
+dotenv.config({ path: ".env.local", override: true });
 
 // Secure API Key Retrieval
 const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY;
@@ -35,7 +42,7 @@ async function startServer() {
       }
 
       const response = await ai.models.generateContent({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-flash-latest',
         contents: `Provide a professional summary of the document requirements for obtaining ${standards.join(', ')} certification from the ${body} accreditation body. Keep it concise and formatted for a client dashboard.`,
       });
 
@@ -63,7 +70,7 @@ async function startServer() {
       }
 
       const response = await ai.models.generateContent({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-flash-latest',
         contents: `Generate a professional text for an ISO certificate for "${companyName}" achieving "${isoCode}". Include a formal declaration, scope statement, and validity period. Format as plain text.`,
       });
 
