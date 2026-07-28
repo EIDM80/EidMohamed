@@ -26,6 +26,7 @@ import {
 import { ISORequest, RequestStatus } from '../types';
 import { Language } from '../translations';
 import { LandingConfig, LandingService, LandingSection, LandingMenuItem } from '../landingConfig';
+import { formatMoney } from '../lib/pricing';
 
 interface AdminPanelProps {
   requests: any[];
@@ -372,7 +373,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                         {req.accreditationBody}
                       </td>
                       <td className="px-6 py-5 text-sm font-bold text-slate-900">
-                        ${req.amount}
+                        {formatMoney(req.amount, req.currency ?? 'usd')}
                       </td>
                       <td className="px-6 py-5">
                          <span className={`px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${

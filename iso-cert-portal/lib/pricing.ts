@@ -37,3 +37,11 @@ export const priceOrder = (
     totalInSmallestUnit: Math.round(totalInCurrency * 100),
   };
 };
+
+// Converts a request's stored amount (already in its own currency) to USD,
+// so amounts from different currencies can be safely summed together.
+export const toUsd = (amount: number, currency: Currency): number =>
+  currency === "aed" ? amount / AED_PER_USD : amount;
+
+export const formatMoney = (amount: number, currency: Currency): string =>
+  currency === "aed" ? `AED ${amount.toLocaleString(undefined, { maximumFractionDigits: 0 })}` : `$${amount.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;

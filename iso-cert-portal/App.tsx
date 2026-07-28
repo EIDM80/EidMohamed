@@ -159,7 +159,7 @@ const App: React.FC = () => {
   const renderContent = () => {
     const commonProps = { lang, t };
     switch (activeTab) {
-      case 'dashboard': return <DashboardHome requests={requests} companyName={company.name} {...commonProps} />;
+      case 'dashboard': return <DashboardHome requests={requests} companyName={company.name} onNavigate={setActiveTab} {...commonProps} />;
       case 'new-request': return (
         <NewRequest
           preselectedISO={preselectedISO}
@@ -183,7 +183,7 @@ const App: React.FC = () => {
           {...commonProps} 
         />
       );
-      default: return <DashboardHome requests={requests} companyName={company.name} {...commonProps} />;
+      default: return <DashboardHome requests={requests} companyName={company.name} onNavigate={setActiveTab} {...commonProps} />;
     }
   };
 

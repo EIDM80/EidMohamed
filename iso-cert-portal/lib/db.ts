@@ -15,6 +15,7 @@ interface RequestRow {
   accreditation_body: string;
   status: string;
   amount: number;
+  currency: 'usd' | 'aed' | null;
   standards: ISOStandard[];
   created_at: string;
   companies: {
@@ -33,6 +34,7 @@ const rowToRequest = (row: RequestRow): ISORequest => ({
   accreditationBody: row.accreditation_body as AccreditationBody,
   status: row.status as RequestStatus,
   amount: row.amount,
+  currency: row.currency ?? 'usd',
   documents: [],
   createdAt: row.created_at,
   company: {

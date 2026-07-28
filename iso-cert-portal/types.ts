@@ -124,6 +124,7 @@ export interface ISORequest {
   accreditationBody: AccreditationBody;
   status: RequestStatus;
   amount: number;
+  currency: 'usd' | 'aed';
   documents: RequestDocument[];
   createdAt: string;
   company: Company;
