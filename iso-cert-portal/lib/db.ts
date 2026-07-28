@@ -99,23 +99,31 @@ export const fetchRequests = async (): Promise<ISORequest[]> => {
   return (data as RequestRow[]).map(rowToRequest);
 };
 
-export const createRequest = async (
-  companyId: string,
-  input: { type: 'single' | 'multi'; accreditationBody: AccreditationBody; standards: ISOStandard[]; amount: number }
-): Promise<boolean> => {
-  const { error } = await supabase.from('iso_requests').insert({
-    company_id: companyId,
-    type: input.type,
-    accreditation_body: input.accreditationBody,
-    standards: input.standards,
-    amount: input.amount,
-    status: RequestStatus.SUBMITTED,
-  });
-  if (error) {
-    console.error('createRequest failed:', error.message);
-    return false;
+// Requests are no longer inserted directly from the client — a request only
+// exists once Stripe confirms payment (see api/stripe/webhook.ts), so the
+// client instead asks the server to start a Checkout session and redirects.
+export const startCheckout = async (input: {
+  companyId: string;
+  type: 'single' | 'multi';
+  accreditationBody: AccreditationBody;
+  standardIds: string[];
+  currency: 'usd' | 'aed';
+}): Promise<{ url: string } | { error: string }> => {
+  try {
+    const response = await fetch('/api/stripe/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...input, origin: window.location.origin }),
+    });
+    const data = await response.json();
+    if (!response.ok || !data.url) {
+      return { error: data.error || 'Could not start checkout' };
+    }
+    return { url: data.url };
+  } catch (error) {
+    console.error('startCheckout failed:', error);
+    return { error: 'Could not reach the payment server' };
   }
-  return true;
 };
 
 export const updateRequestStatusInDb = async (id: string, status: RequestStatus): Promise<boolean> => {

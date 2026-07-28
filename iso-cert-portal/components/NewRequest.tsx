@@ -19,7 +19,8 @@ import { ISO_STANDARDS } from '../constants';
 import { AccreditationBody, ISOStandard } from '../types';
 import { summarizeRequirements } from '../geminiService';
 import { Language } from '../translations';
-import { createRequest } from '../lib/db';
+import { startCheckout } from '../lib/db';
+import { AED_PER_USD, Currency } from '../lib/pricing';
 
 interface NewRequestProps {
   lang: Language;
@@ -27,10 +28,9 @@ interface NewRequestProps {
   preselectedISO?: string | null;
   onClearPreselectedISO?: () => void;
   companyId?: string | null;
-  onRequestCreated?: () => void;
 }
 
-const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClearPreselectedISO, companyId, onRequestCreated }) => {
+const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClearPreselectedISO, companyId }) => {
   const [step, setStep] = useState(1);
   const [type, setType] = useState<'single' | 'multi'>('single');
   const [selectedBody, setSelectedBody] = useState<AccreditationBody>(AccreditationBody.UKAS);
@@ -41,7 +41,7 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
   const [loadingAi, setLoadingAi] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [currency, setCurrency] = useState<Currency>(lang === 'ar' ? 'aed' : 'usd');
 
   useEffect(() => {
     if (preselectedISO) {
@@ -99,6 +99,13 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
     return calculateSubtotal() - calculateDiscount();
   };
 
+  const formatAmount = (usdAmount: number) => {
+    if (currency === 'aed') {
+      return `AED ${(usdAmount * AED_PER_USD).toFixed(2)}`;
+    }
+    return `$${usdAmount.toFixed(2)}`;
+  };
+
   const handleSubmitRequest = async () => {
     if (!companyId) {
       setSubmitError(lang === 'ar' ? 'لم يتم العثور على ملف الشركة. يرجى إعادة تسجيل الدخول.' : 'No company profile found. Please sign in again.');
@@ -106,46 +113,25 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
     }
     setSubmitting(true);
     setSubmitError(null);
-    const ok = await createRequest(companyId, {
+    const result = await startCheckout({
+      companyId,
       type,
       accreditationBody: selectedBody,
-      standards: selectedStandards,
-      amount: calculateTotal(),
+      standardIds: selectedStandards.map(s => s.id),
+      currency,
     });
-    setSubmitting(false);
-    if (!ok) {
-      setSubmitError(lang === 'ar' ? 'تعذر إرسال الطلب. حاول مرة أخرى.' : 'Could not submit the request. Please try again.');
+    if ('error' in result) {
+      setSubmitting(false);
+      setSubmitError(
+        lang === 'ar'
+          ? 'تعذر بدء عملية الدفع. حاول مرة أخرى.'
+          : 'Could not start the payment process. Please try again.'
+      );
       return;
     }
-    setSubmitted(true);
-    onRequestCreated?.();
+    // Leaving the page for Stripe Checkout — no need to clear `submitting`.
+    window.location.href = result.url;
   };
-
-  if (submitted) {
-    return (
-      <div className="max-w-2xl mx-auto py-16 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-6">
-          <CheckCircle2 size={32} />
-        </div>
-        <h2 className="text-2xl font-bold text-slate-900 mb-2">
-          {lang === 'ar' ? 'تم إرسال طلبك بنجاح' : 'Your request has been submitted'}
-        </h2>
-        <p className="text-slate-500 mb-8">
-          {lang === 'ar' ? 'يمكنك متابعة حالة طلبك من صفحة "طلباتي".' : 'You can track its progress from the "My Requests" page.'}
-        </p>
-        <button
-          onClick={() => {
-            setSubmitted(false);
-            setStep(1);
-            setSelectedStandards([]);
-          }}
-          className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all"
-        >
-          {lang === 'ar' ? 'إنشاء طلب آخر' : 'Start Another Request'}
-        </button>
-      </div>
-    );
-  }
 
   const steps = [
     { id: 1, label: t('stepLabelType'), icon: ShieldCheck },
@@ -374,26 +360,44 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
 
               <div className="bg-indigo-50/50 p-8 rounded-3xl border border-indigo-100 flex flex-col justify-between">
                 <div>
-                  <h4 className="text-lg font-bold text-slate-900 mb-6">{lang === 'ar' ? 'ملخص التكاليف' : 'Fee Breakdown'}</h4>
+                  <div className="flex items-center justify-between mb-6">
+                    <h4 className="text-lg font-bold text-slate-900">{lang === 'ar' ? 'ملخص التكاليف' : 'Fee Breakdown'}</h4>
+                    <div className="flex bg-white rounded-lg border border-indigo-200 p-0.5 text-xs font-bold">
+                      <button
+                        type="button"
+                        onClick={() => setCurrency('usd')}
+                        className={`px-3 py-1.5 rounded-md transition-all ${currency === 'usd' ? 'bg-indigo-600 text-white' : 'text-slate-500'}`}
+                      >
+                        USD
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setCurrency('aed')}
+                        className={`px-3 py-1.5 rounded-md transition-all ${currency === 'aed' ? 'bg-indigo-600 text-white' : 'text-slate-500'}`}
+                      >
+                        AED
+                      </button>
+                    </div>
+                  </div>
                   <div className="space-y-4">
                     <div className="flex justify-between text-sm">
                       <span className="text-slate-500">{lang === 'ar' ? 'المجموع الفرعي' : 'Subtotal'}</span>
-                      <span className="font-bold text-slate-900">${calculateSubtotal()}</span>
+                      <span className="font-bold text-slate-900">{formatAmount(calculateSubtotal())}</span>
                     </div>
                     {calculateDiscount() > 0 && (
                       <div className="flex justify-between text-sm text-emerald-600 font-bold">
                         <span>{lang === 'ar' ? 'خصم الحزمة (15%)' : 'Bundle Discount (15%)'}</span>
-                        <span>-${calculateDiscount()}</span>
+                        <span>-{formatAmount(calculateDiscount())}</span>
                       </div>
                     )}
                     <div className="h-px bg-indigo-100 my-4" />
                     <div className="flex justify-between items-center">
                       <span className="text-lg font-bold text-slate-900">{lang === 'ar' ? 'الإجمالي' : 'Total Amount'}</span>
-                      <span className="text-2xl font-black text-indigo-600">${calculateTotal()}</span>
+                      <span className="text-2xl font-black text-indigo-600">{formatAmount(calculateTotal())}</span>
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="mt-8 flex items-start gap-3 p-4 bg-white/60 rounded-xl border border-indigo-100 text-[10px] text-indigo-800 leading-relaxed">
                   <Info size={16} className="shrink-0" />
                   <p>{lang === 'ar' ? 'هذا السعر يشمل المراجعة الأولية وشهادة رقمية آمنة. قد يتم تطبيق رسوم تدقيق الموقع الإضافية بناءً على حجم الشركة.' : 'This price includes initial review and secure digital certification. Additional onsite audit fees may apply based on company size.'}</p>

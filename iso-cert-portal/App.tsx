@@ -24,7 +24,10 @@ import {
   Mail,
   Phone,
   ShieldCheck,
-  ArrowLeft
+  ArrowLeft,
+  CheckCircle2,
+  XCircle,
+  X
 } from 'lucide-react';
 import { RequestStatus, Company, ISORequest } from './types';
 import { translations, Language } from './translations';
@@ -49,6 +52,7 @@ const App: React.FC = () => {
   const [landingConfig, setLandingConfig] = useState<LandingConfig>(() => loadLandingConfig());
 
   const [company, setCompany] = useState<Company>(EMPTY_COMPANY);
+  const [paymentNotice, setPaymentNotice] = useState<'success' | 'cancelled' | null>(null);
 
   const isAuthenticated = !!session;
   const t = (key: keyof typeof translations.en) => translations[lang][key] || key;
@@ -69,6 +73,32 @@ const App: React.FC = () => {
     });
     return () => listener.subscription.unsubscribe();
   }, []);
+
+  // Detect the redirect back from Stripe Checkout (?payment=success|cancelled)
+  // and land the user in their portal instead of the marketing page.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const payment = params.get('payment');
+    if (payment === 'success' || payment === 'cancelled') {
+      setPaymentNotice(payment);
+      setViewMode('portal');
+      setActiveTab('requests');
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, []);
+
+  // The Stripe webhook creates the request asynchronously, so poll briefly
+  // after a successful payment until it shows up.
+  useEffect(() => {
+    if (paymentNotice !== 'success' || !session) return;
+    let attempts = 0;
+    const interval = setInterval(() => {
+      attempts += 1;
+      refreshRequests();
+      if (attempts >= 4) clearInterval(interval);
+    }, 1500);
+    return () => clearInterval(interval);
+  }, [paymentNotice, session]);
 
   // Load this user's profile, company, and visible requests once authenticated.
   useEffect(() => {
@@ -135,7 +165,6 @@ const App: React.FC = () => {
           preselectedISO={preselectedISO}
           onClearPreselectedISO={() => setPreselectedISO(null)}
           companyId={profile?.company_id ?? null}
-          onRequestCreated={refreshRequests}
           {...commonProps}
         />
       );
@@ -263,6 +292,23 @@ const App: React.FC = () => {
 
         {/* Content Area */}
         <div className="p-4 md:p-8 flex-1">
+          {paymentNotice && (
+            <div className={`mb-6 flex items-center justify-between gap-3 p-4 rounded-2xl border ${
+              paymentNotice === 'success' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-amber-50 border-amber-200 text-amber-800'
+            }`}>
+              <div className="flex items-center gap-3">
+                {paymentNotice === 'success' ? <CheckCircle2 size={20} className="shrink-0" /> : <XCircle size={20} className="shrink-0" />}
+                <span className="text-sm font-semibold">
+                  {paymentNotice === 'success'
+                    ? (lang === 'ar' ? 'تم الدفع بنجاح! تم إرسال طلبك للمراجعة.' : 'Payment successful! Your request has been sent for review.')
+                    : (lang === 'ar' ? 'تم إلغاء عملية الدفع. لم يتم إنشاء أي طلب.' : 'Payment was cancelled. No request was created.')}
+                </span>
+              </div>
+              <button onClick={() => setPaymentNotice(null)} className="p-1 hover:bg-black/5 rounded-lg transition-colors shrink-0">
+                <X size={16} />
+              </button>
+            </div>
+          )}
           {renderContent()}
         </div>
 

@@ -40,6 +40,12 @@ create table if not exists public.iso_requests (
   updated_at timestamptz not null default now()
 );
 
+-- Payment fields: a request only exists once Stripe confirms payment (see
+-- the Stripe webhook, which is the only thing that inserts rows here now).
+alter table public.iso_requests add column if not exists currency text not null default 'usd' check (currency in ('usd', 'aed'));
+alter table public.iso_requests add column if not exists payment_status text not null default 'paid' check (payment_status in ('paid', 'refunded'));
+alter table public.iso_requests add column if not exists stripe_session_id text;
+
 create table if not exists public.request_documents (
   id uuid primary key default gen_random_uuid(),
   request_id uuid not null references public.iso_requests(id) on delete cascade,
@@ -110,11 +116,10 @@ create policy "requests_select_own_or_admin" on public.iso_requests for select
     or public.is_admin()
   );
 
+-- No client-facing insert policy on purpose: requests are only ever created
+-- by the Stripe webhook (via the service_role key, which bypasses RLS), so
+-- a client can never insert an unpaid request directly.
 drop policy if exists "requests_insert_own" on public.iso_requests;
-create policy "requests_insert_own" on public.iso_requests for insert
-  with check (
-    company_id in (select id from public.companies where owner_id = auth.uid())
-  );
 
 drop policy if exists "requests_update_own_or_admin" on public.iso_requests;
 create policy "requests_update_own_or_admin" on public.iso_requests for update

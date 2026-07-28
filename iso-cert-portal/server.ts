@@ -1,8 +1,13 @@
 import express from "express";
 import path from "path";
 import dotenv from "dotenv";
+import Stripe from "stripe";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
+import { getSupabaseAdmin } from "./lib/supabaseAdmin";
+import { priceOrder, Currency } from "./lib/pricing";
+import { ISO_STANDARDS } from "./constants";
+import { RequestStatus } from "./types";
 
 // Node doesn't read .env files on its own; layer .env then .env.local
 // (matching Vite's own precedence) so GEMINI_API_KEY reaches process.env
@@ -21,11 +26,119 @@ const ai = apiKey ? new GoogleGenAI({
   }
 }) : null;
 
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
+
 async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  // Registered before express.json() below: Stripe's signature check needs
+  // the exact raw request bytes, not the parsed-and-reserialized JSON.
+  app.post("/api/stripe/webhook", express.raw({ type: "application/json" }), async (req, res) => {
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+    if (!stripe || !webhookSecret) {
+      return res.status(500).send("Stripe is not configured on the server.");
+    }
+
+    let event: Stripe.Event;
+    try {
+      event = stripe.webhooks.constructEvent(req.body, req.headers["stripe-signature"] as string, webhookSecret);
+    } catch (err: any) {
+      console.error("Stripe webhook signature verification failed:", err.message);
+      return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object as Stripe.Checkout.Session;
+      const meta = session.metadata || {};
+      const companyId = meta.companyId;
+      const standardIds = (meta.standardIds || "").split(",").filter(Boolean);
+      const standards = ISO_STANDARDS.filter((s) => standardIds.includes(s.id));
+
+      if (companyId && standards.length > 0) {
+        try {
+          const { error } = await getSupabaseAdmin().from("iso_requests").insert({
+            company_id: companyId,
+            type: meta.type === "multi" ? "multi" : "single",
+            accreditation_body: meta.accreditationBody,
+            standards,
+            amount: Number(meta.amount) || 0,
+            currency: meta.currency || "usd",
+            payment_status: "paid",
+            stripe_session_id: session.id,
+            status: RequestStatus.SUBMITTED,
+          });
+          if (error) {
+            console.error("Failed to create request after payment:", error.message, meta);
+          }
+        } catch (err: any) {
+          console.error("Supabase admin client unavailable:", err.message);
+        }
+      } else {
+        console.error("Stripe webhook: missing companyId or unmatched standards in metadata", meta);
+      }
+    }
+
+    res.status(200).json({ received: true });
+  });
+
   app.use(express.json());
+
+  app.post("/api/stripe/create-checkout-session", async (req, res) => {
+    if (!stripeSecretKey) {
+      return res.status(500).json({ error: "Payments are not configured on the server yet." });
+    }
+
+    const { companyId, type, accreditationBody, standardIds, currency, origin } = req.body || {};
+    if (!companyId || !type || !accreditationBody || !Array.isArray(standardIds) || standardIds.length === 0) {
+      return res.status(400).json({ error: "Missing required order details" });
+    }
+
+    const selectedStandards = ISO_STANDARDS.filter((s) => standardIds.includes(s.id));
+    if (selectedStandards.length === 0) {
+      return res.status(400).json({ error: "No matching ISO standards found" });
+    }
+
+    const safeCurrency: Currency = currency === "aed" ? "aed" : "usd";
+    const pricing = priceOrder(selectedStandards, type === "multi" ? "multi" : "single", safeCurrency);
+    const baseUrl = typeof origin === "string" && origin.startsWith("http") ? origin : "";
+
+    try {
+      const session = await stripe!.checkout.sessions.create({
+        mode: "payment",
+        payment_method_types: ["card"],
+        line_items: [
+          {
+            price_data: {
+              currency: safeCurrency,
+              unit_amount: pricing.totalInSmallestUnit,
+              product_data: {
+                name: `ISO Certification — ${selectedStandards.map((s) => s.code).join(", ")}`,
+                description: `Accreditation body: ${accreditationBody}`,
+              },
+            },
+            quantity: 1,
+          },
+        ],
+        success_url: `${baseUrl}/?payment=success&session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${baseUrl}/?payment=cancelled`,
+        metadata: {
+          companyId,
+          type: type === "multi" ? "multi" : "single",
+          accreditationBody,
+          standardIds: standardIds.join(","),
+          currency: safeCurrency,
+          amount: String(pricing.totalUsd),
+        },
+      });
+
+      res.json({ url: session.url });
+    } catch (error) {
+      console.error("Stripe checkout session creation failed:", error);
+      res.status(500).json({ error: "Could not start checkout session" });
+    }
+  });
 
   // API Routes
   app.post("/api/gemini/summarize", async (req, res) => {
