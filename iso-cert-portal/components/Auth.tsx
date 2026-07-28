@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react';
-import { ShieldCheck, Mail, Lock, Building2, User, ArrowRight, Github, Chrome } from 'lucide-react';
+import { ShieldCheck, Mail, Lock, Building2, User, ArrowRight, Github, Chrome, AlertCircle } from 'lucide-react';
 import { Language } from '../translations';
 import Logo from './Logo';
+import { supabase } from '../lib/supabaseClient';
 
 interface AuthProps {
   onAuthenticate: () => void;
@@ -13,15 +14,44 @@ interface AuthProps {
 
 const Auth: React.FC<AuthProps> = ({ onAuthenticate, mode, setMode, lang }) => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [fullName, setFullName] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+    setNotice(null);
     setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+
+    if (mode === 'signup') {
+      const { data, error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { data: { full_name: fullName, company_name: companyName } },
+      });
       setLoading(false);
+      if (signUpError) {
+        setError(signUpError.message);
+        return;
+      }
+      if (data.session) {
+        onAuthenticate();
+      } else {
+        setNotice(lang === 'ar' ? 'تحقق من بريدك الإلكتروني لتأكيد حسابك.' : 'Check your email to confirm your account before signing in.');
+      }
+    } else {
+      const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+      setLoading(false);
+      if (signInError) {
+        setError(signInError.message);
+        return;
+      }
       onAuthenticate();
-    }, 1200);
+    }
   };
 
   return (
@@ -50,16 +80,31 @@ const Auth: React.FC<AuthProps> = ({ onAuthenticate, mode, setMode, lang }) => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
+            {error && (
+              <div className="flex items-start gap-2 p-3 bg-rose-50 border border-rose-200 rounded-xl text-sm text-rose-700">
+                <AlertCircle size={16} className="shrink-0 mt-0.5" />
+                <span>{error}</span>
+              </div>
+            )}
+            {notice && (
+              <div className="flex items-start gap-2 p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-sm text-indigo-700">
+                <AlertCircle size={16} className="shrink-0 mt-0.5" />
+                <span>{notice}</span>
+              </div>
+            )}
+
             {mode === 'signup' && (
               <>
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
                     <User size={14} /> Full Name
                   </label>
-                  <input 
+                  <input
                     required
-                    type="text" 
+                    type="text"
                     placeholder="John Doe"
+                    value={fullName}
+                    onChange={e => setFullName(e.target.value)}
                     className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
                   />
                 </div>
@@ -67,10 +112,12 @@ const Auth: React.FC<AuthProps> = ({ onAuthenticate, mode, setMode, lang }) => {
                   <label className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
                     <Building2 size={14} /> Company Name
                   </label>
-                  <input 
+                  <input
                     required
-                    type="text" 
+                    type="text"
                     placeholder="Acme Corp"
+                    value={companyName}
+                    onChange={e => setCompanyName(e.target.value)}
                     className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
                   />
                 </div>
@@ -81,10 +128,12 @@ const Auth: React.FC<AuthProps> = ({ onAuthenticate, mode, setMode, lang }) => {
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
                 <Mail size={14} /> Email Address
               </label>
-              <input 
+              <input
                 required
-                type="email" 
+                type="email"
                 placeholder="john@example.com"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
                 className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
               />
             </div>
@@ -100,15 +149,18 @@ const Auth: React.FC<AuthProps> = ({ onAuthenticate, mode, setMode, lang }) => {
                   </button>
                 )}
               </div>
-              <input 
+              <input
                 required
-                type="password" 
+                minLength={6}
+                type="password"
                 placeholder="••••••••"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
                 className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all"
               />
             </div>
 
-            <button 
+            <button
               disabled={loading}
               type="submit"
               className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-indigo-100 flex items-center justify-center gap-2 transition-all active:scale-[0.98] disabled:opacity-70"

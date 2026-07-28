@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import type { Session } from '@supabase/supabase-js';
 import Sidebar from './components/Sidebar';
 import DashboardHome from './components/DashboardHome';
 import NewRequest from './components/NewRequest';
@@ -12,10 +13,10 @@ import AboutUs from './components/AboutUs';
 import Auth from './components/Auth';
 import PublicLanding from './components/PublicLanding';
 import { loadLandingConfig, saveLandingConfig, LandingConfig } from './landingConfig';
-import { 
-  Bell, 
-  Search, 
-  User, 
+import {
+  Bell,
+  Search,
+  User,
   Layout,
   Languages,
   Info,
@@ -25,32 +26,31 @@ import {
   ShieldCheck,
   ArrowLeft
 } from 'lucide-react';
-import { INITIAL_REQUESTS } from './constants';
-import { RequestStatus, Company } from './types';
+import { RequestStatus, Company, ISORequest } from './types';
 import { translations, Language } from './translations';
+import { supabase } from './lib/supabaseClient';
+import { fetchProfile, fetchCompany, saveCompany, fetchRequests, updateRequestStatusInDb, Profile } from './lib/db';
+
+const EMPTY_COMPANY: Company = { name: '', legalName: '', licenseNo: '', address: '', website: '' };
 
 const App: React.FC = () => {
   const [viewMode, setViewMode] = useState<'public' | 'portal'>('public');
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [session, setSession] = useState<Session | null>(null);
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
   const [activeTab, setActiveTab] = useState('dashboard');
   const [lang, setLang] = useState<Language>('en');
-  const [requests, setRequests] = useState(INITIAL_REQUESTS);
-  
+  const [requests, setRequests] = useState<ISORequest[]>([]);
+  const [profile, setProfile] = useState<Profile | null>(null);
+
   // Preselected ISO from front-end landing page trigger
   const [preselectedISO, setPreselectedISO] = useState<string | null>(null);
 
   // Dynamic Landing Page Config
   const [landingConfig, setLandingConfig] = useState<LandingConfig>(() => loadLandingConfig());
 
-  const [company, setCompany] = useState<Company>({
-    name: 'Acme Corp',
-    legalName: 'Acme International Ltd',
-    licenseNo: 'TL-12345',
-    address: '123 Tech Lane, Silicon District, Dubai, UAE',
-    website: 'https://acme.com'
-  });
+  const [company, setCompany] = useState<Company>(EMPTY_COMPANY);
 
+  const isAuthenticated = !!session;
   const t = (key: keyof typeof translations.en) => translations[lang][key] || key;
 
   useEffect(() => {
@@ -58,18 +58,58 @@ const App: React.FC = () => {
     document.documentElement.lang = lang;
   }, [lang]);
 
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => setSession(data.session));
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
+      setSession(newSession);
+      if (!newSession) {
+        setViewMode('public');
+        setActiveTab('dashboard');
+      }
+    });
+    return () => listener.subscription.unsubscribe();
+  }, []);
+
+  // Load this user's profile, company, and visible requests once authenticated.
+  useEffect(() => {
+    if (!session) {
+      setProfile(null);
+      setCompany(EMPTY_COMPANY);
+      setRequests([]);
+      return;
+    }
+    (async () => {
+      const p = await fetchProfile(session.user.id);
+      setProfile(p);
+      if (p?.company_id) {
+        const c = await fetchCompany(p.company_id);
+        if (c) setCompany(c);
+      }
+      setRequests(await fetchRequests());
+    })();
+  }, [session]);
+
   // Sync landing page changes to localStorage dynamically
   const handleUpdateLandingConfig = (newConfig: LandingConfig) => {
     setLandingConfig(newConfig);
     saveLandingConfig(newConfig);
   };
 
-  const updateRequestStatus = (id: string, newStatus: RequestStatus) => {
+  const updateRequestStatus = async (id: string, newStatus: RequestStatus) => {
     setRequests(prev => prev.map(r => r.id === id ? { ...r, status: newStatus } : r));
+    const ok = await updateRequestStatusInDb(id, newStatus);
+    if (!ok) setRequests(await fetchRequests());
   };
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
+  const refreshRequests = async () => setRequests(await fetchRequests());
+
+  const handleSaveCompany = async (updated: Company) => {
+    setCompany(updated);
+    if (profile?.company_id) await saveCompany(profile.company_id, updated);
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     setActiveTab('dashboard');
     setViewMode('public');
   };
@@ -89,20 +129,22 @@ const App: React.FC = () => {
   const renderContent = () => {
     const commonProps = { lang, t };
     switch (activeTab) {
-      case 'dashboard': return <DashboardHome {...commonProps} />;
+      case 'dashboard': return <DashboardHome requests={requests} companyName={company.name} {...commonProps} />;
       case 'new-request': return (
-        <NewRequest 
-          preselectedISO={preselectedISO} 
-          onClearPreselectedISO={() => setPreselectedISO(null)} 
-          {...commonProps} 
+        <NewRequest
+          preselectedISO={preselectedISO}
+          onClearPreselectedISO={() => setPreselectedISO(null)}
+          companyId={profile?.company_id ?? null}
+          onRequestCreated={refreshRequests}
+          {...commonProps}
         />
       );
-      case 'requests': return <MyRequests {...commonProps} />;
+      case 'requests': return <MyRequests requests={requests} {...commonProps} />;
       case 'verify': return <Verification {...commonProps} />;
       case 'support': return <Support {...commonProps} />;
       case 'guide': return <Guide {...commonProps} />;
       case 'about': return <AboutUs {...commonProps} />;
-      case 'profile': return <CompanyProfile company={company} onSave={setCompany} {...commonProps} />;
+      case 'profile': return <CompanyProfile company={company} onSave={handleSaveCompany} {...commonProps} />;
       case 'admin': return (
         <AdminPanel 
           requests={requests} 
@@ -112,7 +154,7 @@ const App: React.FC = () => {
           {...commonProps} 
         />
       );
-      default: return <DashboardHome {...commonProps} />;
+      default: return <DashboardHome requests={requests} companyName={company.name} {...commonProps} />;
     }
   };
 
@@ -142,10 +184,10 @@ const App: React.FC = () => {
           <span>{lang === 'ar' ? '← الرجوع للموقع الرئيسي' : '← Back to Public Website'}</span>
         </button>
         
-        <Auth 
-          onAuthenticate={() => setIsAuthenticated(true)} 
-          mode={authMode} 
-          setMode={setAuthMode} 
+        <Auth
+          onAuthenticate={() => {}}
+          mode={authMode}
+          setMode={setAuthMode}
           lang={lang}
         />
       </div>
@@ -209,7 +251,7 @@ const App: React.FC = () => {
               className={`flex items-center gap-3 ${lang === 'ar' ? 'pr-2' : 'pl-2'} group ${activeTab === 'profile' ? 'text-indigo-600' : 'text-slate-600'}`}
             >
               <div className={`${lang === 'ar' ? 'text-left' : 'text-right'} hidden lg:block`}>
-                <p className="text-sm font-bold text-slate-900 leading-none group-hover:text-indigo-600 transition-colors">John Doe</p>
+                <p className="text-sm font-bold text-slate-900 leading-none group-hover:text-indigo-600 transition-colors">{profile?.full_name || session?.user.email}</p>
                 <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-tighter">{company.name}</p>
               </div>
               <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center group-hover:bg-indigo-50 transition-all">

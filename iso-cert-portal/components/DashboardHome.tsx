@@ -12,13 +12,14 @@ import {
   TrendingUp,
   ArrowDownLeft
 } from 'lucide-react';
-import { INITIAL_REQUESTS } from '../constants';
-import { RequestStatus } from '../types';
+import { RequestStatus, ISORequest } from '../types';
 import { Language } from '../translations';
 
 interface DashboardHomeProps {
   lang: Language;
   t: (key: any) => string;
+  requests: ISORequest[];
+  companyName?: string;
 }
 
 const data = [
@@ -48,15 +49,16 @@ const StatCard = ({ title, value, icon: Icon, color, trend, lang }: any) => (
   </div>
 );
 
-const DashboardHome: React.FC<DashboardHomeProps> = ({ lang, t }) => {
-  const activeRequests = INITIAL_REQUESTS.filter(r => r.status !== RequestStatus.CERTIFIED && r.status !== RequestStatus.REJECTED);
-  const certifiedCount = INITIAL_REQUESTS.filter(r => r.status === RequestStatus.CERTIFIED).length;
-  const pendingDocs = INITIAL_REQUESTS.filter(r => r.status === RequestStatus.MISSING_DOCS).length;
+const DashboardHome: React.FC<DashboardHomeProps> = ({ lang, t, requests, companyName }) => {
+  const activeRequests = requests.filter(r => r.status !== RequestStatus.CERTIFIED && r.status !== RequestStatus.REJECTED);
+  const certifiedCount = requests.filter(r => r.status === RequestStatus.CERTIFIED).length;
+  const pendingDocs = requests.filter(r => r.status === RequestStatus.MISSING_DOCS).length;
+  const totalAmount = requests.reduce((sum, r) => sum + (r.amount || 0), 0);
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div>
-        <h2 className="text-2xl font-bold text-slate-900">{t('welcome')}, Acme Corp</h2>
+        <h2 className="text-2xl font-bold text-slate-900">{t('welcome')}{companyName ? `, ${companyName}` : ''}</h2>
         <p className="text-slate-500">{lang === 'ar' ? 'إليك نظرة على حالة شهاداتك اليوم.' : "Here's what's happening with your certifications today."}</p>
       </div>
 
@@ -83,11 +85,11 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ lang, t }) => {
           color="bg-rose-50 text-rose-600" 
           lang={lang}
         />
-        <StatCard 
-          title={t('totalInvoices')} 
-          value="$6,200" 
-          icon={FileText} 
-          color="bg-indigo-50 text-indigo-600" 
+        <StatCard
+          title={t('totalInvoices')}
+          value={`$${totalAmount.toLocaleString()}`}
+          icon={FileText}
+          color="bg-indigo-50 text-indigo-600"
           lang={lang}
         />
       </div>
@@ -139,19 +141,22 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ lang, t }) => {
         <div className="bg-white p-6 rounded-2xl border shadow-sm">
           <h3 className="text-lg font-bold text-slate-900 mb-6">{t('recentActivity')}</h3>
           <div className="space-y-6">
-            {INITIAL_REQUESTS.slice(0, 3).map((req, idx) => (
-              <div key={idx} className="flex gap-4">
+            {requests.length === 0 && (
+              <p className="text-sm text-slate-400">{lang === 'ar' ? 'لا يوجد نشاط بعد.' : 'No activity yet.'}</p>
+            )}
+            {requests.slice(0, 3).map((req, idx) => (
+              <div key={req.id ?? idx} className="flex gap-4">
                 <div className={`w-2 h-2 rounded-full mt-2 shrink-0 ${
                   req.status === RequestStatus.CERTIFIED ? 'bg-emerald-500' : 'bg-amber-500'
                 }`} />
                 <div>
                   <p className="text-sm font-semibold text-slate-900">
-                    {req.status === RequestStatus.CERTIFIED 
-                      ? (lang === 'ar' ? 'تم إصدار الشهادة' : 'Certificate Issued') 
+                    {req.status === RequestStatus.CERTIFIED
+                      ? (lang === 'ar' ? 'تم إصدار الشهادة' : 'Certificate Issued')
                       : (lang === 'ar' ? 'تم تحديث الحالة' : 'Status Updated')}
                   </p>
                   <p className="text-xs text-slate-500 mb-2">
-                    {lang === 'ar' ? 'الطلب' : 'Request'} {req.id} {lang === 'ar' ? 'للمعيار' : 'for'} {req.standards[0].code}
+                    {lang === 'ar' ? 'الطلب' : 'Request'} {req.id} {lang === 'ar' ? 'للمعيار' : 'for'} {req.standards[0]?.code}
                   </p>
                   <span className="text-[10px] uppercase tracking-wider font-bold text-slate-400">
                     {req.createdAt}

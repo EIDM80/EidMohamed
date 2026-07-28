@@ -16,7 +16,6 @@ import {
   Calendar,
   ChevronDown
 } from 'lucide-react';
-import { INITIAL_REQUESTS } from '../constants';
 import { RequestStatus, ISORequest, AccreditationBody } from '../types';
 import { generateMockCertificateContent } from '../geminiService';
 import { Language } from '../translations';
@@ -27,6 +26,7 @@ import html2canvas from 'html2canvas';
 interface MyRequestsProps {
   lang: Language;
   t: (key: any) => string;
+  requests: ISORequest[];
 }
 
 const StatusBadge = ({ status }: { status: RequestStatus }) => {
@@ -58,7 +58,7 @@ const StatusBadge = ({ status }: { status: RequestStatus }) => {
   );
 };
 
-const MyRequests: React.FC<MyRequestsProps> = ({ lang, t }) => {
+const MyRequests: React.FC<MyRequestsProps> = ({ lang, t, requests }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isDownloading, setIsDownloading] = useState<string | null>(null);
   const [certData, setCertData] = useState<any>(null);
@@ -131,7 +131,7 @@ const MyRequests: React.FC<MyRequestsProps> = ({ lang, t }) => {
     setSearchTerm('');
   };
 
-  const filteredRequests = INITIAL_REQUESTS.filter(req => {
+  const filteredRequests = requests.filter(req => {
     const matchesSearch = req.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
       req.standards.some(s => s.code.toLowerCase().includes(searchTerm.toLowerCase()));
     

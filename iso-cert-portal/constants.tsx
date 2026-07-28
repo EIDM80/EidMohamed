@@ -1,5 +1,5 @@
 
-import { ISOStandard, AccreditationBody, RequestStatus } from './types';
+import { ISOStandard } from './types';
 
 export const ISO_STANDARDS: ISOStandard[] = [
   { id: '1', code: 'ISO 9001', title: 'Quality Management Systems', description: 'Standard for quality management and customer satisfaction.', basePrice: 1200 },
@@ -33,37 +33,4 @@ export const ISO_STANDARDS: ISOStandard[] = [
   { id: '29', code: 'ISO Renewal', title: 'ISO Certification Renewal', description: 'Formal process for renewing existing ISO certifications.', basePrice: 1000 },
   { id: '30', code: 'IMS', title: 'Integrated Management System', description: 'Combining multiple ISO standards into one framework.', basePrice: 5000 },
   { id: '31', code: 'HACCP', title: 'HACCP Certification', description: 'Food Safety Hazard Analysis and Critical Control Points.', basePrice: 1300 }
-];
-
-export const INITIAL_REQUESTS = [
-  {
-    id: 'REQ-001',
-    type: 'single',
-    standards: [ISO_STANDARDS[0]], // ISO 9001
-    accreditationBody: AccreditationBody.UKAS,
-    status: RequestStatus.CERTIFIED,
-    amount: 1200,
-    createdAt: '2023-11-15',
-    company: { name: 'Acme Corp', legalName: 'Acme International Ltd', licenseNo: 'TL-12345', address: '123 Tech Lane', website: 'acme.com' }
-  },
-  {
-    id: 'REQ-002',
-    type: 'multi',
-    standards: [ISO_STANDARDS[1], ISO_STANDARDS[2]], // ISO 14001, ISO 45001
-    accreditationBody: AccreditationBody.IAS,
-    status: RequestStatus.UNDER_REVIEW,
-    amount: 3200,
-    createdAt: '2024-01-10',
-    company: { name: 'Acme Corp', legalName: 'Acme International Ltd', licenseNo: 'TL-12345', address: '123 Tech Lane', website: 'acme.com' }
-  },
-  {
-    id: 'REQ-003',
-    type: 'single',
-    standards: [ISO_STANDARDS[3]], // ISO 27001
-    accreditationBody: AccreditationBody.ANAB,
-    status: RequestStatus.MISSING_DOCS,
-    amount: 1800,
-    createdAt: '2024-02-01',
-    company: { name: 'Acme Corp', legalName: 'Acme International Ltd', licenseNo: 'TL-12345', address: '123 Tech Lane', website: 'acme.com' }
-  }
 ];

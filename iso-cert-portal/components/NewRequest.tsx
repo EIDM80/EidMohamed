@@ -1,32 +1,36 @@
 
 import React, { useState, useEffect } from 'react';
-import { 
-  Check, 
-  ArrowRight, 
-  ArrowLeft, 
-  ShieldCheck, 
-  FileCheck, 
+import {
+  Check,
+  ArrowRight,
+  ArrowLeft,
+  ShieldCheck,
+  FileCheck,
   CreditCard,
   CloudUpload,
   Info,
   Sparkles,
   Search as SearchIcon,
   Loader2,
-  CheckCircle2
+  CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
 import { ISO_STANDARDS } from '../constants';
 import { AccreditationBody, ISOStandard } from '../types';
 import { summarizeRequirements } from '../geminiService';
 import { Language } from '../translations';
+import { createRequest } from '../lib/db';
 
 interface NewRequestProps {
   lang: Language;
   t: (key: any) => string;
   preselectedISO?: string | null;
   onClearPreselectedISO?: () => void;
+  companyId?: string | null;
+  onRequestCreated?: () => void;
 }
 
-const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClearPreselectedISO }) => {
+const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClearPreselectedISO, companyId, onRequestCreated }) => {
   const [step, setStep] = useState(1);
   const [type, setType] = useState<'single' | 'multi'>('single');
   const [selectedBody, setSelectedBody] = useState<AccreditationBody>(AccreditationBody.UKAS);
@@ -35,6 +39,9 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
   const [selectedStandards, setSelectedStandards] = useState<ISOStandard[]>([]);
   const [aiSummary, setAiSummary] = useState<string | null>(null);
   const [loadingAi, setLoadingAi] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     if (preselectedISO) {
@@ -91,6 +98,54 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
   const calculateTotal = () => {
     return calculateSubtotal() - calculateDiscount();
   };
+
+  const handleSubmitRequest = async () => {
+    if (!companyId) {
+      setSubmitError(lang === 'ar' ? 'لم يتم العثور على ملف الشركة. يرجى إعادة تسجيل الدخول.' : 'No company profile found. Please sign in again.');
+      return;
+    }
+    setSubmitting(true);
+    setSubmitError(null);
+    const ok = await createRequest(companyId, {
+      type,
+      accreditationBody: selectedBody,
+      standards: selectedStandards,
+      amount: calculateTotal(),
+    });
+    setSubmitting(false);
+    if (!ok) {
+      setSubmitError(lang === 'ar' ? 'تعذر إرسال الطلب. حاول مرة أخرى.' : 'Could not submit the request. Please try again.');
+      return;
+    }
+    setSubmitted(true);
+    onRequestCreated?.();
+  };
+
+  if (submitted) {
+    return (
+      <div className="max-w-2xl mx-auto py-16 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-6">
+          <CheckCircle2 size={32} />
+        </div>
+        <h2 className="text-2xl font-bold text-slate-900 mb-2">
+          {lang === 'ar' ? 'تم إرسال طلبك بنجاح' : 'Your request has been submitted'}
+        </h2>
+        <p className="text-slate-500 mb-8">
+          {lang === 'ar' ? 'يمكنك متابعة حالة طلبك من صفحة "طلباتي".' : 'You can track its progress from the "My Requests" page.'}
+        </p>
+        <button
+          onClick={() => {
+            setSubmitted(false);
+            setStep(1);
+            setSelectedStandards([]);
+          }}
+          className="px-6 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all"
+        >
+          {lang === 'ar' ? 'إنشاء طلب آخر' : 'Start Another Request'}
+        </button>
+      </div>
+    );
+  }
 
   const steps = [
     { id: 1, label: t('stepLabelType'), icon: ShieldCheck },
@@ -348,26 +403,39 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
           </div>
         )}
 
+        {submitError && (
+          <div className="mt-6 flex items-start gap-2 p-3 bg-rose-50 border border-rose-200 rounded-xl text-sm text-rose-700">
+            <AlertCircle size={16} className="shrink-0 mt-0.5" />
+            <span>{submitError}</span>
+          </div>
+        )}
+
         <div className="mt-12 flex justify-between gap-4">
-          <button 
-            disabled={step === 1}
+          <button
+            disabled={step === 1 || submitting}
             onClick={() => setStep(step - 1)}
             className={`flex items-center gap-2 px-6 py-3 text-slate-600 font-semibold hover:bg-slate-50 rounded-xl disabled:opacity-30 transition-all ${lang === 'ar' ? 'flex-row-reverse' : ''}`}
           >
             {lang === 'ar' ? <ArrowRight size={20} /> : <ArrowLeft size={20} />}
             {t('back')}
           </button>
-          
-          <button 
+
+          <button
             onClick={() => {
               if (step < 5) setStep(step + 1);
-              else alert('Proceeding to Stripe for payment of $' + calculateTotal());
+              else handleSubmitRequest();
             }}
-            disabled={selectedStandards.length === 0 && step === 3}
+            disabled={(selectedStandards.length === 0 && step === 3) || submitting}
             className={`flex items-center gap-2 px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all disabled:opacity-50 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}
           >
-            {step === 5 ? t('payAndSubmit') : t('continue')}
-            {step < 5 && (lang === 'ar' ? <ArrowLeft size={20} /> : <ArrowRight size={20} />)}
+            {submitting ? (
+              <Loader2 size={18} className="animate-spin" />
+            ) : (
+              <>
+                {step === 5 ? t('payAndSubmit') : t('continue')}
+                {step < 5 && (lang === 'ar' ? <ArrowLeft size={20} /> : <ArrowRight size={20} />)}
+              </>
+            )}
           </button>
         </div>
       </div>
