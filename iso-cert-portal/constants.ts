@@ -32,5 +32,8 @@ export const ISO_STANDARDS: ISOStandard[] = [
   { id: '28', code: 'ISO 27018', title: 'PII Protection in Public Clouds', description: 'Protecting personal data in the cloud.', basePrice: 2400 },
   { id: '29', code: 'ISO Renewal', title: 'ISO Certification Renewal', description: 'Formal process for renewing existing ISO certifications.', basePrice: 1000 },
   { id: '30', code: 'IMS', title: 'Integrated Management System', description: 'Combining multiple ISO standards into one framework.', basePrice: 5000 },
-  { id: '31', code: 'HACCP', title: 'HACCP Certification', description: 'Food Safety Hazard Analysis and Critical Control Points.', basePrice: 1300 }
+  { id: '31', code: 'HACCP', title: 'HACCP Certification', description: 'Food Safety Hazard Analysis and Critical Control Points.', basePrice: 1300 },
+  // TEMPORARY — for verifying the live Stripe payment flow end-to-end with a
+  // minimal real charge. Remove this entry once the test purchase is confirmed working.
+  { id: 'test-1', code: 'TEST', title: 'Payment Flow Test (Remove after testing)', description: 'Minimal-cost item to verify checkout end-to-end. Not a real ISO standard.', basePrice: 1.5 }
 ];
