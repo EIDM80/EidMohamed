@@ -68,6 +68,16 @@ const FAQ_ITEMS: { qEn: string; qAr: string; aEn: string; aAr: string }[] = [
   }
 ];
 
+const LEAD_AUDITOR_STANDARDS = [
+  'ISO 9001:2015',
+  'ISO 14001:2015',
+  'ISO 45001:2018',
+  'ISO 22000:2018',
+  'ISO 22301:2019',
+  'ISO/IEC 27001:2022',
+  'ISO 13485:2016'
+];
+
 interface PublicLandingProps {
   config: LandingConfig;
   lang: Language;
@@ -468,6 +478,26 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* Section 1.5: IAF Accreditation Trust Banner */}
+      <section className="py-10 bg-[#0b1021] border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-start">
+          {/* IAF logo placeholder — swap the img src below for the real logo file once provided */}
+          <div className="w-20 h-20 rounded-full bg-white border-4 border-[#1e3a8a] flex items-center justify-center shrink-0 shadow-lg">
+            <span className="font-black text-[#1e3a8a] text-xs tracking-tight leading-none text-center">IAF<br /><span className="text-[7px] font-bold">ACCREDITED</span></span>
+          </div>
+          <div>
+            <h3 className="text-lg md:text-xl font-black text-white">
+              {isAr ? 'جميع شهاداتنا أصلية ومعتمدة من IAF' : 'Every Certificate Is Genuine & IAF Accredited'}
+            </h3>
+            <p className="text-sm text-slate-400 font-medium mt-1 max-w-2xl">
+              {isAr
+                ? 'تصدر GAMC شهاداتها حصرياً عبر هيئات اعتماد أعضاء في المنتدى الدولي للاعتماد (IAF)، ويمكن التحقق من صحة كل شهادة فوراً عبر السجل العالمي الرسمي IAF CertSearch.'
+                : 'GAMC issues certificates exclusively through accreditation bodies that are members of the International Accreditation Forum (IAF), and every certificate is instantly verifiable through the official IAF CertSearch global registry.'}
+            </p>
           </div>
         </div>
       </section>
@@ -947,7 +977,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 </h3>
                 <div className="pt-2">
                   <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{isAr ? 'رسوم ثابتة' : 'Fixed fee'}</span>
-                  <span className="text-2xl font-black text-[#121c42]">AED 3,495</span>
+                  <span className="text-2xl font-black text-[#121c42]">AED 4,495</span>
                 </div>
                 
                 <div className="border-t border-slate-200/50 pt-4 mt-4">
@@ -994,7 +1024,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 </h3>
                 <div className="pt-2">
                   <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{isAr ? 'رسوم ثابتة' : 'Fixed fee'}</span>
-                  <span className="text-2xl font-black text-[#121c42]">AED 3,495</span>
+                  <span className="text-2xl font-black text-[#121c42]">AED 4,495</span>
                 </div>
                 
                 <div className="border-t border-slate-200/50 pt-4 mt-4">
@@ -1041,7 +1071,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 </h3>
                 <div className="pt-2">
                   <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{isAr ? 'رسوم ثابتة' : 'Fixed fee'}</span>
-                  <span className="text-2xl font-black text-[#121c42]">AED 3,495</span>
+                  <span className="text-2xl font-black text-[#121c42]">AED 4,495</span>
                 </div>
                 
                 <div className="border-t border-slate-200/50 pt-4 mt-4">
@@ -1093,7 +1123,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 
                 <div className="pt-2">
                   <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{isAr ? 'رسوم ثابتة شاملة' : 'All-inclusive fee'}</span>
-                  <span className="text-2xl font-black text-[#f7b500]">AED 9,995</span>
+                  <span className="text-2xl font-black text-[#f7b500]">AED 10,995</span>
                 </div>
                 
                 <div className="border-t border-slate-700/60 pt-4 mt-4">
@@ -1143,6 +1173,53 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               className="px-6 py-3 bg-[#121c42] hover:bg-slate-800 text-white rounded-full text-xs font-bold transition-all shrink-0 uppercase tracking-wider"
             >
               {isAr ? 'اتصل بنا الآن' : 'Contact Us'}
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Section 7.5: Lead Auditor Training Courses */}
+      <section className="py-20 bg-[#f8fafc] border-y border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-indigo-50 text-indigo-600 rounded-full text-xs font-bold tracking-wider uppercase border border-indigo-100">
+              <GraduationCap size={14} />
+              <span>{isAr ? '100% أونلاين' : '100% Online'}</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-[#121c42] tracking-tight">
+              {isAr ? 'دورات تدريب المدقق الرئيسي (Lead Auditor)' : 'Lead Auditor Training Standards'}
+            </h2>
+            <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+            <p className="text-slate-500 font-medium">
+              {isAr
+                ? 'جميع دورات تدريب المدقق الرئيسي تُقدَّم بالكامل أونلاين، مما يتيح لفريقك التأهل دون الحاجة للسفر أو التواجد الحضوري.'
+                : 'All Lead Auditor training courses are delivered fully online, so your team can qualify without travel or in-person attendance.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {LEAD_AUDITOR_STANDARDS.map((code) => (
+              <div
+                key={code}
+                className="bg-white border border-slate-200/60 rounded-2xl p-5 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-indigo-200 transition-all"
+              >
+                <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                  <GraduationCap size={20} />
+                </div>
+                <span className="text-sm font-black text-slate-900">{code}</span>
+                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">{isAr ? 'مدقق رئيسي' : 'Lead Auditor'}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <button
+              onClick={() => scrollToSection('contact-section')}
+              className="px-6 py-3 bg-[#121c42] hover:bg-indigo-600 text-white rounded-full text-xs font-bold transition-all uppercase tracking-wider"
+            >
+              {isAr ? 'استفسر عن مواعيد الدورات' : 'Ask About Course Schedules'}
             </button>
           </div>
 
