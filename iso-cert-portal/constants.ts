@@ -1,5 +1,5 @@
 
-import { AccreditationBody, ISOStandard } from './types';
+import { AccreditationBody, ISOStandard } from './types.js';
 
 // Only these accreditation bodies have fixed, published prices online;
 // every other body requires a custom quote.
