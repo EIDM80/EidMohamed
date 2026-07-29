@@ -853,9 +853,11 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 <video
                   className="w-full h-auto block"
                   src="https://img.iafcertsearch.org/r/p/landing/animations/manual-search.mp4"
-                  controls
+                  autoPlay
+                  loop
+                  muted
                   playsInline
-                  preload="metadata"
+                  preload="auto"
                 >
                   {isAr ? 'متصفحك لا يدعم عرض الفيديو.' : 'Your browser does not support the video tag.'}
                 </video>
