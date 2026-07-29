@@ -34,6 +34,8 @@ export const ISO_STANDARDS: ISOStandard[] = [
   { id: '30', code: 'IMS', title: 'Integrated Management System', description: 'Combining multiple ISO standards into one framework.', basePrice: 5000 },
   { id: '31', code: 'HACCP', title: 'HACCP Certification', description: 'Food Safety Hazard Analysis and Critical Control Points.', basePrice: 1300 },
   // TEMPORARY — for verifying the live Stripe payment flow end-to-end with a
-  // minimal real charge. Remove this entry once the test purchase is confirmed working.
-  { id: 'test-1', code: 'TEST', title: 'Payment Flow Test (Remove after testing)', description: 'Minimal-cost item to verify checkout end-to-end. Not a real ISO standard.', basePrice: 1.5 }
+  // minimal real charge. Priced at Stripe's minimum chargeable amount (~$0.50
+  // USD, ~2 AED) — a literal 1 AED charge would be rejected as below Stripe's
+  // per-currency minimum. Remove this entry once the test purchase is confirmed working.
+  { id: 'test-1', code: 'TEST', title: 'Payment Flow Test (Remove after testing)', description: 'Minimal-cost item to verify checkout end-to-end. Not a real ISO standard.', basePrice: 0.55 }
 ];
