@@ -28,7 +28,8 @@ import {
   Check,
   Send,
   MessageSquare,
-  ArrowUpRight
+  ArrowUpRight,
+  ShieldCheck
 } from 'lucide-react';
 import { LandingConfig, LandingService, LandingSection } from '../landingConfig';
 import { Language } from '../translations';
@@ -810,6 +811,55 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 </div>
               </div>
 
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6.5: Certificate Verification Demo */}
+      <section id="verify-demo" className="py-20 bg-[#0b1021]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+            <div className={`lg:col-span-5 space-y-6 ${isAr ? 'lg:order-2 text-right' : ''}`}>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-indigo-500/20 backdrop-blur-md text-indigo-300 rounded-full text-xs font-bold tracking-wider uppercase border border-indigo-500/30">
+                <ShieldCheck size={14} />
+                <span>{isAr ? 'شفافية كاملة' : 'Full Transparency'}</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-white leading-tight">
+                {isAr ? 'تحقق فوراً من صحة أي شهادة ISO' : 'Verify Any ISO Certificate Instantly'}
+              </h2>
+              <p className="text-slate-400 leading-relaxed">
+                {isAr
+                  ? 'كل شهادة نصدرها قابلة للتحقق فوراً عبر قاعدة بيانات IAF CertSearch العالمية — السجل الرسمي الموحّد لجميع شهادات الاعتماد المعترف بها دولياً. شاهد كيف يمكن لعملائك وشركائك التأكد من صحة شهادتك في ثوانٍ.'
+                  : 'Every certificate we issue is instantly verifiable through IAF CertSearch, the official global registry for internationally accredited certifications. Watch how your clients and partners can confirm your certificate is genuine in seconds.'}
+              </p>
+              <div className="flex items-center gap-3 pt-2">
+                <a
+                  href="https://www.iafcertsearch.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-100 text-[#0b1021] font-bold rounded-full transition-all text-sm"
+                >
+                  <span>{isAr ? 'زيارة IAF CertSearch' : 'Visit IAF CertSearch'}</span>
+                  <ExternalLink size={16} />
+                </a>
+              </div>
+            </div>
+
+            <div className={`lg:col-span-7 ${isAr ? 'lg:order-1' : ''}`}>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-700/60 bg-black">
+                <video
+                  className="w-full h-auto block"
+                  src="https://img.iafcertsearch.org/r/p/landing/animations/manual-search.mp4"
+                  controls
+                  playsInline
+                  preload="metadata"
+                >
+                  {isAr ? 'متصفحك لا يدعم عرض الفيديو.' : 'Your browser does not support the video tag.'}
+                </video>
+              </div>
             </div>
 
           </div>
