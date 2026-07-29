@@ -10,6 +10,7 @@ export default async function handler(req: any, res: any) {
 
   const secretKey = process.env.STRIPE_SECRET_KEY;
   if (!secretKey) {
+    console.error("STRIPE_SECRET_KEY is not set in this environment");
     res.status(500).json({ error: "Payments are not configured on the server yet." });
     return;
   }

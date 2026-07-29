@@ -107,11 +107,11 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
     });
     if ('error' in result) {
       setSubmitting(false);
-      setSubmitError(
-        lang === 'ar'
-          ? 'تعذر بدء عملية الدفع. حاول مرة أخرى.'
-          : 'Could not start the payment process. Please try again.'
-      );
+      // Surface the server's actual reason (e.g. "Payments are not configured
+      // on the server yet.") instead of a generic message — the specific
+      // cause matters for diagnosing payment issues.
+      const prefix = lang === 'ar' ? 'تعذر بدء عملية الدفع: ' : 'Could not start the payment process: ';
+      setSubmitError(prefix + result.error);
       return;
     }
     // Leaving the page for Stripe Checkout — no need to clear `submitting`.
