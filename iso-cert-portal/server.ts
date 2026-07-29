@@ -5,9 +5,37 @@ import Stripe from "stripe";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import { getSupabaseAdmin } from "./lib/supabaseAdmin";
-import { priceOrder, Currency } from "./lib/pricing";
+import { priceOrder, Currency, RenewalTerm } from "./lib/pricing";
 import { ISO_STANDARDS } from "./constants";
 import { RequestStatus } from "./types";
+
+// Maps Stripe's richer subscription.status set onto our simpler stored enum.
+const mapSubscriptionStatus = (stripeStatus: Stripe.Subscription.Status): "active" | "past_due" | "canceled" | "unpaid" => {
+  switch (stripeStatus) {
+    case "active":
+    case "trialing":
+      return "active";
+    case "past_due":
+      return "past_due";
+    case "canceled":
+    case "incomplete_expired":
+      return "canceled";
+    default:
+      return "unpaid";
+  }
+};
+
+// As of this Stripe API version, billing periods live per subscription item
+// (flexible billing periods) rather than on the subscription itself — our
+// subscriptions only ever have one item (the certification price).
+const getPeriodEnd = (subscription: Stripe.Subscription): number =>
+  subscription.items.data[0]?.current_period_end ?? Math.floor(Date.now() / 1000);
+
+// Likewise, an Invoice's subscription reference moved under parent.subscription_details.
+const getInvoiceSubscriptionId = (invoice: Stripe.Invoice): string | undefined => {
+  const sub = invoice.parent?.subscription_details?.subscription;
+  return typeof sub === "string" ? sub : sub?.id;
+};
 
 // Node doesn't read .env files on its own; layer .env then .env.local
 // (matching Vite's own precedence) so GEMINI_API_KEY reaches process.env
@@ -49,15 +77,22 @@ async function startServer() {
       return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-    if (event.type === "checkout.session.completed") {
-      const session = event.data.object as Stripe.Checkout.Session;
-      const meta = session.metadata || {};
-      const companyId = meta.companyId;
-      const standardIds = (meta.standardIds || "").split(",").filter(Boolean);
-      const standards = ISO_STANDARDS.filter((s) => standardIds.includes(s.id));
+    try {
+      switch (event.type) {
+        case "checkout.session.completed": {
+          const session = event.data.object as Stripe.Checkout.Session;
+          const meta = session.metadata || {};
+          const companyId = meta.companyId;
+          const standardIds = (meta.standardIds || "").split(",").filter(Boolean);
+          const standards = ISO_STANDARDS.filter((s) => standardIds.includes(s.id));
+          const subscriptionId = typeof session.subscription === "string" ? session.subscription : session.subscription?.id;
 
-      if (companyId && standards.length > 0) {
-        try {
+          if (!companyId || standards.length === 0 || !subscriptionId) {
+            console.error("Stripe webhook: missing companyId, standards, or subscription on session", meta);
+            break;
+          }
+
+          const subscription = await stripe.subscriptions.retrieve(subscriptionId);
           const { error } = await getSupabaseAdmin().from("iso_requests").insert({
             company_id: companyId,
             type: meta.type === "multi" ? "multi" : "single",
@@ -67,17 +102,72 @@ async function startServer() {
             currency: meta.currency || "usd",
             payment_status: "paid",
             stripe_session_id: session.id,
+            stripe_customer_id: typeof session.customer === "string" ? session.customer : session.customer?.id,
+            stripe_subscription_id: subscriptionId,
+            renewal_term: meta.term === "3y" ? "3y" : "1y",
+            subscription_status: mapSubscriptionStatus(subscription.status),
+            next_renewal_at: new Date(getPeriodEnd(subscription) * 1000).toISOString(),
             status: RequestStatus.SUBMITTED,
           });
           if (error) {
             console.error("Failed to create request after payment:", error.message, meta);
           }
-        } catch (err: any) {
-          console.error("Supabase admin client unavailable:", err.message);
+          break;
         }
-      } else {
-        console.error("Stripe webhook: missing companyId or unmatched standards in metadata", meta);
+        case "invoice.paid": {
+          const invoice = event.data.object as Stripe.Invoice;
+          const subscriptionId = getInvoiceSubscriptionId(invoice);
+          if (!subscriptionId) break;
+          const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+          const { error } = await getSupabaseAdmin()
+            .from("iso_requests")
+            .update({
+              subscription_status: mapSubscriptionStatus(subscription.status),
+              next_renewal_at: new Date(getPeriodEnd(subscription) * 1000).toISOString(),
+              updated_at: new Date().toISOString(),
+            })
+            .eq("stripe_subscription_id", subscriptionId);
+          if (error) console.error("Failed to update request after renewal payment:", error.message, subscriptionId);
+          break;
+        }
+        case "invoice.payment_failed": {
+          const invoice = event.data.object as Stripe.Invoice;
+          const subscriptionId = getInvoiceSubscriptionId(invoice);
+          if (!subscriptionId) break;
+          const { error } = await getSupabaseAdmin()
+            .from("iso_requests")
+            .update({ subscription_status: "past_due", updated_at: new Date().toISOString() })
+            .eq("stripe_subscription_id", subscriptionId);
+          if (error) console.error("Failed to mark subscription past_due:", error.message, subscriptionId);
+          break;
+        }
+        case "customer.subscription.updated": {
+          const subscription = event.data.object as Stripe.Subscription;
+          const { error } = await getSupabaseAdmin()
+            .from("iso_requests")
+            .update({
+              subscription_status: mapSubscriptionStatus(subscription.status),
+              next_renewal_at: new Date(getPeriodEnd(subscription) * 1000).toISOString(),
+              updated_at: new Date().toISOString(),
+            })
+            .eq("stripe_subscription_id", subscription.id);
+          if (error) console.error("Failed to sync subscription status:", error.message, subscription.id);
+          break;
+        }
+        case "customer.subscription.deleted": {
+          const subscription = event.data.object as Stripe.Subscription;
+          const { error } = await getSupabaseAdmin()
+            .from("iso_requests")
+            .update({ subscription_status: "canceled", updated_at: new Date().toISOString() })
+            .eq("stripe_subscription_id", subscription.id);
+          if (error) console.error("Failed to mark subscription canceled:", error.message, subscription.id);
+          break;
+        }
+        default:
+          break;
       }
+    } catch (err: any) {
+      console.error(`Stripe webhook handler failed for ${event.type}:`, err.message);
     }
 
     res.status(200).json({ received: true });
@@ -90,7 +180,7 @@ async function startServer() {
       return res.status(500).json({ error: "Payments are not configured on the server yet." });
     }
 
-    const { companyId, type, accreditationBody, standardIds, currency, origin } = req.body || {};
+    const { companyId, type, accreditationBody, standardIds, currency, term, email, origin } = req.body || {};
     if (!companyId || !type || !accreditationBody || !Array.isArray(standardIds) || standardIds.length === 0) {
       return res.status(400).json({ error: "Missing required order details" });
     }
@@ -101,21 +191,33 @@ async function startServer() {
     }
 
     const safeCurrency: Currency = currency === "aed" ? "aed" : "usd";
-    const pricing = priceOrder(selectedStandards, type === "multi" ? "multi" : "single", safeCurrency);
+    const safeTerm: RenewalTerm = term === "3y" ? "3y" : "1y";
+    const pricing = priceOrder(selectedStandards, type === "multi" ? "multi" : "single", safeCurrency, safeTerm);
     const baseUrl = typeof origin === "string" && origin.startsWith("http") ? origin : "";
+    const metadata = {
+      companyId,
+      type: type === "multi" ? "multi" : "single",
+      accreditationBody,
+      standardIds: standardIds.join(","),
+      currency: safeCurrency,
+      term: safeTerm,
+      amount: String(pricing.totalUsd),
+    };
 
     try {
       const session = await stripe!.checkout.sessions.create({
-        mode: "payment",
+        mode: "subscription",
         payment_method_types: ["card"],
+        customer_email: typeof email === "string" && email ? email : undefined,
         line_items: [
           {
             price_data: {
               currency: safeCurrency,
               unit_amount: pricing.totalInSmallestUnit,
+              recurring: { interval: "year", interval_count: pricing.intervalCount },
               product_data: {
                 name: `ISO Certification — ${selectedStandards.map((s) => s.code).join(", ")}`,
-                description: `Accreditation body: ${accreditationBody}`,
+                description: `Accreditation body: ${accreditationBody} · Renews every ${pricing.intervalCount} year(s)`,
               },
             },
             quantity: 1,
@@ -123,14 +225,8 @@ async function startServer() {
         ],
         success_url: `${baseUrl}/?payment=success&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${baseUrl}/?payment=cancelled`,
-        metadata: {
-          companyId,
-          type: type === "multi" ? "multi" : "single",
-          accreditationBody,
-          standardIds: standardIds.join(","),
-          currency: safeCurrency,
-          amount: String(pricing.totalUsd),
-        },
+        metadata,
+        subscription_data: { metadata },
       });
 
       res.json({ url: session.url });

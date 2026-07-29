@@ -20,7 +20,7 @@ import { AccreditationBody, ISOStandard } from '../types';
 import { summarizeRequirements } from '../geminiService';
 import { Language } from '../translations';
 import { startCheckout } from '../lib/db';
-import { AED_PER_USD, Currency } from '../lib/pricing';
+import { Currency, RenewalTerm, priceOrder, formatMoney, AED_PER_USD } from '../lib/pricing';
 
 interface NewRequestProps {
   lang: Language;
@@ -28,9 +28,10 @@ interface NewRequestProps {
   preselectedISO?: string | null;
   onClearPreselectedISO?: () => void;
   companyId?: string | null;
+  userEmail?: string | null;
 }
 
-const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClearPreselectedISO, companyId }) => {
+const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClearPreselectedISO, companyId, userEmail }) => {
   const [step, setStep] = useState(1);
   const [type, setType] = useState<'single' | 'multi'>('single');
   const [selectedBody, setSelectedBody] = useState<AccreditationBody>(AccreditationBody.UKAS);
@@ -42,6 +43,7 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [currency, setCurrency] = useState<Currency>(lang === 'ar' ? 'aed' : 'usd');
+  const [term, setTerm] = useState<RenewalTerm>('1y');
 
   useEffect(() => {
     if (preselectedISO) {
@@ -84,27 +86,8 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
     }
   };
 
-  const calculateSubtotal = () => {
-    return selectedStandards.reduce((acc, curr) => acc + curr.basePrice, 0);
-  };
-
-  const calculateDiscount = () => {
-    if (type === 'multi' && selectedStandards.length > 1) {
-      return calculateSubtotal() * 0.15; // 15% discount
-    }
-    return 0;
-  };
-
-  const calculateTotal = () => {
-    return calculateSubtotal() - calculateDiscount();
-  };
-
-  const formatAmount = (usdAmount: number) => {
-    if (currency === 'aed') {
-      return `AED ${(usdAmount * AED_PER_USD).toFixed(2)}`;
-    }
-    return `$${usdAmount.toFixed(2)}`;
-  };
+  const pricing = priceOrder(selectedStandards, type, currency, term);
+  const displayAmount = (usdAmount: number) => formatMoney(currency === 'aed' ? usdAmount * AED_PER_USD : usdAmount, currency);
 
   const handleSubmitRequest = async () => {
     if (!companyId) {
@@ -119,6 +102,8 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
       accreditationBody: selectedBody,
       standardIds: selectedStandards.map(s => s.id),
       currency,
+      term,
+      email: userEmail || '',
     });
     if ('error' in result) {
       setSubmitting(false);
@@ -280,8 +265,8 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
                       <p className="text-[10px] text-slate-500 line-clamp-2">{std.description}</p>
                     </div>
                     <div className="mt-4 flex items-center justify-between pt-3 border-t border-slate-100">
-                      <span className="text-xs font-bold text-slate-900">${std.basePrice}</span>
-                      <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">{lang === 'ar' ? 'رسوم أساسية' : 'Base Fee'}</span>
+                      <span className="text-xs font-bold text-slate-900">${std.basePrice}<span className="text-slate-400 font-medium">{lang === 'ar' ? '/سنة' : '/yr'}</span></span>
+                      <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">{lang === 'ar' ? 'رسوم سنوية' : 'Annual Fee'}</span>
                     </div>
                   </button>
                 );
@@ -351,9 +336,34 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
                     {selectedStandards.map(s => (
                       <div key={s.id} className="flex justify-between items-center p-3 bg-white border rounded-lg">
                         <span className="text-sm font-bold text-slate-700">{s.code}</span>
-                        <span className="text-sm text-slate-500">${s.basePrice}</span>
+                        <span className="text-sm text-slate-500">${s.basePrice}{lang === 'ar' ? '/سنة' : '/yr'}</span>
                       </div>
                     ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{lang === 'ar' ? 'مدة الاشتراك' : 'Subscription Term'}</h4>
+                  <div className="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setTerm('1y')}
+                      className={`p-4 rounded-xl border-2 text-start transition-all ${term === '1y' ? 'border-indigo-600 bg-indigo-50' : 'border-slate-100 hover:border-indigo-200'}`}
+                    >
+                      <p className="font-bold text-slate-900 text-sm">{lang === 'ar' ? 'سنوياً' : 'Yearly'}</p>
+                      <p className="text-[10px] text-slate-500 mt-1">{lang === 'ar' ? 'تجديد كل سنة' : 'Renews every year'}</p>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setTerm('3y')}
+                      className={`relative p-4 rounded-xl border-2 text-start transition-all ${term === '3y' ? 'border-indigo-600 bg-indigo-50' : 'border-slate-100 hover:border-indigo-200'}`}
+                    >
+                      <span className="absolute -top-2 right-3 px-1.5 py-0.5 bg-emerald-500 text-white text-[9px] font-black uppercase rounded">
+                        {lang === 'ar' ? 'وفّر 10%' : 'Save 10%'}
+                      </span>
+                      <p className="font-bold text-slate-900 text-sm">{lang === 'ar' ? '3 سنوات' : '3 Years'}</p>
+                      <p className="text-[10px] text-slate-500 mt-1">{lang === 'ar' ? 'تجديد كل 3 سنوات' : 'Renews every 3 years'}</p>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -381,26 +391,34 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
                   </div>
                   <div className="space-y-4">
                     <div className="flex justify-between text-sm">
-                      <span className="text-slate-500">{lang === 'ar' ? 'المجموع الفرعي' : 'Subtotal'}</span>
-                      <span className="font-bold text-slate-900">{formatAmount(calculateSubtotal())}</span>
+                      <span className="text-slate-500">
+                        {lang === 'ar' ? `المجموع (${pricing.intervalCount} سنة)` : `Subtotal (${pricing.intervalCount}-year term)`}
+                      </span>
+                      <span className="font-bold text-slate-900">{displayAmount(pricing.termSubtotalUsd)}</span>
                     </div>
-                    {calculateDiscount() > 0 && (
+                    {pricing.termDiscountUsd > 0 && (
                       <div className="flex justify-between text-sm text-emerald-600 font-bold">
-                        <span>{lang === 'ar' ? 'خصم الحزمة (15%)' : 'Bundle Discount (15%)'}</span>
-                        <span>-{formatAmount(calculateDiscount())}</span>
+                        <span>{lang === 'ar' ? 'خصم الالتزام لـ 3 سنوات (10%)' : '3-Year Commitment Discount (10%)'}</span>
+                        <span>-{displayAmount(pricing.termDiscountUsd)}</span>
                       </div>
                     )}
                     <div className="h-px bg-indigo-100 my-4" />
                     <div className="flex justify-between items-center">
-                      <span className="text-lg font-bold text-slate-900">{lang === 'ar' ? 'الإجمالي' : 'Total Amount'}</span>
-                      <span className="text-2xl font-black text-indigo-600">{formatAmount(calculateTotal())}</span>
+                      <span className="text-lg font-bold text-slate-900">
+                        {lang === 'ar' ? `الإجمالي (يُدفع كل ${pricing.intervalCount} سنة)` : `Total (billed every ${pricing.intervalCount}yr)`}
+                      </span>
+                      <span className="text-2xl font-black text-indigo-600">{displayAmount(pricing.totalUsd)}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-8 flex items-start gap-3 p-4 bg-white/60 rounded-xl border border-indigo-100 text-[10px] text-indigo-800 leading-relaxed">
                   <Info size={16} className="shrink-0" />
-                  <p>{lang === 'ar' ? 'هذا السعر يشمل المراجعة الأولية وشهادة رقمية آمنة. قد يتم تطبيق رسوم تدقيق الموقع الإضافية بناءً على حجم الشركة.' : 'This price includes initial review and secure digital certification. Additional onsite audit fees may apply based on company size.'}</p>
+                  <p>
+                    {lang === 'ar'
+                      ? `هذا اشتراك متجدد تلقائياً كل ${pricing.intervalCount} سنة عبر بطاقتك المسجلة حتى الإلغاء. يشمل السعر المراجعة الأولية وشهادة رقمية آمنة.`
+                      : `This is a subscription that auto-renews every ${pricing.intervalCount} year(s) on your card until cancelled. Price includes initial review and secure digital certification.`}
+                  </p>
                 </div>
               </div>
             </div>

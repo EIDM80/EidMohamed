@@ -16,6 +16,9 @@ interface RequestRow {
   status: string;
   amount: number;
   currency: 'usd' | 'aed' | null;
+  renewal_term: '1y' | '3y' | null;
+  subscription_status: 'active' | 'past_due' | 'canceled' | 'unpaid' | null;
+  next_renewal_at: string | null;
   standards: ISOStandard[];
   created_at: string;
   companies: {
@@ -35,6 +38,9 @@ const rowToRequest = (row: RequestRow): ISORequest => ({
   status: row.status as RequestStatus,
   amount: row.amount,
   currency: row.currency ?? 'usd',
+  renewalTerm: row.renewal_term ?? '1y',
+  subscriptionStatus: row.subscription_status ?? 'active',
+  nextRenewalAt: row.next_renewal_at,
   documents: [],
   createdAt: row.created_at,
   company: {
@@ -110,6 +116,8 @@ export const startCheckout = async (input: {
   accreditationBody: AccreditationBody;
   standardIds: string[];
   currency: 'usd' | 'aed';
+  term: '1y' | '3y';
+  email: string;
 }): Promise<{ url: string } | { error: string }> => {
   try {
     const response = await fetch('/api/stripe/create-checkout-session', {

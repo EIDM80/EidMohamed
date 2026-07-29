@@ -349,6 +349,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                     <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">{isAr ? 'المواصفات المطلوبة' : 'ISO Standards'}</th>
                     <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">{isAr ? 'جهة الاعتماد المعتمدة' : 'Accreditation Body'}</th>
                     <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">{isAr ? 'القيمة' : 'Amount'}</th>
+                    <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">{isAr ? 'الاشتراك' : 'Subscription'}</th>
                     <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">{isAr ? 'الحالة' : 'Status'}</th>
                     <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">{isAr ? 'العملية التشغيلية' : 'Audit Process Action'}</th>
                   </tr>
@@ -374,6 +375,29 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                       </td>
                       <td className="px-6 py-5 text-sm font-bold text-slate-900">
                         {formatMoney(req.amount, req.currency ?? 'usd')}
+                      </td>
+                      <td className="px-6 py-5">
+                        <div className="flex flex-col gap-1">
+                          <span className="text-xs font-bold text-slate-700">
+                            {req.renewalTerm === '3y' ? (isAr ? 'كل 3 سنوات' : 'Every 3 years') : (isAr ? 'سنوياً' : 'Yearly')}
+                          </span>
+                          <span className={`w-fit px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider ${
+                            req.subscriptionStatus === 'active' ? 'bg-emerald-100 text-emerald-800' :
+                            req.subscriptionStatus === 'past_due' ? 'bg-amber-100 text-amber-800' :
+                            'bg-rose-100 text-rose-800'
+                          }`}>
+                            {req.subscriptionStatus === 'active' ? (isAr ? 'نشط' : 'Active') :
+                             req.subscriptionStatus === 'past_due' ? (isAr ? 'دفعة متأخرة' : 'Past Due') :
+                             req.subscriptionStatus === 'unpaid' ? (isAr ? 'غير مدفوع' : 'Unpaid') :
+                             (isAr ? 'ملغى' : 'Canceled')}
+                          </span>
+                          {req.nextRenewalAt && (
+                            <span className="text-[9px] text-slate-400 font-semibold">
+                              {isAr ? 'التجديد: ' : 'Renews: '}
+                              {new Date(req.nextRenewalAt).toLocaleDateString(isAr ? 'ar' : 'en-US', { day: 'numeric', month: 'short', year: 'numeric' })}
+                            </span>
+                          )}
+                        </div>
                       </td>
                       <td className="px-6 py-5">
                          <span className={`px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${

@@ -165,6 +165,7 @@ const App: React.FC = () => {
           preselectedISO={preselectedISO}
           onClearPreselectedISO={() => setPreselectedISO(null)}
           companyId={profile?.company_id ?? null}
+          userEmail={session?.user.email}
           {...commonProps}
         />
       );

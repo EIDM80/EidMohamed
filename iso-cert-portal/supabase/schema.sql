@@ -46,6 +46,19 @@ alter table public.iso_requests add column if not exists currency text not null 
 alter table public.iso_requests add column if not exists payment_status text not null default 'paid' check (payment_status in ('paid', 'refunded'));
 alter table public.iso_requests add column if not exists stripe_session_id text;
 
+-- Certificates are sold as a subscription (auto-renews every 1 or 3 years
+-- via Stripe), not a one-time purchase. subscription_status tracks Stripe's
+-- billing state independently from `status` (the certification workflow
+-- state) — a certificate can be RequestStatus.CERTIFIED while its
+-- subscription is 'past_due' if a renewal charge failed.
+alter table public.iso_requests add column if not exists renewal_term text not null default '1y' check (renewal_term in ('1y', '3y'));
+alter table public.iso_requests add column if not exists stripe_customer_id text;
+alter table public.iso_requests add column if not exists stripe_subscription_id text;
+alter table public.iso_requests add column if not exists subscription_status text not null default 'active' check (subscription_status in ('active', 'past_due', 'canceled', 'unpaid'));
+alter table public.iso_requests add column if not exists next_renewal_at timestamptz;
+
+create index if not exists idx_iso_requests_stripe_subscription_id on public.iso_requests (stripe_subscription_id);
+
 create table if not exists public.request_documents (
   id uuid primary key default gen_random_uuid(),
   request_id uuid not null references public.iso_requests(id) on delete cascade,
@@ -121,12 +134,13 @@ create policy "requests_select_own_or_admin" on public.iso_requests for select
 -- a client can never insert an unpaid request directly.
 drop policy if exists "requests_insert_own" on public.iso_requests;
 
+-- Admin-only: nothing in the client UI has a legitimate reason for a
+-- company to edit its own request row (status transitions, payment/
+-- subscription fields, amounts) — those all go through the admin panel or
+-- the Stripe webhook (which uses the service_role key and bypasses RLS).
 drop policy if exists "requests_update_own_or_admin" on public.iso_requests;
 create policy "requests_update_own_or_admin" on public.iso_requests for update
-  using (
-    company_id in (select id from public.companies where owner_id = auth.uid())
-    or public.is_admin()
-  );
+  using (public.is_admin());
 
 drop policy if exists "documents_select_own_or_admin" on public.request_documents;
 create policy "documents_select_own_or_admin" on public.request_documents for select

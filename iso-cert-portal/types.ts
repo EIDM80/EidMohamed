@@ -125,6 +125,9 @@ export interface ISORequest {
   status: RequestStatus;
   amount: number;
   currency: 'usd' | 'aed';
+  renewalTerm: '1y' | '3y';
+  subscriptionStatus: 'active' | 'past_due' | 'canceled' | 'unpaid';
+  nextRenewalAt: string | null;
   documents: RequestDocument[];
   createdAt: string;
   company: Company;
