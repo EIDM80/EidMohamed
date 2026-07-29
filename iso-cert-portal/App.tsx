@@ -32,7 +32,8 @@ import {
 import { RequestStatus, Company, ISORequest } from './types';
 import { translations, Language } from './translations';
 import { supabase } from './lib/supabaseClient';
-import { fetchProfile, fetchCompany, saveCompany, fetchRequests, updateRequestStatusInDb, Profile } from './lib/db';
+import { fetchProfile, fetchCompany, saveCompany, fetchRequests, updateRequestStatusInDb, fetchSiteSettings, Profile } from './lib/db';
+import { applyTrackingSettings } from './lib/injectTracking';
 
 const EMPTY_COMPANY: Company = { name: '', legalName: '', licenseNo: '', address: '', website: '' };
 
@@ -61,6 +62,12 @@ const App: React.FC = () => {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
   }, [lang]);
+
+  // Loads admin-configured tracking/verification codes (Meta Pixel, Google
+  // Tag, etc.) for every visitor, public or signed in.
+  useEffect(() => {
+    fetchSiteSettings().then(applyTrackingSettings);
+  }, []);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setSession(data.session));

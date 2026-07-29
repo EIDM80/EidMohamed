@@ -69,6 +69,24 @@ create table if not exists public.request_documents (
   created_at timestamptz not null default now()
 );
 
+-- Singleton table (always exactly one row) for site-wide marketing/analytics
+-- tracking codes and other global config. These must be visible to every
+-- visitor's browser (not just the admin's), unlike landingConfig which is
+-- stored in the admin's own localStorage — so this lives in the database.
+create table if not exists public.site_settings (
+  id boolean primary key default true,
+  meta_pixel_id text,
+  ga_measurement_id text,
+  gtm_container_id text,
+  google_site_verification text,
+  custom_head_code text,
+  custom_body_code text,
+  updated_at timestamptz not null default now(),
+  constraint site_settings_singleton check (id)
+);
+
+insert into public.site_settings (id) values (true) on conflict (id) do nothing;
+
 create table if not exists public.tickets (
   id uuid primary key default gen_random_uuid(),
   company_id uuid not null references public.companies(id) on delete cascade,
@@ -97,6 +115,7 @@ alter table public.companies enable row level security;
 alter table public.iso_requests enable row level security;
 alter table public.request_documents enable row level security;
 alter table public.tickets enable row level security;
+alter table public.site_settings enable row level security;
 
 drop policy if exists "profiles_select_own_or_admin" on public.profiles;
 create policy "profiles_select_own_or_admin" on public.profiles for select
@@ -190,6 +209,16 @@ create policy "tickets_update_own_or_admin" on public.tickets for update
     company_id in (select id from public.companies where owner_id = auth.uid())
     or public.is_admin()
   );
+
+-- Tracking codes are injected into every visitor's page, so everyone must be
+-- able to read them; only an admin can change them.
+drop policy if exists "site_settings_select_all" on public.site_settings;
+create policy "site_settings_select_all" on public.site_settings for select
+  using (true);
+
+drop policy if exists "site_settings_update_admin" on public.site_settings;
+create policy "site_settings_update_admin" on public.site_settings for update
+  using (public.is_admin());
 
 -- On signup, auto-create a company (named from signup metadata) and a
 -- matching client profile, so the app has somewhere to attach requests to.

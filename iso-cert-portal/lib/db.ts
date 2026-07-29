@@ -136,6 +136,67 @@ export const startCheckout = async (input: {
   }
 };
 
+export interface SiteSettings {
+  metaPixelId: string;
+  gaMeasurementId: string;
+  gtmContainerId: string;
+  googleSiteVerification: string;
+  customHeadCode: string;
+  customBodyCode: string;
+}
+
+const EMPTY_SITE_SETTINGS: SiteSettings = {
+  metaPixelId: '',
+  gaMeasurementId: '',
+  gtmContainerId: '',
+  googleSiteVerification: '',
+  customHeadCode: '',
+  customBodyCode: '',
+};
+
+// Public (anon-readable): every visitor's browser needs these to load
+// tracking pixels/tags, not just the admin's.
+export const fetchSiteSettings = async (): Promise<SiteSettings> => {
+  const { data, error } = await supabase
+    .from('site_settings')
+    .select('meta_pixel_id, ga_measurement_id, gtm_container_id, google_site_verification, custom_head_code, custom_body_code')
+    .eq('id', true)
+    .maybeSingle();
+  if (error || !data) {
+    if (error) console.error('fetchSiteSettings failed:', error.message);
+    return EMPTY_SITE_SETTINGS;
+  }
+  return {
+    metaPixelId: data.meta_pixel_id ?? '',
+    gaMeasurementId: data.ga_measurement_id ?? '',
+    gtmContainerId: data.gtm_container_id ?? '',
+    googleSiteVerification: data.google_site_verification ?? '',
+    customHeadCode: data.custom_head_code ?? '',
+    customBodyCode: data.custom_body_code ?? '',
+  };
+};
+
+// Admin-only (enforced by RLS): overwrites the single settings row.
+export const updateSiteSettings = async (settings: SiteSettings): Promise<boolean> => {
+  const { error } = await supabase
+    .from('site_settings')
+    .update({
+      meta_pixel_id: settings.metaPixelId || null,
+      ga_measurement_id: settings.gaMeasurementId || null,
+      gtm_container_id: settings.gtmContainerId || null,
+      google_site_verification: settings.googleSiteVerification || null,
+      custom_head_code: settings.customHeadCode || null,
+      custom_body_code: settings.customBodyCode || null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', true);
+  if (error) {
+    console.error('updateSiteSettings failed:', error.message);
+    return false;
+  }
+  return true;
+};
+
 export const updateRequestStatusInDb = async (id: string, status: RequestStatus): Promise<boolean> => {
   const { error } = await supabase
     .from('iso_requests')

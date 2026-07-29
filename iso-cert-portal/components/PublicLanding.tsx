@@ -35,6 +35,39 @@ import { LandingConfig, LandingService, LandingSection } from '../landingConfig'
 import { Language } from '../translations';
 import Logo from './Logo';
 
+const FAQ_ITEMS: { qEn: string; qAr: string; aEn: string; aAr: string }[] = [
+  {
+    qEn: 'How long does ISO certification take through GAMC?',
+    qAr: 'كم تستغرق مدة الحصول على شهادة ISO عبر GAMC؟',
+    aEn: 'Once your documents are submitted and reviewed, initial certification can move as fast as 3-7 business days, depending on the standard and accreditation body selected.',
+    aAr: 'بعد رفع ومراجعة مستنداتك، يمكن أن تتم عملية الاعتماد الأولية في غضون ٣ إلى ٧ أيام عمل، حسب المعيار وهيئة الاعتماد المختارة.'
+  },
+  {
+    qEn: 'Is my ISO certificate internationally recognized?',
+    qAr: 'هل شهادة الـ ISO الخاصة بي معترف بها دولياً؟',
+    aEn: 'Yes. Certificates issued through an accredited body are internationally recognized and instantly verifiable through IAF CertSearch, the official global registry.',
+    aAr: 'نعم. الشهادات الصادرة عبر هيئة اعتماد معتمدة معترف بها دولياً ويمكن التحقق منها فوراً عبر IAF CertSearch، السجل الرسمي العالمي.'
+  },
+  {
+    qEn: 'How does billing and renewal work?',
+    qAr: 'كيف تعمل عملية الدفع والتجديد؟',
+    aEn: 'Certification is a subscription: you choose a 1-year or 3-year term, it renews automatically on your card, and you can cancel anytime from your dashboard.',
+    aAr: 'الاعتماد هو اشتراك: تختار مدة سنة واحدة أو ٣ سنوات، ويتجدد تلقائياً عبر بطاقتك، ويمكنك الإلغاء في أي وقت من لوحة التحكم الخاصة بك.'
+  },
+  {
+    qEn: 'Which accreditation bodies can I choose from?',
+    qAr: 'ما هي هيئات الاعتماد التي يمكنني الاختيار من بينها؟',
+    aEn: 'UAF and IAS are available online at fixed, transparent prices. Other globally recognized accreditation bodies are available on request — contact us for a custom quote.',
+    aAr: 'هيئتا UAF وIAS متاحتان أونلاين بأسعار ثابتة وشفافة. تتوفر هيئات اعتماد عالمية أخرى بناءً على الطلب — تواصل معنا للحصول على عرض سعر مخصص.'
+  },
+  {
+    qEn: 'Can my clients verify that my certificate is genuine?',
+    qAr: 'هل يمكن لعملائي التحقق من أن شهادتي أصلية؟',
+    aEn: 'Yes. Every certificate we issue is listed on IAF CertSearch, so anyone can confirm it is genuine in seconds — no need to contact us directly.',
+    aAr: 'نعم. كل شهادة نصدرها مدرجة في IAF CertSearch، لذا يمكن لأي شخص التأكد من صحتها في ثوانٍ دون الحاجة للتواصل معنا مباشرة.'
+  }
+];
+
 interface PublicLandingProps {
   config: LandingConfig;
   lang: Language;
@@ -51,6 +84,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
   isAuthenticated
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [activeTab, setActiveTab] = useState<string>('all');
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
@@ -198,6 +232,12 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               {isAr ? 'الشهادات والأسعار' : 'Certificates'}
             </button>
             <button
+              onClick={() => scrollToSection('faq')}
+              className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
+            >
+              {isAr ? 'الأسئلة الشائعة' : 'FAQs'}
+            </button>
+            <button
               onClick={() => scrollToSection('contact-section')}
               className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
             >
@@ -285,6 +325,12 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
             >
               {isAr ? 'الشهادات والأسعار' : 'Certificates & Pricing'}
+            </button>
+            <button
+              onClick={() => { setMobileMenuOpen(false); scrollToSection('faq'); }}
+              className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
+            >
+              {isAr ? 'الأسئلة الشائعة' : 'FAQs'}
             </button>
             <button
               onClick={() => { setMobileMenuOpen(false); scrollToSection('contact-section'); }}
@@ -517,7 +563,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               </p>
             </div>
             <div className="space-y-1 bg-[#f8fafc] p-6 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
-              <h4 className="text-3xl md:text-4xl font-black text-indigo-600">12+</h4>
+              <h4 className="text-3xl md:text-4xl font-black text-indigo-600">10+</h4>
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
                 {isAr ? 'عاماً من الخبرة والتميز' : 'Years of Experience'}
               </p>
@@ -637,12 +683,15 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           <p className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-[0.25em] mb-10">
             {isAr ? 'شركات ومنشآت تثق بخدماتنا واعتماداتنا الرقمية' : 'Satisfied Members & Verified Partners'}
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-60 hover:opacity-90 transition-opacity grayscale hover:grayscale-0">
-            <span className="font-extrabold text-sm md:text-base text-slate-500 tracking-wider">AL-HARITH ARABI</span>
-            <span className="font-extrabold text-sm md:text-base text-slate-500 tracking-wider">BUILDING CONST CO</span>
-            <span className="font-extrabold text-sm md:text-base text-slate-500 tracking-wider">ALFAC AUDITING</span>
-            <span className="font-extrabold text-sm md:text-base text-slate-500 tracking-wider">HAK CONTRACTING</span>
-            <span className="font-extrabold text-sm md:text-base text-slate-500 tracking-wider">AGRI COOPERATIVES</span>
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <div
+                key={i}
+                className="w-32 h-16 md:w-36 md:h-20 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 flex items-center justify-center text-[10px] font-bold text-slate-300 uppercase tracking-wider"
+              >
+                {isAr ? 'شعار العميل' : 'Client Logo'}
+              </div>
+            ))}
           </div>
           <div className="mt-8">
             <button 
@@ -1268,6 +1317,43 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
         </div>
       </section>
 
+      {/* Section 9.5: FAQ */}
+      <section id="faq" className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-14 space-y-4">
+            <h2 className="text-3xl md:text-4xl font-black text-[#121c42] tracking-tight">
+              {isAr ? 'الأسئلة الشائعة' : 'Frequently Asked Questions'}
+            </h2>
+            <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="space-y-3">
+            {FAQ_ITEMS.map((item, index) => {
+              const isOpen = openFaqIndex === index;
+              return (
+                <div key={index} className="bg-[#f8fafc] border border-slate-100 rounded-2xl overflow-hidden">
+                  <button
+                    onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                    className="w-full flex items-center justify-between gap-4 p-5 text-start"
+                  >
+                    <span className="font-bold text-slate-900 text-sm">{isAr ? item.qAr : item.qEn}</span>
+                    <ChevronRight
+                      size={18}
+                      className={`shrink-0 text-indigo-600 transition-transform ${isOpen ? 'rotate-90' : isAr ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="px-5 pb-5 text-sm text-slate-500 leading-relaxed font-medium">
+                      {isAr ? item.aAr : item.aEn}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Section 10: Worldwide Offices */}
       <section className="py-20 bg-[#f8fafc] border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -1326,9 +1412,9 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               <span className="font-black text-white text-lg tracking-tight">GAMC Global Solutions</span>
             </div>
             <p className="text-slate-500 font-medium leading-relaxed max-w-sm">
-              {isAr 
-                ? 'منذ عام ٢٠١٦، تعمل GAMC على إعادة تعريف مفهوم شهادات الـ ISO. تساعد منصتنا الرقمية بالكامل بنسبة ١٠٠٪ الشركات الصغيرة والمتوسطة في الحصول على الاعتماد بسرعة وثقة.'
-                : 'Since 2016, GAMC has been redefining ISO certification. Our 100% online platform helps small and medium-sized businesses get certified quickly and confidently.'}
+              {isAr
+                ? 'منذ عام ٢٠١٥، تعمل GAMC على إعادة تعريف مفهوم شهادات الـ ISO. تساعد منصتنا الرقمية بالكامل بنسبة ١٠٠٪ الشركات الصغيرة والمتوسطة في الحصول على الاعتماد بسرعة وثقة.'
+                : 'Since 2015, GAMC has been redefining ISO certification. Our 100% online platform helps small and medium-sized businesses get certified quickly and confidently.'}
             </p>
             <p className="text-slate-500 font-medium leading-relaxed max-w-sm">
               {isAr 
@@ -1473,6 +1559,17 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           <span className="font-black text-[10px] tracking-widest text-white uppercase">ABU DHABI CHAMBER</span>
         </div>
       </footer>
+
+      {/* Persistent floating WhatsApp button */}
+      <a
+        href={`https://wa.me/${config.contact.whatsapp.replace(/\+/g, '')}`}
+        target="_blank"
+        rel="noreferrer"
+        className={`fixed bottom-6 ${isAr ? 'left-6' : 'right-6'} z-50 w-14 h-14 bg-[#25d366] rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform`}
+        aria-label={isAr ? 'تواصل معنا عبر واتساب' : 'Chat with us on WhatsApp'}
+      >
+        <MessageSquare size={26} className="text-white fill-white" />
+      </a>
 
     </div>
   );

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { 
-  ShieldCheck, 
-  Settings, 
-  Search, 
-  CheckCircle2, 
-  XCircle, 
-  Clock, 
-  AlertTriangle, 
+import React, { useState, useEffect } from 'react';
+import {
+  ShieldCheck,
+  Settings,
+  Search,
+  CheckCircle2,
+  XCircle,
+  Clock,
+  AlertTriangle,
   Eye,
   FileBadge,
   Layout,
@@ -21,12 +21,14 @@ import {
   Layers,
   ListCollapse,
   Sparkles,
-  Info
+  Info,
+  Code2
 } from 'lucide-react';
 import { ISORequest, RequestStatus } from '../types';
 import { Language } from '../translations';
 import { LandingConfig, LandingService, LandingSection, LandingMenuItem } from '../landingConfig';
 import { formatMoney } from '../lib/pricing';
+import { fetchSiteSettings, updateSiteSettings, SiteSettings } from '../lib/db';
 
 interface AdminPanelProps {
   requests: any[];
@@ -45,8 +47,41 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
   landingConfig,
   onUpdateLandingConfig
 }) => {
-  const [adminTab, setAdminTab] = useState<'requests' | 'landing_hero' | 'landing_services' | 'landing_sections' | 'landing_menus'>('requests');
+  const [adminTab, setAdminTab] = useState<'requests' | 'landing_hero' | 'landing_services' | 'landing_sections' | 'landing_menus' | 'tracking'>('requests');
   const isAr = lang === 'ar';
+
+  // Tracking/SEO codes (Meta Pixel, Google Tag, etc.) — stored in Supabase
+  // (not localStorage like landingConfig) since every visitor's browser
+  // needs to read them, not just this admin's.
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>({
+    metaPixelId: '',
+    gaMeasurementId: '',
+    gtmContainerId: '',
+    googleSiteVerification: '',
+    customHeadCode: '',
+    customBodyCode: ''
+  });
+  const [loadingSettings, setLoadingSettings] = useState(true);
+  const [savingSettings, setSavingSettings] = useState(false);
+  const [settingsSaved, setSettingsSaved] = useState(false);
+
+  useEffect(() => {
+    fetchSiteSettings().then((data) => {
+      setSiteSettings(data);
+      setLoadingSettings(false);
+    });
+  }, []);
+
+  const handleSaveSiteSettings = async () => {
+    setSavingSettings(true);
+    setSettingsSaved(false);
+    const ok = await updateSiteSettings(siteSettings);
+    setSavingSettings(false);
+    if (ok) {
+      setSettingsSaved(true);
+      setTimeout(() => setSettingsSaved(false), 3000);
+    }
+  };
 
   // Substate for adding/editing services
   const [newService, setNewService] = useState<Partial<LandingService>>({
@@ -300,6 +335,16 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
           >
             <ListCollapse size={14} />
             <span>{isAr ? 'القائمة العلوية' : 'Navigation Menu'}</span>
+          </button>
+
+          <button
+            onClick={() => setAdminTab('tracking')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              adminTab === 'tracking' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
+            }`}
+          >
+            <Code2 size={14} />
+            <span>{isAr ? 'أكواد التتبع وSEO' : 'Tracking & SEO Codes'}</span>
           </button>
         </div>
       </div>
@@ -1028,6 +1073,110 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
             </div>
           </div>
 
+        </div>
+      )}
+
+      {adminTab === 'tracking' && (
+        <div className="max-w-3xl space-y-8">
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-start gap-3 text-xs text-amber-800 leading-relaxed">
+            <Info size={16} className="shrink-0 mt-0.5" />
+            <p>
+              {isAr
+                ? 'تُطبَّق هذه الأكواد على الموقع بالكامل لكل زائر (وليس فقط في متصفحك). أدخل فقط أكوادًا تثق بها — حقل \"أكواد إضافية\" ينفذ أي HTML/JavaScript تضعه هنا.'
+                : 'These codes apply site-wide, for every visitor (not just your browser). Only paste code you trust — the "Additional Code" fields execute any HTML/JavaScript you put there.'}
+            </p>
+          </div>
+
+          {loadingSettings ? (
+            <p className="text-sm text-slate-400 font-medium">{isAr ? 'جارٍ التحميل...' : 'Loading...'}</p>
+          ) : (
+            <div className="bg-white border p-6 rounded-[2rem] space-y-6 shadow-sm">
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Meta (Facebook) Pixel ID</label>
+                <input
+                  type="text"
+                  placeholder="e.g. 123456789012345"
+                  value={siteSettings.metaPixelId}
+                  onChange={(e) => setSiteSettings({ ...siteSettings, metaPixelId: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-mono text-xs"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Google Analytics (GA4) Measurement ID</label>
+                <input
+                  type="text"
+                  placeholder="e.g. G-XXXXXXXXXX"
+                  value={siteSettings.gaMeasurementId}
+                  onChange={(e) => setSiteSettings({ ...siteSettings, gaMeasurementId: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-mono text-xs"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Google Tag Manager Container ID</label>
+                <input
+                  type="text"
+                  placeholder="e.g. GTM-XXXXXXX"
+                  value={siteSettings.gtmContainerId}
+                  onChange={(e) => setSiteSettings({ ...siteSettings, gtmContainerId: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-mono text-xs"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Google Search Console Verification Code</label>
+                <input
+                  type="text"
+                  placeholder={isAr ? 'قيمة content من وسم meta name="google-site-verification"' : 'The content value from the google-site-verification meta tag'}
+                  value={siteSettings.googleSiteVerification}
+                  onChange={(e) => setSiteSettings({ ...siteSettings, googleSiteVerification: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-mono text-xs"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
+                  {isAr ? 'أكواد إضافية — قبل إغلاق </head>' : 'Additional Code — before </head>'}
+                </label>
+                <textarea
+                  rows={4}
+                  placeholder={isAr ? 'مثال: كود تحقق TikTok Pixel أو Bing، أو أي وسم <script>...' : 'e.g. TikTok Pixel, Bing verification, or any <script> tag'}
+                  value={siteSettings.customHeadCode}
+                  onChange={(e) => setSiteSettings({ ...siteSettings, customHeadCode: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-mono text-xs"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">
+                  {isAr ? 'أكواد إضافية — قبل إغلاق </body>' : 'Additional Code — before </body>'}
+                </label>
+                <textarea
+                  rows={4}
+                  placeholder={isAr ? 'مثال: ودجة دردشة أو نافذة منبثقة' : 'e.g. a chat widget or popup script'}
+                  value={siteSettings.customBodyCode}
+                  onChange={(e) => setSiteSettings({ ...siteSettings, customBodyCode: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-mono text-xs"
+                />
+              </div>
+
+              <button
+                onClick={handleSaveSiteSettings}
+                disabled={savingSettings}
+                className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-bold rounded-xl shadow-lg shadow-indigo-100 flex items-center justify-center gap-2 transition-all"
+              >
+                {settingsSaved ? <Check size={16} /> : <Save size={16} />}
+                <span>
+                  {settingsSaved
+                    ? (isAr ? 'تم الحفظ' : 'Saved')
+                    : savingSettings
+                    ? (isAr ? 'جارٍ الحفظ...' : 'Saving...')
+                    : (isAr ? 'حفظ أكواد التتبع' : 'Save Tracking Codes')}
+                </span>
+              </button>
+            </div>
+          )}
         </div>
       )}
 
