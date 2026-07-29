@@ -197,6 +197,68 @@ export const updateSiteSettings = async (settings: SiteSettings): Promise<boolea
   return true;
 };
 
+export interface TrainingLeadInput {
+  fullName: string;
+  email: string;
+  phone: string;
+  company: string;
+  standardCode: string;
+  message: string;
+}
+
+export const submitTrainingLead = async (input: TrainingLeadInput): Promise<{ success: true } | { error: string }> => {
+  try {
+    const response = await fetch('/api/leads/submit-training-inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(input),
+    });
+    const data = await response.json();
+    if (!response.ok || !data.success) {
+      return { error: data.error || 'Could not submit your request' };
+    }
+    return { success: true };
+  } catch (error) {
+    console.error('submitTrainingLead failed:', error);
+    return { error: 'Could not reach the server' };
+  }
+};
+
+export interface TrainingLead {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string | null;
+  company: string | null;
+  standardCode: string | null;
+  message: string | null;
+  emailSent: boolean;
+  createdAt: string;
+}
+
+// Admin-only (enforced by RLS).
+export const fetchTrainingLeads = async (): Promise<TrainingLead[]> => {
+  const { data, error } = await supabase
+    .from('training_leads')
+    .select('id, full_name, email, phone, company, standard_code, message, email_sent, created_at')
+    .order('created_at', { ascending: false });
+  if (error) {
+    console.error('fetchTrainingLeads failed:', error.message);
+    return [];
+  }
+  return (data || []).map((row) => ({
+    id: row.id,
+    fullName: row.full_name,
+    email: row.email,
+    phone: row.phone,
+    company: row.company,
+    standardCode: row.standard_code,
+    message: row.message,
+    emailSent: row.email_sent,
+    createdAt: row.created_at,
+  }));
+};
+
 export const updateRequestStatusInDb = async (id: string, status: RequestStatus): Promise<boolean> => {
   const { error } = await supabase
     .from('iso_requests')

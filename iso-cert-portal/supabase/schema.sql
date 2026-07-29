@@ -87,6 +87,23 @@ create table if not exists public.site_settings (
 
 insert into public.site_settings (id) values (true) on conflict (id) do nothing;
 
+-- Leads from the public "Lead Auditor Training" section. Anyone can submit
+-- one (no auth required — it's a marketing form), but only staff can read
+-- them. The submit-training-inquiry endpoint also emails these to
+-- iso@gloria-c.com; this table is the fallback so a lead is never lost even
+-- if the email fails to send.
+create table if not exists public.training_leads (
+  id uuid primary key default gen_random_uuid(),
+  full_name text not null,
+  email text not null,
+  phone text,
+  company text,
+  standard_code text,
+  message text,
+  email_sent boolean not null default false,
+  created_at timestamptz not null default now()
+);
+
 create table if not exists public.tickets (
   id uuid primary key default gen_random_uuid(),
   company_id uuid not null references public.companies(id) on delete cascade,
@@ -116,6 +133,7 @@ alter table public.iso_requests enable row level security;
 alter table public.request_documents enable row level security;
 alter table public.tickets enable row level security;
 alter table public.site_settings enable row level security;
+alter table public.training_leads enable row level security;
 
 drop policy if exists "profiles_select_own_or_admin" on public.profiles;
 create policy "profiles_select_own_or_admin" on public.profiles for select
@@ -218,6 +236,13 @@ create policy "site_settings_select_all" on public.site_settings for select
 
 drop policy if exists "site_settings_update_admin" on public.site_settings;
 create policy "site_settings_update_admin" on public.site_settings for update
+  using (public.is_admin());
+
+-- No public insert policy: the submit-training-inquiry endpoint uses the
+-- service_role key (bypasses RLS) so it can insert *and* send the email in
+-- one request, the same pattern as the Stripe webhook.
+drop policy if exists "training_leads_select_admin" on public.training_leads;
+create policy "training_leads_select_admin" on public.training_leads for select
   using (public.is_admin());
 
 -- On signup, auto-create a company (named from signup metadata) and a

@@ -29,10 +29,19 @@ import {
   Send,
   MessageSquare,
   ArrowUpRight,
-  ShieldCheck
+  ShieldCheck,
+  Leaf,
+  HardHat,
+  UtensilsCrossed,
+  RefreshCw,
+  Lock,
+  Stethoscope,
+  Loader2,
+  AlertCircle
 } from 'lucide-react';
 import { LandingConfig, LandingService, LandingSection } from '../landingConfig';
 import { Language } from '../translations';
+import { submitTrainingLead, TrainingLeadInput } from '../lib/db';
 import Logo from './Logo';
 
 const FAQ_ITEMS: { qEn: string; qAr: string; aEn: string; aAr: string }[] = [
@@ -68,15 +77,25 @@ const FAQ_ITEMS: { qEn: string; qAr: string; aEn: string; aAr: string }[] = [
   }
 ];
 
-const LEAD_AUDITOR_STANDARDS = [
-  'ISO 9001:2015',
-  'ISO 14001:2015',
-  'ISO 45001:2018',
-  'ISO 22000:2018',
-  'ISO 22301:2019',
-  'ISO/IEC 27001:2022',
-  'ISO 13485:2016'
+const LEAD_AUDITOR_STANDARDS: { code: string; titleEn: string; titleAr: string; icon: any; color: string }[] = [
+  { code: 'ISO 9001:2015', titleEn: 'Quality Management', titleAr: 'إدارة الجودة', icon: Award, color: 'indigo' },
+  { code: 'ISO 14001:2015', titleEn: 'Environmental Management', titleAr: 'الإدارة البيئية', icon: Leaf, color: 'emerald' },
+  { code: 'ISO 45001:2018', titleEn: 'Health & Safety', titleAr: 'الصحة والسلامة', icon: HardHat, color: 'amber' },
+  { code: 'ISO 22000:2018', titleEn: 'Food Safety', titleAr: 'سلامة الغذاء', icon: UtensilsCrossed, color: 'rose' },
+  { code: 'ISO 22301:2019', titleEn: 'Business Continuity', titleAr: 'استمرارية الأعمال', icon: RefreshCw, color: 'blue' },
+  { code: 'ISO/IEC 27001:2022', titleEn: 'Information Security', titleAr: 'أمن المعلومات', icon: Lock, color: 'slate' },
+  { code: 'ISO 13485:2016', titleEn: 'Medical Devices', titleAr: 'الأجهزة الطبية', icon: Stethoscope, color: 'teal' }
 ];
+
+const LEAD_ICON_BG: Record<string, string> = {
+  indigo: 'bg-indigo-50 text-indigo-600',
+  emerald: 'bg-emerald-50 text-emerald-600',
+  amber: 'bg-amber-50 text-amber-600',
+  rose: 'bg-rose-50 text-rose-600',
+  blue: 'bg-blue-50 text-blue-600',
+  slate: 'bg-slate-100 text-slate-600',
+  teal: 'bg-teal-50 text-teal-600'
+};
 
 interface PublicLandingProps {
   config: LandingConfig;
@@ -95,6 +114,35 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
+  // Training course lead capture modal
+  const [leadModalOpen, setLeadModalOpen] = useState(false);
+  const [leadForm, setLeadForm] = useState<TrainingLeadInput>({
+    fullName: '', email: '', phone: '', company: '', standardCode: '', message: ''
+  });
+  const [leadSubmitting, setLeadSubmitting] = useState(false);
+  const [leadSubmitted, setLeadSubmitted] = useState(false);
+  const [leadError, setLeadError] = useState<string | null>(null);
+
+  const openLeadModal = (standardCode: string) => {
+    setLeadForm({ fullName: '', email: '', phone: '', company: '', standardCode, message: '' });
+    setLeadSubmitted(false);
+    setLeadError(null);
+    setLeadModalOpen(true);
+  };
+
+  const handleLeadSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLeadSubmitting(true);
+    setLeadError(null);
+    const result = await submitTrainingLead(leadForm);
+    setLeadSubmitting(false);
+    if ('error' in result) {
+      setLeadError(result.error);
+      return;
+    }
+    setLeadSubmitted(true);
+  };
   const [activeTab, setActiveTab] = useState<string>('all');
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
@@ -485,9 +533,8 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
       {/* Section 1.5: IAF Accreditation Trust Banner */}
       <section className="py-10 bg-[#0b1021] border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-start">
-          {/* IAF logo placeholder — swap the img src below for the real logo file once provided */}
-          <div className="w-20 h-20 rounded-full bg-white border-4 border-[#1e3a8a] flex items-center justify-center shrink-0 shadow-lg">
-            <span className="font-black text-[#1e3a8a] text-xs tracking-tight leading-none text-center">IAF<br /><span className="text-[7px] font-bold">ACCREDITED</span></span>
+          <div className="w-24 h-24 rounded-full bg-white border-4 border-[#1e3a8a] flex items-center justify-center shrink-0 shadow-lg p-2">
+            <img src="/images/iaf-logo.png" alt="IAF - International Accreditation Forum" className="w-full h-full object-contain" />
           </div>
           <div>
             <h3 className="text-lg md:text-xl font-black text-white">
@@ -1199,24 +1246,33 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {LEAD_AUDITOR_STANDARDS.map((code) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {LEAD_AUDITOR_STANDARDS.map((std) => (
               <div
-                key={code}
-                className="bg-white border border-slate-200/60 rounded-2xl p-5 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-indigo-200 transition-all"
+                key={std.code}
+                className="bg-white border border-slate-200/60 rounded-2xl p-6 flex flex-col items-center text-center gap-3 hover:shadow-lg hover:border-indigo-200 transition-all"
               >
-                <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
-                  <GraduationCap size={20} />
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${LEAD_ICON_BG[std.color]}`}>
+                  <std.icon size={26} />
                 </div>
-                <span className="text-sm font-black text-slate-900">{code}</span>
+                <div>
+                  <span className="text-sm font-black text-slate-900 block">{std.code}</span>
+                  <span className="text-xs text-slate-500 font-medium block mt-0.5">{isAr ? std.titleAr : std.titleEn}</span>
+                </div>
                 <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">{isAr ? 'مدقق رئيسي' : 'Lead Auditor'}</span>
+                <button
+                  onClick={() => openLeadModal(std.code)}
+                  className="mt-2 w-full py-2.5 bg-slate-50 hover:bg-indigo-600 text-slate-700 hover:text-white border border-slate-200 hover:border-indigo-600 rounded-xl text-xs font-bold transition-all"
+                >
+                  {isAr ? 'اطلب معلومات' : 'Request Info'}
+                </button>
               </div>
             ))}
           </div>
 
           <div className="mt-10 flex justify-center">
             <button
-              onClick={() => scrollToSection('contact-section')}
+              onClick={() => openLeadModal('')}
               className="px-6 py-3 bg-[#121c42] hover:bg-indigo-600 text-white rounded-full text-xs font-bold transition-all uppercase tracking-wider"
             >
               {isAr ? 'استفسر عن مواعيد الدورات' : 'Ask About Course Schedules'}
@@ -1636,6 +1692,135 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           <span className="font-black text-[10px] tracking-widest text-white uppercase">ABU DHABI CHAMBER</span>
         </div>
       </footer>
+
+      {/* Training Course Lead Capture Modal */}
+      {leadModalOpen && (
+        <div
+          className="fixed inset-0 z-[60] bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setLeadModalOpen(false)}
+        >
+          <div
+            className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 md:p-8 relative max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setLeadModalOpen(false)}
+              className={`absolute top-4 ${isAr ? 'left-4' : 'right-4'} p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-50 rounded-xl transition-colors`}
+            >
+              <X size={18} />
+            </button>
+
+            {leadSubmitted ? (
+              <div className="text-center py-8 space-y-4">
+                <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                  <CheckCircle2 size={28} />
+                </div>
+                <h3 className="text-lg font-black text-slate-900">{isAr ? 'تم إرسال طلبك بنجاح!' : 'Request sent successfully!'}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  {isAr
+                    ? 'شكراً لاهتمامك. سيتواصل معك فريقنا قريباً بتفاصيل الدورة ومواعيدها.'
+                    : 'Thanks for your interest — our team will reach out shortly with course details and schedules.'}
+                </p>
+                <button
+                  onClick={() => setLeadModalOpen(false)}
+                  className="px-6 py-2.5 bg-[#121c42] hover:bg-indigo-600 text-white rounded-full text-xs font-bold transition-all"
+                >
+                  {isAr ? 'إغلاق' : 'Close'}
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="mb-6">
+                  <h3 className="text-xl font-black text-slate-900">{isAr ? 'اطلب معلومات عن الدورة' : 'Request Course Information'}</h3>
+                  <p className="text-sm text-slate-500 mt-1">
+                    {isAr ? 'عبّئ بياناتك وسنرسل لك التفاصيل الكاملة.' : "Fill in your details and we'll send you the full details."}
+                  </p>
+                </div>
+
+                <form onSubmit={handleLeadSubmit} className="space-y-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-600">{isAr ? 'الاسم الكامل' : 'Full Name'}</label>
+                    <input
+                      required
+                      type="text"
+                      value={leadForm.fullName}
+                      onChange={(e) => setLeadForm({ ...leadForm, fullName: e.target.value })}
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-600">{isAr ? 'البريد الإلكتروني' : 'Email'}</label>
+                    <input
+                      required
+                      type="email"
+                      value={leadForm.email}
+                      onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-600">{isAr ? 'رقم الهاتف' : 'Phone'}</label>
+                    <input
+                      required
+                      type="tel"
+                      value={leadForm.phone}
+                      onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-600">{isAr ? 'اسم الشركة (اختياري)' : 'Company (optional)'}</label>
+                    <input
+                      type="text"
+                      value={leadForm.company}
+                      onChange={(e) => setLeadForm({ ...leadForm, company: e.target.value })}
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-600">{isAr ? 'الدورة المطلوبة' : 'Course'}</label>
+                    <select
+                      value={leadForm.standardCode}
+                      onChange={(e) => setLeadForm({ ...leadForm, standardCode: e.target.value })}
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                    >
+                      <option value="">{isAr ? 'غير محدد / كل الدورات' : 'Not sure / all courses'}</option>
+                      {LEAD_AUDITOR_STANDARDS.map((std) => (
+                        <option key={std.code} value={std.code}>{std.code} — {isAr ? std.titleAr : std.titleEn}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-600">{isAr ? 'رسالة (اختياري)' : 'Message (optional)'}</label>
+                    <textarea
+                      rows={3}
+                      value={leadForm.message}
+                      onChange={(e) => setLeadForm({ ...leadForm, message: e.target.value })}
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                    />
+                  </div>
+
+                  {leadError && (
+                    <div className="flex items-start gap-2 p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700">
+                      <AlertCircle size={14} className="shrink-0 mt-0.5" />
+                      <span>{leadError}</span>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={leadSubmitting}
+                    className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 disabled:opacity-50 text-white rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2"
+                  >
+                    {leadSubmitting ? <Loader2 size={16} className="animate-spin" /> : null}
+                    <span>{leadSubmitting ? (isAr ? 'جارٍ الإرسال...' : 'Sending...') : (isAr ? 'إرسال الطلب' : 'Send Request')}</span>
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Persistent floating WhatsApp button */}
       <a

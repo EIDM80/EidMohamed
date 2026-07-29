@@ -28,7 +28,7 @@ import { ISORequest, RequestStatus } from '../types';
 import { Language } from '../translations';
 import { LandingConfig, LandingService, LandingSection, LandingMenuItem } from '../landingConfig';
 import { formatMoney } from '../lib/pricing';
-import { fetchSiteSettings, updateSiteSettings, SiteSettings } from '../lib/db';
+import { fetchSiteSettings, updateSiteSettings, SiteSettings, fetchTrainingLeads, TrainingLead } from '../lib/db';
 
 interface AdminPanelProps {
   requests: any[];
@@ -47,7 +47,17 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
   landingConfig,
   onUpdateLandingConfig
 }) => {
-  const [adminTab, setAdminTab] = useState<'requests' | 'landing_hero' | 'landing_services' | 'landing_sections' | 'landing_menus' | 'tracking'>('requests');
+  const [adminTab, setAdminTab] = useState<'requests' | 'landing_hero' | 'landing_services' | 'landing_sections' | 'landing_menus' | 'tracking' | 'leads'>('requests');
+
+  const [trainingLeads, setTrainingLeads] = useState<TrainingLead[]>([]);
+  const [loadingLeads, setLoadingLeads] = useState(true);
+
+  useEffect(() => {
+    fetchTrainingLeads().then((data) => {
+      setTrainingLeads(data);
+      setLoadingLeads(false);
+    });
+  }, []);
   const isAr = lang === 'ar';
 
   // Tracking/SEO codes (Meta Pixel, Google Tag, etc.) — stored in Supabase
@@ -345,6 +355,16 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
           >
             <Code2 size={14} />
             <span>{isAr ? 'أكواد التتبع وSEO' : 'Tracking & SEO Codes'}</span>
+          </button>
+
+          <button
+            onClick={() => setAdminTab('leads')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              adminTab === 'leads' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
+            }`}
+          >
+            <Phone size={14} />
+            <span>{isAr ? 'طلبات الدورات التدريبية' : 'Training Leads'}</span>
           </button>
         </div>
       </div>
@@ -1175,6 +1195,61 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                     : (isAr ? 'حفظ أكواد التتبع' : 'Save Tracking Codes')}
                 </span>
               </button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {adminTab === 'leads' && (
+        <div className="bg-white border rounded-[2rem] shadow-sm overflow-hidden">
+          <div className="p-6 border-b">
+            <h3 className="font-extrabold text-slate-900 text-base">{isAr ? 'طلبات معلومات الدورات التدريبية' : 'Training Course Inquiries'}</h3>
+            <p className="text-xs text-slate-400 font-medium mt-1">
+              {isAr
+                ? 'كل طلب يُحفظ هنا فوراً حتى لو تعذّر إرسال البريد الإلكتروني — عمود "البريد" يوضح حالة الإرسال.'
+                : 'Every submission is saved here immediately, even if the email failed to send — the "Email" column shows delivery status.'}
+            </p>
+          </div>
+          {loadingLeads ? (
+            <p className="p-6 text-sm text-slate-400 font-medium">{isAr ? 'جارٍ التحميل...' : 'Loading...'}</p>
+          ) : trainingLeads.length === 0 ? (
+            <p className="p-6 text-sm text-slate-400 font-medium">{isAr ? 'لا توجد طلبات بعد.' : 'No inquiries yet.'}</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead className="bg-slate-50 text-[10px] text-slate-400 uppercase font-bold tracking-wider">
+                  <tr>
+                    <th className="text-start px-6 py-3">{isAr ? 'الاسم' : 'Name'}</th>
+                    <th className="text-start px-6 py-3">{isAr ? 'التواصل' : 'Contact'}</th>
+                    <th className="text-start px-6 py-3">{isAr ? 'الدورة' : 'Course'}</th>
+                    <th className="text-start px-6 py-3">{isAr ? 'الرسالة' : 'Message'}</th>
+                    <th className="text-start px-6 py-3">{isAr ? 'البريد' : 'Email'}</th>
+                    <th className="text-start px-6 py-3">{isAr ? 'التاريخ' : 'Date'}</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y">
+                  {trainingLeads.map((lead) => (
+                    <tr key={lead.id}>
+                      <td className="px-6 py-4">
+                        <p className="font-bold text-slate-900">{lead.fullName}</p>
+                        {lead.company && <p className="text-xs text-slate-400">{lead.company}</p>}
+                      </td>
+                      <td className="px-6 py-4 text-xs text-slate-500">
+                        <p>{lead.email}</p>
+                        {lead.phone && <p>{lead.phone}</p>}
+                      </td>
+                      <td className="px-6 py-4 text-xs font-bold text-indigo-600">{lead.standardCode || '—'}</td>
+                      <td className="px-6 py-4 text-xs text-slate-500 max-w-xs truncate">{lead.message || '—'}</td>
+                      <td className="px-6 py-4">
+                        <span className={`px-2 py-1 rounded text-[10px] font-bold uppercase ${lead.emailSent ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600'}`}>
+                          {lead.emailSent ? (isAr ? 'أُرسل' : 'Sent') : (isAr ? 'لم يُرسل' : 'Not sent')}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-xs text-slate-400">{new Date(lead.createdAt).toLocaleDateString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>

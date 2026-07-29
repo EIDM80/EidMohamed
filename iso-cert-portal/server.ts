@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import Stripe from "stripe";
+import { Resend } from "resend";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import { getSupabaseAdmin } from "./lib/supabaseAdmin";
@@ -234,6 +235,67 @@ async function startServer() {
       console.error("Stripe checkout session creation failed:", error);
       res.status(500).json({ error: "Could not start checkout session" });
     }
+  });
+
+  app.post("/api/leads/submit-training-inquiry", async (req, res) => {
+    const { fullName, email, phone, company, standardCode, message } = req.body || {};
+    if (!fullName || !email) {
+      return res.status(400).json({ error: "Name and email are required" });
+    }
+
+    const { data, error: dbError } = await getSupabaseAdmin()
+      .from("training_leads")
+      .insert({
+        full_name: fullName,
+        email,
+        phone: phone || null,
+        company: company || null,
+        standard_code: standardCode || null,
+        message: message || null,
+      })
+      .select("id")
+      .single();
+
+    if (dbError) {
+      console.error("Failed to save training lead:", dbError.message);
+      return res.status(500).json({ error: "Could not save your request. Please try again." });
+    }
+
+    const resendKey = process.env.RESEND_API_KEY;
+    if (!resendKey) {
+      console.error("RESEND_API_KEY is not set — lead saved but no email sent:", data?.id);
+      return res.json({ success: true });
+    }
+
+    try {
+      const resend = new Resend(resendKey);
+      const fromAddress = process.env.RESEND_FROM_EMAIL || "GAMC Website <onboarding@resend.dev>";
+      const { error: emailError } = await resend.emails.send({
+        from: fromAddress,
+        to: "iso@gloria-c.com",
+        replyTo: email,
+        subject: `New Lead: Training inquiry — ${standardCode || "General"}`,
+        text: [
+          "New training course lead from the website:",
+          "",
+          `Name: ${fullName}`,
+          `Email: ${email}`,
+          `Phone: ${phone || "-"}`,
+          `Company: ${company || "-"}`,
+          `Standard: ${standardCode || "-"}`,
+          `Message: ${message || "-"}`,
+        ].join("\n"),
+      });
+      if (emailError) {
+        console.error("Resend failed to send lead email:", emailError, data?.id);
+      } else if (data?.id) {
+        await getSupabaseAdmin().from("training_leads").update({ email_sent: true }).eq("id", data.id);
+      }
+    } catch (err) {
+      console.error("Resend email send threw an error:", err, data?.id);
+    }
+
+    res.json({ success: true });
   });
 
   // API Routes
