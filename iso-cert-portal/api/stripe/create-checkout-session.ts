@@ -1,6 +1,6 @@
 import Stripe from "stripe";
-import { ISO_STANDARDS } from "../../constants";
-import { priceOrder, Currency, RenewalTerm } from "../../lib/pricing";
+import { ISO_STANDARDS } from "../../constants.js";
+import { priceOrder, Currency, RenewalTerm } from "../../lib/pricing.js";
 
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {

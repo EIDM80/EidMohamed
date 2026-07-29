@@ -1,7 +1,7 @@
 import Stripe from "stripe";
-import { getSupabaseAdmin } from "../../lib/supabaseAdmin";
-import { RequestStatus } from "../../types";
-import { ISO_STANDARDS } from "../../constants";
+import { getSupabaseAdmin } from "../../lib/supabaseAdmin.js";
+import { RequestStatus } from "../../types.js";
+import { ISO_STANDARDS } from "../../constants.js";
 
 // Stripe signature verification needs the exact raw request bytes, so the
 // platform's automatic JSON body parsing must be turned off for this route.
