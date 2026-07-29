@@ -1,5 +1,9 @@
 
-import { ISOStandard } from './types';
+import { AccreditationBody, ISOStandard } from './types';
+
+// Only these accreditation bodies have fixed, published prices online;
+// every other body requires a custom quote.
+export const PRICED_ACCREDITATION_BODIES: AccreditationBody[] = [AccreditationBody.UAF, AccreditationBody.IAS];
 
 export const ISO_STANDARDS: ISOStandard[] = [
   { id: '1', code: 'ISO 9001', title: 'Quality Management Systems', description: 'Standard for quality management and customer satisfaction.', basePrice: 1200 },

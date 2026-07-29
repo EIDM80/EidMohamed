@@ -15,8 +15,9 @@ import {
   CheckCircle2,
   AlertCircle
 } from 'lucide-react';
-import { ISO_STANDARDS } from '../constants';
+import { ISO_STANDARDS, PRICED_ACCREDITATION_BODIES } from '../constants';
 import { AccreditationBody, ISOStandard } from '../types';
+import { DEFAULT_LANDING_CONFIG } from '../landingConfig';
 import { summarizeRequirements } from '../geminiService';
 import { Language } from '../translations';
 import { startCheckout } from '../lib/db';
@@ -34,7 +35,7 @@ interface NewRequestProps {
 const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClearPreselectedISO, companyId, userEmail }) => {
   const [step, setStep] = useState(1);
   const [type, setType] = useState<'single' | 'multi'>('single');
-  const [selectedBody, setSelectedBody] = useState<AccreditationBody>(AccreditationBody.UKAS);
+  const [selectedBody, setSelectedBody] = useState<AccreditationBody>(AccreditationBody.UAF);
   const [bodySearch, setBodySearch] = useState('');
   const [standardSearch, setStandardSearch] = useState('');
   const [selectedStandards, setSelectedStandards] = useState<ISOStandard[]>([]);
@@ -88,6 +89,8 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
 
   const pricing = priceOrder(selectedStandards, type, currency, term);
   const displayAmount = (usdAmount: number) => formatMoney(currency === 'aed' ? usdAmount * AED_PER_USD : usdAmount, currency);
+  const isPriced = PRICED_ACCREDITATION_BODIES.includes(selectedBody);
+  const contactForPriceLabel = lang === 'ar' ? 'السعر عند التواصل' : 'Contact for price';
 
   const handleSubmitRequest = async () => {
     if (!companyId) {
@@ -265,8 +268,14 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
                       <p className="text-[10px] text-slate-500 line-clamp-2">{std.description}</p>
                     </div>
                     <div className="mt-4 flex items-center justify-between pt-3 border-t border-slate-100">
-                      <span className="text-xs font-bold text-slate-900">${std.basePrice}<span className="text-slate-400 font-medium">{lang === 'ar' ? '/سنة' : '/yr'}</span></span>
-                      <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">{lang === 'ar' ? 'رسوم سنوية' : 'Annual Fee'}</span>
+                      {isPriced ? (
+                        <>
+                          <span className="text-xs font-bold text-slate-900">${std.basePrice}<span className="text-slate-400 font-medium">{lang === 'ar' ? '/سنة' : '/yr'}</span></span>
+                          <span className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">{lang === 'ar' ? 'رسوم سنوية' : 'Annual Fee'}</span>
+                        </>
+                      ) : (
+                        <span className="text-xs font-bold text-amber-600">{contactForPriceLabel}</span>
+                      )}
                     </div>
                   </button>
                 );
@@ -336,7 +345,9 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
                     {selectedStandards.map(s => (
                       <div key={s.id} className="flex justify-between items-center p-3 bg-white border rounded-lg">
                         <span className="text-sm font-bold text-slate-700">{s.code}</span>
-                        <span className="text-sm text-slate-500">${s.basePrice}{lang === 'ar' ? '/سنة' : '/yr'}</span>
+                        <span className="text-sm text-slate-500">
+                          {isPriced ? `$${s.basePrice}${lang === 'ar' ? '/سنة' : '/yr'}` : contactForPriceLabel}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -368,59 +379,81 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
                 </div>
               </div>
 
-              <div className="bg-indigo-50/50 p-8 rounded-3xl border border-indigo-100 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <h4 className="text-lg font-bold text-slate-900">{lang === 'ar' ? 'ملخص التكاليف' : 'Fee Breakdown'}</h4>
-                    <div className="flex bg-white rounded-lg border border-indigo-200 p-0.5 text-xs font-bold">
-                      <button
-                        type="button"
-                        onClick={() => setCurrency('usd')}
-                        className={`px-3 py-1.5 rounded-md transition-all ${currency === 'usd' ? 'bg-indigo-600 text-white' : 'text-slate-500'}`}
-                      >
-                        USD
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setCurrency('aed')}
-                        className={`px-3 py-1.5 rounded-md transition-all ${currency === 'aed' ? 'bg-indigo-600 text-white' : 'text-slate-500'}`}
-                      >
-                        AED
-                      </button>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-slate-500">
-                        {lang === 'ar' ? `المجموع (${pricing.intervalCount} سنة)` : `Subtotal (${pricing.intervalCount}-year term)`}
-                      </span>
-                      <span className="font-bold text-slate-900">{displayAmount(pricing.termSubtotalUsd)}</span>
-                    </div>
-                    {pricing.termDiscountUsd > 0 && (
-                      <div className="flex justify-between text-sm text-emerald-600 font-bold">
-                        <span>{lang === 'ar' ? 'خصم الالتزام لـ 3 سنوات (10%)' : '3-Year Commitment Discount (10%)'}</span>
-                        <span>-{displayAmount(pricing.termDiscountUsd)}</span>
+              {isPriced ? (
+                <div className="bg-indigo-50/50 p-8 rounded-3xl border border-indigo-100 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <h4 className="text-lg font-bold text-slate-900">{lang === 'ar' ? 'ملخص التكاليف' : 'Fee Breakdown'}</h4>
+                      <div className="flex bg-white rounded-lg border border-indigo-200 p-0.5 text-xs font-bold">
+                        <button
+                          type="button"
+                          onClick={() => setCurrency('usd')}
+                          className={`px-3 py-1.5 rounded-md transition-all ${currency === 'usd' ? 'bg-indigo-600 text-white' : 'text-slate-500'}`}
+                        >
+                          USD
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setCurrency('aed')}
+                          className={`px-3 py-1.5 rounded-md transition-all ${currency === 'aed' ? 'bg-indigo-600 text-white' : 'text-slate-500'}`}
+                        >
+                          AED
+                        </button>
                       </div>
-                    )}
-                    <div className="h-px bg-indigo-100 my-4" />
-                    <div className="flex justify-between items-center">
-                      <span className="text-lg font-bold text-slate-900">
-                        {lang === 'ar' ? `الإجمالي (يُدفع كل ${pricing.intervalCount} سنة)` : `Total (billed every ${pricing.intervalCount}yr)`}
-                      </span>
-                      <span className="text-2xl font-black text-indigo-600">{displayAmount(pricing.totalUsd)}</span>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-slate-500">
+                          {lang === 'ar' ? `المجموع (${pricing.intervalCount} سنة)` : `Subtotal (${pricing.intervalCount}-year term)`}
+                        </span>
+                        <span className="font-bold text-slate-900">{displayAmount(pricing.termSubtotalUsd)}</span>
+                      </div>
+                      {pricing.termDiscountUsd > 0 && (
+                        <div className="flex justify-between text-sm text-emerald-600 font-bold">
+                          <span>{lang === 'ar' ? 'خصم الالتزام لـ 3 سنوات (10%)' : '3-Year Commitment Discount (10%)'}</span>
+                          <span>-{displayAmount(pricing.termDiscountUsd)}</span>
+                        </div>
+                      )}
+                      <div className="h-px bg-indigo-100 my-4" />
+                      <div className="flex justify-between items-center">
+                        <span className="text-lg font-bold text-slate-900">
+                          {lang === 'ar' ? `الإجمالي (يُدفع كل ${pricing.intervalCount} سنة)` : `Total (billed every ${pricing.intervalCount}yr)`}
+                        </span>
+                        <span className="text-2xl font-black text-indigo-600">{displayAmount(pricing.totalUsd)}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="mt-8 flex items-start gap-3 p-4 bg-white/60 rounded-xl border border-indigo-100 text-[10px] text-indigo-800 leading-relaxed">
-                  <Info size={16} className="shrink-0" />
-                  <p>
-                    {lang === 'ar'
-                      ? `هذا اشتراك متجدد تلقائياً كل ${pricing.intervalCount} سنة عبر بطاقتك المسجلة حتى الإلغاء. يشمل السعر المراجعة الأولية وشهادة رقمية آمنة.`
-                      : `This is a subscription that auto-renews every ${pricing.intervalCount} year(s) on your card until cancelled. Price includes initial review and secure digital certification.`}
-                  </p>
+                  <div className="mt-8 flex items-start gap-3 p-4 bg-white/60 rounded-xl border border-indigo-100 text-[10px] text-indigo-800 leading-relaxed">
+                    <Info size={16} className="shrink-0" />
+                    <p>
+                      {lang === 'ar'
+                        ? `هذا اشتراك متجدد تلقائياً كل ${pricing.intervalCount} سنة عبر بطاقتك المسجلة حتى الإلغاء. يشمل السعر المراجعة الأولية وشهادة رقمية آمنة.`
+                        : `This is a subscription that auto-renews every ${pricing.intervalCount} year(s) on your card until cancelled. Price includes initial review and secure digital certification.`}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="bg-amber-50/60 p-8 rounded-3xl border border-amber-200 flex flex-col items-center justify-center text-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center">
+                    <Info size={24} />
+                  </div>
+                  <h4 className="text-lg font-bold text-slate-900">{contactForPriceLabel}</h4>
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    {lang === 'ar'
+                      ? `${selectedBody} ليست من هيئات الاعتماد ذات الأسعار الثابتة المعروضة أونلاين. تواصل معنا للحصول على عرض سعر مخصص.`
+                      : `${selectedBody} isn't one of our fixed-price accreditation bodies. Contact us for a custom quote.`}
+                  </p>
+                  <a
+                    href={`mailto:${DEFAULT_LANDING_CONFIG.contact.email}?subject=${encodeURIComponent(`Pricing request: ${selectedBody}`)}&body=${encodeURIComponent(
+                      `Standards: ${selectedStandards.map((s) => s.code).join(', ') || '(none selected)'}`
+                    )}`}
+                    className="mt-2 px-6 py-3 bg-[#121c42] hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all uppercase tracking-wider"
+                  >
+                    {lang === 'ar' ? 'تواصل معنا' : 'Contact Us'}
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -442,23 +475,25 @@ const NewRequest: React.FC<NewRequestProps> = ({ lang, t, preselectedISO, onClea
             {t('back')}
           </button>
 
-          <button
-            onClick={() => {
-              if (step < 5) setStep(step + 1);
-              else handleSubmitRequest();
-            }}
-            disabled={(selectedStandards.length === 0 && step === 3) || submitting}
-            className={`flex items-center gap-2 px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all disabled:opacity-50 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}
-          >
-            {submitting ? (
-              <Loader2 size={18} className="animate-spin" />
-            ) : (
-              <>
-                {step === 5 ? t('payAndSubmit') : t('continue')}
-                {step < 5 && (lang === 'ar' ? <ArrowLeft size={20} /> : <ArrowRight size={20} />)}
-              </>
-            )}
-          </button>
+          {step === 5 && !isPriced ? null : (
+            <button
+              onClick={() => {
+                if (step < 5) setStep(step + 1);
+                else handleSubmitRequest();
+              }}
+              disabled={(selectedStandards.length === 0 && step === 3) || submitting}
+              className={`flex items-center gap-2 px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all disabled:opacity-50 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}
+            >
+              {submitting ? (
+                <Loader2 size={18} className="animate-spin" />
+              ) : (
+                <>
+                  {step === 5 ? t('payAndSubmit') : t('continue')}
+                  {step < 5 && (lang === 'ar' ? <ArrowLeft size={20} /> : <ArrowRight size={20} />)}
+                </>
+              )}
+            </button>
+          )}
         </div>
       </div>
     </div>

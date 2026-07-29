@@ -11,6 +11,8 @@ export enum RequestStatus {
 }
 
 export enum AccreditationBody {
+  UAF = '(UAF) UNITED ACCREDITATION FOUNDATION INC',
+  IAS = '(IAS) International Accreditation Service',
   ATS = '(ATS) Accreditation Body of Serbia',
   AA = '(AA) Akkreditierung Austria',
   ANAB = '(ANAB) ANSI National Accreditation Board',
@@ -37,7 +39,6 @@ export enum AccreditationBody {
   HKAS = '(HKAS) Hong Kong Accreditation Service',
   IARNM = '(IARNM) Institute for Accreditation of the Republic of North Macedonia',
   INN = '(INN) Instituto Nacional de Normalizacion',
-  IAS = '(IAS) International Accreditation Service',
   IPAC = '(IPAC) IPAC - Instituto Português de Acreditação, I.P.',
   INAB = '(INAB) Irish National Accreditation Board',
   ISMS_AC = '(ISMS-AC) ISMS Accreditation Center',
@@ -87,7 +88,6 @@ export enum AccreditationBody {
   OZAKK = '(O\'ZAKK) The Center for Accreditation',
   TUNAC = '(TUNAC) Tunisian Accreditation Council',
   TURKAK = '(TURKAK) TURKISH ACCREDITATION AGENCY',
-  UAF = '(UAF) UNITED ACCREDITATION FOUNDATION INC',
   UKAS = '(UKAS) United Kingdom Accreditation Service',
   VACI = '(VACI) Vietnam Institute of Accreditation',
   SOAC = '(SOAC) West African Accreditation System'
