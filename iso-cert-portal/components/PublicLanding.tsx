@@ -41,7 +41,7 @@ import {
 } from 'lucide-react';
 import { LandingConfig, LandingService, LandingSection } from '../landingConfig';
 import { Language } from '../translations';
-import { submitTrainingLead, TrainingLeadInput } from '../lib/db';
+import { submitTrainingLead, TrainingLeadInput, joinReferralProgram } from '../lib/db';
 import Logo from './Logo';
 
 const FAQ_ITEMS: { qEn: string; qAr: string; aEn: string; aAr: string }[] = [
@@ -142,6 +142,34 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
       return;
     }
     setLeadSubmitted(true);
+  };
+
+  // Referral program signup modal
+  const [referModalOpen, setReferModalOpen] = useState(false);
+  const [referForm, setReferForm] = useState({ name: '', email: '', phone: '' });
+  const [referSubmitting, setReferSubmitting] = useState(false);
+  const [referResult, setReferResult] = useState<{ code: string; link: string } | null>(null);
+  const [referError, setReferError] = useState<string | null>(null);
+  const [referLinkCopied, setReferLinkCopied] = useState(false);
+
+  const openReferModal = () => {
+    setReferForm({ name: '', email: '', phone: '' });
+    setReferResult(null);
+    setReferError(null);
+    setReferModalOpen(true);
+  };
+
+  const handleReferSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setReferSubmitting(true);
+    setReferError(null);
+    const result = await joinReferralProgram(referForm.name, referForm.email, referForm.phone);
+    setReferSubmitting(false);
+    if ('error' in result) {
+      setReferError(result.error);
+      return;
+    }
+    setReferResult(result);
   };
   const [activeTab, setActiveTab] = useState<string>('all');
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -1278,6 +1306,40 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
         </div>
       </section>
 
+      {/* Section 7.6: Refer & Earn */}
+      <section id="refer-earn" className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 md:px-8">
+          <div
+            className="rounded-[2.5rem] p-8 md:p-14 text-center text-white relative overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, #121c42 0%, #312e81 60%, #4338ca 100%)' }}
+          >
+            <DollarSign size={220} className="absolute -top-10 -right-10 text-white/5 rotate-12" />
+            <div className="relative z-10 space-y-5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/10 backdrop-blur-md text-amber-300 rounded-full text-xs font-bold tracking-wider uppercase border border-white/20">
+                <Sparkles size={14} />
+                <span>{isAr ? 'برنامج الإحالة' : 'Referral Program'}</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tight">
+                {isAr ? 'أحِل عميلاً، واربح AED 500' : 'Refer a Client, Earn AED 500'}
+              </h2>
+              <p className="text-indigo-100 max-w-xl mx-auto font-medium leading-relaxed">
+                {isAr
+                  ? 'انضم مجاناً واحصل على رابط إحالة خاص بك فوراً. لكل عميل تُحيله ويكمل الدفع مقابل شهادة ISO، تربح AED 500.'
+                  : 'Join free and get your own referral link instantly. For every client you refer who completes payment for an ISO certificate, you earn AED 500.'}
+              </p>
+              <div className="pt-2">
+                <button
+                  onClick={openReferModal}
+                  className="px-8 py-4 bg-white hover:bg-slate-100 text-[#121c42] font-black rounded-full shadow-lg transition-all active:scale-[0.98] text-sm uppercase tracking-wider"
+                >
+                  {isAr ? 'انضم الآن واحصل على رابطك' : 'Join Now & Get Your Link'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Section 8: Call to Action Banner (Business Growth) */}
       <section 
         className="relative py-24 bg-cover bg-center text-white"
@@ -1810,6 +1872,116 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   >
                     {leadSubmitting ? <Loader2 size={16} className="animate-spin" /> : null}
                     <span>{leadSubmitting ? (isAr ? 'جارٍ الإرسال...' : 'Sending...') : (isAr ? 'إرسال الطلب' : 'Send Request')}</span>
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Referral Program Signup Modal */}
+      {referModalOpen && (
+        <div
+          className="fixed inset-0 z-[60] bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setReferModalOpen(false)}
+        >
+          <div
+            className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 md:p-8 relative max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setReferModalOpen(false)}
+              className={`absolute top-4 ${isAr ? 'left-4' : 'right-4'} p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-50 rounded-xl transition-colors`}
+            >
+              <X size={18} />
+            </button>
+
+            {referResult ? (
+              <div className="text-center py-4 space-y-5">
+                <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                  <CheckCircle2 size={28} />
+                </div>
+                <h3 className="text-lg font-black text-slate-900">{isAr ? 'رابطك جاهز!' : 'Your link is ready!'}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">
+                  {isAr
+                    ? 'شارك هذا الرابط مع عملائك — وستربح AED 500 عن كل عميل يكمل الدفع عبره. أرسلنا نسخة أيضاً إلى بريدك الإلكتروني.'
+                    : "Share this link with your clients — you'll earn AED 500 for every one who completes payment through it. We've also emailed you a copy."}
+                </p>
+                <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
+                  <span className="flex-1 text-xs font-mono text-slate-700 truncate text-start">{referResult.link}</span>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(referResult.link);
+                      setReferLinkCopied(true);
+                      setTimeout(() => setReferLinkCopied(false), 2000);
+                    }}
+                    className="shrink-0 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold transition-all"
+                  >
+                    {referLinkCopied ? (isAr ? 'تم النسخ' : 'Copied') : (isAr ? 'نسخ' : 'Copy')}
+                  </button>
+                </div>
+                <button
+                  onClick={() => setReferModalOpen(false)}
+                  className="px-6 py-2.5 bg-[#121c42] hover:bg-indigo-600 text-white rounded-full text-xs font-bold transition-all"
+                >
+                  {isAr ? 'إغلاق' : 'Close'}
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="mb-6">
+                  <h3 className="text-xl font-black text-slate-900">{isAr ? 'انضم لبرنامج الإحالة' : 'Join the Referral Program'}</h3>
+                  <p className="text-sm text-slate-500 mt-1">
+                    {isAr ? 'عبّئ بياناتك وستحصل على رابطك الخاص فوراً.' : "Fill in your details and get your own link instantly."}
+                  </p>
+                </div>
+
+                <form onSubmit={handleReferSubmit} className="space-y-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-600">{isAr ? 'الاسم الكامل' : 'Full Name'}</label>
+                    <input
+                      required
+                      type="text"
+                      value={referForm.name}
+                      onChange={(e) => setReferForm({ ...referForm, name: e.target.value })}
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-600">{isAr ? 'البريد الإلكتروني' : 'Email'}</label>
+                    <input
+                      required
+                      type="email"
+                      value={referForm.email}
+                      onChange={(e) => setReferForm({ ...referForm, email: e.target.value })}
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-600">{isAr ? 'رقم الهاتف (اختياري)' : 'Phone (optional)'}</label>
+                    <input
+                      type="tel"
+                      value={referForm.phone}
+                      onChange={(e) => setReferForm({ ...referForm, phone: e.target.value })}
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                    />
+                  </div>
+
+                  {referError && (
+                    <div className="flex items-start gap-2 p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700">
+                      <AlertCircle size={14} className="shrink-0 mt-0.5" />
+                      <span>{referError}</span>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={referSubmitting}
+                    className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 disabled:opacity-50 text-white rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2"
+                  >
+                    {referSubmitting ? <Loader2 size={16} className="animate-spin" /> : null}
+                    <span>{referSubmitting ? (isAr ? 'جارٍ الإنشاء...' : 'Creating...') : (isAr ? 'احصل على رابطي' : 'Get My Link')}</span>
                   </button>
                 </form>
               </>

@@ -346,6 +346,30 @@ export const fetchReferredOrders = async (): Promise<ReferredOrder[]> => {
   }));
 };
 
+// Public self-serve signup: anyone can join the referral program and get
+// their own link immediately, without an admin creating it for them.
+export const joinReferralProgram = async (
+  name: string,
+  email: string,
+  phone: string
+): Promise<{ code: string; link: string } | { error: string }> => {
+  try {
+    const response = await fetch('/api/referrals/join', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, phone }),
+    });
+    const data = await response.json();
+    if (!response.ok || !data.code) {
+      return { error: data.error || 'Could not create your referral link' };
+    }
+    return { code: data.code, link: data.link };
+  } catch (error) {
+    console.error('joinReferralProgram failed:', error);
+    return { error: 'Could not reach the server' };
+  }
+};
+
 export const updateRequestStatusInDb = async (id: string, status: RequestStatus): Promise<boolean> => {
   const { error } = await supabase
     .from('iso_requests')
