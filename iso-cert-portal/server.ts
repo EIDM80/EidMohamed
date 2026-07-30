@@ -269,7 +269,7 @@ async function startServer() {
 
     try {
       const resend = new Resend(resendKey);
-      const fromAddress = process.env.RESEND_FROM_EMAIL || "GAMC Website <onboarding@resend.dev>";
+      const fromAddress = process.env.RESEND_FROM_EMAIL || "GAMC Website <noreply@gloria-c.com>";
       const { error: emailError } = await resend.emails.send({
         from: fromAddress,
         to: "iso@gloria-c.com",
