@@ -30,7 +30,7 @@ import {
   X
 } from 'lucide-react';
 import { RequestStatus, Company, ISORequest } from './types';
-import { translations, Language } from './translations';
+import { translations, Language, LANGUAGE_NAMES } from './translations';
 import { supabase } from './lib/supabaseClient';
 import { fetchProfile, fetchCompany, saveCompany, fetchRequests, updateRequestStatusInDb, fetchSiteSettings, Profile } from './lib/db';
 import { applyTrackingSettings } from './lib/injectTracking';
@@ -283,13 +283,18 @@ const App: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 md:gap-4">
-            <button 
-              onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
-              className="flex items-center gap-2 px-3 py-1.5 bg-slate-100 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 rounded-lg text-xs font-bold transition-all"
-            >
-              <Languages size={16} />
-              <span>{lang === 'en' ? 'العربية' : 'English'}</span>
-            </button>
+            <div className="relative flex items-center gap-2 px-3 py-1.5 bg-slate-100 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 rounded-lg text-xs font-bold transition-all">
+              <Languages size={16} className="pointer-events-none" />
+              <select
+                value={lang}
+                onChange={(e) => setLang(e.target.value as Language)}
+                className="bg-transparent outline-none cursor-pointer appearance-none pr-1"
+              >
+                {(Object.keys(LANGUAGE_NAMES) as Language[]).map((code) => (
+                  <option key={code} value={code}>{LANGUAGE_NAMES[code]}</option>
+                ))}
+              </select>
+            </div>
 
             <button className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all relative">
               <Bell size={20} />

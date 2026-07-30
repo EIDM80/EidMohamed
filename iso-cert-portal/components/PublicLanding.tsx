@@ -40,7 +40,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { LandingConfig, LandingService, LandingSection } from '../landingConfig';
-import { Language } from '../translations';
+import { Language, LANGUAGE_NAMES } from '../translations';
 import { submitTrainingLead, TrainingLeadInput, joinReferralProgram } from '../lib/db';
 import Logo from './Logo';
 
@@ -333,13 +333,18 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
           {/* Action Items */}
           <div className="hidden lg:flex items-center gap-4">
-            <button 
-              onClick={() => onSetLang(lang === 'en' ? 'ar' : 'en')}
-              className="flex items-center gap-2 px-3 py-1.5 bg-slate-50 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 rounded-xl text-xs font-bold transition-all border border-slate-200/50"
-            >
-              <Languages size={15} />
-              <span>{lang === 'en' ? 'العربية' : 'English'}</span>
-            </button>
+            <div className="relative flex items-center gap-2 px-3 py-1.5 bg-slate-50 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 rounded-xl text-xs font-bold transition-all border border-slate-200/50">
+              <Languages size={15} className="pointer-events-none" />
+              <select
+                value={lang}
+                onChange={(e) => onSetLang(e.target.value as Language)}
+                className="bg-transparent outline-none cursor-pointer appearance-none pr-1"
+              >
+                {(Object.keys(LANGUAGE_NAMES) as Language[]).map((code) => (
+                  <option key={code} value={code}>{LANGUAGE_NAMES[code]}</option>
+                ))}
+              </select>
+            </div>
 
             <button
               onClick={() => onNavigateToPortal()}
@@ -361,12 +366,18 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-3 lg:hidden">
-            <button 
-              onClick={() => onSetLang(lang === 'en' ? 'ar' : 'en')}
-              className="p-2 bg-slate-100 text-slate-600 rounded-xl"
-            >
-              <Languages size={16} />
-            </button>
+            <div className="relative flex items-center p-2 bg-slate-100 text-slate-600 rounded-xl">
+              <Languages size={16} className="pointer-events-none" />
+              <select
+                value={lang}
+                onChange={(e) => onSetLang(e.target.value as Language)}
+                className="absolute inset-0 opacity-0 cursor-pointer"
+              >
+                {(Object.keys(LANGUAGE_NAMES) as Language[]).map((code) => (
+                  <option key={code} value={code}>{LANGUAGE_NAMES[code]}</option>
+                ))}
+              </select>
+            </div>
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2.5 text-slate-600 hover:bg-slate-100 rounded-xl transition-colors"
@@ -1729,10 +1740,15 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-start">
-            <div className="flex gap-4">
-              <button onClick={() => onSetLang('en')} className={`hover:text-white ${lang === 'en' ? 'text-indigo-400 font-black' : ''}`}>English</button>
-              <span>|</span>
-              <button onClick={() => onSetLang('ar')} className={`hover:text-white ${lang === 'ar' ? 'text-indigo-400 font-black' : ''}`}>العربية</button>
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+              {(Object.keys(LANGUAGE_NAMES) as Language[]).map((code, idx) => (
+                <React.Fragment key={code}>
+                  {idx > 0 && <span className="text-slate-700">|</span>}
+                  <button onClick={() => onSetLang(code)} className={`hover:text-white ${lang === code ? 'text-indigo-400 font-black' : ''}`}>
+                    {LANGUAGE_NAMES[code]}
+                  </button>
+                </React.Fragment>
+              ))}
             </div>
             <div>
               © 2026 GAMC Global Solutions. All Rights Reserved.
