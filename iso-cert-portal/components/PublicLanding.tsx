@@ -42,6 +42,7 @@ import {
 import { LandingConfig, LandingService, LandingSection } from '../landingConfig';
 import { Language, LANGUAGE_NAMES } from '../translations';
 import { submitTrainingLead, TrainingLeadInput, joinReferralProgram } from '../lib/db';
+import { LANDING_TRANSLATIONS, NewLang } from '../landingTranslations';
 import Logo from './Logo';
 
 const FAQ_ITEMS: { qEn: string; qAr: string; aEn: string; aAr: string }[] = [
@@ -187,6 +188,15 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
   const isAr = lang === 'ar';
 
+  // Looks up fr/de/es/pt/it from the translation dictionary (keyed by the
+  // English string); falls back to English for any string not yet in the
+  // dictionary, so a missing translation never breaks the page.
+  const L = (en: string, ar: string): string => {
+    if (lang === 'ar') return ar;
+    if (lang === 'en') return en;
+    return LANDING_TRANSLATIONS[en]?.[lang as NewLang] ?? en;
+  };
+
   const renderIcon = (iconName: string) => {
     const props = { size: 24, className: "text-indigo-600 group-hover:text-white transition-colors duration-300" };
     switch (iconName) {
@@ -262,7 +272,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           </div>
           <div className="flex items-center gap-3">
             <span className="text-[10px] uppercase bg-indigo-950/60 border border-indigo-900/50 px-2.5 py-0.5 rounded text-indigo-300 tracking-wider font-bold">
-              {isAr ? 'مزود معتمد لـ ISO' : 'Authorized ISO Provider'}
+              {L('Authorized ISO Provider', 'مزود معتمد لـ ISO')}
             </span>
           </div>
         </div>
@@ -280,7 +290,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             <div>
               <span className="font-black text-slate-900 text-xl tracking-tight leading-none block">GAMC</span>
               <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mt-0.5">
-                {isAr ? 'المنصة العالمية لشهادات الأيزو' : 'Global ISO certification platform'}
+                {L('Global ISO certification platform', 'المنصة العالمية لشهادات الأيزو')}
               </span>
             </div>
           </div>
@@ -291,43 +301,43 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
             >
-              {isAr ? 'الرئيسية' : 'Home'}
+              {L('Home', 'الرئيسية')}
             </button>
             <button
               onClick={() => scrollToSection('about-cloud')}
               className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
             >
-              {isAr ? 'عن المنصة' : 'About'}
+              {L('About', 'عن المنصة')}
             </button>
             <button
               onClick={() => scrollToSection('benefits')}
               className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
             >
-              {isAr ? 'المزايا' : 'Why Us?'}
+              {L('Why Us?', 'المزايا')}
             </button>
             <button
               onClick={() => scrollToSection('how-it-works')}
               className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
             >
-              {isAr ? 'طريقة العمل' : 'How It Works'}
+              {L('How It Works', 'طريقة العمل')}
             </button>
             <button
               onClick={() => scrollToSection('services')}
               className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
             >
-              {isAr ? 'الشهادات والأسعار' : 'Certificates'}
+              {L('Certificates', 'الشهادات والأسعار')}
             </button>
             <button
               onClick={() => scrollToSection('faq')}
               className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
             >
-              {isAr ? 'الأسئلة الشائعة' : 'FAQs'}
+              {L('FAQs', 'الأسئلة الشائعة')}
             </button>
             <button
               onClick={() => scrollToSection('contact-section')}
               className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
             >
-              {isAr ? 'اتصل بنا' : 'Contact'}
+              {L('Contact', 'اتصل بنا')}
             </button>
           </nav>
 
@@ -352,13 +362,13 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             >
               {isAuthenticated ? (
                 <>
-                  <span>{isAr ? 'بوابة العميل' : 'Go to Client Area'}</span>
+                  <span>{L('Go to Client Area', 'بوابة العميل')}</span>
                   <ArrowRight size={15} className={isAr ? 'rotate-180' : ''} />
                 </>
               ) : (
                 <>
                   <LogIn size={15} />
-                  <span>{isAr ? 'تسجيل الدخول' : 'Client Portal'}</span>
+                  <span>{L('Client Portal', 'تسجيل الدخول')}</span>
                 </>
               )}
             </button>
@@ -397,43 +407,43 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
             >
-              {isAr ? 'الرئيسية' : 'Home'}
+              {L('Home', 'الرئيسية')}
             </button>
             <button
               onClick={() => { setMobileMenuOpen(false); scrollToSection('about-cloud'); }}
               className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
             >
-              {isAr ? 'عن المنصة' : 'About'}
+              {L('About', 'عن المنصة')}
             </button>
             <button
               onClick={() => { setMobileMenuOpen(false); scrollToSection('benefits'); }}
               className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
             >
-              {isAr ? 'المزايا' : 'Why Us?'}
+              {L('Why Us?', 'المزايا')}
             </button>
             <button
               onClick={() => { setMobileMenuOpen(false); scrollToSection('how-it-works'); }}
               className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
             >
-              {isAr ? 'طريقة العمل' : 'How It Works'}
+              {L('How It Works', 'طريقة العمل')}
             </button>
             <button
               onClick={() => { setMobileMenuOpen(false); scrollToSection('services'); }}
               className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
             >
-              {isAr ? 'الشهادات والأسعار' : 'Certificates & Pricing'}
+              {L('Certificates & Pricing', 'الشهادات والأسعار')}
             </button>
             <button
               onClick={() => { setMobileMenuOpen(false); scrollToSection('faq'); }}
               className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
             >
-              {isAr ? 'الأسئلة الشائعة' : 'FAQs'}
+              {L('FAQs', 'الأسئلة الشائعة')}
             </button>
             <button
               onClick={() => { setMobileMenuOpen(false); scrollToSection('contact-section'); }}
               className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
             >
-              {isAr ? 'اتصل بنا' : 'Contact'}
+              {L('Contact', 'اتصل بنا')}
             </button>
           </nav>
           <div className="mt-6 pt-6 border-t border-slate-100 space-y-4">
@@ -445,7 +455,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full text-sm font-bold shadow-md shadow-indigo-100 flex items-center justify-center gap-2"
             >
               <LogIn size={16} />
-              <span>{isAr ? 'دخول بوابة العميل' : 'Sign in to Portal'}</span>
+              <span>{L('Sign in to Portal', 'دخول بوابة العميل')}</span>
             </button>
           </div>
         </div>
@@ -467,23 +477,19 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             <div className="lg:col-span-7 space-y-6 max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-indigo-500/20 backdrop-blur-md text-indigo-300 rounded-full text-xs font-bold tracking-wider uppercase border border-indigo-500/30">
                 <Sparkles size={14} className="text-amber-400 animate-pulse" />
-                <span>{isAr ? 'حلول ISO رقمية سريعة بنسبة ١٠٠٪' : '100% digital & fast-track approved solutions'}</span>
+                <span>{L('100% digital & fast-track approved solutions', 'حلول ISO رقمية سريعة بنسبة ١٠٠٪')}</span>
               </div>
-              
+
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">
-                {isAr ? 'شهادات الـ ISO أصبحت في غاية السهولة' : 'ISO Certification Made Simple'}
+                {L('ISO Certification Made Simple', 'شهادات الـ ISO أصبحت في غاية السهولة')}
               </h1>
-              
+
               <p className="text-lg md:text-xl text-slate-300 leading-relaxed font-medium">
-                {isAr 
-                  ? 'الطريقة الأسرع والأكثر ملاءمة للحصول على شهادة ISO معتمدة دولياً لشركتك.' 
-                  : 'The fastest and most affordable way to become internationally ISO Certified.'}
+                {L('The fastest and most affordable way to become internationally ISO Certified.', 'الطريقة الأسرع والأكثر ملاءمة للحصول على شهادة ISO معتمدة دولياً لشركتك.')}
               </p>
-              
+
               <p className="text-sm md:text-base text-slate-400 leading-relaxed">
-                {isAr 
-                  ? 'GAMC هي المنصة الرقمية الوحيدة المخصصة لتقديم خدمات الـ ISO مع دعم مخصص ومحلي متميز، لمساعدتك في إعداد الوثائق والحصول على اعتمادات دولية مرموقة ومعترف بها عالمياً.' 
-                  : 'GAMC is the premier digital ISO platform dedicated to supporting your certification, offering localized workflow, automated document preparation, and swift access to globally recognized accreditation.'}
+                {L('GAMC is the premier digital ISO platform dedicated to supporting your certification, offering localized workflow, automated document preparation, and swift access to globally recognized accreditation.', 'GAMC هي المنصة الرقمية الوحيدة المخصصة لتقديم خدمات الـ ISO مع دعم مخصص ومحلي متميز، لمساعدتك في إعداد الوثائق والحصول على اعتمادات دولية مرموقة ومعترف بها عالمياً.')}
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-4">
@@ -491,13 +497,13 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   onClick={() => scrollToSection('contact-section')}
                   className="px-8 py-4 bg-white hover:bg-slate-100 text-[#121c42] font-black rounded-full shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2 text-sm uppercase tracking-wider"
                 >
-                  <span>{isAr ? 'اتصل بنا' : 'Contact Us'}</span>
+                  <span>{L('Contact Us', 'اتصل بنا')}</span>
                 </button>
                 <button
                   onClick={() => scrollToSection('services')}
                   className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-full transition-all flex items-center justify-center gap-2 text-sm border border-indigo-500"
                 >
-                  <span>{isAr ? 'استكشف الباقات والأسعار' : 'Explore Packages'}</span>
+                  <span>{L('Explore Packages', 'استكشف الباقات والأسعار')}</span>
                   <ArrowRight size={16} className={isAr ? 'rotate-180' : ''} />
                 </button>
               </div>
@@ -519,7 +525,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 </a>
                 <div className="bg-[#121c42] border border-slate-700/80 text-white px-4 py-2.5 rounded-2xl text-[11px] font-bold shadow-xl flex items-center gap-2 animate-bounce">
                   <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                  <span>{isAr ? 'تحدث مع مستشار ISO الآن' : 'Chat With An ISO Advisor'}</span>
+                  <span>{L('Chat With An ISO Advisor', 'تحدث مع مستشار ISO الآن')}</span>
                 </div>
               </div>
 
@@ -529,14 +535,14 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     <Logo size={28} color="white" />
                   </div>
                   <span className="px-2.5 py-0.5 bg-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-widest rounded border border-emerald-500/30">
-                    {isAr ? 'معتمد دولياً' : 'ACCREDITED'}
+                    {L('ACCREDITED', 'معتمد دولياً')}
                   </span>
                 </div>
 
                 <div>
-                  <p className="text-[10px] text-indigo-300 uppercase font-black tracking-wider">{isAr ? 'تفاصيل السجل الرقمي' : 'Digital Registry details'}</p>
+                  <p className="text-[10px] text-indigo-300 uppercase font-black tracking-wider">{L('Digital Registry details', 'تفاصيل السجل الرقمي')}</p>
                   <p className="text-xl font-black tracking-tight mt-1">ISO 9001:2015</p>
-                  <p className="text-xs text-slate-300 mt-1">{isAr ? 'بوابة الاعتماد الرقمية الذكية للمنشآت' : 'Smart Digital Certification for Enterprises'}</p>
+                  <p className="text-xs text-slate-300 mt-1">{L('Smart Digital Certification for Enterprises', 'بوابة الاعتماد الرقمية الذكية للمنشآت')}</p>
                 </div>
 
                 <div className="border-t border-slate-700/60 pt-4 flex justify-between text-[10px] text-slate-400 font-mono">
@@ -546,20 +552,20 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
                 <div className="p-4 bg-[#12193b] rounded-2xl space-y-2 text-xs border border-slate-800">
                   <div className="flex justify-between items-center">
-                    <span className="text-slate-400">{isAr ? 'سرعة المعالجة' : 'Processing speed'}</span>
-                    <span className="font-bold text-emerald-400">{isAr ? 'فوري (٣-٧ أيام)' : 'Express (3-7 Days)'}</span>
+                    <span className="text-slate-400">{L('Processing speed', 'سرعة المعالجة')}</span>
+                    <span className="font-bold text-emerald-400">{L('Express (3-7 Days)', 'فوري (٣-٧ أيام)')}</span>
                   </div>
                   <div className="flex justify-between items-center border-t border-slate-800 pt-2 mt-2">
-                    <span className="font-bold text-slate-300">{isAr ? 'متوسط الرسوم الموفرة' : 'Avg. cost reduction'}</span>
+                    <span className="font-bold text-slate-300">{L('Avg. cost reduction', 'متوسط الرسوم الموفرة')}</span>
                     <span className="font-bold text-white text-sm">Up to 60%</span>
                   </div>
                 </div>
 
-                <button 
+                <button
                   onClick={() => onNavigateToPortal({ mode: 'signup' })}
                   className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full text-xs font-bold transition-all flex items-center justify-center gap-2"
                 >
-                  <span>{isAr ? 'ابدأ التقديم السريع الآن' : 'Start Fast-Track Process'}</span>
+                  <span>{L('Start Fast-Track Process', 'ابدأ التقديم السريع الآن')}</span>
                   <ChevronRight size={14} className={isAr ? 'rotate-180' : ''} />
                 </button>
               </div>
@@ -577,12 +583,13 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           </div>
           <div>
             <h3 className="text-lg md:text-xl font-black text-white">
-              {isAr ? 'جميع شهاداتنا أصلية ومعتمدة من IAF' : 'Every Certificate Is Genuine & IAF Accredited'}
+              {L('Every Certificate Is Genuine & IAF Accredited', 'جميع شهاداتنا أصلية ومعتمدة من IAF')}
             </h3>
             <p className="text-sm text-slate-400 font-medium mt-1 max-w-2xl">
-              {isAr
-                ? 'تصدر GAMC شهاداتها حصرياً عبر هيئات اعتماد أعضاء في المنتدى الدولي للاعتماد (IAF)، ويمكن التحقق من صحة كل شهادة فوراً عبر السجل العالمي الرسمي IAF CertSearch.'
-                : 'GAMC issues certificates exclusively through accreditation bodies that are members of the International Accreditation Forum (IAF), and every certificate is instantly verifiable through the official IAF CertSearch global registry.'}
+              {L(
+                'GAMC issues certificates exclusively through accreditation bodies that are members of the International Accreditation Forum (IAF), and every certificate is instantly verifiable through the official IAF CertSearch global registry.',
+                'تصدر GAMC شهاداتها حصرياً عبر هيئات اعتماد أعضاء في المنتدى الدولي للاعتماد (IAF)، ويمكن التحقق من صحة كل شهادة فوراً عبر السجل العالمي الرسمي IAF CertSearch.'
+              )}
             </p>
           </div>
         </div>
@@ -610,8 +617,8 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   <Users size={22} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">{isAr ? 'المدققين' : 'Auditor Network'}</p>
-                  <p className="text-xs font-bold text-slate-800">{isAr ? 'مستشارون معتمدون' : 'IRCA Approved'}</p>
+                  <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">{L('Auditor Network', 'المدققين')}</p>
+                  <p className="text-xs font-bold text-slate-800">{L('IRCA Approved', 'مستشارون معتمدون')}</p>
                 </div>
               </div>
 
@@ -620,8 +627,8 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   <FileCheck size={22} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">{isAr ? 'المختبرات والامتثال' : 'Lab Compliance'}</p>
-                  <p className="text-xs font-bold text-slate-800">{isAr ? 'جودة مطلقة ممتدة' : 'Highest Standards'}</p>
+                  <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">{L('Lab Compliance', 'المختبرات والامتثال')}</p>
+                  <p className="text-xs font-bold text-slate-800">{L('Highest Standards', 'جودة مطلقة ممتدة')}</p>
                 </div>
               </div>
             </div>
@@ -629,17 +636,19 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             {/* Right Text Split */}
             <div className="lg:col-span-6 space-y-6">
               <h2 className="text-2xl md:text-3xl font-black text-[#121c42] leading-tight">
-                {isAr 
-                  ? 'نظام توثيق ISO سحابي متطور، يمكن استخدامه وإدارته عن بعد لتوفير التكاليف الباهظة.' 
-                  : 'A cloud-based ISO Documentation system that can be used remotely, to eliminate high cost of ISO Certification.'}
+                {L(
+                  'A cloud-based ISO Documentation system that can be used remotely, to eliminate high cost of ISO Certification.',
+                  'نظام توثيق ISO سحابي متطور، يمكن استخدامه وإدارته عن بعد لتوفير التكاليف الباهظة.'
+                )}
               </h2>
-              
+
               <div className="w-16 h-1 bg-indigo-600 rounded-full"></div>
 
               <p className="text-slate-600 leading-relaxed font-medium">
-                {isAr
-                  ? 'تتسارع بوابتنا الرقمية الفريدة من وتيرة الحصول على شهادات ISO بشكل مذهل، مما يجعلنا الخيار الأكثر كفاءة وموثوقية في تقديم الاعتمادات المعترف بها دولياً في الشرق الأوسط ومختلف دول العالم. نضمن الوضوح التام والشفافية مع الامتثال المكتمل لمتطلبات التدقيق.'
-                  : 'Our unique cloud solution accelerates the certification process, making us the quickest and most affordable provider of accredited ISO certificates. GAMC ensures absolute clarity, regulatory relevance, and seamless digital execution.'}
+                {L(
+                  'Our unique cloud solution accelerates the certification process, making us the quickest and most affordable provider of accredited ISO certificates. GAMC ensures absolute clarity, regulatory relevance, and seamless digital execution.',
+                  'تتسارع بوابتنا الرقمية الفريدة من وتيرة الحصول على شهادات ISO بشكل مذهل، مما يجعلنا الخيار الأكثر كفاءة وموثوقية في تقديم الاعتمادات المعترف بها دولياً في الشرق الأوسط ومختلف دول العالم. نضمن الوضوح التام والشفافية مع الامتثال المكتمل لمتطلبات التدقيق.'
+                )}
               </p>
 
               <div className="pt-4 flex">
@@ -647,7 +656,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   onClick={() => scrollToSection('services')}
                   className="px-6 py-3 bg-[#121c42] hover:bg-slate-800 text-white font-bold rounded-full transition-all text-xs uppercase tracking-wider"
                 >
-                  {isAr ? 'عرض باقات الأسعار' : 'See Pricing'}
+                  {L('See Pricing', 'عرض باقات الأسعار')}
                 </button>
               </div>
             </div>
@@ -659,25 +668,25 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             <div className="space-y-1 bg-[#f8fafc] p-6 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
               <h4 className="text-3xl md:text-4xl font-black text-indigo-600">1,800+</h4>
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                {isAr ? 'عضو راضٍ ومستفيد' : 'Satisfied Members'}
+                {L('Satisfied Members', 'عضو راضٍ ومستفيد')}
               </p>
             </div>
             <div className="space-y-1 bg-[#f8fafc] p-6 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
               <h4 className="text-3xl md:text-4xl font-black text-indigo-600">1,400+</h4>
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                {isAr ? 'شهادة تدريب صادرة' : 'Training Certificates Issued'}
+                {L('Training Certificates Issued', 'شهادة تدريب صادرة')}
               </p>
             </div>
             <div className="space-y-1 bg-[#f8fafc] p-6 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
               <h4 className="text-3xl md:text-4xl font-black text-indigo-600">22+</h4>
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                {isAr ? 'دولة مدعومة ومغذاة' : 'Countries Supported'}
+                {L('Countries Supported', 'دولة مدعومة ومغذاة')}
               </p>
             </div>
             <div className="space-y-1 bg-[#f8fafc] p-6 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
               <h4 className="text-3xl md:text-4xl font-black text-indigo-600">10+</h4>
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                {isAr ? 'عاماً من الخبرة والتميز' : 'Years of Experience'}
+                {L('Years of Experience', 'عاماً من الخبرة والتميز')}
               </p>
             </div>
           </div>
@@ -691,18 +700,19 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-black text-[#121c42] tracking-tight">
-              {isAr ? 'مزايا حصرية فائقة للأعضاء والمنشآت' : 'Exclusive Member Benefits'}
+              {L('Exclusive Member Benefits', 'مزايا حصرية فائقة للأعضاء والمنشآت')}
             </h2>
             <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
             <p className="text-slate-500 font-medium">
-              {isAr 
-                ? 'توفر لك بوابتنا المتكاملة كل ما تحتاجه من موارد للالتزام بالمعايير العالمية والحفاظ على استمرارية ترخيصك.' 
-                : 'Empowering your organization with the absolute best compliance assets and continuous assistance.'}
+              {L(
+                'Empowering your organization with the absolute best compliance assets and continuous assistance.',
+                'توفر لك بوابتنا المتكاملة كل ما تحتاجه من موارد للالتزام بالمعايير العالمية والحفاظ على استمرارية ترخيصك.'
+              )}
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-            
+
             {/* Left Tall Card Image */}
             <div className="lg:col-span-5 relative flex">
               <div
@@ -712,8 +722,8 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 <Award size={130} className="text-white/10" />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/80 to-transparent flex items-end p-8 text-white">
                   <div className="space-y-2">
-                    <span className="text-[10px] uppercase tracking-widest font-black text-indigo-400 bg-white/10 px-3 py-1 rounded-full">{isAr ? 'اعتماداتنا' : 'Credibility'}</span>
-                    <h4 className="text-lg font-bold">{isAr ? 'معايير امتثال معترف بها عالمياً' : 'Global compliance verified'}</h4>
+                    <span className="text-[10px] uppercase tracking-widest font-black text-indigo-400 bg-white/10 px-3 py-1 rounded-full">{L('Credibility', 'اعتماداتنا')}</span>
+                    <h4 className="text-lg font-bold">{L('Global compliance verified', 'معايير امتثال معترف بها عالمياً')}</h4>
                   </div>
                 </div>
               </div>
@@ -721,19 +731,20 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
             {/* Right 2x2 Grid of benefits */}
             <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
-              
+
               {/* Benefit 1 */}
               <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100/60 hover:shadow-md hover:border-indigo-100 transition-all space-y-4">
                 <div className="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center">
                   <Cloud size={24} />
                 </div>
                 <h3 className="text-lg font-black text-slate-900">
-                  {isAr ? 'أدوات ونماذج قابلة للتنزيل' : 'Downloadable Tools'}
+                  {L('Downloadable Tools', 'أدوات ونماذج قابلة للتنزيل')}
                 </h3>
                 <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                  {isAr 
-                    ? 'توفر غلوريا ملصقات مخاطر قابلة للطباعة ونماذج جاهزة للتطبيق لتعزيز معايير السلامة المهنية وتوعية الموظفين.' 
-                    : 'We provide printable hazard posters and ready-to-use compliance templates with optimal placement guides.'}
+                  {L(
+                    'We provide printable hazard posters and ready-to-use compliance templates with optimal placement guides.',
+                    'توفر غلوريا ملصقات مخاطر قابلة للطباعة ونماذج جاهزة للتطبيق لتعزيز معايير السلامة المهنية وتوعية الموظفين.'
+                  )}
                 </p>
               </div>
 
@@ -743,12 +754,13 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   <Award size={24} />
                 </div>
                 <h3 className="text-lg font-black text-slate-900">
-                  {isAr ? 'صلاحية الشهادة ٣٦ شهراً كاملة' : '36 Months Validity'}
+                  {L('36 Months Validity', 'صلاحية الشهادة ٣٦ شهراً كاملة')}
                 </h3>
                 <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                  {isAr 
-                    ? 'تتميز شهادات غلوريا وعضوية البوابة بصلاحية تمتد لـ ٣٦ شهراً، مما يضمن وصلاً مستمراً للموارد والدعم الفني والتدقيق السنوي.' 
-                    : 'Our issued ISO certificates and active portal memberships remain valid for a full 36 months of secure compliance.'}
+                  {L(
+                    'Our issued ISO certificates and active portal memberships remain valid for a full 36 months of secure compliance.',
+                    'تتميز شهادات غلوريا وعضوية البوابة بصلاحية تمتد لـ ٣٦ شهراً، مما يضمن وصلاً مستمراً للموارد والدعم الفني والتدقيق السنوي.'
+                  )}
                 </p>
               </div>
 
@@ -758,12 +770,13 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   <GraduationCap size={24} />
                 </div>
                 <h3 className="text-lg font-black text-slate-900">
-                  {isAr ? 'دورات تدريبية مدمجة' : 'Training Courses'}
+                  {L('Training Courses', 'دورات تدريبية مدمجة')}
                 </h3>
                 <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                  {isAr 
-                    ? 'يستمتع أعضاؤنا بفرص دخول مجاني لدورات تدريب المدقق الداخلي، لتمكين كوادر منشأتك من متابعة الامتثال بشكل دوري.' 
-                    : 'Members receive complimentary access to qualified internal auditor training courses to empower in-house teams.'}
+                  {L(
+                    'Members receive complimentary access to qualified internal auditor training courses to empower in-house teams.',
+                    'يستمتع أعضاؤنا بفرص دخول مجاني لدورات تدريب المدقق الداخلي، لتمكين كوادر منشأتك من متابعة الامتثال بشكل دوري.'
+                  )}
                 </p>
               </div>
 
@@ -773,12 +786,13 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   <Headphones size={24} />
                 </div>
                 <h3 className="text-lg font-black text-slate-900">
-                  {isAr ? 'مكتب دعم متكامل على مدار الساعة' : 'Online Support Desk'}
+                  {L('Online Support Desk', 'مكتب دعم متكامل على مدار الساعة')}
                 </h3>
                 <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                  {isAr 
-                    ? 'منصتكم الموثوقة للحصول على إرشادات الخبراء وحلول المعاملات السريعة عبر فريق تدقيق مستجيب وممتاز.' 
-                    : 'Your dedicated hub for auditor-led guidance, fast answers, and continuous assistance throughout the year.'}
+                  {L(
+                    'Your dedicated hub for auditor-led guidance, fast answers, and continuous assistance throughout the year.',
+                    'منصتكم الموثوقة للحصول على إرشادات الخبراء وحلول المعاملات السريعة عبر فريق تدقيق مستجيب وممتاز.'
+                  )}
                 </p>
               </div>
 
@@ -792,7 +806,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
       <section className="py-14 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
           <p className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-[0.25em] mb-10">
-            {isAr ? 'شركات ومنشآت تثق بخدماتنا واعتماداتنا الرقمية' : 'Satisfied Members & Verified Partners'}
+            {L('Satisfied Members & Verified Partners', 'شركات ومنشآت تثق بخدماتنا واعتماداتنا الرقمية')}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
             {config.partnerLogos.length > 0
@@ -806,16 +820,16 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     key={i}
                     className="w-32 h-16 md:w-36 md:h-20 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 flex items-center justify-center text-[10px] font-bold text-slate-300 uppercase tracking-wider"
                   >
-                    {isAr ? 'شعار العميل' : 'Client Logo'}
+                    {L('Client Logo', 'شعار العميل')}
                   </div>
                 ))}
           </div>
           <div className="mt-8">
-            <button 
+            <button
               onClick={() => scrollToSection('contact-section')}
               className="px-6 py-2.5 bg-[#121c42] hover:bg-indigo-600 text-white rounded-full text-xs font-bold transition-all"
             >
-              {isAr ? 'اتصل بنا للحصول على الدعم' : 'Contact Us'}
+              {L('Contact Us', 'اتصل بنا للحصول على الدعم')}
             </button>
           </div>
         </div>
@@ -824,16 +838,16 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
       {/* Section 5: Reasons to Choose Us */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-black text-[#121c42] tracking-tight">
-              {isAr ? 'لماذا تختار GAMC للحصول على شهادات الـ ISO؟' : 'Reasons To Choose GAMC For Your ISO Certificates'}
+              {L('Reasons To Choose GAMC For Your ISO Certificates', 'لماذا تختار GAMC للحصول على شهادات الـ ISO؟')}
             </h2>
             <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
+
             {/* Card 1 */}
             <div className="bg-[#f8fafc] rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl hover:border-indigo-100 transition-all flex flex-col group">
               <div
@@ -843,11 +857,12 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 <Monitor size={72} className="text-white/90" />
               </div>
               <div className="p-6 space-y-3 flex-1 flex flex-col">
-                <h3 className="text-lg font-black text-slate-900">{isAr ? 'واجهة مستخدم بسيطة للغاية' : 'Simple User Interface'}</h3>
+                <h3 className="text-lg font-black text-slate-900">{L('Simple User Interface', 'واجهة مستخدم بسيطة للغاية')}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed font-medium flex-1">
-                  {isAr 
-                    ? 'منصة سحابية متقدمة تضمن حصول منشأتك على الاعتماد في أقل وقت ممكن مع الحفاظ على صرامة متطلبات المراجعة.' 
-                    : 'A cloud-based layout ensures that companies of all sizes can easily finish and request certificates online.'}
+                  {L(
+                    'A cloud-based layout ensures that companies of all sizes can easily finish and request certificates online.',
+                    'منصة سحابية متقدمة تضمن حصول منشأتك على الاعتماد في أقل وقت ممكن مع الحفاظ على صرامة متطلبات المراجعة.'
+                  )}
                 </p>
               </div>
             </div>
@@ -861,11 +876,12 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 <Globe size={72} className="text-white/90" />
               </div>
               <div className="p-6 space-y-3 flex-1 flex flex-col">
-                <h3 className="text-lg font-black text-slate-900">{isAr ? 'الوصول المدار عن بعد' : 'Remote Access'}</h3>
+                <h3 className="text-lg font-black text-slate-900">{L('Remote Access', 'الوصول المدار عن بعد')}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed font-medium flex-1">
-                  {isAr 
-                    ? 'يمكن الوصول لخدمات غلوريا™ من أي مكان في العالم ومتابعة حالة ملفكم مباشرة دون الحاجة لعناء الزيارات الميدانية المعقدة.' 
-                    : 'Our pipeline is accessible securely from any device, anytime. No complex manual files, no hard geographical borders.'}
+                  {L(
+                    'Our pipeline is accessible securely from any device, anytime. No complex manual files, no hard geographical borders.',
+                    'يمكن الوصول لخدمات غلوريا™ من أي مكان في العالم ومتابعة حالة ملفكم مباشرة دون الحاجة لعناء الزيارات الميدانية المعقدة.'
+                  )}
                 </p>
               </div>
             </div>
@@ -879,11 +895,12 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 <DollarSign size={72} className="text-white/90" />
               </div>
               <div className="p-6 space-y-3 flex-1 flex flex-col">
-                <h3 className="text-lg font-black text-slate-900">{isAr ? 'فعالية تامة في التكلفة' : 'Cost Effective'}</h3>
+                <h3 className="text-lg font-black text-slate-900">{L('Cost Effective', 'فعالية تامة في التكلفة')}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed font-medium flex-1">
-                  {isAr 
-                    ? 'برسوم ثابتة تدفع لمرة واحدة وبدون تكاليف استشارية خفية، نتيح حتى للشركات الناشئة والصغيرة فرصة الحصول على الترخيص.' 
-                    : 'With a one-time fixed fee and zero hidden advisor cost, we make quality compliance budget-friendly for small and large teams.'}
+                  {L(
+                    'With a one-time fixed fee and zero hidden advisor cost, we make quality compliance budget-friendly for small and large teams.',
+                    'برسوم ثابتة تدفع لمرة واحدة وبدون تكاليف استشارية خفية، نتيح حتى للشركات الناشئة والصغيرة فرصة الحصول على الترخيص.'
+                  )}
                 </p>
               </div>
             </div>
@@ -898,18 +915,19 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-black text-[#121c42] tracking-tight">
-              {isAr ? 'طريقة العمل والتنفيذ في ٣ خطوات' : 'How It Works'}
+              {L('How It Works', 'طريقة العمل والتنفيذ في ٣ خطوات')}
             </h2>
             <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
             <p className="text-slate-500 font-medium">
-              {isAr 
-                ? 'تبسط GAMC الحصول على الشهادة بدعم كامل للغة العربية، لتوجيه الشركات عبر خطوات بسيطة وفعالة عبر الإنترنت.' 
-                : 'GAMC streamlines international certification with localized Arabic support, guiding you through modern steps.'}
+              {L(
+                'GAMC streamlines international certification with localized Arabic support, guiding you through modern steps.',
+                'تبسط GAMC الحصول على الشهادة بدعم كامل للغة العربية، لتوجيه الشركات عبر خطوات بسيطة وفعالة عبر الإنترنت.'
+              )}
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Dubai Skyline Card */}
             <div className="lg:col-span-5">
               <div
@@ -918,26 +936,27 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               >
                 <Building size={140} className="text-white/10" />
                 <div className="absolute inset-0 flex flex-col justify-end p-8 text-white bg-gradient-to-t from-slate-950/80 to-transparent">
-                  <span className="text-xs font-bold text-indigo-300 uppercase tracking-widest mb-1">{isAr ? 'من قلب دبي' : 'BASED IN DUBAI'}</span>
-                  <h4 className="text-xl font-black">{isAr ? 'سرعة ومصداقية عالمية' : 'Rapid Global Processing'}</h4>
+                  <span className="text-xs font-bold text-indigo-300 uppercase tracking-widest mb-1">{L('BASED IN DUBAI', 'من قلب دبي')}</span>
+                  <h4 className="text-xl font-black">{L('Rapid Global Processing', 'سرعة ومصداقية عالمية')}</h4>
                 </div>
               </div>
             </div>
 
             {/* Right Horizontal/Vertical Custom Steps */}
             <div className="lg:col-span-7 space-y-8">
-              
+
               {/* Step 1 */}
               <div className="flex gap-4 bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:border-indigo-100 transition-colors">
                 <div className="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-lg shrink-0">
                   1
                 </div>
                 <div className="space-y-1">
-                  <h4 className="font-black text-slate-900 text-base">{isAr ? 'اختر المعيار المناسب' : 'Choose Your Standard'}</h4>
+                  <h4 className="font-black text-slate-900 text-base">{L('Choose Your Standard', 'اختر المعيار المناسب')}</h4>
                   <p className="text-sm text-slate-500 leading-relaxed">
-                    {isAr 
-                      ? 'حدد معيار الـ ISO الذي ترغب بالحصول عليه لشركتك واملأ بيانات المنشأة الأساسية عبر نظامنا.' 
-                      : 'Select your desired framework (ISO 9001, 14001, etc.) and complete your initial business profile details.'}
+                    {L(
+                      'Select your desired framework (ISO 9001, 14001, etc.) and complete your initial business profile details.',
+                      'حدد معيار الـ ISO الذي ترغب بالحصول عليه لشركتك واملأ بيانات المنشأة الأساسية عبر نظامنا.'
+                    )}
                   </p>
                 </div>
               </div>
@@ -948,11 +967,12 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   2
                 </div>
                 <div className="space-y-1">
-                  <h4 className="font-black text-slate-900 text-base">{isAr ? 'رفع مستندات الامتثال' : 'Upload Documentation'}</h4>
+                  <h4 className="font-black text-slate-900 text-base">{L('Upload Documentation', 'رفع مستندات الامتثال')}</h4>
                   <p className="text-sm text-slate-500 leading-relaxed">
-                    {isAr 
-                      ? 'قم برفع ملفات ومخططات شركتك باتباع موجهاتنا الذكية ليتسنى لفريق التدقيق مراجعتها فورا.' 
-                      : 'Upload required documents via our secure dashboard guided by intuitive auditor checklists for rapid review.'}
+                    {L(
+                      'Upload required documents via our secure dashboard guided by intuitive auditor checklists for rapid review.',
+                      'قم برفع ملفات ومخططات شركتك باتباع موجهاتنا الذكية ليتسنى لفريق التدقيق مراجعتها فورا.'
+                    )}
                   </p>
                 </div>
               </div>
@@ -963,11 +983,12 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   3
                 </div>
                 <div className="space-y-1">
-                  <h4 className="font-black text-slate-900 text-base">{isAr ? 'تحميل واستلام الشهادة' : 'Receive Certificate'}</h4>
+                  <h4 className="font-black text-slate-900 text-base">{L('Receive Certificate', 'تحميل واستلام الشهادة')}</h4>
                   <p className="text-sm text-slate-500 leading-relaxed">
-                    {isAr 
-                      ? 'بمجرد نجاح التدقيق الفوري، قم بتحميل نسختك المعتمدة مباشرة مع تفعيل رقم التسجيل الدولي الخاص بك.' 
-                      : 'Upon successful virtual audit, download your certified PDF immediately and receive secure printed copies.'}
+                    {L(
+                      'Upon successful virtual audit, download your certified PDF immediately and receive secure printed copies.',
+                      'بمجرد نجاح التدقيق الفوري، قم بتحميل نسختك المعتمدة مباشرة مع تفعيل رقم التسجيل الدولي الخاص بك.'
+                    )}
                   </p>
                 </div>
               </div>
@@ -986,15 +1007,16 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             <div className={`lg:col-span-5 space-y-6 ${isAr ? 'lg:order-2 text-right' : ''}`}>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-indigo-500/20 backdrop-blur-md text-indigo-300 rounded-full text-xs font-bold tracking-wider uppercase border border-indigo-500/30">
                 <ShieldCheck size={14} />
-                <span>{isAr ? 'شفافية كاملة' : 'Full Transparency'}</span>
+                <span>{L('Full Transparency', 'شفافية كاملة')}</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-black text-white leading-tight">
-                {isAr ? 'تحقق فوراً من صحة أي شهادة ISO' : 'Verify Any ISO Certificate Instantly'}
+                {L('Verify Any ISO Certificate Instantly', 'تحقق فوراً من صحة أي شهادة ISO')}
               </h2>
               <p className="text-slate-400 leading-relaxed">
-                {isAr
-                  ? 'كل شهادة نصدرها قابلة للتحقق فوراً عبر قاعدة بيانات IAF CertSearch العالمية — السجل الرسمي الموحّد لجميع شهادات الاعتماد المعترف بها دولياً. شاهد كيف يمكن لعملائك وشركائك التأكد من صحة شهادتك في ثوانٍ.'
-                  : 'Every certificate we issue is instantly verifiable through IAF CertSearch, the official global registry for internationally accredited certifications. Watch how your clients and partners can confirm your certificate is genuine in seconds.'}
+                {L(
+                  'Every certificate we issue is instantly verifiable through IAF CertSearch, the official global registry for internationally accredited certifications. Watch how your clients and partners can confirm your certificate is genuine in seconds.',
+                  'كل شهادة نصدرها قابلة للتحقق فوراً عبر قاعدة بيانات IAF CertSearch العالمية — السجل الرسمي الموحّد لجميع شهادات الاعتماد المعترف بها دولياً. شاهد كيف يمكن لعملائك وشركائك التأكد من صحة شهادتك في ثوانٍ.'
+                )}
               </p>
               <div className="flex items-center gap-3 pt-2">
                 <a
@@ -1003,7 +1025,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-100 text-[#0b1021] font-bold rounded-full transition-all text-sm"
                 >
-                  <span>{isAr ? 'زيارة IAF CertSearch' : 'Visit IAF CertSearch'}</span>
+                  <span>{L('Visit IAF CertSearch', 'زيارة IAF CertSearch')}</span>
                   <ExternalLink size={16} />
                 </a>
               </div>
@@ -1020,7 +1042,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   playsInline
                   preload="auto"
                 >
-                  {isAr ? 'متصفحك لا يدعم عرض الفيديو.' : 'Your browser does not support the video tag.'}
+                  {L('Your browser does not support the video tag.', 'متصفحك لا يدعم عرض الفيديو.')}
                 </video>
               </div>
             </div>
@@ -1035,13 +1057,14 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-black text-[#121c42] tracking-tight">
-              {isAr ? 'الشهادات المتاحة والأسعار الشفافة' : 'Pricing & Accredited Standards'}
+              {L('Pricing & Accredited Standards', 'الشهادات المتاحة والأسعار الشفافة')}
             </h2>
             <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
             <p className="text-slate-500 font-medium">
-              {isAr 
-                ? 'باقات مرنة وتنافسية تناسب مختلف المنشآت والشركات لتحقيق الامتثال التام دون أي استشارات مكلفة.' 
-                : 'Clear pricing structure for maximum organization value, speed, and absolute transparency.'}
+              {L(
+                'Clear pricing structure for maximum organization value, speed, and absolute transparency.',
+                'باقات مرنة وتنافسية تناسب مختلف المنشآت والشركات لتحقيق الامتثال التام دون أي استشارات مكلفة.'
+              )}
             </p>
           </div>
 
@@ -1055,42 +1078,42 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   ISO 9001:2015
                 </span>
                 <h3 className="text-base font-black text-slate-900">
-                  {isAr ? 'نظام إدارة الجودة (QMS)' : 'Quality Management System'}
+                  {L('Quality Management System', 'نظام إدارة الجودة (QMS)')}
                 </h3>
                 <div className="pt-2">
-                  <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{isAr ? 'رسوم ثابتة' : 'Fixed fee'}</span>
+                  <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{L('Fixed fee', 'رسوم ثابتة')}</span>
                   <span className="text-2xl font-black text-[#121c42]">AED 4,495</span>
                 </div>
-                
+
                 <div className="border-t border-slate-200/50 pt-4 mt-4">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{isAr ? 'مزايا الباقة:' : 'Features Included:'}</p>
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{L('Features Included:', 'مزايا الباقة:')}</p>
                   <ul className="space-y-2 text-xs text-slate-600 font-medium">
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'اعتماد دولي مرموق ومعترف به' : 'Globally Recognized & Verifiable'}</span>
+                      <span>{L('Globally Recognized & Verifiable', 'اعتماد دولي مرموق ومعترف به')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'إعداد الوثائق ومراجعتها بالكامل' : 'Full Document Prep & Guided Audit'}</span>
+                      <span>{L('Full Document Prep & Guided Audit', 'إعداد الوثائق ومراجعتها بالكامل')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'صلاحية الشهادة ٣ سنوات معتمدة' : '3-Year Certified Validity'}</span>
+                      <span>{L('3-Year Certified Validity', 'صلاحية الشهادة ٣ سنوات معتمدة')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'وصول مجاني لمنصة التدريب' : 'Complimentary Auditor Training'}</span>
+                      <span>{L('Complimentary Auditor Training', 'وصول مجاني لمنصة التدريب')}</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
               <div className="pt-6">
-                <button 
+                <button
                   onClick={() => handleOrderClick('ISO 9001')}
                   className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all uppercase tracking-wider"
                 >
-                  {isAr ? 'شراء الآن' : 'Buy Now'}
+                  {L('Buy Now', 'شراء الآن')}
                 </button>
               </div>
             </div>
@@ -1102,42 +1125,42 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   ISO 14001:2015
                 </span>
                 <h3 className="text-base font-black text-slate-900">
-                  {isAr ? 'نظام إدارة البيئة (EMS)' : 'Environmental Management'}
+                  {L('Environmental Management', 'نظام إدارة البيئة (EMS)')}
                 </h3>
                 <div className="pt-2">
-                  <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{isAr ? 'رسوم ثابتة' : 'Fixed fee'}</span>
+                  <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{L('Fixed fee', 'رسوم ثابتة')}</span>
                   <span className="text-2xl font-black text-[#121c42]">AED 4,495</span>
                 </div>
-                
+
                 <div className="border-t border-slate-200/50 pt-4 mt-4">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{isAr ? 'مزايا الباقة:' : 'Features Included:'}</p>
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{L('Features Included:', 'مزايا الباقة:')}</p>
                   <ul className="space-y-2 text-xs text-slate-600 font-medium">
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'اعتماد بيئي متوافق كليا' : 'Globally Recognized & Verifiable'}</span>
+                      <span>{L('Globally Recognized & Verifiable', 'اعتماد بيئي متوافق كليا')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'توفير التكاليف ومراجعة الموارد' : 'Full Document Prep & Guided Audit'}</span>
+                      <span>{L('Full Document Prep & Guided Audit', 'توفير التكاليف ومراجعة الموارد')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'صلاحية الشهادة ٣ سنوات معتمدة' : '3-Year Certified Validity'}</span>
+                      <span>{L('3-Year Certified Validity', 'صلاحية الشهادة ٣ سنوات معتمدة')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'مكتب دعم فني ذكي للمراجعة' : 'Complimentary Auditor Training'}</span>
+                      <span>{L('Complimentary Auditor Training', 'مكتب دعم فني ذكي للمراجعة')}</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
               <div className="pt-6">
-                <button 
+                <button
                   onClick={() => handleOrderClick('ISO 14001')}
                   className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all uppercase tracking-wider"
                 >
-                  {isAr ? 'شراء الآن' : 'Buy Now'}
+                  {L('Buy Now', 'شراء الآن')}
                 </button>
               </div>
             </div>
@@ -1149,42 +1172,42 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   ISO 45001:2018
                 </span>
                 <h3 className="text-base font-black text-slate-900">
-                  {isAr ? 'السلامة والصحة المهنية (OHSMS)' : 'Occupational Health & Safety'}
+                  {L('Occupational Health & Safety', 'السلامة والصحة المهنية (OHSMS)')}
                 </h3>
                 <div className="pt-2">
-                  <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{isAr ? 'رسوم ثابتة' : 'Fixed fee'}</span>
+                  <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{L('Fixed fee', 'رسوم ثابتة')}</span>
                   <span className="text-2xl font-black text-[#121c42]">AED 4,495</span>
                 </div>
-                
+
                 <div className="border-t border-slate-200/50 pt-4 mt-4">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{isAr ? 'مزايا الباقة:' : 'Features Included:'}</p>
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{L('Features Included:', 'مزايا الباقة:')}</p>
                   <ul className="space-y-2 text-xs text-slate-600 font-medium">
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'اعتماد للحد من مخاطر العمل' : 'Globally Recognized & Verifiable'}</span>
+                      <span>{L('Globally Recognized & Verifiable', 'اعتماد للحد من مخاطر العمل')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'تقليل الفاقد وتأمين المنشأة' : 'Full Document Prep & Guided Audit'}</span>
+                      <span>{L('Full Document Prep & Guided Audit', 'تقليل الفاقد وتأمين المنشأة')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'صلاحية الشهادة ٣ سنوات معتمدة' : '3-Year Certified Validity'}</span>
+                      <span>{L('3-Year Certified Validity', 'صلاحية الشهادة ٣ سنوات معتمدة')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{isAr ? 'الوصول لدورات مدقق داخلي ممتازة' : 'Complimentary Auditor Training'}</span>
+                      <span>{L('Complimentary Auditor Training', 'الوصول لدورات مدقق داخلي ممتازة')}</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
               <div className="pt-6">
-                <button 
+                <button
                   onClick={() => handleOrderClick('ISO 45001')}
                   className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all uppercase tracking-wider"
                 >
-                  {isAr ? 'شراء الآن' : 'Buy Now'}
+                  {L('Buy Now', 'شراء الآن')}
                 </button>
               </div>
             </div>
@@ -1192,51 +1215,51 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             {/* Card 4: Integrated Management System (IMS) */}
             <div className="bg-[#121c42] text-white border-2 border-indigo-500 rounded-3xl p-6 flex flex-col justify-between hover:shadow-2xl transition-all relative overflow-hidden group">
               <div className="absolute top-0 right-0 bg-[#f7b500] text-[#121c42] text-[8px] font-black px-3 py-1 uppercase rounded-bl-xl tracking-widest">
-                {isAr ? 'باقة التميز المتكاملة' : 'BEST VALUE PACKAGE'}
+                {L('BEST VALUE PACKAGE', 'باقة التميز المتكاملة')}
               </div>
               <div className="space-y-4">
                 <span className="px-2.5 py-1 bg-indigo-500/30 text-indigo-300 text-[10px] font-black rounded uppercase tracking-wider block w-fit mb-2 border border-indigo-500/20">
                   IMS SPECIAL BUNDLE
                 </span>
                 <h3 className="text-base font-black text-white">
-                  {isAr ? 'نظام الإدارة المتكامل (IMS)' : 'Integrated Management System'}
+                  {L('Integrated Management System', 'نظام الإدارة المتكامل (IMS)')}
                 </h3>
-                <p className="text-[10px] text-slate-400 font-medium">{isAr ? 'حزمة تجمع معايير ISO 9001 + 14001 + 45001' : 'ISO 9001, 14001, and 45001 combined.'}</p>
-                
+                <p className="text-[10px] text-slate-400 font-medium">{L('ISO 9001, 14001, and 45001 combined.', 'حزمة تجمع معايير ISO 9001 + 14001 + 45001')}</p>
+
                 <div className="pt-2">
-                  <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{isAr ? 'رسوم ثابتة شاملة' : 'All-inclusive fee'}</span>
+                  <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{L('All-inclusive fee', 'رسوم ثابتة شاملة')}</span>
                   <span className="text-2xl font-black text-[#f7b500]">AED 10,995</span>
                 </div>
-                
+
                 <div className="border-t border-slate-700/60 pt-4 mt-4">
-                  <p className="text-xs font-bold text-indigo-300 uppercase tracking-widest mb-3">{isAr ? 'مزايا الباقة الشاملة:' : 'IMS Premium Features:'}</p>
+                  <p className="text-xs font-bold text-indigo-300 uppercase tracking-widest mb-3">{L('IMS Premium Features:', 'مزايا الباقة الشاملة:')}</p>
                   <ul className="space-y-2 text-xs text-slate-300 font-medium">
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-[#f7b500] shrink-0 mt-0.5" />
-                      <span>{isAr ? '٣ شهادات ISO كاملة معتمدة ومتكاملة' : '3 Fully Verified ISO Certificates'}</span>
+                      <span>{L('3 Fully Verified ISO Certificates', '٣ شهادات ISO كاملة معتمدة ومتكاملة')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-[#f7b500] shrink-0 mt-0.5" />
-                      <span>{isAr ? 'توفير مذهل لأكثر من AED 2,000' : 'Save Over AED 2,000 Instantly'}</span>
+                      <span>{L('Save Over AED 2,000 Instantly', 'توفير مذهل لأكثر من AED 2,000')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-[#f7b500] shrink-0 mt-0.5" />
-                      <span>{isAr ? 'إجراء تدقيق متكامل وموحد لتوفير التعب' : 'Unified Auditor Compliance Stream'}</span>
+                      <span>{L('Unified Auditor Compliance Stream', 'إجراء تدقيق متكامل وموحد لتوفير التعب')}</span>
                     </li>
                     <li className="flex items-start gap-1.5">
                       <Check size={14} className="text-[#f7b500] shrink-0 mt-0.5" />
-                      <span>{isAr ? 'مستشار حصر لمتابعة الملف سنوياً' : 'Priority Support & Dedicated Auditor'}</span>
+                      <span>{L('Priority Support & Dedicated Auditor', 'مستشار حصر لمتابعة الملف سنوياً')}</span>
                     </li>
                   </ul>
                 </div>
               </div>
 
               <div className="pt-6">
-                <button 
+                <button
                   onClick={() => handleOrderClick('IMS Bundle')}
                   className="w-full py-3.5 bg-[#f7b500] hover:bg-[#e6a800] text-slate-900 rounded-xl text-xs font-black transition-all uppercase tracking-widest"
                 >
-                  {isAr ? 'شراء الآن الباقة المتكاملة' : 'Buy IMS Bundle'}
+                  {L('Buy IMS Bundle', 'شراء الآن الباقة المتكاملة')}
                 </button>
               </div>
             </div>
@@ -1246,15 +1269,16 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           {/* Alert box below pricing */}
           <div className="mt-14 bg-[#f8fafc] border border-slate-200/50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-sm text-slate-600 font-medium max-w-3xl leading-relaxed text-center md:text-start">
-              {isAr 
-                ? 'حقق الامتثال اللوائح والتشريعات، وحسّن الكفاءة التشغيلية، وابنِ جسور الثقة مع الشركاء المحليين والدوليين في الأسواق التنافسية اليوم.' 
-                : 'Meet regulatory compliance, improve operational efficiency, and build trust with local and international partners in competitive markets today.'}
+              {L(
+                'Meet regulatory compliance, improve operational efficiency, and build trust with local and international partners in competitive markets today.',
+                'حقق الامتثال اللوائح والتشريعات، وحسّن الكفاءة التشغيلية، وابنِ جسور الثقة مع الشركاء المحليين والدوليين في الأسواق التنافسية اليوم.'
+              )}
             </p>
-            <button 
+            <button
               onClick={() => scrollToSection('contact-section')}
               className="px-6 py-3 bg-[#121c42] hover:bg-slate-800 text-white rounded-full text-xs font-bold transition-all shrink-0 uppercase tracking-wider"
             >
-              {isAr ? 'اتصل بنا الآن' : 'Contact Us'}
+              {L('Contact Us', 'اتصل بنا الآن')}
             </button>
           </div>
 
@@ -1268,16 +1292,17 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-indigo-50 text-indigo-600 rounded-full text-xs font-bold tracking-wider uppercase border border-indigo-100">
               <GraduationCap size={14} />
-              <span>{isAr ? '100% أونلاين' : '100% Online'}</span>
+              <span>{L('100% Online', '100% أونلاين')}</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-black text-[#121c42] tracking-tight">
-              {isAr ? 'دورات تدريب المدقق الرئيسي (Lead Auditor)' : 'Lead Auditor Training Standards'}
+              {L('Lead Auditor Training Standards', 'دورات تدريب المدقق الرئيسي (Lead Auditor)')}
             </h2>
             <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
             <p className="text-slate-500 font-medium">
-              {isAr
-                ? 'جميع دورات تدريب المدقق الرئيسي تُقدَّم بالكامل أونلاين، مما يتيح لفريقك التأهل دون الحاجة للسفر أو التواجد الحضوري.'
-                : 'All Lead Auditor training courses are delivered fully online, so your team can qualify without travel or in-person attendance.'}
+              {L(
+                'All Lead Auditor training courses are delivered fully online, so your team can qualify without travel or in-person attendance.',
+                'جميع دورات تدريب المدقق الرئيسي تُقدَّم بالكامل أونلاين، مما يتيح لفريقك التأهل دون الحاجة للسفر أو التواجد الحضوري.'
+              )}
             </p>
           </div>
 
@@ -1292,14 +1317,14 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 </div>
                 <div>
                   <span className="text-sm font-black text-slate-900 block">{std.code}</span>
-                  <span className="text-xs text-slate-500 font-medium block mt-0.5">{isAr ? std.titleAr : std.titleEn}</span>
+                  <span className="text-xs text-slate-500 font-medium block mt-0.5">{L(std.titleEn, std.titleAr)}</span>
                 </div>
-                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">{isAr ? 'مدقق رئيسي' : 'Lead Auditor'}</span>
+                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">{L('Lead Auditor', 'مدقق رئيسي')}</span>
                 <button
                   onClick={() => openLeadModal(std.code)}
                   className="mt-2 w-full py-2.5 bg-slate-50 hover:bg-indigo-600 text-slate-700 hover:text-white border border-slate-200 hover:border-indigo-600 rounded-xl text-xs font-bold transition-all"
                 >
-                  {isAr ? 'اطلب معلومات' : 'Request Info'}
+                  {L('Request Info', 'اطلب معلومات')}
                 </button>
               </div>
             ))}
@@ -1310,7 +1335,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               onClick={() => openLeadModal('')}
               className="px-6 py-3 bg-[#121c42] hover:bg-indigo-600 text-white rounded-full text-xs font-bold transition-all uppercase tracking-wider"
             >
-              {isAr ? 'استفسر عن مواعيد الدورات' : 'Ask About Course Schedules'}
+              {L('Ask About Course Schedules', 'استفسر عن مواعيد الدورات')}
             </button>
           </div>
 
@@ -1328,22 +1353,23 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             <div className="relative z-10 space-y-5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/10 backdrop-blur-md text-amber-300 rounded-full text-xs font-bold tracking-wider uppercase border border-white/20">
                 <Sparkles size={14} />
-                <span>{isAr ? 'برنامج الإحالة' : 'Referral Program'}</span>
+                <span>{L('Referral Program', 'برنامج الإحالة')}</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-black tracking-tight">
-                {isAr ? 'أحِل عميلاً، واربح AED 500' : 'Refer a Client, Earn AED 500'}
+                {L('Refer a Client, Earn AED 500', 'أحِل عميلاً، واربح AED 500')}
               </h2>
               <p className="text-indigo-100 max-w-xl mx-auto font-medium leading-relaxed">
-                {isAr
-                  ? 'انضم مجاناً واحصل على رابط إحالة خاص بك فوراً. لكل عميل تُحيله ويكمل الدفع مقابل شهادة ISO، تربح AED 500.'
-                  : 'Join free and get your own referral link instantly. For every client you refer who completes payment for an ISO certificate, you earn AED 500.'}
+                {L(
+                  'Join free and get your own referral link instantly. For every client you refer who completes payment for an ISO certificate, you earn AED 500.',
+                  'انضم مجاناً واحصل على رابط إحالة خاص بك فوراً. لكل عميل تُحيله ويكمل الدفع مقابل شهادة ISO، تربح AED 500.'
+                )}
               </p>
               <div className="pt-2">
                 <button
                   onClick={openReferModal}
                   className="px-8 py-4 bg-white hover:bg-slate-100 text-[#121c42] font-black rounded-full shadow-lg transition-all active:scale-[0.98] text-sm uppercase tracking-wider"
                 >
-                  {isAr ? 'انضم الآن واحصل على رابطك' : 'Join Now & Get Your Link'}
+                  {L('Join Now & Get Your Link', 'انضم الآن واحصل على رابطك')}
                 </button>
               </div>
             </div>
@@ -1360,19 +1386,20 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
       >
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center space-y-6 relative z-10">
           <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-tight">
-            {isAr ? 'نمو الأعمال التجارية مع شهادات ISO المعتمدة والتدريب' : 'Business Growth with Accessible ISO Certification and Training'}
+            {L('Business Growth with Accessible ISO Certification and Training', 'نمو الأعمال التجارية مع شهادات ISO المعتمدة والتدريب')}
           </h2>
           <p className="text-indigo-100 max-w-2xl mx-auto font-medium leading-relaxed text-sm md:text-base">
-            {isAr 
-              ? 'حقق الامتثال اللوائح والتشريعات وحسن الكفاءة التشغيلية لشركتك لبناء ثقة راسخة مع الشركاء المحليين والدوليين في الأسواق التنافسية.'
-              : 'Meet regulatory compliance, improve operational efficiency, and build trust with local and international partners in competitive markets globally.'}
+            {L(
+              'Meet regulatory compliance, improve operational efficiency, and build trust with local and international partners in competitive markets globally.',
+              'حقق الامتثال اللوائح والتشريعات وحسن الكفاءة التشغيلية لشركتك لبناء ثقة راسخة مع الشركاء المحليين والدوليين في الأسواق التنافسية.'
+            )}
           </p>
           <div className="pt-4 flex justify-center">
             <button
               onClick={() => onNavigateToPortal({ mode: 'signup' })}
               className="px-8 py-4 bg-[#f7b500] hover:bg-[#e6a800] text-[#121c42] font-black rounded-full shadow-lg transition-all active:scale-[0.98] uppercase text-xs tracking-widest"
             >
-              {isAr ? 'اطلب الآن شهادتك' : 'Order Now'}
+              {L('Order Now', 'اطلب الآن شهادتك')}
             </button>
           </div>
         </div>
@@ -1386,38 +1413,39 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             {/* Contact Form Card on Left */}
             <div className="bg-[#b9d2f6] rounded-[2rem] p-6 md:p-8 flex flex-col justify-center shadow-sm">
               <div className="bg-white rounded-3xl p-6 md:p-10 shadow-md">
-                <h2 className="text-3xl md:text-4xl font-black text-slate-800 mb-8 text-center">{isAr ? 'اتصل بنا' : 'Contact us'}</h2>
-                
+                <h2 className="text-3xl md:text-4xl font-black text-slate-800 mb-8 text-center">{L('Contact us', 'اتصل بنا')}</h2>
+
                 {formSubmitted ? (
                   <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 text-center space-y-4 my-8">
                     <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
                       <CheckCircle2 size={24} />
                     </div>
-                    <h3 className="font-bold text-slate-900">{isAr ? 'تم الإرسال بنجاح!' : 'Message Sent Successfully!'}</h3>
+                    <h3 className="font-bold text-slate-900">{L('Message Sent Successfully!', 'تم الإرسال بنجاح!')}</h3>
                     <p className="text-xs text-slate-500 leading-relaxed">
-                      {isAr 
-                        ? 'شكراً لك! تم إرسال رسالتك بنجاح. سيتواصل معك أحد مستشارينا المعتمدين خلال الساعات القليلة القادمة.' 
-                        : 'Thank you! Your message has been sent successfully. One of our qualified ISO auditors will contact you shortly.'}
+                      {L(
+                        'Thank you! Your message has been sent successfully. One of our qualified ISO auditors will contact you shortly.',
+                        'شكراً لك! تم إرسال رسالتك بنجاح. سيتواصل معك أحد مستشارينا المعتمدين خلال الساعات القليلة القادمة.'
+                      )}
                     </p>
                   </div>
                 ) : (
                   <form onSubmit={handleContactSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-xs md:text-sm font-bold text-slate-800 mb-2">{isAr ? 'اسم جهة الاتصال:' : 'Contact Name:'}</label>
-                        <input 
-                          type="text" 
+                        <label className="block text-xs md:text-sm font-bold text-slate-800 mb-2">{L('Contact Name:', 'اسم جهة الاتصال:')}</label>
+                        <input
+                          type="text"
                           required
                           value={contactForm.name}
                           onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
                           className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-xs md:text-sm font-medium text-slate-800 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 shadow-inner"
                         />
                       </div>
-                      
+
                       <div>
-                        <label className="block text-xs md:text-sm font-bold text-slate-800 mb-2">{isAr ? 'اسم الشركة / المنشأة:' : 'Business Name:'}</label>
-                        <input 
-                          type="text" 
+                        <label className="block text-xs md:text-sm font-bold text-slate-800 mb-2">{L('Business Name:', 'اسم الشركة / المنشأة:')}</label>
+                        <input
+                          type="text"
                           required
                           value={contactForm.businessName}
                           onChange={(e) => setContactForm({ ...contactForm, businessName: e.target.value })}
@@ -1426,21 +1454,21 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                       </div>
 
                       <div>
-                        <label className="block text-xs md:text-sm font-bold text-slate-800 mb-2">{isAr ? 'رقم الهاتف:' : 'Telephone Number:'}</label>
-                        <input 
-                          type="tel" 
+                        <label className="block text-xs md:text-sm font-bold text-slate-800 mb-2">{L('Telephone Number:', 'رقم الهاتف:')}</label>
+                        <input
+                          type="tel"
                           required
                           value={contactForm.phone}
                           onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
-                          placeholder={isAr ? '(تشمل رمز المنطقة)' : '(Include area code)'}
+                          placeholder={L('(Include area code)', '(تشمل رمز المنطقة)')}
                           className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl text-xs md:text-sm font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 shadow-inner"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs md:text-sm font-bold text-slate-800 mb-2">{isAr ? 'البريد الإلكتروني:' : 'Email'}</label>
-                        <input 
-                          type="email" 
+                        <label className="block text-xs md:text-sm font-bold text-slate-800 mb-2">{L('Email', 'البريد الإلكتروني:')}</label>
+                        <input
+                          type="email"
                           required
                           value={contactForm.email}
                           onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
@@ -1450,26 +1478,27 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     </div>
 
                     <div className="flex items-start gap-3 pt-2">
-                      <input 
-                        type="checkbox" 
+                      <input
+                        type="checkbox"
                         id="companyOnly"
                         checked={contactForm.isCompanyOnly}
                         onChange={(e) => setContactForm({ ...contactForm, isCompanyOnly: e.target.checked })}
                         className="mt-1.5 h-4 w-4 accent-indigo-600 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                       />
                       <label htmlFor="companyOnly" className="text-xs md:text-sm font-bold text-slate-800 leading-relaxed select-none cursor-pointer">
-                        {isAr 
-                          ? 'هذا الاستفسار مخصص لشهادات ISO للشركات والمؤسسات فقط (وليس لدورات تدريب الأفراد).' 
-                          : 'This enquiry is for company ISO certification only (Not Individual ISO Training Courses)'}
+                        {L(
+                          'This enquiry is for company ISO certification only (Not Individual ISO Training Courses)',
+                          'هذا الاستفسار مخصص لشهادات ISO للشركات والمؤسسات فقط (وليس لدورات تدريب الأفراد).'
+                        )}
                       </label>
                     </div>
 
                     <div className="pt-4 flex justify-center">
-                      <button 
+                      <button
                         type="submit"
                         className="px-12 py-3 bg-[#1e40af] hover:bg-blue-800 text-white rounded-xl text-sm font-bold transition-all shadow-md hover:scale-[1.02] active:scale-[0.98] min-w-[140px]"
                       >
-                        {isAr ? 'إرسال' : 'Send'}
+                        {L('Send', 'إرسال')}
                       </button>
                     </div>
                   </form>
@@ -1485,32 +1514,36 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     GAMC
                   </h2>
                   <p className="text-xs md:text-sm text-indigo-800 font-bold uppercase tracking-wider mt-1">
-                    {isAr ? 'المنصة العالمية لشهادات الأيزو' : 'Global ISO certification platform'}
+                    {L('Global ISO certification platform', 'المنصة العالمية لشهادات الأيزو')}
                   </p>
                 </div>
-                
+
                 <p className="text-sm md:text-base text-slate-800 leading-relaxed font-medium">
-                  {isAr 
-                    ? 'بصفتنا منصة رقمية بالكامل لمنح شهادات ISO مع إمكانات تدريب متكاملة ودعم مخصص للمساعدة، تتعاون GAMC مع شبكة مختارة من مستشاري ISO حول العالم الذين يستفيدون من منصتنا الإلكترونية لتقديم خدمات إصدار الشهادات لعملائهم بكفاءة وعلى نطاق واسع.'
-                    : 'As a fully digital ISO certification platform with integrated training capabilities and dedicated help desk support, GAMC collaborates with a select network of ISO consultants around the world who leverage our online platform to deliver certification services to their clients efficiently and at scale.'}
+                  {L(
+                    'As a fully digital ISO certification platform with integrated training capabilities and dedicated help desk support, GAMC collaborates with a select network of ISO consultants around the world who leverage our online platform to deliver certification services to their clients efficiently and at scale.',
+                    'بصفتنا منصة رقمية بالكامل لمنح شهادات ISO مع إمكانات تدريب متكاملة ودعم مخصص للمساعدة، تتعاون GAMC مع شبكة مختارة من مستشاري ISO حول العالم الذين يستفيدون من منصتنا الإلكترونية لتقديم خدمات إصدار الشهادات لعملائهم بكفاءة وعلى نطاق واسع.'
+                  )}
                 </p>
 
                 <p className="text-sm md:text-base text-slate-800 leading-relaxed font-medium">
-                  {isAr 
-                    ? 'يستفيد شركاؤنا الاستشاريون من بنية تحتية رقمية جاهزة، ومسارات اعتماد معتمدة، ودعم متعدد اللغات، بما في ذلك منصة التدريب الوحيدة الكاملة باللغة العربية لشهادات ISO من نوعها في العالم.'
-                    : 'Our consultant partners benefit from a ready-made digital infrastructure, accredited certification pathways, and multilingual support, including the only full Arabic-language ISO training platform of its kind globally.'}
+                  {L(
+                    'Our consultant partners benefit from a ready-made digital infrastructure, accredited certification pathways, and multilingual support, including the only full Arabic-language ISO training platform of its kind globally.',
+                    'يستفيد شركاؤنا الاستشاريون من بنية تحتية رقمية جاهزة، ومسارات اعتماد معتمدة، ودعم متعدد اللغات، بما في ذلك منصة التدريب الوحيدة الكاملة باللغة العربية لشهادات ISO من نوعها في العالم.'
+                  )}
                 </p>
 
                 <p className="text-sm md:text-base text-slate-800 leading-relaxed font-medium">
-                  {isAr 
-                    ? 'إذا كنت مستشار ISO معتمداً وتتطلع إلى توسيع نطاق خدماتك، أو التوسع في أسواق جديدة، أو تبسيط تسليم خدماتك من خلال شريك رقمي موثوق، يسعدنا استكشاف كيف يمكن أن يعمل هذا التعاون.'
-                    : 'If you are an established ISO consultant looking to broaden your service offering, expand into new markets, or streamline your delivery through a trusted digital partner, we would be pleased to explore how a collaboration could work.'}
+                  {L(
+                    'If you are an established ISO consultant looking to broaden your service offering, expand into new markets, or streamline your delivery through a trusted digital partner, we would be pleased to explore how a collaboration could work.',
+                    'إذا كنت مستشار ISO معتمداً وتتطلع إلى توسيع نطاق خدماتك، أو التوسع في أسواق جديدة، أو تبسيط تسليم خدماتك من خلال شريك رقمي موثوق، يسعدنا استكشاف كيف يمكن أن يعمل هذا التعاون.'
+                  )}
                 </p>
 
                 <p className="text-sm md:text-base text-slate-800 leading-relaxed font-medium">
-                  {isAr 
-                    ? 'أرسل لنا بريداً إلكترونياً على iso@gloria-c.com يحتوي على معلومات حول استشاراتك، والمعايير التي تعمل بها، والأسواق التي تغطيها، وسيتصل بك أحد أعضاء فريقنا لترتيب مكالمة.'
-                    : 'Drop us an email at iso@gloria-c.com with information about your consultancy, the standards you work with, and the markets you cover, and one of our team will get back to you to arrange a call.'}
+                  {L(
+                    'Drop us an email at iso@gloria-c.com with information about your consultancy, the standards you work with, and the markets you cover, and one of our team will get back to you to arrange a call.',
+                    'أرسل لنا بريداً إلكترونياً على iso@gloria-c.com يحتوي على معلومات حول استشاراتك، والمعايير التي تعمل بها، والأسواق التي تغطيها، وسيتصل بك أحد أعضاء فريقنا لترتيب مكالمة.'
+                  )}
                 </p>
               </div>
             </div>
@@ -1524,7 +1557,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
         <div className="max-w-3xl mx-auto px-4 md:px-8">
           <div className="text-center mb-14 space-y-4">
             <h2 className="text-3xl md:text-4xl font-black text-[#121c42] tracking-tight">
-              {isAr ? 'الأسئلة الشائعة' : 'Frequently Asked Questions'}
+              {L('Frequently Asked Questions', 'الأسئلة الشائعة')}
             </h2>
             <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
           </div>
@@ -1538,7 +1571,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
                     className="w-full flex items-center justify-between gap-4 p-5 text-start"
                   >
-                    <span className="font-bold text-slate-900 text-sm">{isAr ? item.qAr : item.qEn}</span>
+                    <span className="font-bold text-slate-900 text-sm">{L(item.qEn, item.qAr)}</span>
                     <ChevronRight
                       size={18}
                       className={`shrink-0 text-indigo-600 transition-transform ${isOpen ? 'rotate-90' : isAr ? 'rotate-180' : ''}`}
@@ -1546,7 +1579,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   </button>
                   {isOpen && (
                     <div className="px-5 pb-5 text-sm text-slate-500 leading-relaxed font-medium">
-                      {isAr ? item.aAr : item.aEn}
+                      {L(item.aEn, item.aAr)}
                     </div>
                   )}
                 </div>
@@ -1562,21 +1595,21 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2 className="text-2xl md:text-3xl font-black text-[#121c42] tracking-tight">
-              {isAr ? 'مكاتب GAMC العالمية للتنسيق والاعتماد' : 'GAMC Worldwide Offices'}
+              {L('GAMC Worldwide Offices', 'مكاتب GAMC العالمية للتنسيق والاعتماد')}
             </h2>
             <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
           </div>
 
           <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
-            
+
             {/* Office 1: UAE */}
             <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
               <div className="flex items-center gap-2">
                 <span className="text-2xl">🇦🇪</span>
-                <h3 className="font-black text-slate-900">{isAr ? 'الإمارات العربية المتحدة' : 'United Arab Emirates'}</h3>
+                <h3 className="font-black text-slate-900">{L('United Arab Emirates', 'الإمارات العربية المتحدة')}</h3>
               </div>
               <p className="text-xs text-slate-500 leading-relaxed font-medium">
-                {isAr ? 'القرهود، دبي، الإمارات العربية المتحدة.' : 'Al Garhoud, Dubai, United Arab Emirates.'}
+                {L('Al Garhoud, Dubai, United Arab Emirates.', 'القرهود، دبي، الإمارات العربية المتحدة.')}
               </p>
               <div className="pt-2 text-[11px] text-slate-400 font-semibold space-y-1">
                 <p>Phone / WhatsApp: +971 56 270 3015</p>
@@ -1587,7 +1620,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm space-y-4">
               <div className="flex items-center gap-2">
                 <span className="text-2xl">🇬🇧</span>
-                <h3 className="font-black text-slate-900">{isAr ? 'المملكة المتحدة' : 'United Kingdom'}</h3>
+                <h3 className="font-black text-slate-900">{L('United Kingdom', 'المملكة المتحدة')}</h3>
               </div>
               <p className="text-xs text-slate-500 leading-relaxed font-medium">
                 Uk Sns Unit 9 Skyport Drive, Harmondsworth, West Drayton, Harmondsworth, United Kingdom, United Kingdom, UB7 0LB
@@ -1614,14 +1647,16 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               <span className="font-black text-white text-lg tracking-tight">GAMC Global Solutions</span>
             </div>
             <p className="text-slate-500 font-medium leading-relaxed max-w-sm">
-              {isAr
-                ? 'منذ عام ٢٠١٥، تعمل GAMC على إعادة تعريف مفهوم شهادات الـ ISO. تساعد منصتنا الرقمية بالكامل بنسبة ١٠٠٪ الشركات الصغيرة والمتوسطة في الحصول على الاعتماد بسرعة وثقة.'
-                : 'Since 2015, GAMC has been redefining ISO certification. Our 100% online platform helps small and medium-sized businesses get certified quickly and confidently.'}
+              {L(
+                'Since 2015, GAMC has been redefining ISO certification. Our 100% online platform helps small and medium-sized businesses get certified quickly and confidently.',
+                'منذ عام ٢٠١٥، تعمل GAMC على إعادة تعريف مفهوم شهادات الـ ISO. تساعد منصتنا الرقمية بالكامل بنسبة ١٠٠٪ الشركات الصغيرة والمتوسطة في الحصول على الاعتماد بسرعة وثقة.'
+              )}
             </p>
             <p className="text-slate-500 font-medium leading-relaxed max-w-sm">
-              {isAr 
-                ? 'نحن نبسط كل خطوة ونوفر توجيهاً مستمراً عبر الإنترنت، وتسعيراً شفافاً، ودعماً موثوقاً لجعل الحصول على الشهادة سهلاً وبأسعار معقولة.'
-                : 'We simplify every step providing continuous online guidance, clear pricing, and trusted support to make certification effortless and affordable.'}
+              {L(
+                'We simplify every step providing continuous online guidance, clear pricing, and trusted support to make certification effortless and affordable.',
+                'نحن نبسط كل خطوة ونوفر توجيهاً مستمراً عبر الإنترنت، وتسعيراً شفافاً، ودعماً موثوقاً لجعل الحصول على الشهادة سهلاً وبأسعار معقولة.'
+              )}
             </p>
             <div className="pt-2 text-slate-500 font-medium flex items-center gap-1.5 uppercase text-[10px] tracking-wider">
               <Globe size={14} className="text-indigo-500" />
@@ -1631,31 +1666,31 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
           {/* Quick Menu */}
           <div className="md:col-span-3 space-y-4">
-            <h4 className="font-bold text-white uppercase tracking-wider">{isAr ? 'روابط سريعة' : 'Quick Links'}</h4>
+            <h4 className="font-bold text-white uppercase tracking-wider">{L('Quick Links', 'روابط سريعة')}</h4>
             <ul className="space-y-2 font-medium">
               <li>
                 <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-white transition-colors">
-                  {isAr ? 'الرئيسية' : 'Home'}
+                  {L('Home', 'الرئيسية')}
                 </button>
               </li>
               <li>
                 <button onClick={() => scrollToSection('about-cloud')} className="hover:text-white transition-colors">
-                  {isAr ? 'عن المنصة' : 'About Us'}
+                  {L('About Us', 'عن المنصة')}
                 </button>
               </li>
               <li>
                 <button onClick={() => scrollToSection('services')} className="hover:text-white transition-colors">
-                  {isAr ? 'الأسعار والباقات' : 'Pricing'}
+                  {L('Pricing', 'الأسعار والباقات')}
                 </button>
               </li>
               <li>
                 <button onClick={() => scrollToSection('how-it-works')} className="hover:text-white transition-colors">
-                  {isAr ? 'طريقة العمل' : 'How It Works'}
+                  {L('How It Works', 'طريقة العمل')}
                 </button>
               </li>
               <li>
                 <button onClick={() => scrollToSection('benefits')} className="hover:text-white transition-colors">
-                  {isAr ? 'مزايا حصرية' : 'Why Us'}
+                  {L('Why Us', 'مزايا حصرية')}
                 </button>
               </li>
             </ul>
@@ -1663,7 +1698,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
           {/* Get Certified in 7 Days */}
           <div className="md:col-span-4 space-y-4">
-            <h4 className="font-bold text-white uppercase tracking-wider">{isAr ? 'احصل على شهادة في ٧ أيام' : 'Get Certified In 7 Days'}</h4>
+            <h4 className="font-bold text-white uppercase tracking-wider">{L('Get Certified In 7 Days', 'احصل على شهادة في ٧ أيام')}</h4>
             <ul className="space-y-2 font-medium">
               <li>
                 <button onClick={() => handleOrderClick('ISO 9001')} className="hover:text-white transition-colors flex items-center gap-1.5">
@@ -1700,7 +1735,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 className="inline-flex items-center gap-2 px-4 py-2 bg-[#25d366]/10 hover:bg-[#25d366]/20 border border-[#25d366]/30 text-[#25d366] rounded-xl font-bold transition-all text-xs"
               >
                 <MessageSquare size={14} className="fill-[#25d366]" />
-                <span>{isAr ? 'تواصل عبر الواتساب' : 'WhatsApp Chat Support'}</span>
+                <span>{L('WhatsApp Chat Support', 'تواصل عبر الواتساب')}</span>
               </a>
             </div>
           </div>
@@ -1710,26 +1745,26 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
         {/* Newsletter & Sub footer */}
         <div className="max-w-7xl mx-auto px-4 md:px-8 pt-8 border-t border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-8 text-slate-500">
           <div className="space-y-2 text-center lg:text-start">
-            <h4 className="font-bold text-white uppercase tracking-wider">{isAr ? 'النشرة البريدية' : 'News Letter'}</h4>
+            <h4 className="font-bold text-white uppercase tracking-wider">{L('News Letter', 'النشرة البريدية')}</h4>
             {newsletterSubscribed ? (
-              <p className="text-xs text-emerald-400 font-bold">{isAr ? 'تم الاشتراك بنجاح! شكراً لك.' : 'Subscribed successfully! Thank you.'}</p>
+              <p className="text-xs text-emerald-400 font-bold">{L('Subscribed successfully! Thank you.', 'تم الاشتراك بنجاح! شكراً لك.')}</p>
             ) : (
               <form onSubmit={handleNewsletterSubmit} className="flex gap-2 max-w-sm">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   required
-                  placeholder={isAr ? 'أدخل بريدك الإلكتروني' : 'Enter your email address'}
+                  placeholder={L('Enter your email address', 'أدخل بريدك الإلكتروني')}
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   className="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs font-semibold focus:outline-none focus:border-indigo-500 text-white placeholder-slate-600"
                 />
                 <button type="submit" className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition-all shrink-0">
-                  {isAr ? 'اشترك' : 'Send'}
+                  {L('Send', 'اشترك')}
                 </button>
               </form>
             )}
             <div className="pt-3">
-              <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest">{isAr ? 'بوابة دفع آمنة ومدعومة بـ' : 'Powered by Stripe security payments'}</p>
+              <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest">{L('Powered by Stripe security payments', 'بوابة دفع آمنة ومدعومة بـ')}</p>
               <div className="flex items-center justify-center lg:justify-start gap-2.5 opacity-40 mt-1">
                 <span className="font-mono text-[9px] border border-slate-700 px-1 py-0.5 rounded text-white tracking-widest">STRIPE</span>
                 <span className="font-mono text-[9px] border border-slate-700 px-1 py-0.5 rounded text-white tracking-widest">VISA</span>
@@ -1789,31 +1824,32 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
                   <CheckCircle2 size={28} />
                 </div>
-                <h3 className="text-lg font-black text-slate-900">{isAr ? 'تم إرسال طلبك بنجاح!' : 'Request sent successfully!'}</h3>
+                <h3 className="text-lg font-black text-slate-900">{L('Request sent successfully!', 'تم إرسال طلبك بنجاح!')}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">
-                  {isAr
-                    ? 'شكراً لاهتمامك. سيتواصل معك فريقنا قريباً بتفاصيل الدورة ومواعيدها.'
-                    : 'Thanks for your interest — our team will reach out shortly with course details and schedules.'}
+                  {L(
+                    'Thanks for your interest — our team will reach out shortly with course details and schedules.',
+                    'شكراً لاهتمامك. سيتواصل معك فريقنا قريباً بتفاصيل الدورة ومواعيدها.'
+                  )}
                 </p>
                 <button
                   onClick={() => setLeadModalOpen(false)}
                   className="px-6 py-2.5 bg-[#121c42] hover:bg-indigo-600 text-white rounded-full text-xs font-bold transition-all"
                 >
-                  {isAr ? 'إغلاق' : 'Close'}
+                  {L('Close', 'إغلاق')}
                 </button>
               </div>
             ) : (
               <>
                 <div className="mb-6">
-                  <h3 className="text-xl font-black text-slate-900">{isAr ? 'اطلب معلومات عن الدورة' : 'Request Course Information'}</h3>
+                  <h3 className="text-xl font-black text-slate-900">{L('Request Course Information', 'اطلب معلومات عن الدورة')}</h3>
                   <p className="text-sm text-slate-500 mt-1">
-                    {isAr ? 'عبّئ بياناتك وسنرسل لك التفاصيل الكاملة.' : "Fill in your details and we'll send you the full details."}
+                    {L("Fill in your details and we'll send you the full details.", 'عبّئ بياناتك وسنرسل لك التفاصيل الكاملة.')}
                   </p>
                 </div>
 
                 <form onSubmit={handleLeadSubmit} className="space-y-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600">{isAr ? 'الاسم الكامل' : 'Full Name'}</label>
+                    <label className="text-xs font-bold text-slate-600">{L('Full Name', 'الاسم الكامل')}</label>
                     <input
                       required
                       type="text"
@@ -1823,7 +1859,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600">{isAr ? 'البريد الإلكتروني' : 'Email'}</label>
+                    <label className="text-xs font-bold text-slate-600">{L('Email', 'البريد الإلكتروني')}</label>
                     <input
                       required
                       type="email"
@@ -1833,7 +1869,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600">{isAr ? 'رقم الهاتف' : 'Phone'}</label>
+                    <label className="text-xs font-bold text-slate-600">{L('Phone', 'رقم الهاتف')}</label>
                     <input
                       required
                       type="tel"
@@ -1843,7 +1879,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600">{isAr ? 'اسم الشركة (اختياري)' : 'Company (optional)'}</label>
+                    <label className="text-xs font-bold text-slate-600">{L('Company (optional)', 'اسم الشركة (اختياري)')}</label>
                     <input
                       type="text"
                       value={leadForm.company}
@@ -1852,20 +1888,20 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600">{isAr ? 'الدورة المطلوبة' : 'Course'}</label>
+                    <label className="text-xs font-bold text-slate-600">{L('Course', 'الدورة المطلوبة')}</label>
                     <select
                       value={leadForm.standardCode}
                       onChange={(e) => setLeadForm({ ...leadForm, standardCode: e.target.value })}
                       className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                     >
-                      <option value="">{isAr ? 'غير محدد / كل الدورات' : 'Not sure / all courses'}</option>
+                      <option value="">{L('Not sure / all courses', 'غير محدد / كل الدورات')}</option>
                       {LEAD_AUDITOR_STANDARDS.map((std) => (
-                        <option key={std.code} value={std.code}>{std.code} — {isAr ? std.titleAr : std.titleEn}</option>
+                        <option key={std.code} value={std.code}>{std.code} — {L(std.titleEn, std.titleAr)}</option>
                       ))}
                     </select>
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600">{isAr ? 'رسالة (اختياري)' : 'Message (optional)'}</label>
+                    <label className="text-xs font-bold text-slate-600">{L('Message (optional)', 'رسالة (اختياري)')}</label>
                     <textarea
                       rows={3}
                       value={leadForm.message}
@@ -1887,7 +1923,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 disabled:opacity-50 text-white rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2"
                   >
                     {leadSubmitting ? <Loader2 size={16} className="animate-spin" /> : null}
-                    <span>{leadSubmitting ? (isAr ? 'جارٍ الإرسال...' : 'Sending...') : (isAr ? 'إرسال الطلب' : 'Send Request')}</span>
+                    <span>{leadSubmitting ? L('Sending...', 'جارٍ الإرسال...') : L('Send Request', 'إرسال الطلب')}</span>
                   </button>
                 </form>
               </>
@@ -1918,11 +1954,12 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
                   <CheckCircle2 size={28} />
                 </div>
-                <h3 className="text-lg font-black text-slate-900">{isAr ? 'رابطك جاهز!' : 'Your link is ready!'}</h3>
+                <h3 className="text-lg font-black text-slate-900">{L('Your link is ready!', 'رابطك جاهز!')}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">
-                  {isAr
-                    ? 'شارك هذا الرابط مع عملائك — وستربح AED 500 عن كل عميل يكمل الدفع عبره. أرسلنا نسخة أيضاً إلى بريدك الإلكتروني.'
-                    : "Share this link with your clients — you'll earn AED 500 for every one who completes payment through it. We've also emailed you a copy."}
+                  {L(
+                    "Share this link with your clients — you'll earn AED 500 for every one who completes payment through it. We've also emailed you a copy.",
+                    'شارك هذا الرابط مع عملائك — وستربح AED 500 عن كل عميل يكمل الدفع عبره. أرسلنا نسخة أيضاً إلى بريدك الإلكتروني.'
+                  )}
                 </p>
                 <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
                   <span className="flex-1 text-xs font-mono text-slate-700 truncate text-start">{referResult.link}</span>
@@ -1934,28 +1971,28 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     }}
                     className="shrink-0 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold transition-all"
                   >
-                    {referLinkCopied ? (isAr ? 'تم النسخ' : 'Copied') : (isAr ? 'نسخ' : 'Copy')}
+                    {referLinkCopied ? L('Copied', 'تم النسخ') : L('Copy', 'نسخ')}
                   </button>
                 </div>
                 <button
                   onClick={() => setReferModalOpen(false)}
                   className="px-6 py-2.5 bg-[#121c42] hover:bg-indigo-600 text-white rounded-full text-xs font-bold transition-all"
                 >
-                  {isAr ? 'إغلاق' : 'Close'}
+                  {L('Close', 'إغلاق')}
                 </button>
               </div>
             ) : (
               <>
                 <div className="mb-6">
-                  <h3 className="text-xl font-black text-slate-900">{isAr ? 'انضم لبرنامج الإحالة' : 'Join the Referral Program'}</h3>
+                  <h3 className="text-xl font-black text-slate-900">{L('Join the Referral Program', 'انضم لبرنامج الإحالة')}</h3>
                   <p className="text-sm text-slate-500 mt-1">
-                    {isAr ? 'عبّئ بياناتك وستحصل على رابطك الخاص فوراً.' : "Fill in your details and get your own link instantly."}
+                    {L('Fill in your details and get your own link instantly.', 'عبّئ بياناتك وستحصل على رابطك الخاص فوراً.')}
                   </p>
                 </div>
 
                 <form onSubmit={handleReferSubmit} className="space-y-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600">{isAr ? 'الاسم الكامل' : 'Full Name'}</label>
+                    <label className="text-xs font-bold text-slate-600">{L('Full Name', 'الاسم الكامل')}</label>
                     <input
                       required
                       type="text"
@@ -1965,7 +2002,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600">{isAr ? 'البريد الإلكتروني' : 'Email'}</label>
+                    <label className="text-xs font-bold text-slate-600">{L('Email', 'البريد الإلكتروني')}</label>
                     <input
                       required
                       type="email"
@@ -1975,7 +2012,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-600">{isAr ? 'رقم الهاتف (اختياري)' : 'Phone (optional)'}</label>
+                    <label className="text-xs font-bold text-slate-600">{L('Phone (optional)', 'رقم الهاتف (اختياري)')}</label>
                     <input
                       type="tel"
                       value={referForm.phone}
@@ -1997,7 +2034,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 disabled:opacity-50 text-white rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2"
                   >
                     {referSubmitting ? <Loader2 size={16} className="animate-spin" /> : null}
-                    <span>{referSubmitting ? (isAr ? 'جارٍ الإنشاء...' : 'Creating...') : (isAr ? 'احصل على رابطي' : 'Get My Link')}</span>
+                    <span>{referSubmitting ? L('Creating...', 'جارٍ الإنشاء...') : L('Get My Link', 'احصل على رابطي')}</span>
                   </button>
                 </form>
               </>
@@ -2012,7 +2049,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
         target="_blank"
         rel="noreferrer"
         className={`fixed bottom-6 ${isAr ? 'left-6' : 'right-6'} z-50 w-14 h-14 bg-[#25d366] rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform`}
-        aria-label={isAr ? 'تواصل معنا عبر واتساب' : 'Chat with us on WhatsApp'}
+        aria-label={L('Chat with us on WhatsApp', 'تواصل معنا عبر واتساب')}
       >
         <MessageSquare size={26} className="text-white fill-white" />
       </a>
