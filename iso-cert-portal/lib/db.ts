@@ -120,10 +120,11 @@ export const startCheckout = async (input: {
   email: string;
 }): Promise<{ url: string } | { error: string }> => {
   try {
+    const referralCode = localStorage.getItem('gamc_referral_code') || undefined;
     const response = await fetch('/api/stripe/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...input, origin: window.location.origin }),
+      body: JSON.stringify({ ...input, referralCode, origin: window.location.origin }),
     });
     const data = await response.json();
     if (!response.ok || !data.url) {
@@ -255,6 +256,92 @@ export const fetchTrainingLeads = async (): Promise<TrainingLead[]> => {
     standardCode: row.standard_code,
     message: row.message,
     emailSent: row.email_sent,
+    createdAt: row.created_at,
+  }));
+};
+
+export interface ReferralCode {
+  id: string;
+  code: string;
+  referrerName: string;
+  referrerContact: string | null;
+  createdAt: string;
+}
+
+const slugifyForCode = (name: string): string =>
+  name
+    .toUpperCase()
+    .replace(/[^A-Z0-9]+/g, '')
+    .slice(0, 10) || 'REF';
+
+// Admin-only (enforced by RLS).
+export const createReferralCode = async (referrerName: string, referrerContact: string): Promise<ReferralCode | { error: string }> => {
+  const code = `${slugifyForCode(referrerName)}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
+  const { data, error } = await supabase
+    .from('referral_codes')
+    .insert({ code, referrer_name: referrerName, referrer_contact: referrerContact || null })
+    .select('id, code, referrer_name, referrer_contact, created_at')
+    .single();
+  if (error) {
+    console.error('createReferralCode failed:', error.message);
+    return { error: error.message };
+  }
+  return {
+    id: data.id,
+    code: data.code,
+    referrerName: data.referrer_name,
+    referrerContact: data.referrer_contact,
+    createdAt: data.created_at,
+  };
+};
+
+// Admin-only (enforced by RLS).
+export const fetchReferralCodes = async (): Promise<ReferralCode[]> => {
+  const { data, error } = await supabase
+    .from('referral_codes')
+    .select('id, code, referrer_name, referrer_contact, created_at')
+    .order('created_at', { ascending: false });
+  if (error) {
+    console.error('fetchReferralCodes failed:', error.message);
+    return [];
+  }
+  return (data || []).map((row) => ({
+    id: row.id,
+    code: row.code,
+    referrerName: row.referrer_name,
+    referrerContact: row.referrer_contact,
+    createdAt: row.created_at,
+  }));
+};
+
+export interface ReferredOrder {
+  id: string;
+  referralCode: string;
+  companyName: string;
+  amount: number;
+  currency: 'usd' | 'aed';
+  createdAt: string;
+}
+
+// Admin-only (enforced by RLS on iso_requests). Every row here represents a
+// paid order (iso_requests is only ever written by the Stripe webhook after
+// payment), so each one owes AED 500 in commission to its referral_code.
+export const fetchReferredOrders = async (): Promise<ReferredOrder[]> => {
+  const { data, error } = await supabase
+    .from('iso_requests')
+    .select('id, referral_code, amount, currency, created_at, companies(name)')
+    .not('referral_code', 'is', null)
+    .order('created_at', { ascending: false });
+  if (error) {
+    console.error('fetchReferredOrders failed:', error.message);
+    return [];
+  }
+  return (data || []).map((row: any) => ({
+    id: row.id,
+    referralCode: row.referral_code,
+    companyName: row.companies?.name ?? 'Unknown',
+    amount: row.amount,
+    currency: row.currency ?? 'usd',
     createdAt: row.created_at,
   }));
 };

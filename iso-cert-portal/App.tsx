@@ -12,7 +12,7 @@ import Guide from './components/Guide';
 import AboutUs from './components/AboutUs';
 import Auth from './components/Auth';
 import PublicLanding from './components/PublicLanding';
-import { loadLandingConfig, saveLandingConfig, LandingConfig } from './landingConfig';
+import { fetchLandingConfig, updateLandingConfig, DEFAULT_LANDING_CONFIG, LandingConfig } from './landingConfig';
 import {
   Bell,
   Search,
@@ -50,7 +50,7 @@ const App: React.FC = () => {
   const [preselectedISO, setPreselectedISO] = useState<string | null>(null);
 
   // Dynamic Landing Page Config
-  const [landingConfig, setLandingConfig] = useState<LandingConfig>(() => loadLandingConfig());
+  const [landingConfig, setLandingConfig] = useState<LandingConfig>(DEFAULT_LANDING_CONFIG);
 
   const [company, setCompany] = useState<Company>(EMPTY_COMPANY);
   const [paymentNotice, setPaymentNotice] = useState<'success' | 'cancelled' | null>(null);
@@ -79,6 +79,15 @@ const App: React.FC = () => {
       }
     });
     return () => listener.subscription.unsubscribe();
+  }, []);
+
+  // Capture a referral link (?ref=CODE) so it survives navigation into
+  // signup/checkout, without cluttering the visible URL.
+  useEffect(() => {
+    const ref = new URLSearchParams(window.location.search).get('ref');
+    if (ref) {
+      localStorage.setItem('gamc_referral_code', ref);
+    }
   }, []);
 
   // Detect the redirect back from Stripe Checkout (?payment=success|cancelled)
@@ -126,10 +135,15 @@ const App: React.FC = () => {
     })();
   }, [session]);
 
-  // Sync landing page changes to localStorage dynamically
+  // Loaded from Supabase so a visitor sees the admin's edits — not just the
+  // admin's own browser (localStorage never reached anyone else).
+  useEffect(() => {
+    fetchLandingConfig().then(setLandingConfig);
+  }, []);
+
   const handleUpdateLandingConfig = (newConfig: LandingConfig) => {
     setLandingConfig(newConfig);
-    saveLandingConfig(newConfig);
+    updateLandingConfig(newConfig);
   };
 
   const updateRequestStatus = async (id: string, newStatus: RequestStatus) => {

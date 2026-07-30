@@ -416,8 +416,8 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
       <section 
         id="hero" 
         className="relative min-h-[580px] flex items-center py-16 md:py-28 bg-cover bg-center text-white"
-        style={{ 
-          backgroundImage: `linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1920&q=80')` 
+        style={{
+          backgroundImage: `radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.35), transparent 40%), radial-gradient(circle at 85% 80%, rgba(79, 70, 229, 0.28), transparent 45%), linear-gradient(135deg, #0b1021 0%, #121c42 55%, #1e2a5e 100%)`
         }}
       >
         <div className="absolute inset-0 bg-indigo-950/20 mix-blend-overlay"></div>
@@ -557,21 +557,19 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             {/* Left Image Split */}
             <div className="lg:col-span-6 relative">
               <div className="absolute inset-0 bg-indigo-100 rounded-3xl -rotate-2 scale-95 opacity-50"></div>
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
-                <img 
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" 
-                  alt="Industrial safety and audit" 
-                  className="w-full h-[380px] object-cover"
-                />
+              <div
+                className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-100 w-full h-[380px] flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #121c42 0%, #2c3a7a 100%)' }}
+              >
+                <ShieldCheck size={110} className="text-white/15" />
+                <ShieldCheck size={56} className="text-white absolute" />
               </div>
 
               {/* Float overlays for micro interaction details */}
               <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 max-w-[240px] hidden sm:flex">
-                <img 
-                  src="https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&w=150&q=80" 
-                  alt="Engineer" 
-                  className="w-12 h-12 rounded-xl object-cover"
-                />
+                <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+                  <Users size={22} />
+                </div>
                 <div>
                   <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">{isAr ? 'المدققين' : 'Auditor Network'}</p>
                   <p className="text-xs font-bold text-slate-800">{isAr ? 'مستشارون معتمدون' : 'IRCA Approved'}</p>
@@ -579,11 +577,9 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               </div>
 
               <div className="absolute -top-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 max-w-[240px] hidden sm:flex">
-                <img 
-                  src="https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&w=150&q=80" 
-                  alt="Laboratory" 
-                  className="w-12 h-12 rounded-xl object-cover"
-                />
+                <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+                  <FileCheck size={22} />
+                </div>
                 <div>
                   <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">{isAr ? 'المختبرات والامتثال' : 'Lab Compliance'}</p>
                   <p className="text-xs font-bold text-slate-800">{isAr ? 'جودة مطلقة ممتدة' : 'Highest Standards'}</p>
@@ -670,12 +666,11 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             
             {/* Left Tall Card Image */}
             <div className="lg:col-span-5 relative flex">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-100 w-full flex">
-                <img 
-                  src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80" 
-                  alt="Compliance planning" 
-                  className="w-full h-full object-cover min-h-[350px]"
-                />
+              <div
+                className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-100 w-full flex min-h-[350px] items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #1e2a5e 0%, #4338ca 100%)' }}
+              >
+                <Award size={130} className="text-white/10" />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/80 to-transparent flex items-end p-8 text-white">
                   <div className="space-y-2">
                     <span className="text-[10px] uppercase tracking-widest font-black text-indigo-400 bg-white/10 px-3 py-1 rounded-full">{isAr ? 'اعتماداتنا' : 'Credibility'}</span>
@@ -761,14 +756,20 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             {isAr ? 'شركات ومنشآت تثق بخدماتنا واعتماداتنا الرقمية' : 'Satisfied Members & Verified Partners'}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className="w-32 h-16 md:w-36 md:h-20 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 flex items-center justify-center text-[10px] font-bold text-slate-300 uppercase tracking-wider"
-              >
-                {isAr ? 'شعار العميل' : 'Client Logo'}
-              </div>
-            ))}
+            {config.partnerLogos.length > 0
+              ? config.partnerLogos.map((logo) => (
+                  <div key={logo.id} className="w-32 h-16 md:w-36 md:h-20 flex items-center justify-center grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all">
+                    <img src={logo.logoUrl} alt={logo.name} className="max-w-full max-h-full object-contain" />
+                  </div>
+                ))
+              : [1, 2, 3, 4, 5].map((i) => (
+                  <div
+                    key={i}
+                    className="w-32 h-16 md:w-36 md:h-20 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 flex items-center justify-center text-[10px] font-bold text-slate-300 uppercase tracking-wider"
+                  >
+                    {isAr ? 'شعار العميل' : 'Client Logo'}
+                  </div>
+                ))}
           </div>
           <div className="mt-8">
             <button 
@@ -796,12 +797,11 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             
             {/* Card 1 */}
             <div className="bg-[#f8fafc] rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl hover:border-indigo-100 transition-all flex flex-col group">
-              <div className="h-48 overflow-hidden relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=600&q=80" 
-                  alt="Simple User Interface" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div
+                className="h-48 overflow-hidden relative flex items-center justify-center group-hover:scale-105 transition-transform duration-500"
+                style={{ background: 'linear-gradient(135deg, #312e81 0%, #6366f1 100%)' }}
+              >
+                <Monitor size={72} className="text-white/90" />
               </div>
               <div className="p-6 space-y-3 flex-1 flex flex-col">
                 <h3 className="text-lg font-black text-slate-900">{isAr ? 'واجهة مستخدم بسيطة للغاية' : 'Simple User Interface'}</h3>
@@ -815,12 +815,11 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
             {/* Card 2 */}
             <div className="bg-[#f8fafc] rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl hover:border-indigo-100 transition-all flex flex-col group">
-              <div className="h-48 overflow-hidden relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" 
-                  alt="Remote Access" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div
+                className="h-48 overflow-hidden relative flex items-center justify-center group-hover:scale-105 transition-transform duration-500"
+                style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)' }}
+              >
+                <Globe size={72} className="text-white/90" />
               </div>
               <div className="p-6 space-y-3 flex-1 flex flex-col">
                 <h3 className="text-lg font-black text-slate-900">{isAr ? 'الوصول المدار عن بعد' : 'Remote Access'}</h3>
@@ -834,12 +833,11 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
             {/* Card 3 */}
             <div className="bg-[#f8fafc] rounded-3xl overflow-hidden border border-slate-100 hover:shadow-xl hover:border-indigo-100 transition-all flex flex-col group">
-              <div className="h-48 overflow-hidden relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" 
-                  alt="Cost Effective" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div
+                className="h-48 overflow-hidden relative flex items-center justify-center group-hover:scale-105 transition-transform duration-500"
+                style={{ background: 'linear-gradient(135deg, #065f46 0%, #10b981 100%)' }}
+              >
+                <DollarSign size={72} className="text-white/90" />
               </div>
               <div className="p-6 space-y-3 flex-1 flex flex-col">
                 <h3 className="text-lg font-black text-slate-900">{isAr ? 'فعالية تامة في التكلفة' : 'Cost Effective'}</h3>
@@ -875,13 +873,11 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             
             {/* Left Dubai Skyline Card */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-100 h-[380px]">
-                <img 
-                  src="https://images.unsplash.com/photo-1526495124232-a04e1849168a?auto=format&fit=crop&w=600&q=80" 
-                  alt="Dubai business district" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-[#121c42]/30 mix-blend-multiply"></div>
+              <div
+                className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-100 h-[380px] flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #0b1021 0%, #1e2a5e 60%, #3730a3 100%)' }}
+              >
+                <Building size={140} className="text-white/10" />
                 <div className="absolute inset-0 flex flex-col justify-end p-8 text-white bg-gradient-to-t from-slate-950/80 to-transparent">
                   <span className="text-xs font-bold text-indigo-300 uppercase tracking-widest mb-1">{isAr ? 'من قلب دبي' : 'BASED IN DUBAI'}</span>
                   <h4 className="text-xl font-black">{isAr ? 'سرعة ومصداقية عالمية' : 'Rapid Global Processing'}</h4>
@@ -1285,8 +1281,8 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
       {/* Section 8: Call to Action Banner (Business Growth) */}
       <section 
         className="relative py-24 bg-cover bg-center text-white"
-        style={{ 
-          backgroundImage: `linear-gradient(rgba(18, 28, 66, 0.9), rgba(18, 28, 66, 0.85)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80')` 
+        style={{
+          backgroundImage: `radial-gradient(circle at 80% 30%, rgba(247, 181, 0, 0.15), transparent 40%), radial-gradient(circle at 10% 90%, rgba(99, 102, 241, 0.3), transparent 45%), linear-gradient(135deg, #121c42 0%, #182658 100%)`
         }}
       >
         <div className="max-w-4xl mx-auto px-4 md:px-8 text-center space-y-6 relative z-10">

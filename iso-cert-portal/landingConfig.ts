@@ -1,4 +1,11 @@
 import { ISOStandard } from './types';
+import { supabase } from './lib/supabaseClient';
+
+export interface PartnerLogo {
+  id: string;
+  name: string;
+  logoUrl: string;
+}
 
 export interface LandingMenuItem {
   id: string;
@@ -50,6 +57,7 @@ export interface LandingConfig {
   menuItems: LandingMenuItem[];
   services: LandingService[];
   customSections: LandingSection[];
+  partnerLogos: PartnerLogo[];
 }
 
 export const DEFAULT_LANDING_CONFIG: LandingConfig = {
@@ -148,29 +156,38 @@ export const DEFAULT_LANDING_CONFIG: LandingConfig = {
       contentAr: 'س: كم تستغرق عملية الحصول على شهادة ISO؟\nج: من خلال بوابتنا الرقمية، تستغرق المراجعة القياسية من 3 إلى 7 أيام عمل، وهو أسرع بمرتين من القنوات الورقية العادية.\n\nس: هل الشهادات معتمدة دولياً؟\nج: نعم، يتم إصدار كافة الشهادات بالتعاون مع هيئات اعتماد دولية رائدة مثل UKAS و EIAC و IAS.',
       visible: true
     }
-  ]
+  ],
+  // Empty by default — the landing page falls back to placeholder tiles
+  // until an admin adds real partner/client logos.
+  partnerLogos: []
 };
 
-export const loadLandingConfig = (): LandingConfig => {
+// Backend-wide config: stored in Supabase (not localStorage) so an admin's
+// edit is visible to every visitor, not just their own browser.
+export const fetchLandingConfig = async (): Promise<LandingConfig> => {
   try {
-    const data = localStorage.getItem('iso_landing_config');
-    if (data) {
-      const parsed = JSON.parse(data);
-      // Ensure key sections exist
-      if (parsed.hero && parsed.services && parsed.customSections && parsed.menuItems) {
-        return parsed;
-      }
+    const { data, error } = await supabase.from('landing_config').select('config').eq('id', true).maybeSingle();
+    if (error || !data?.config || Object.keys(data.config).length === 0) {
+      return DEFAULT_LANDING_CONFIG;
     }
+    // Merge over defaults so fields added after a config was first saved
+    // (e.g. partnerLogos) don't come back undefined for existing sites.
+    return { ...DEFAULT_LANDING_CONFIG, ...data.config };
   } catch (e) {
-    console.error("Failed to load landing configuration from localStorage", e);
+    console.error('fetchLandingConfig failed', e);
+    return DEFAULT_LANDING_CONFIG;
   }
-  return DEFAULT_LANDING_CONFIG;
 };
 
-export const saveLandingConfig = (config: LandingConfig): void => {
-  try {
-    localStorage.setItem('iso_landing_config', JSON.stringify(config));
-  } catch (e) {
-    console.error("Failed to save landing configuration to localStorage", e);
+// Admin-only (enforced by RLS).
+export const updateLandingConfig = async (config: LandingConfig): Promise<boolean> => {
+  const { error } = await supabase
+    .from('landing_config')
+    .update({ config, updated_at: new Date().toISOString() })
+    .eq('id', true);
+  if (error) {
+    console.error('updateLandingConfig failed', error.message);
+    return false;
   }
+  return true;
 };

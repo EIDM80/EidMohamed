@@ -154,6 +154,7 @@ async function startServer() {
             renewal_term: meta.term === "3y" ? "3y" : "1y",
             subscription_status: mapSubscriptionStatus(subscription.status),
             next_renewal_at: new Date(getPeriodEnd(subscription) * 1000).toISOString(),
+            referral_code: meta.referralCode || null,
             status: RequestStatus.SUBMITTED,
           });
           if (error) {
@@ -236,7 +237,7 @@ async function startServer() {
       return res.status(500).json({ error: "Payments are not configured on the server yet." });
     }
 
-    const { companyId, type, accreditationBody, standardIds, currency, term, email, origin } = req.body || {};
+    const { companyId, type, accreditationBody, standardIds, currency, term, email, referralCode, origin } = req.body || {};
     if (!companyId || !type || !accreditationBody || !Array.isArray(standardIds) || standardIds.length === 0) {
       return res.status(400).json({ error: "Missing required order details" });
     }
@@ -250,7 +251,7 @@ async function startServer() {
     const safeTerm: RenewalTerm = term === "3y" ? "3y" : "1y";
     const pricing = priceOrder(selectedStandards, type === "multi" ? "multi" : "single", safeCurrency, safeTerm);
     const baseUrl = typeof origin === "string" && origin.startsWith("http") ? origin : "";
-    const metadata = {
+    const metadata: Record<string, string> = {
       companyId,
       type: type === "multi" ? "multi" : "single",
       accreditationBody,
@@ -259,6 +260,9 @@ async function startServer() {
       term: safeTerm,
       amount: String(pricing.totalUsd),
     };
+    if (typeof referralCode === "string" && referralCode.trim()) {
+      metadata.referralCode = referralCode.trim();
+    }
 
     try {
       const session = await stripe!.checkout.sessions.create({

@@ -123,6 +123,7 @@ async function handleCheckoutCompleted(stripe: Stripe, session: Stripe.Checkout.
     renewal_term: meta.term === "3y" ? "3y" : "1y",
     subscription_status: mapSubscriptionStatus(subscription.status),
     next_renewal_at: nextRenewalAt,
+    referral_code: meta.referralCode || null,
     status: RequestStatus.SUBMITTED,
   });
   if (error) {

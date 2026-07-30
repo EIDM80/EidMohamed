@@ -46,6 +46,22 @@ alter table public.iso_requests add column if not exists currency text not null 
 alter table public.iso_requests add column if not exists payment_status text not null default 'paid' check (payment_status in ('paid', 'refunded'));
 alter table public.iso_requests add column if not exists stripe_session_id text;
 
+-- Referral program: anyone (partner or existing client) can be given a
+-- referral code + shareable link. When an order paid through that link
+-- completes, the code is stamped onto the resulting iso_requests row so an
+-- admin can total up how much commission (AED 500/order, fixed elsewhere)
+-- is owed per referrer.
+create table if not exists public.referral_codes (
+  id uuid primary key default gen_random_uuid(),
+  code text not null unique,
+  referrer_name text not null,
+  referrer_contact text,
+  created_at timestamptz not null default now()
+);
+
+alter table public.iso_requests add column if not exists referral_code text;
+create index if not exists idx_iso_requests_referral_code on public.iso_requests (referral_code);
+
 -- Certificates are sold as a subscription (auto-renews every 1 or 3 years
 -- via Stripe), not a one-time purchase. subscription_status tracks Stripe's
 -- billing state independently from `status` (the certification workflow
@@ -86,6 +102,19 @@ create table if not exists public.site_settings (
 );
 
 insert into public.site_settings (id) values (true) on conflict (id) do nothing;
+
+-- Singleton table holding the public landing page's editable content (hero
+-- text, contact info, partner logos, etc.) as a JSON blob, so an admin's
+-- edit in the panel is visible to every visitor — not just their own
+-- browser, which is all localStorage ever did.
+create table if not exists public.landing_config (
+  id boolean primary key default true,
+  config jsonb not null default '{}'::jsonb,
+  updated_at timestamptz not null default now(),
+  constraint landing_config_singleton check (id)
+);
+
+insert into public.landing_config (id, config) values (true, '{}'::jsonb) on conflict (id) do nothing;
 
 -- Leads from the public "Lead Auditor Training" section. Anyone can submit
 -- one (no auth required — it's a marketing form), but only staff can read
@@ -134,6 +163,8 @@ alter table public.request_documents enable row level security;
 alter table public.tickets enable row level security;
 alter table public.site_settings enable row level security;
 alter table public.training_leads enable row level security;
+alter table public.landing_config enable row level security;
+alter table public.referral_codes enable row level security;
 
 drop policy if exists "profiles_select_own_or_admin" on public.profiles;
 create policy "profiles_select_own_or_admin" on public.profiles for select
@@ -237,6 +268,27 @@ create policy "site_settings_select_all" on public.site_settings for select
 drop policy if exists "site_settings_update_admin" on public.site_settings;
 create policy "site_settings_update_admin" on public.site_settings for update
   using (public.is_admin());
+
+-- Every visitor needs to read the landing page's live content; only an
+-- admin can change it.
+drop policy if exists "landing_config_select_all" on public.landing_config;
+create policy "landing_config_select_all" on public.landing_config for select
+  using (true);
+
+drop policy if exists "landing_config_update_admin" on public.landing_config;
+create policy "landing_config_update_admin" on public.landing_config for update
+  using (public.is_admin());
+
+-- Admin-only: referral codes are created and reported on entirely from the
+-- Admin Panel. The checkout-session endpoint that stamps a code onto a paid
+-- order uses the service_role key (bypasses RLS), so no public policy here.
+drop policy if exists "referral_codes_select_admin" on public.referral_codes;
+create policy "referral_codes_select_admin" on public.referral_codes for select
+  using (public.is_admin());
+
+drop policy if exists "referral_codes_insert_admin" on public.referral_codes;
+create policy "referral_codes_insert_admin" on public.referral_codes for insert
+  with check (public.is_admin());
 
 -- No public insert policy: the submit-training-inquiry endpoint uses the
 -- service_role key (bypasses RLS) so it can insert *and* send the email in

@@ -15,7 +15,7 @@ export default async function handler(req: any, res: any) {
     return;
   }
 
-  const { companyId, type, accreditationBody, standardIds, currency, term, email, origin } = req.body || {};
+  const { companyId, type, accreditationBody, standardIds, currency, term, email, referralCode, origin } = req.body || {};
   if (!companyId || !type || !accreditationBody || !Array.isArray(standardIds) || standardIds.length === 0) {
     res.status(400).json({ error: "Missing required order details" });
     return;
@@ -34,7 +34,7 @@ export default async function handler(req: any, res: any) {
   const baseUrl =
     typeof origin === "string" && origin.startsWith("http") ? origin : process.env.PUBLIC_SITE_URL || "";
 
-  const metadata = {
+  const metadata: Record<string, string> = {
     companyId,
     type: type === "multi" ? "multi" : "single",
     accreditationBody,
@@ -43,6 +43,9 @@ export default async function handler(req: any, res: any) {
     term: safeTerm,
     amount: String(pricing.totalUsd),
   };
+  if (typeof referralCode === "string" && referralCode.trim()) {
+    metadata.referralCode = referralCode.trim();
+  }
 
   try {
     const stripe = new Stripe(secretKey);

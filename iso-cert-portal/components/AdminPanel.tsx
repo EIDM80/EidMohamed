@@ -22,13 +22,27 @@ import {
   ListCollapse,
   Sparkles,
   Info,
-  Code2
+  Code2,
+  Users,
+  Copy,
+  DollarSign
 } from 'lucide-react';
 import { ISORequest, RequestStatus } from '../types';
 import { Language } from '../translations';
-import { LandingConfig, LandingService, LandingSection, LandingMenuItem } from '../landingConfig';
+import { LandingConfig, LandingService, LandingSection, LandingMenuItem, PartnerLogo } from '../landingConfig';
 import { formatMoney } from '../lib/pricing';
-import { fetchSiteSettings, updateSiteSettings, SiteSettings, fetchTrainingLeads, TrainingLead } from '../lib/db';
+import {
+  fetchSiteSettings,
+  updateSiteSettings,
+  SiteSettings,
+  fetchTrainingLeads,
+  TrainingLead,
+  createReferralCode,
+  fetchReferralCodes,
+  fetchReferredOrders,
+  ReferralCode,
+  ReferredOrder
+} from '../lib/db';
 
 interface AdminPanelProps {
   requests: any[];
@@ -47,7 +61,38 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
   landingConfig,
   onUpdateLandingConfig
 }) => {
-  const [adminTab, setAdminTab] = useState<'requests' | 'landing_hero' | 'landing_services' | 'landing_sections' | 'landing_menus' | 'tracking' | 'leads'>('requests');
+  const [adminTab, setAdminTab] = useState<'requests' | 'landing_hero' | 'landing_services' | 'landing_sections' | 'landing_menus' | 'landing_partners' | 'tracking' | 'leads' | 'referrals'>('requests');
+
+  const REFERRAL_COMMISSION_AED = 500;
+  const [referralCodes, setReferralCodes] = useState<ReferralCode[]>([]);
+  const [referredOrders, setReferredOrders] = useState<ReferredOrder[]>([]);
+  const [loadingReferrals, setLoadingReferrals] = useState(true);
+  const [newReferrer, setNewReferrer] = useState({ name: '', contact: '' });
+  const [creatingReferral, setCreatingReferral] = useState(false);
+  const [referralError, setReferralError] = useState<string | null>(null);
+
+  useEffect(() => {
+    Promise.all([fetchReferralCodes(), fetchReferredOrders()]).then(([codes, orders]) => {
+      setReferralCodes(codes);
+      setReferredOrders(orders);
+      setLoadingReferrals(false);
+    });
+  }, []);
+
+  const handleCreateReferralCode = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newReferrer.name) return;
+    setCreatingReferral(true);
+    setReferralError(null);
+    const result = await createReferralCode(newReferrer.name, newReferrer.contact);
+    setCreatingReferral(false);
+    if ('error' in result) {
+      setReferralError(result.error);
+      return;
+    }
+    setReferralCodes([result, ...referralCodes]);
+    setNewReferrer({ name: '', contact: '' });
+  };
 
   const [trainingLeads, setTrainingLeads] = useState<TrainingLead[]>([]);
   const [loadingLeads, setLoadingLeads] = useState(true);
@@ -271,6 +316,33 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
     });
   };
 
+  // Partner / satisfied-member logos
+  const [newPartnerLogo, setNewPartnerLogo] = useState<Partial<PartnerLogo>>({ name: '', logoUrl: '' });
+
+  const handleAddPartnerLogo = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newPartnerLogo.name || !newPartnerLogo.logoUrl) return;
+    const logoToAdd: PartnerLogo = {
+      id: 'logo_' + Date.now(),
+      name: newPartnerLogo.name,
+      logoUrl: newPartnerLogo.logoUrl
+    };
+    const updated = {
+      ...landingConfig,
+      partnerLogos: [...landingConfig.partnerLogos, logoToAdd]
+    };
+    triggerConfigUpdate(updated);
+    setNewPartnerLogo({ name: '', logoUrl: '' });
+  };
+
+  const handleDeletePartnerLogo = (id: string) => {
+    const updated = {
+      ...landingConfig,
+      partnerLogos: landingConfig.partnerLogos.filter((l) => l.id !== id)
+    };
+    triggerConfigUpdate(updated);
+  };
+
   const handleDeleteMenuItem = (id: string) => {
     const updated = {
       ...landingConfig,
@@ -348,6 +420,16 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
           </button>
 
           <button
+            onClick={() => setAdminTab('landing_partners')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              adminTab === 'landing_partners' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
+            }`}
+          >
+            <Users size={14} />
+            <span>{isAr ? 'شعارات العملاء والشركاء' : 'Partner Logos'}</span>
+          </button>
+
+          <button
             onClick={() => setAdminTab('tracking')}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
               adminTab === 'tracking' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
@@ -365,6 +447,16 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
           >
             <Phone size={14} />
             <span>{isAr ? 'طلبات الدورات التدريبية' : 'Training Leads'}</span>
+          </button>
+
+          <button
+            onClick={() => setAdminTab('referrals')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              adminTab === 'referrals' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
+            }`}
+          >
+            <DollarSign size={14} />
+            <span>{isAr ? 'برنامج الإحالة' : 'Referral Program'}</span>
           </button>
         </div>
       </div>
@@ -534,6 +626,9 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                 <Sparkles className="text-indigo-600" size={18} />
                 <span>{isAr ? 'تعديل البانر الرئيسي (Hero Section)' : 'Customize Hero Landing Section'}</span>
               </h3>
+              <p className="text-[11px] text-amber-600 font-bold mt-2">
+                {isAr ? '⚠ هذا القسم غير مربوط بعد بالصفحة الرئيسية الفعلية.' : '⚠ Not yet connected to the live homepage.'}
+              </p>
             </div>
 
             <div className="space-y-4">
@@ -720,6 +815,9 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
               <Plus className="text-indigo-600" size={18} />
               <span>{isAr ? 'إضافة معيار ISO جديد للموقع' : 'Feature a New ISO Standard Card'}</span>
             </h3>
+            <p className="text-[11px] text-amber-600 font-bold -mt-4 mb-6">
+              {isAr ? '⚠ هذا القسم غير مربوط بعد بالصفحة الرئيسية الفعلية (قسم الأسعار الحالي ثابت).' : "⚠ Not yet connected to the live homepage (the current Pricing section is fixed content)."}
+            </p>
 
             <form onSubmit={handleAddService} className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="space-y-2">
@@ -868,6 +966,9 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
               <Plus className="text-indigo-600" size={18} />
               <span>{isAr ? 'إنشاء وإضافة قسم أو صفحة مخصصة للموقع' : 'Add a New Page or Custom Section Segment'}</span>
             </h3>
+            <p className="text-[11px] text-amber-600 font-bold -mt-4 mb-6">
+              {isAr ? '⚠ هذا القسم غير مربوط بعد بالصفحة الرئيسية الفعلية.' : '⚠ Not yet connected to the live homepage.'}
+            </p>
 
             <form onSubmit={handleAddSection} className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
@@ -1012,6 +1113,9 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                 <Plus className="text-indigo-600" size={18} />
                 <span>{isAr ? 'إضافة رابط تنقل جديد في الهيدر' : 'Add Top Navigation Link'}</span>
               </h3>
+              <p className="text-[11px] text-amber-600 font-bold mt-2">
+                {isAr ? '⚠ هذا القسم غير مربوط بعد بقائمة التنقل الفعلية في الصفحة الرئيسية.' : '⚠ Not yet connected to the live homepage navigation menu.'}
+              </p>
             </div>
 
             <form onSubmit={handleAddMenuItem} className="space-y-4">
@@ -1091,6 +1195,90 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                 </div>
               ))}
             </div>
+          </div>
+
+        </div>
+      )}
+
+      {adminTab === 'landing_partners' && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+          {/* Add Partner Logo */}
+          <div className="bg-white border p-6 rounded-[2rem] space-y-6 shadow-sm">
+            <div className="border-b pb-4">
+              <h3 className="font-extrabold text-slate-900 text-base flex items-center gap-2">
+                <Plus className="text-indigo-600" size={18} />
+                <span>{isAr ? 'إضافة شعار عميل أو شريك' : 'Add a Client / Partner Logo'}</span>
+              </h3>
+              <p className="text-xs text-slate-400 font-medium mt-2">
+                {isAr
+                  ? 'يظهر هذا في قسم "عملاء راضون وشركاء موثوقون" على الصفحة الرئيسية. طالما القائمة فارغة، تظهر مربعات رمادية بدلاً منها.'
+                  : 'Shown in the "Satisfied Members & Verified Partners" section on the homepage. While this list is empty, gray placeholder tiles show instead.'}
+              </p>
+            </div>
+
+            <form onSubmit={handleAddPartnerLogo} className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">{isAr ? 'اسم العميل / الشريك' : 'Client / Partner Name'}</label>
+                <input
+                  required
+                  type="text"
+                  placeholder={isAr ? 'مثال: شركة الحارث العربي' : 'e.g. Al-Harith Arabi Co.'}
+                  value={newPartnerLogo.name}
+                  onChange={(e) => setNewPartnerLogo({ ...newPartnerLogo, name: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-medium text-xs"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">{isAr ? 'رابط الشعار (URL)' : 'Logo Image URL'}</label>
+                <input
+                  required
+                  type="url"
+                  placeholder="https://..."
+                  value={newPartnerLogo.logoUrl}
+                  onChange={(e) => setNewPartnerLogo({ ...newPartnerLogo, logoUrl: e.target.value })}
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-medium text-xs"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-100 flex items-center justify-center gap-2 transition-all"
+              >
+                <Plus size={16} />
+                <span>{isAr ? 'أضف الشعار' : 'Add Logo'}</span>
+              </button>
+            </form>
+          </div>
+
+          {/* Current Partner Logos */}
+          <div className="bg-white border p-6 rounded-[2rem] space-y-4 shadow-sm">
+            <div>
+              <h3 className="font-bold text-slate-900 text-base">{isAr ? 'الشعارات الحالية' : 'Current Logos'}</h3>
+              <p className="text-xs text-slate-400 font-medium mt-1">
+                {isAr ? `${landingConfig.partnerLogos.length} شعار مضاف` : `${landingConfig.partnerLogos.length} logo(s) added`}
+              </p>
+            </div>
+
+            {landingConfig.partnerLogos.length === 0 ? (
+              <p className="text-xs text-slate-400 font-medium py-4">{isAr ? 'لا توجد شعارات بعد.' : 'No logos yet.'}</p>
+            ) : (
+              <div className="divide-y">
+                {landingConfig.partnerLogos.map((logo) => (
+                  <div key={logo.id} className="py-3 flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <img src={logo.logoUrl} alt={logo.name} className="w-14 h-9 object-contain bg-slate-50 border border-slate-100 rounded-lg p-1" />
+                      <p className="text-sm font-extrabold text-slate-800">{logo.name}</p>
+                    </div>
+                    <button
+                      onClick={() => handleDeletePartnerLogo(logo.id)}
+                      className="p-2 text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
         </div>
@@ -1254,6 +1442,135 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
           )}
         </div>
       )}
+
+      {adminTab === 'referrals' && (() => {
+        const commissionByCode = referralCodes.map((rc) => {
+          const orders = referredOrders.filter((o) => o.referralCode === rc.code);
+          return { ...rc, orderCount: orders.length, commissionAed: orders.length * REFERRAL_COMMISSION_AED };
+        });
+        const knownCodes = new Set(referralCodes.map((rc) => rc.code));
+        const unknownCodes = Array.from(new Set(referredOrders.filter((o) => !knownCodes.has(o.referralCode)).map((o) => o.referralCode)));
+        const totalCommissionAed = commissionByCode.reduce((sum, rc) => sum + rc.commissionAed, 0) + unknownCodes.reduce((sum, code) => sum + referredOrders.filter((o) => o.referralCode === code).length * REFERRAL_COMMISSION_AED, 0);
+
+        return (
+          <div className="space-y-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Create a referral code */}
+              <div className="bg-white border p-6 rounded-[2rem] space-y-6 shadow-sm">
+                <div className="border-b pb-4">
+                  <h3 className="font-extrabold text-slate-900 text-base flex items-center gap-2">
+                    <Plus className="text-indigo-600" size={18} />
+                    <span>{isAr ? 'إنشاء رابط إحالة جديد' : 'Create a Referral Link'}</span>
+                  </h3>
+                  <p className="text-xs text-slate-400 font-medium mt-2">
+                    {isAr
+                      ? `يمكن لأي شخص (شريك أو عميل حالي) استخدام رابطه لإحالة عملاء جدد. تحصل على AED ${REFERRAL_COMMISSION_AED} عمولة عند دفع كل عميل مُحال.`
+                      : `Anyone (a partner or existing client) can use their link to refer new clients. AED ${REFERRAL_COMMISSION_AED} commission is owed per referred order once it's paid.`}
+                  </p>
+                </div>
+                <form onSubmit={handleCreateReferralCode} className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">{isAr ? 'اسم المحيل' : "Referrer's Name"}</label>
+                    <input
+                      required
+                      type="text"
+                      value={newReferrer.name}
+                      onChange={(e) => setNewReferrer({ ...newReferrer, name: e.target.value })}
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-medium text-xs"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">{isAr ? 'وسيلة التواصل (اختياري)' : 'Contact info (optional)'}</label>
+                    <input
+                      type="text"
+                      placeholder={isAr ? 'إيميل أو رقم هاتف' : 'Email or phone'}
+                      value={newReferrer.contact}
+                      onChange={(e) => setNewReferrer({ ...newReferrer, contact: e.target.value })}
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-medium text-xs"
+                    />
+                  </div>
+                  {referralError && (
+                    <p className="text-xs text-rose-600 font-bold">{referralError}</p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={creatingReferral}
+                    className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-bold rounded-xl shadow-lg shadow-indigo-100 flex items-center justify-center gap-2 transition-all"
+                  >
+                    <Plus size={16} />
+                    <span>{creatingReferral ? (isAr ? 'جارٍ الإنشاء...' : 'Creating...') : (isAr ? 'إنشاء الرابط' : 'Create Link')}</span>
+                  </button>
+                </form>
+              </div>
+
+              {/* Total owed */}
+              <div className="bg-[#121c42] text-white p-6 rounded-[2rem] shadow-sm flex flex-col justify-center items-center text-center space-y-2">
+                <p className="text-xs font-bold text-indigo-300 uppercase tracking-wider">{isAr ? 'إجمالي العمولات المستحقة' : 'Total Commission Owed'}</p>
+                <p className="text-4xl font-black">AED {totalCommissionAed.toLocaleString()}</p>
+                <p className="text-xs text-slate-400 font-medium">
+                  {isAr ? `عبر ${referredOrders.length} طلب مُحال مدفوع` : `across ${referredOrders.length} paid referred order(s)`}
+                </p>
+              </div>
+            </div>
+
+            {/* Referral codes + commission report */}
+            <div className="bg-white border rounded-[2rem] shadow-sm overflow-hidden">
+              <div className="p-6 border-b">
+                <h3 className="font-extrabold text-slate-900 text-base">{isAr ? 'روابط الإحالة والعمولات' : 'Referral Links & Commissions'}</h3>
+              </div>
+              {loadingReferrals ? (
+                <p className="p-6 text-sm text-slate-400 font-medium">{isAr ? 'جارٍ التحميل...' : 'Loading...'}</p>
+              ) : referralCodes.length === 0 ? (
+                <p className="p-6 text-sm text-slate-400 font-medium">{isAr ? 'لم يتم إنشاء أي رابط إحالة بعد.' : 'No referral links created yet.'}</p>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead className="bg-slate-50 text-[10px] text-slate-400 uppercase font-bold tracking-wider">
+                      <tr>
+                        <th className="text-start px-6 py-3">{isAr ? 'المحيل' : 'Referrer'}</th>
+                        <th className="text-start px-6 py-3">{isAr ? 'الرابط' : 'Link'}</th>
+                        <th className="text-start px-6 py-3">{isAr ? 'الطلبات المدفوعة' : 'Paid Orders'}</th>
+                        <th className="text-start px-6 py-3">{isAr ? 'العمولة المستحقة' : 'Commission Owed'}</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y">
+                      {commissionByCode.map((rc) => {
+                        const link = `${window.location.origin}/?ref=${rc.code}`;
+                        return (
+                          <tr key={rc.id}>
+                            <td className="px-6 py-4">
+                              <p className="font-bold text-slate-900">{rc.referrerName}</p>
+                              {rc.referrerContact && <p className="text-xs text-slate-400">{rc.referrerContact}</p>}
+                            </td>
+                            <td className="px-6 py-4">
+                              <button
+                                onClick={() => navigator.clipboard.writeText(link)}
+                                className="flex items-center gap-1.5 text-xs font-mono text-indigo-600 hover:text-indigo-700"
+                                title={link}
+                              >
+                                <Copy size={12} />
+                                <span>{rc.code}</span>
+                              </button>
+                            </td>
+                            <td className="px-6 py-4 text-sm font-bold text-slate-700">{rc.orderCount}</td>
+                            <td className="px-6 py-4 text-sm font-black text-emerald-600">AED {rc.commissionAed.toLocaleString()}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {unknownCodes.length > 0 && (
+                <div className="p-6 border-t bg-amber-50 text-xs text-amber-700 font-medium">
+                  {isAr ? 'أكواد ظهرت في طلبات مدفوعة لكنها ليست مسجلة في القائمة أعلاه: ' : 'Codes seen on paid orders but not in the list above: '}
+                  {unknownCodes.join(', ')}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })()}
 
     </div>
   );
