@@ -20,6 +20,7 @@ import { RequestStatus, ISORequest, AccreditationBody } from '../types';
 import { generateMockCertificateContent } from '../geminiService';
 import { Language } from '../translations';
 import CertificateTemplate from './CertificateTemplate';
+import RequestDetailModal from './RequestDetailModal';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -63,6 +64,7 @@ const MyRequests: React.FC<MyRequestsProps> = ({ lang, t, requests }) => {
   const [isDownloading, setIsDownloading] = useState<string | null>(null);
   const [certData, setCertData] = useState<any>(null);
   const hiddenCertRef = useRef<HTMLDivElement>(null);
+  const [selectedRequest, setSelectedRequest] = useState<ISORequest | null>(null);
   
   // Filter States
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -330,7 +332,11 @@ const MyRequests: React.FC<MyRequestsProps> = ({ lang, t, requests }) => {
                       </button>
                     ) : (
                       <>
-                        <button className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all" title={lang === 'ar' ? 'عرض التفاصيل' : "View Details"}>
+                        <button
+                          onClick={() => setSelectedRequest(req)}
+                          className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
+                          title={lang === 'ar' ? 'عرض التفاصيل' : "View Details"}
+                        >
                           <Eye size={18} />
                         </button>
                         <button className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all" title={lang === 'ar' ? 'الرسائل' : "Messages"}>
@@ -362,6 +368,15 @@ const MyRequests: React.FC<MyRequestsProps> = ({ lang, t, requests }) => {
           </div>
         )}
       </div>
+
+      {selectedRequest && (
+        <RequestDetailModal
+          request={selectedRequest}
+          lang={lang}
+          isAdmin={false}
+          onClose={() => setSelectedRequest(null)}
+        />
+      )}
     </div>
   );
 };

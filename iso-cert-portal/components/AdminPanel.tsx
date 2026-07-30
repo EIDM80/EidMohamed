@@ -30,6 +30,7 @@ import {
 import { ISORequest, RequestStatus } from '../types';
 import { Language } from '../translations';
 import { LandingConfig, LandingService, LandingSection, LandingMenuItem, PartnerLogo } from '../landingConfig';
+import RequestDetailModal from './RequestDetailModal';
 import { formatMoney } from '../lib/pricing';
 import {
   fetchSiteSettings,
@@ -62,6 +63,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
   onUpdateLandingConfig
 }) => {
   const [adminTab, setAdminTab] = useState<'requests' | 'landing_hero' | 'landing_services' | 'landing_sections' | 'landing_menus' | 'landing_partners' | 'tracking' | 'leads' | 'referrals'>('requests');
+  const [selectedRequest, setSelectedRequest] = useState<ISORequest | null>(null);
 
   const REFERRAL_COMMISSION_AED = 500;
   const [referralCodes, setReferralCodes] = useState<ReferralCode[]>([]);
@@ -601,6 +603,13 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                               <span>{isAr ? 'إصدار وتوقيع الشهادة' : 'Issue Certificate'}</span>
                             </button>
                           )}
+                          <button
+                            onClick={() => setSelectedRequest(req)}
+                            className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-xl transition-all"
+                            title={isAr ? 'الملفات والعداد' : 'Files & Countdown'}
+                          >
+                            <FileText size={16} />
+                          </button>
                           <span className="text-xs text-slate-400 font-medium py-1.5">
                             {req.status === RequestStatus.CERTIFIED && (isAr ? 'مكتمل' : 'Certified Case')}
                           </span>
@@ -1572,6 +1581,14 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
         );
       })()}
 
+      {selectedRequest && (
+        <RequestDetailModal
+          request={selectedRequest}
+          lang={lang}
+          isAdmin={true}
+          onClose={() => setSelectedRequest(null)}
+        />
+      )}
     </div>
   );
 };

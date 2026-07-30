@@ -327,3 +327,34 @@ create trigger on_auth_user_created
 -- To make an account an admin (unlocks seeing every company's requests in
 -- the Admin Panel), run once you have a user:
 --   update public.profiles set role = 'admin' where id = '<user-uuid-here>';
+
+-- Private storage bucket for admin-issued certificates and any other files
+-- attached to a request. Objects are stored as "{request_id}/{filename}" so
+-- the RLS policies below can tie access back to the owning company without a
+-- separate metadata table.
+insert into storage.buckets (id, name, public)
+values ('certificates', 'certificates', false)
+on conflict (id) do nothing;
+
+drop policy if exists "certificates_select_own_or_admin" on storage.objects;
+create policy "certificates_select_own_or_admin" on storage.objects for select
+  using (
+    bucket_id = 'certificates'
+    and (
+      public.is_admin()
+      or exists (
+        select 1 from public.iso_requests r
+        join public.companies c on c.id = r.company_id
+        where r.id::text = (storage.foldername(name))[1]
+          and c.owner_id = auth.uid()
+      )
+    )
+  );
+
+drop policy if exists "certificates_insert_admin" on storage.objects;
+create policy "certificates_insert_admin" on storage.objects for insert
+  with check (bucket_id = 'certificates' and public.is_admin());
+
+drop policy if exists "certificates_delete_admin" on storage.objects;
+create policy "certificates_delete_admin" on storage.objects for delete
+  using (bucket_id = 'certificates' and public.is_admin());
