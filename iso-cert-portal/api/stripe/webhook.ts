@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { Resend } from "resend";
 import { getSupabaseAdmin } from "../../lib/supabaseAdmin.js";
 import { RequestStatus } from "../../types.js";
 import { ISO_STANDARDS } from "../../constants.js";
@@ -47,6 +48,52 @@ const getInvoiceSubscriptionId = (invoice: Stripe.Invoice): string | undefined =
   return typeof sub === "string" ? sub : sub?.id;
 };
 
+// Notifies the team by email whenever a client pays for a new certification
+// order. Never throws — a missing/failing email must not block the order
+// itself from being recorded.
+async function sendOrderNotificationEmail(params: {
+  companyId: string;
+  standards: { code: string }[];
+  accreditationBody: string;
+  amount: number;
+  currency: string;
+  term: "1y" | "3y";
+}) {
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!resendKey) {
+    console.error("RESEND_API_KEY is not set — order notification email not sent");
+    return;
+  }
+  try {
+    const { data: company } = await getSupabaseAdmin()
+      .from("companies")
+      .select("name")
+      .eq("id", params.companyId)
+      .maybeSingle();
+
+    const resend = new Resend(resendKey);
+    const fromAddress = process.env.RESEND_FROM_EMAIL || "GAMC Website <noreply@gloria-c.com>";
+    const standardCodes = params.standards.map((s) => s.code).join(", ");
+    const { error } = await resend.emails.send({
+      from: fromAddress,
+      to: "iso@gloria-c.com",
+      subject: `New Order: ${standardCodes} — ${company?.name || "Unknown company"}`,
+      text: [
+        "A client just paid for a new ISO certification order:",
+        "",
+        `Company: ${company?.name || "Unknown"} (${params.companyId})`,
+        `Standards: ${standardCodes}`,
+        `Accreditation body: ${params.accreditationBody}`,
+        `Amount: ${params.amount} ${params.currency.toUpperCase()}`,
+        `Term: ${params.term === "3y" ? "3 years" : "1 year"}`,
+      ].join("\n"),
+    });
+    if (error) console.error("Resend failed to send order notification email:", error);
+  } catch (err) {
+    console.error("Order notification email threw an error:", err);
+  }
+}
+
 async function handleCheckoutCompleted(stripe: Stripe, session: Stripe.Checkout.Session) {
   const meta = session.metadata || {};
   const companyId = meta.companyId;
@@ -80,7 +127,17 @@ async function handleCheckoutCompleted(stripe: Stripe, session: Stripe.Checkout.
   });
   if (error) {
     console.error("Failed to create request after payment:", error.message, meta);
+    return;
   }
+
+  await sendOrderNotificationEmail({
+    companyId,
+    standards,
+    accreditationBody: meta.accreditationBody,
+    amount: Number(meta.amount) || 0,
+    currency: meta.currency || "usd",
+    term: meta.term === "3y" ? "3y" : "1y",
+  });
 }
 
 // Renewal payments (billing_reason: 'subscription_cycle') land here — the

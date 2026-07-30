@@ -38,6 +38,52 @@ const getInvoiceSubscriptionId = (invoice: Stripe.Invoice): string | undefined =
   return typeof sub === "string" ? sub : sub?.id;
 };
 
+// Notifies the team by email whenever a client pays for a new certification
+// order. Never throws — a missing/failing email must not block the order
+// itself from being recorded.
+async function sendOrderNotificationEmail(params: {
+  companyId: string;
+  standards: { code: string }[];
+  accreditationBody: string;
+  amount: number;
+  currency: string;
+  term: "1y" | "3y";
+}) {
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!resendKey) {
+    console.error("RESEND_API_KEY is not set — order notification email not sent");
+    return;
+  }
+  try {
+    const { data: company } = await getSupabaseAdmin()
+      .from("companies")
+      .select("name")
+      .eq("id", params.companyId)
+      .maybeSingle();
+
+    const resend = new Resend(resendKey);
+    const fromAddress = process.env.RESEND_FROM_EMAIL || "GAMC Website <noreply@gloria-c.com>";
+    const standardCodes = params.standards.map((s) => s.code).join(", ");
+    const { error } = await resend.emails.send({
+      from: fromAddress,
+      to: "iso@gloria-c.com",
+      subject: `New Order: ${standardCodes} — ${company?.name || "Unknown company"}`,
+      text: [
+        "A client just paid for a new ISO certification order:",
+        "",
+        `Company: ${company?.name || "Unknown"} (${params.companyId})`,
+        `Standards: ${standardCodes}`,
+        `Accreditation body: ${params.accreditationBody}`,
+        `Amount: ${params.amount} ${params.currency.toUpperCase()}`,
+        `Term: ${params.term === "3y" ? "3 years" : "1 year"}`,
+      ].join("\n"),
+    });
+    if (error) console.error("Resend failed to send order notification email:", error);
+  } catch (err) {
+    console.error("Order notification email threw an error:", err);
+  }
+}
+
 // Node doesn't read .env files on its own; layer .env then .env.local
 // (matching Vite's own precedence) so GEMINI_API_KEY reaches process.env
 // whether it was set here or by the hosting platform's real env vars.
@@ -112,6 +158,15 @@ async function startServer() {
           });
           if (error) {
             console.error("Failed to create request after payment:", error.message, meta);
+          } else {
+            await sendOrderNotificationEmail({
+              companyId,
+              standards,
+              accreditationBody: meta.accreditationBody,
+              amount: Number(meta.amount) || 0,
+              currency: meta.currency || "usd",
+              term: meta.term === "3y" ? "3y" : "1y",
+            });
           }
           break;
         }
