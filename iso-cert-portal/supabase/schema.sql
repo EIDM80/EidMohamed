@@ -297,8 +297,13 @@ drop policy if exists "training_leads_select_admin" on public.training_leads;
 create policy "training_leads_select_admin" on public.training_leads for select
   using (public.is_admin());
 
--- On signup, auto-create a company (named from signup metadata) and a
--- matching client profile, so the app has somewhere to attach requests to.
+-- On signup, either:
+-- - default (client): auto-create a company (named from signup metadata)
+--   and a matching client profile, so the app has somewhere to attach
+--   requests to; or
+-- - signup_role = 'partner' (the public "Join the Referral Program" form):
+--   create a partner profile (no company) plus their own referral_codes
+--   row, so they get a working login and a link in the same step.
 create or replace function public.handle_new_user()
 returns trigger
 language plpgsql
@@ -307,13 +312,33 @@ set search_path = public
 as $$
 declare
   new_company_id uuid;
+  signup_role text;
+  partner_code text;
 begin
-  insert into public.companies (owner_id, name)
-  values (new.id, coalesce(new.raw_user_meta_data->>'company_name', 'My Company'))
-  returning id into new_company_id;
+  signup_role := coalesce(new.raw_user_meta_data->>'signup_role', 'client');
 
-  insert into public.profiles (id, full_name, role, company_id)
-  values (new.id, new.raw_user_meta_data->>'full_name', 'client', new_company_id);
+  if signup_role = 'partner' then
+    partner_code := upper(left(regexp_replace(coalesce(new.raw_user_meta_data->>'full_name', 'REF'), '[^a-zA-Z0-9]+', '', 'g'), 10))
+      || '-' || upper(substr(md5(random()::text), 1, 4));
+
+    insert into public.profiles (id, full_name, role, company_id, email)
+    values (new.id, new.raw_user_meta_data->>'full_name', 'partner', null, new.email);
+
+    insert into public.referral_codes (code, referrer_name, referrer_contact, owner_id)
+    values (
+      partner_code,
+      coalesce(new.raw_user_meta_data->>'full_name', new.email),
+      trim(both ' / ' from coalesce(new.raw_user_meta_data->>'phone', '') || ' / ' || new.email),
+      new.id
+    );
+  else
+    insert into public.companies (owner_id, name)
+    values (new.id, coalesce(new.raw_user_meta_data->>'company_name', 'My Company'))
+    returning id into new_company_id;
+
+    insert into public.profiles (id, full_name, role, company_id, email)
+    values (new.id, new.raw_user_meta_data->>'full_name', 'client', new_company_id, new.email);
+  end if;
 
   return new;
 end;
@@ -325,8 +350,10 @@ create trigger on_auth_user_created
   for each row execute procedure public.handle_new_user();
 
 -- To make an account an admin (unlocks seeing every company's requests in
--- the Admin Panel), run once you have a user:
+-- the Admin Panel) or a super_admin (also unlocks site config + staff
+-- account management), run once you have a user:
 --   update public.profiles set role = 'admin' where id = '<user-uuid-here>';
+--   update public.profiles set role = 'super_admin' where id = '<user-uuid-here>';
 
 -- Private storage bucket for admin-issued certificates and any other files
 -- attached to a request. Objects are stored as "{request_id}/{filename}" so
@@ -358,3 +385,127 @@ create policy "certificates_insert_admin" on storage.objects for insert
 drop policy if exists "certificates_delete_admin" on storage.objects;
 create policy "certificates_delete_admin" on storage.objects for delete
   using (bucket_id = 'certificates' and public.is_admin());
+
+-- ---------------------------------------------------------------------
+-- Role tiers: client / admin / super_admin / partner
+--
+-- - client: owns a company, submits/pays for ISO requests (unchanged).
+-- - admin: runs day-to-day operations (requests, training leads); can do
+--   everything the old single "admin" role could.
+-- - super_admin: everything admin can, PLUS site configuration (tracking
+--   codes, landing page content) and managing other staff accounts' roles.
+-- - partner: a referral partner with their own login, restricted to their
+--   own referral link and referred-orders summary — no access to any
+--   company's requests or site content.
+-- ---------------------------------------------------------------------
+
+alter table public.profiles drop constraint if exists profiles_role_check;
+alter table public.profiles add constraint profiles_role_check
+  check (role in ('client', 'admin', 'super_admin', 'partner'));
+
+alter table public.profiles add column if not exists email text;
+update public.profiles p set email = u.email from auth.users u where p.id = u.id and p.email is null;
+
+-- is_admin() now covers super_admin too, so every existing "admin-only"
+-- policy above (requests, tickets, training_leads, referral_codes
+-- reporting, etc.) automatically also allows super_admin without having
+-- to touch each one individually.
+create or replace function public.is_admin()
+returns boolean
+language sql
+security definer
+set search_path = public
+stable
+as $$
+  select exists (
+    select 1 from public.profiles where id = auth.uid() and role in ('admin', 'super_admin')
+  );
+$$;
+
+create or replace function public.is_super_admin()
+returns boolean
+language sql
+security definer
+set search_path = public
+stable
+as $$
+  select exists (
+    select 1 from public.profiles where id = auth.uid() and role = 'super_admin'
+  );
+$$;
+
+-- Site-wide configuration is super-admin-only; plain admins run operations
+-- but can't change tracking codes or landing page content.
+drop policy if exists "site_settings_update_admin" on public.site_settings;
+create policy "site_settings_update_super_admin" on public.site_settings for update
+  using (public.is_super_admin());
+
+drop policy if exists "landing_config_update_admin" on public.landing_config;
+create policy "landing_config_update_super_admin" on public.landing_config for update
+  using (public.is_super_admin());
+
+-- A profile's own row is always visible/updatable by its owner (needed for
+-- e.g. company_id lookups on login), and by any super_admin (for staff
+-- account management). This replaces the old self-only update policy.
+drop policy if exists "profiles_update_own" on public.profiles;
+drop policy if exists "profiles_update_own_or_super_admin" on public.profiles;
+create policy "profiles_update_own_or_super_admin" on public.profiles for update
+  using (id = auth.uid() or public.is_super_admin());
+
+-- Row visibility alone isn't enough to stop a client from just PATCHing
+-- their own `role` column to escalate privileges, since the USING clause
+-- above legitimately allows them to update their own row for other
+-- reasons (e.g. full_name). This trigger is the actual enforcement point:
+-- only a super_admin may ever change a profile's role, regardless of
+-- whose row it is.
+--
+-- auth.uid() is null when the update runs outside a user session — the
+-- Supabase SQL Editor (as postgres) or a service_role-authenticated
+-- request — both already fully trusted elsewhere in this schema (e.g. the
+-- bootstrap instruction below), so those are exempt; only browser-session
+-- requests from a non-super_admin are blocked.
+create or replace function public.enforce_profile_role_change()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if new.role is distinct from old.role and auth.uid() is not null and not public.is_super_admin() then
+    raise exception 'Only a super admin can change a profile role';
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists trg_enforce_profile_role_change on public.profiles;
+create trigger trg_enforce_profile_role_change
+  before update on public.profiles
+  for each row execute procedure public.enforce_profile_role_change();
+
+-- Referral partners get their own login, so a referral_codes row can now
+-- optionally be owned by an auth user (admin-created codes have no owner
+-- and stay purely a reporting record).
+alter table public.referral_codes add column if not exists owner_id uuid references auth.users(id) on delete set null;
+
+drop policy if exists "referral_codes_select_own" on public.referral_codes;
+create policy "referral_codes_select_own" on public.referral_codes for select
+  using (owner_id = auth.uid());
+
+-- Column-limited view for a partner's own referred orders: no amount, no
+-- other partners' data — just enough to recognize which client they
+-- referred and confirm it counts toward their (fixed AED 500/order)
+-- commission. The `where owner_id = auth.uid()` filter is embedded in the
+-- view itself so it's correct regardless of who owns/queries the view.
+create or replace view public.my_referred_orders as
+select
+  r.id,
+  c.name as company_name,
+  r.created_at
+from public.iso_requests r
+join public.companies c on c.id = r.company_id
+join public.referral_codes rc on rc.code = r.referral_code
+where rc.owner_id = auth.uid();
+
+revoke all on public.my_referred_orders from public, anon;
+grant select on public.my_referred_orders to authenticated;

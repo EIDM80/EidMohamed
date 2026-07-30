@@ -12,6 +12,7 @@ import Guide from './components/Guide';
 import AboutUs from './components/AboutUs';
 import Auth from './components/Auth';
 import PublicLanding from './components/PublicLanding';
+import AffiliateDashboard from './components/AffiliateDashboard';
 import { fetchLandingConfig, updateLandingConfig, DEFAULT_LANDING_CONFIG, LandingConfig } from './landingConfig';
 import {
   Bell,
@@ -56,6 +57,7 @@ const App: React.FC = () => {
   const [paymentNotice, setPaymentNotice] = useState<'success' | 'cancelled' | null>(null);
 
   const isAuthenticated = !!session;
+  const isStaff = profile?.role === 'admin' || profile?.role === 'super_admin';
   const t = (key: keyof typeof translations.en) => translations[lang][key] || key;
 
   useEffect(() => {
@@ -196,15 +198,16 @@ const App: React.FC = () => {
       case 'guide': return <Guide {...commonProps} />;
       case 'about': return <AboutUs {...commonProps} />;
       case 'profile': return <CompanyProfile company={company} onSave={handleSaveCompany} {...commonProps} />;
-      case 'admin': return (
-        <AdminPanel 
-          requests={requests} 
-          onUpdateStatus={updateRequestStatus} 
+      case 'admin': return isStaff ? (
+        <AdminPanel
+          requests={requests}
+          onUpdateStatus={updateRequestStatus}
           landingConfig={landingConfig}
           onUpdateLandingConfig={handleUpdateLandingConfig}
-          {...commonProps} 
+          role={profile?.role === 'super_admin' ? 'super_admin' : 'admin'}
+          {...commonProps}
         />
-      );
+      ) : <DashboardHome requests={requests} companyName={company.name} onNavigate={setActiveTab} {...commonProps} />;
       default: return <DashboardHome requests={requests} companyName={company.name} onNavigate={setActiveTab} {...commonProps} />;
     }
   };
@@ -245,10 +248,22 @@ const App: React.FC = () => {
     );
   }
 
-  // 3. RENDER FULL AUTHENTICATED PORTAL WORKFLOW
+  // 3. RENDER AFFILIATE DASHBOARD (partner accounts get their own separate shell)
+  if (profile?.role === 'partner') {
+    return (
+      <AffiliateDashboard
+        lang={lang}
+        onSetLang={setLang}
+        onLogout={handleLogout}
+        onViewPublicSite={() => setViewMode('public')}
+      />
+    );
+  }
+
+  // 4. RENDER FULL AUTHENTICATED PORTAL WORKFLOW (client / admin / super_admin)
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
-      <Sidebar 
+      <Sidebar
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
         onLogout={handleLogout}
@@ -271,15 +286,17 @@ const App: React.FC = () => {
               <span className="hidden md:inline">{lang === 'ar' ? 'الموقع العام' : 'Public Website'}</span>
             </button>
 
-            <button 
-              onClick={() => setActiveTab('admin')}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                activeTab === 'admin' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              <Layout size={14} />
-              <span className="hidden md:inline">{t('switchToOps')}</span>
-            </button>
+            {isStaff && (
+              <button
+                onClick={() => setActiveTab('admin')}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                  activeTab === 'admin' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                <Layout size={14} />
+                <span className="hidden md:inline">{t('switchToOps')}</span>
+              </button>
+            )}
           </div>
 
           <div className="flex items-center gap-2 md:gap-4">

@@ -42,7 +42,10 @@ import {
   fetchReferralCodes,
   fetchReferredOrders,
   ReferralCode,
-  ReferredOrder
+  ReferredOrder,
+  fetchStaffProfiles,
+  updateProfileRole,
+  StaffProfile
 } from '../lib/db';
 
 interface AdminPanelProps {
@@ -52,18 +55,42 @@ interface AdminPanelProps {
   t: (key: any) => string;
   landingConfig: LandingConfig;
   onUpdateLandingConfig: (config: LandingConfig) => void;
+  role: 'admin' | 'super_admin';
 }
 
-const AdminPanel: React.FC<AdminPanelProps> = ({ 
-  requests, 
-  onUpdateStatus, 
-  lang, 
+const AdminPanel: React.FC<AdminPanelProps> = ({
+  requests,
+  onUpdateStatus,
+  role,
+  lang,
   t,
   landingConfig,
   onUpdateLandingConfig
 }) => {
-  const [adminTab, setAdminTab] = useState<'requests' | 'landing_hero' | 'landing_services' | 'landing_sections' | 'landing_menus' | 'landing_partners' | 'tracking' | 'leads' | 'referrals'>('requests');
+  const [adminTab, setAdminTab] = useState<'requests' | 'landing_hero' | 'landing_services' | 'landing_sections' | 'landing_menus' | 'landing_partners' | 'tracking' | 'leads' | 'referrals' | 'staff'>('requests');
   const [selectedRequest, setSelectedRequest] = useState<ISORequest | null>(null);
+  const isSuperAdmin = role === 'super_admin';
+
+  const [staffProfiles, setStaffProfiles] = useState<StaffProfile[]>([]);
+  const [loadingStaff, setLoadingStaff] = useState(true);
+  const [savingStaffId, setSavingStaffId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!isSuperAdmin) return;
+    fetchStaffProfiles().then((data) => {
+      setStaffProfiles(data);
+      setLoadingStaff(false);
+    });
+  }, [isSuperAdmin]);
+
+  const handleChangeStaffRole = async (id: string, newRole: StaffProfile['role']) => {
+    setSavingStaffId(id);
+    const ok = await updateProfileRole(id, newRole);
+    if (ok) {
+      setStaffProfiles((prev) => prev.map((p) => (p.id === id ? { ...p, role: newRole } : p)));
+    }
+    setSavingStaffId(null);
+  };
 
   const REFERRAL_COMMISSION_AED = 500;
   const [referralCodes, setReferralCodes] = useState<ReferralCode[]>([]);
@@ -381,65 +408,69 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
             <span>{isAr ? 'طلبات ISO والسجل' : 'Requests & Registry'}</span>
           </button>
 
-          <button
-            onClick={() => setAdminTab('landing_hero')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-              adminTab === 'landing_hero' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
-            }`}
-          >
-            <Sparkles size={14} />
-            <span>{isAr ? 'البانر الرئيسي والاتصال' : 'Hero & Contacts'}</span>
-          </button>
+          {isSuperAdmin && (
+            <>
+              <button
+                onClick={() => setAdminTab('landing_hero')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  adminTab === 'landing_hero' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
+                }`}
+              >
+                <Sparkles size={14} />
+                <span>{isAr ? 'البانر الرئيسي والاتصال' : 'Hero & Contacts'}</span>
+              </button>
 
-          <button
-            onClick={() => setAdminTab('landing_services')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-              adminTab === 'landing_services' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
-            }`}
-          >
-            <Layers size={14} />
-            <span>{isAr ? 'خدمات ومعايير ISO' : 'ISO Services'}</span>
-          </button>
+              <button
+                onClick={() => setAdminTab('landing_services')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  adminTab === 'landing_services' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
+                }`}
+              >
+                <Layers size={14} />
+                <span>{isAr ? 'خدمات ومعايير ISO' : 'ISO Services'}</span>
+              </button>
 
-          <button
-            onClick={() => setAdminTab('landing_sections')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-              adminTab === 'landing_sections' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
-            }`}
-          >
-            <FileText size={14} />
-            <span>{isAr ? 'الأقسام المخصصة' : 'Custom Sections'}</span>
-          </button>
+              <button
+                onClick={() => setAdminTab('landing_sections')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  adminTab === 'landing_sections' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
+                }`}
+              >
+                <FileText size={14} />
+                <span>{isAr ? 'الأقسام المخصصة' : 'Custom Sections'}</span>
+              </button>
 
-          <button
-            onClick={() => setAdminTab('landing_menus')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-              adminTab === 'landing_menus' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
-            }`}
-          >
-            <ListCollapse size={14} />
-            <span>{isAr ? 'القائمة العلوية' : 'Navigation Menu'}</span>
-          </button>
+              <button
+                onClick={() => setAdminTab('landing_menus')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  adminTab === 'landing_menus' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
+                }`}
+              >
+                <ListCollapse size={14} />
+                <span>{isAr ? 'القائمة العلوية' : 'Navigation Menu'}</span>
+              </button>
 
-          <button
-            onClick={() => setAdminTab('landing_partners')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-              adminTab === 'landing_partners' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
-            }`}
-          >
-            <Users size={14} />
-            <span>{isAr ? 'شعارات العملاء والشركاء' : 'Partner Logos'}</span>
-          </button>
+              <button
+                onClick={() => setAdminTab('landing_partners')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  adminTab === 'landing_partners' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
+                }`}
+              >
+                <Users size={14} />
+                <span>{isAr ? 'شعارات العملاء والشركاء' : 'Partner Logos'}</span>
+              </button>
 
-          <button
-            onClick={() => setAdminTab('tracking')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-              adminTab === 'tracking' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
-            }`}
-          >
-            <Code2 size={14} />
-            <span>{isAr ? 'أكواد التتبع وSEO' : 'Tracking & SEO Codes'}</span>
-          </button>
+              <button
+                onClick={() => setAdminTab('tracking')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  adminTab === 'tracking' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
+                }`}
+              >
+                <Code2 size={14} />
+                <span>{isAr ? 'أكواد التتبع وSEO' : 'Tracking & SEO Codes'}</span>
+              </button>
+            </>
+          )}
 
           <button
             onClick={() => setAdminTab('leads')}
@@ -460,6 +491,18 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
             <DollarSign size={14} />
             <span>{isAr ? 'برنامج الإحالة' : 'Referral Program'}</span>
           </button>
+
+          {isSuperAdmin && (
+            <button
+              onClick={() => setAdminTab('staff')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                adminTab === 'staff' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-indigo-600'
+              }`}
+            >
+              <ShieldCheck size={14} />
+              <span>{isAr ? 'حسابات الموظفين' : 'Staff Accounts'}</span>
+            </button>
+          )}
         </div>
       </div>
 
@@ -1580,6 +1623,54 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
           </div>
         );
       })()}
+
+      {/* RENDER SUPER-ADMIN-ONLY: STAFF ACCOUNTS */}
+      {isSuperAdmin && adminTab === 'staff' && (
+        <div className="bg-white border rounded-3xl overflow-hidden shadow-sm">
+          <div className="p-6 border-b">
+            <h3 className="font-bold text-slate-900 text-base">{isAr ? 'حسابات الموظفين' : 'Staff Accounts'}</h3>
+            <p className="text-slate-500 text-sm mt-1">
+              {isAr
+                ? 'تحكم في من هو مسؤول (يدير العمليات اليومية) ومن هو المسؤول العام (يتحكم أيضاً بإعدادات الموقع).'
+                : 'Control who is an admin (runs daily operations) and who is a super admin (also controls site config).'}
+            </p>
+          </div>
+          {loadingStaff ? (
+            <div className="p-12 text-center text-slate-400 text-sm">{isAr ? 'جارٍ التحميل...' : 'Loading...'}</div>
+          ) : (
+            <table className={`w-full ${isAr ? 'text-right' : 'text-left'} border-collapse`}>
+              <thead>
+                <tr className="bg-slate-50 border-b text-slate-500">
+                  <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">{isAr ? 'الاسم' : 'Name'}</th>
+                  <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">{isAr ? 'البريد الإلكتروني' : 'Email'}</th>
+                  <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">{isAr ? 'الدور' : 'Role'}</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y text-slate-700">
+                {staffProfiles.map((p) => (
+                  <tr key={p.id}>
+                    <td className="px-6 py-4 text-sm font-semibold">{p.fullName || '—'}</td>
+                    <td className="px-6 py-4 text-sm text-slate-500">{p.email || '—'}</td>
+                    <td className="px-6 py-4">
+                      <select
+                        value={p.role}
+                        disabled={savingStaffId === p.id}
+                        onChange={(e) => handleChangeStaffRole(p.id, e.target.value as StaffProfile['role'])}
+                        className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                      >
+                        <option value="client">{isAr ? 'عميل' : 'Client'}</option>
+                        <option value="admin">{isAr ? 'مسؤول' : 'Admin'}</option>
+                        <option value="super_admin">{isAr ? 'مسؤول عام' : 'Super Admin'}</option>
+                        <option value="partner">{isAr ? 'شريك' : 'Partner'}</option>
+                      </select>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      )}
 
       {selectedRequest && (
         <RequestDetailModal

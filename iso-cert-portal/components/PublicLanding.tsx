@@ -41,7 +41,8 @@ import {
 } from 'lucide-react';
 import { LandingConfig, LandingService, LandingSection } from '../landingConfig';
 import { Language, LANGUAGE_NAMES } from '../translations';
-import { submitTrainingLead, TrainingLeadInput, joinReferralProgram } from '../lib/db';
+import { submitTrainingLead, TrainingLeadInput } from '../lib/db';
+import { supabase } from '../lib/supabaseClient';
 import { LANDING_TRANSLATIONS, NewLang } from '../landingTranslations';
 import Logo from './Logo';
 
@@ -145,17 +146,20 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
     setLeadSubmitted(true);
   };
 
-  // Referral program signup modal
+  // Referral program signup modal — creates a real login (partner role) so
+  // the person can come back anytime and see their own stats.
   const [referModalOpen, setReferModalOpen] = useState(false);
-  const [referForm, setReferForm] = useState({ name: '', email: '', phone: '' });
+  const [referForm, setReferForm] = useState({ name: '', email: '', phone: '', password: '' });
   const [referSubmitting, setReferSubmitting] = useState(false);
   const [referResult, setReferResult] = useState<{ code: string; link: string } | null>(null);
+  const [referNotice, setReferNotice] = useState<string | null>(null);
   const [referError, setReferError] = useState<string | null>(null);
   const [referLinkCopied, setReferLinkCopied] = useState(false);
 
   const openReferModal = () => {
-    setReferForm({ name: '', email: '', phone: '' });
+    setReferForm({ name: '', email: '', phone: '', password: '' });
     setReferResult(null);
+    setReferNotice(null);
     setReferError(null);
     setReferModalOpen(true);
   };
@@ -164,13 +168,51 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
     e.preventDefault();
     setReferSubmitting(true);
     setReferError(null);
-    const result = await joinReferralProgram(referForm.name, referForm.email, referForm.phone);
-    setReferSubmitting(false);
-    if ('error' in result) {
-      setReferError(result.error);
+    setReferNotice(null);
+
+    const { data, error: signUpError } = await supabase.auth.signUp({
+      email: referForm.email,
+      password: referForm.password,
+      options: {
+        data: { full_name: referForm.name, phone: referForm.phone, signup_role: 'partner' },
+      },
+    });
+
+    if (signUpError) {
+      setReferSubmitting(false);
+      setReferError(signUpError.message);
       return;
     }
-    setReferResult(result);
+
+    if (!data.session || !data.user) {
+      setReferSubmitting(false);
+      setReferNotice(
+        L(
+          'Check your email to confirm your account, then log in to see your referral link and stats.',
+          'تحقق من بريدك الإلكتروني لتأكيد حسابك، ثم سجّل الدخول لرؤية رابط الإحالة الخاص بك وإحصائياتك.'
+        )
+      );
+      return;
+    }
+
+    // The signup trigger creates the referral_codes row in the same
+    // transaction as the auth user, so it already exists by now.
+    const { data: codeRow, error: codeError } = await supabase
+      .from('referral_codes')
+      .select('code')
+      .eq('owner_id', data.user.id)
+      .maybeSingle();
+
+    setReferSubmitting(false);
+
+    if (codeError || !codeRow) {
+      setReferError(
+        L('Account created, but we could not load your link yet — please log in to view it.', 'تم إنشاء الحساب، لكن تعذر تحميل رابطك بعد — يرجى تسجيل الدخول لعرضه.')
+      );
+      return;
+    }
+
+    setReferResult({ code: codeRow.code, link: `${window.location.origin}/?ref=${codeRow.code}` });
   };
   const [activeTab, setActiveTab] = useState<string>('all');
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -1954,11 +1996,11 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
                   <CheckCircle2 size={28} />
                 </div>
-                <h3 className="text-lg font-black text-slate-900">{L('Your link is ready!', 'رابطك جاهز!')}</h3>
+                <h3 className="text-lg font-black text-slate-900">{L('Your account is ready!', 'حسابك جاهز!')}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">
                   {L(
-                    "Share this link with your clients — you'll earn AED 500 for every one who completes payment through it. We've also emailed you a copy.",
-                    'شارك هذا الرابط مع عملائك — وستربح AED 500 عن كل عميل يكمل الدفع عبره. أرسلنا نسخة أيضاً إلى بريدك الإلكتروني.'
+                    "Share this link with your clients — you'll earn AED 500 for every one who completes payment through it. Log in anytime to track your referrals and commission.",
+                    'شارك هذا الرابط مع عملائك — وستربح AED 500 عن كل عميل يكمل الدفع عبره. سجّل الدخول في أي وقت لمتابعة إحالاتك وعمولتك.'
                   )}
                 </p>
                 <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl p-3">
@@ -1975,6 +2017,23 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   </button>
                 </div>
                 <button
+                  onClick={() => {
+                    setReferModalOpen(false);
+                    onNavigateToPortal();
+                  }}
+                  className="px-6 py-2.5 bg-[#121c42] hover:bg-indigo-600 text-white rounded-full text-xs font-bold transition-all"
+                >
+                  {L('Go to My Dashboard', 'الذهاب إلى لوحتي')}
+                </button>
+              </div>
+            ) : referNotice ? (
+              <div className="text-center py-4 space-y-5">
+                <div className="w-14 h-14 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center mx-auto">
+                  <CheckCircle2 size={28} />
+                </div>
+                <h3 className="text-lg font-black text-slate-900">{L('Almost there!', 'كدت تنتهي!')}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{referNotice}</p>
+                <button
                   onClick={() => setReferModalOpen(false)}
                   className="px-6 py-2.5 bg-[#121c42] hover:bg-indigo-600 text-white rounded-full text-xs font-bold transition-all"
                 >
@@ -1986,7 +2045,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 <div className="mb-6">
                   <h3 className="text-xl font-black text-slate-900">{L('Join the Referral Program', 'انضم لبرنامج الإحالة')}</h3>
                   <p className="text-sm text-slate-500 mt-1">
-                    {L('Fill in your details and get your own link instantly.', 'عبّئ بياناتك وستحصل على رابطك الخاص فوراً.')}
+                    {L('Create your account and get your own link instantly.', 'أنشئ حسابك واحصل على رابطك الخاص فوراً.')}
                   </p>
                 </div>
 
@@ -2020,6 +2079,18 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                       className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                     />
                   </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-600">{L('Password', 'كلمة المرور')}</label>
+                    <input
+                      required
+                      minLength={6}
+                      type="password"
+                      placeholder="••••••••"
+                      value={referForm.password}
+                      onChange={(e) => setReferForm({ ...referForm, password: e.target.value })}
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                    />
+                  </div>
 
                   {referError && (
                     <div className="flex items-start gap-2 p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700">
@@ -2034,7 +2105,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                     className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 disabled:opacity-50 text-white rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2"
                   >
                     {referSubmitting ? <Loader2 size={16} className="animate-spin" /> : null}
-                    <span>{referSubmitting ? L('Creating...', 'جارٍ الإنشاء...') : L('Get My Link', 'احصل على رابطي')}</span>
+                    <span>{referSubmitting ? L('Creating...', 'جارٍ الإنشاء...') : L('Create My Account', 'إنشاء حسابي')}</span>
                   </button>
                 </form>
               </>

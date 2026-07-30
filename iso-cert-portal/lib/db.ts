@@ -4,7 +4,7 @@ import { Company, ISORequest, ISOStandard, AccreditationBody, RequestStatus } fr
 export interface Profile {
   id: string;
   full_name: string | null;
-  role: 'client' | 'admin';
+  role: 'client' | 'admin' | 'super_admin' | 'partner';
   company_id: string | null;
 }
 
@@ -346,28 +346,83 @@ export const fetchReferredOrders = async (): Promise<ReferredOrder[]> => {
   }));
 };
 
-// Public self-serve signup: anyone can join the referral program and get
-// their own link immediately, without an admin creating it for them.
-export const joinReferralProgram = async (
-  name: string,
-  email: string,
-  phone: string
-): Promise<{ code: string; link: string } | { error: string }> => {
-  try {
-    const response = await fetch('/api/referrals/join', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, phone }),
-    });
-    const data = await response.json();
-    if (!response.ok || !data.code) {
-      return { error: data.error || 'Could not create your referral link' };
-    }
-    return { code: data.code, link: data.link };
-  } catch (error) {
-    console.error('joinReferralProgram failed:', error);
-    return { error: 'Could not reach the server' };
+// A partner's own referral code (RLS restricts this to the row they own).
+export const fetchMyReferralCode = async (): Promise<ReferralCode | null> => {
+  const { data, error } = await supabase
+    .from('referral_codes')
+    .select('id, code, referrer_name, referrer_contact, created_at')
+    .maybeSingle();
+  if (error) {
+    console.error('fetchMyReferralCode failed:', error.message);
+    return null;
   }
+  if (!data) return null;
+  return {
+    id: data.id,
+    code: data.code,
+    referrerName: data.referrer_name,
+    referrerContact: data.referrer_contact,
+    createdAt: data.created_at,
+  };
+};
+
+export interface MyReferredOrder {
+  id: string;
+  companyName: string;
+  createdAt: string;
+}
+
+// Column-limited view (no amount, no other companies' data) so a partner
+// can see who they referred without seeing what anyone paid.
+export const fetchMyReferredOrders = async (): Promise<MyReferredOrder[]> => {
+  const { data, error } = await supabase
+    .from('my_referred_orders')
+    .select('id, company_name, created_at')
+    .order('created_at', { ascending: false });
+  if (error) {
+    console.error('fetchMyReferredOrders failed:', error.message);
+    return [];
+  }
+  return (data || []).map((row: any) => ({
+    id: row.id,
+    companyName: row.company_name,
+    createdAt: row.created_at,
+  }));
+};
+
+export interface StaffProfile {
+  id: string;
+  fullName: string | null;
+  email: string | null;
+  role: 'client' | 'admin' | 'super_admin' | 'partner';
+}
+
+// Super-admin-only (enforced by RLS): full account directory for role management.
+export const fetchStaffProfiles = async (): Promise<StaffProfile[]> => {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('id, full_name, email, role')
+    .order('role');
+  if (error) {
+    console.error('fetchStaffProfiles failed:', error.message);
+    return [];
+  }
+  return (data || []).map((row: any) => ({
+    id: row.id,
+    fullName: row.full_name,
+    email: row.email,
+    role: row.role,
+  }));
+};
+
+// Super-admin-only (enforced by RLS + a role-change trigger on profiles).
+export const updateProfileRole = async (id: string, role: StaffProfile['role']): Promise<boolean> => {
+  const { error } = await supabase.from('profiles').update({ role }).eq('id', id);
+  if (error) {
+    console.error('updateProfileRole failed:', error.message);
+    return false;
+  }
+  return true;
 };
 
 export const updateRequestStatusInDb = async (id: string, status: RequestStatus): Promise<boolean> => {
