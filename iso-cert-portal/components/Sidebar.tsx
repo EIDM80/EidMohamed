@@ -21,9 +21,10 @@ interface SidebarProps {
   onLogout: () => void;
   lang: Language;
   t: (key: any) => string;
+  companyName: string;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout, lang, t }) => {
+const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout, lang, t, companyName }) => {
   const menuItems = [
     { id: 'dashboard', label: t('dashboard'), icon: LayoutDashboard },
     { id: 'new-request', label: t('newRequest'), icon: FilePlus },
@@ -75,8 +76,8 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout, la
             <Building2 className="text-indigo-600" size={20} />
           </div>
           <div className="overflow-hidden">
-            <p className="text-sm font-semibold text-slate-900 truncate">Acme Corp Ltd</p>
-            <p className="text-xs text-slate-500 truncate">Organization Profile</p>
+            <p className="text-sm font-semibold text-slate-900 truncate">{companyName || (lang === 'ar' ? 'شركتك' : 'Your Company')}</p>
+            <p className="text-xs text-slate-500 truncate">{lang === 'ar' ? 'ملف المنشأة' : 'Organization Profile'}</p>
           </div>
         </div>
         <button 

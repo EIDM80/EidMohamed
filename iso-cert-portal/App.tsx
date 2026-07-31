@@ -276,11 +276,12 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <Sidebar
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
         onLogout={handleLogout}
         lang={lang}
         t={t}
+        companyName={company.name}
       />
       
       <main className={`${lang === 'ar' ? 'pr-0 md:pr-64' : 'pl-0 md:pl-64'} flex-1 flex flex-col transition-all duration-300`}>
