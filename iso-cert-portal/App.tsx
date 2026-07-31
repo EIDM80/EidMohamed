@@ -54,6 +54,7 @@ const App: React.FC = () => {
 
   const [company, setCompany] = useState<Company>(EMPTY_COMPANY);
   const [paymentNotice, setPaymentNotice] = useState<'success' | 'cancelled' | null>(null);
+  const [emailConfirmed, setEmailConfirmed] = useState(false);
 
   const isAuthenticated = !!session;
   const isStaff = profile?.role === 'admin' || profile?.role === 'super_admin';
@@ -80,6 +81,18 @@ const App: React.FC = () => {
       }
     });
     return () => listener.subscription.unsubscribe();
+  }, []);
+
+  // Clicking the confirmation link in a signup email lands here with
+  // "#access_token=...&type=signup" in the URL — Supabase's client reads
+  // and clears that hash to establish the session, but silently, with no
+  // visible acknowledgment. Catch it here (before it's cleared) so we can
+  // show the user their email was actually confirmed.
+  useEffect(() => {
+    if (window.location.hash.includes('type=signup') || window.location.hash.includes('type=email_change')) {
+      setEmailConfirmed(true);
+      setViewMode('portal');
+    }
   }, []);
 
   // Capture a referral link (?ref=CODE) so it survives navigation into
@@ -335,6 +348,19 @@ const App: React.FC = () => {
 
         {/* Content Area */}
         <div className="p-4 md:p-8 flex-1">
+          {emailConfirmed && (
+            <div className="mb-6 flex items-center justify-between gap-3 p-4 rounded-2xl border bg-emerald-50 border-emerald-200 text-emerald-800">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 size={20} className="shrink-0" />
+                <span className="text-sm font-semibold">
+                  {lang === 'ar' ? 'تم تأكيد بريدك الإلكتروني بنجاح! مرحباً بك.' : 'Your email has been confirmed! Welcome aboard.'}
+                </span>
+              </div>
+              <button onClick={() => setEmailConfirmed(false)} className="p-1 hover:bg-black/5 rounded-lg transition-colors shrink-0">
+                <X size={16} />
+              </button>
+            </div>
+          )}
           {paymentNotice && (
             <div className={`mb-6 flex items-center justify-between gap-3 p-4 rounded-2xl border ${
               paymentNotice === 'success' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-amber-50 border-amber-200 text-amber-800'
