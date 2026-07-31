@@ -103,6 +103,19 @@ const ai = apiKey ? new GoogleGenAI({
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
+// Startup sanity check: confirms which required secrets the running process
+// actually sees, without ever logging the values themselves. Prints once at
+// boot so it's visible in whatever the host captures as the app's output.
+console.log("Startup env check:", {
+  NODE_ENV: process.env.NODE_ENV || "(unset)",
+  PORT: process.env.PORT || "(unset)",
+  STRIPE_SECRET_KEY: Boolean(process.env.STRIPE_SECRET_KEY),
+  STRIPE_WEBHOOK_SECRET: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
+  SUPABASE_SERVICE_ROLE_KEY: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
+  RESEND_API_KEY: Boolean(process.env.RESEND_API_KEY),
+  GEMINI_API_KEY: Boolean(process.env.GEMINI_API_KEY || process.env.API_KEY),
+});
+
 async function startServer() {
   const app = express();
   // cPanel's Node.js App (Phusion Passenger) assigns and injects PORT itself;
