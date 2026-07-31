@@ -1097,149 +1097,62 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
           {/* Pricing Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-            
-            {/* Card 1: ISO 9001 */}
-            <div className="bg-[#f8fafc] border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between hover:shadow-xl hover:border-indigo-200 transition-all relative overflow-hidden group">
-              <div className="space-y-4">
-                <span className="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-[10px] font-black rounded uppercase tracking-wider block w-fit mb-2">
-                  ISO 9001:2015
-                </span>
-                <h3 className="text-base font-black text-slate-900">
-                  {L('Quality Management System', 'نظام إدارة الجودة (QMS)')}
-                </h3>
-                <div className="pt-2">
-                  <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{L('Fixed fee', 'رسوم ثابتة')}</span>
-                  <span className="text-2xl font-black text-[#121c42]">AED 4,495</span>
+
+            {/* Admin-editable cards, driven by the Admin Panel's ISO Services tab */}
+            {config.services.map((service) => (
+              <div key={service.id} className="bg-[#f8fafc] border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between hover:shadow-xl hover:border-indigo-200 transition-all relative overflow-hidden group">
+                <div className="space-y-4">
+                  <span className="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-[10px] font-black rounded uppercase tracking-wider block w-fit mb-2">
+                    {service.code}
+                  </span>
+                  <h3 className="text-base font-black text-slate-900">
+                    {L(service.titleEn, service.titleAr)}
+                  </h3>
+                  {(service.descEn || service.descAr) && (
+                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                      {L(service.descEn, service.descAr)}
+                    </p>
+                  )}
+                  <div className="pt-2">
+                    <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{L('Fixed fee', 'رسوم ثابتة')}</span>
+                    <span className="text-2xl font-black text-[#121c42]">AED {service.price.toLocaleString()}</span>
+                  </div>
+
+                  <div className="border-t border-slate-200/50 pt-4 mt-4">
+                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{L('Features Included:', 'مزايا الباقة:')}</p>
+                    <ul className="space-y-2 text-xs text-slate-600 font-medium">
+                      <li className="flex items-start gap-1.5">
+                        <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
+                        <span>{L('Globally Recognized & Verifiable', 'اعتماد دولي مرموق ومعترف به')}</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
+                        <span>{L('Full Document Prep & Guided Audit', 'إعداد الوثائق ومراجعتها بالكامل')}</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
+                        <span>{L('3-Year Certified Validity', 'صلاحية الشهادة ٣ سنوات معتمدة')}</span>
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
+                        <span>{L('Complimentary Auditor Training', 'وصول مجاني لمنصة التدريب')}</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
 
-                <div className="border-t border-slate-200/50 pt-4 mt-4">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{L('Features Included:', 'مزايا الباقة:')}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 font-medium">
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('Globally Recognized & Verifiable', 'اعتماد دولي مرموق ومعترف به')}</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('Full Document Prep & Guided Audit', 'إعداد الوثائق ومراجعتها بالكامل')}</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('3-Year Certified Validity', 'صلاحية الشهادة ٣ سنوات معتمدة')}</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('Complimentary Auditor Training', 'وصول مجاني لمنصة التدريب')}</span>
-                    </li>
-                  </ul>
+                <div className="pt-6">
+                  <button
+                    onClick={() => handleOrderClick(service.code)}
+                    className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all uppercase tracking-wider"
+                  >
+                    {L('Buy Now', 'شراء الآن')}
+                  </button>
                 </div>
               </div>
+            ))}
 
-              <div className="pt-6">
-                <button
-                  onClick={() => handleOrderClick('ISO 9001')}
-                  className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all uppercase tracking-wider"
-                >
-                  {L('Buy Now', 'شراء الآن')}
-                </button>
-              </div>
-            </div>
-
-            {/* Card 2: ISO 14001 */}
-            <div className="bg-[#f8fafc] border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between hover:shadow-xl hover:border-indigo-200 transition-all relative overflow-hidden group">
-              <div className="space-y-4">
-                <span className="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-[10px] font-black rounded uppercase tracking-wider block w-fit mb-2">
-                  ISO 14001:2015
-                </span>
-                <h3 className="text-base font-black text-slate-900">
-                  {L('Environmental Management', 'نظام إدارة البيئة (EMS)')}
-                </h3>
-                <div className="pt-2">
-                  <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{L('Fixed fee', 'رسوم ثابتة')}</span>
-                  <span className="text-2xl font-black text-[#121c42]">AED 4,495</span>
-                </div>
-
-                <div className="border-t border-slate-200/50 pt-4 mt-4">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{L('Features Included:', 'مزايا الباقة:')}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 font-medium">
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('Globally Recognized & Verifiable', 'اعتماد بيئي متوافق كليا')}</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('Full Document Prep & Guided Audit', 'توفير التكاليف ومراجعة الموارد')}</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('3-Year Certified Validity', 'صلاحية الشهادة ٣ سنوات معتمدة')}</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('Complimentary Auditor Training', 'مكتب دعم فني ذكي للمراجعة')}</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="pt-6">
-                <button
-                  onClick={() => handleOrderClick('ISO 14001')}
-                  className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all uppercase tracking-wider"
-                >
-                  {L('Buy Now', 'شراء الآن')}
-                </button>
-              </div>
-            </div>
-
-            {/* Card 3: ISO 45001 */}
-            <div className="bg-[#f8fafc] border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between hover:shadow-xl hover:border-indigo-200 transition-all relative overflow-hidden group">
-              <div className="space-y-4">
-                <span className="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-[10px] font-black rounded uppercase tracking-wider block w-fit mb-2">
-                  ISO 45001:2018
-                </span>
-                <h3 className="text-base font-black text-slate-900">
-                  {L('Occupational Health & Safety', 'السلامة والصحة المهنية (OHSMS)')}
-                </h3>
-                <div className="pt-2">
-                  <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{L('Fixed fee', 'رسوم ثابتة')}</span>
-                  <span className="text-2xl font-black text-[#121c42]">AED 4,495</span>
-                </div>
-
-                <div className="border-t border-slate-200/50 pt-4 mt-4">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">{L('Features Included:', 'مزايا الباقة:')}</p>
-                  <ul className="space-y-2 text-xs text-slate-600 font-medium">
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('Globally Recognized & Verifiable', 'اعتماد للحد من مخاطر العمل')}</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('Full Document Prep & Guided Audit', 'تقليل الفاقد وتأمين المنشأة')}</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('3-Year Certified Validity', 'صلاحية الشهادة ٣ سنوات معتمدة')}</span>
-                    </li>
-                    <li className="flex items-start gap-1.5">
-                      <Check size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{L('Complimentary Auditor Training', 'الوصول لدورات مدقق داخلي ممتازة')}</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="pt-6">
-                <button
-                  onClick={() => handleOrderClick('ISO 45001')}
-                  className="w-full py-3 bg-[#121c42] hover:bg-indigo-600 text-white rounded-xl text-xs font-bold transition-all uppercase tracking-wider"
-                >
-                  {L('Buy Now', 'شراء الآن')}
-                </button>
-              </div>
-            </div>
-
-            {/* Card 4: Integrated Management System (IMS) */}
+            {/* Card: Integrated Management System (IMS) — a fixed featured bundle, kept separate from the admin-editable list above */}
             <div className="bg-[#121c42] text-white border-2 border-indigo-500 rounded-3xl p-6 flex flex-col justify-between hover:shadow-2xl transition-all relative overflow-hidden group">
               <div className="absolute top-0 right-0 bg-[#f7b500] text-[#121c42] text-[8px] font-black px-3 py-1 uppercase rounded-bl-xl tracking-widest">
                 {L('BEST VALUE PACKAGE', 'باقة التميز المتكاملة')}

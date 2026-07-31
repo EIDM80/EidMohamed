@@ -846,14 +846,14 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
               <Plus className="text-indigo-600" size={18} />
               <span>{isAr ? 'إضافة معيار ISO جديد للموقع' : 'Feature a New ISO Standard Card'}</span>
             </h3>
-            <p className="text-[11px] text-amber-600 font-bold -mt-4 mb-6">
-              {isAr ? '⚠ هذا القسم غير مربوط بعد بالصفحة الرئيسية الفعلية (قسم الأسعار الحالي ثابت).' : "⚠ Not yet connected to the live homepage (the current Pricing section is fixed content)."}
+            <p className="text-[11px] text-slate-400 font-medium -mt-4 mb-6">
+              {isAr ? 'يظهر هذا في قسم الأسعار على الصفحة الرئيسية مباشرة.' : 'This appears directly in the live Pricing section on the homepage.'}
             </p>
 
             <form onSubmit={handleAddService} className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="space-y-2">
                 <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">ISO Code / Label</label>
-                <input 
+                <input
                   required
                   type="text"
                   placeholder="e.g. ISO 27018"
@@ -864,7 +864,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Base Fee / Price (USD)</label>
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Base Fee / Price (AED)</label>
                 <input 
                   required
                   type="number"
@@ -963,7 +963,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                       <span className="px-2 py-0.5 bg-indigo-100 text-indigo-700 text-[10px] font-black rounded uppercase tracking-wider">
                         {service.code}
                       </span>
-                      <span className="text-xs font-extrabold text-indigo-600">${service.price}</span>
+                      <span className="text-xs font-extrabold text-indigo-600">AED {service.price.toLocaleString()}</span>
                     </div>
                     <h4 className="text-sm font-extrabold text-slate-900 mt-1">
                       {service.titleEn} <span className="text-slate-400">|</span> <span className="font-medium font-sans text-xs">{service.titleAr}</span>

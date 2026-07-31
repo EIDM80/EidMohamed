@@ -86,41 +86,31 @@ export const DEFAULT_LANDING_CONFIG: LandingConfig = {
     {
       id: 's1',
       code: 'ISO 9001',
-      titleEn: 'Quality Management Systems',
-      titleAr: 'نظام إدارة الجودة',
+      titleEn: 'Quality Management System',
+      titleAr: 'نظام إدارة الجودة (QMS)',
       descEn: 'The international benchmark for product quality and customer satisfaction management.',
       descAr: 'المعيار الدولي الأساسي لضمان جودة المنتجات والخدمات وإدارة رضا العملاء.',
-      price: 1200,
+      price: 4495,
       icon: 'Shield'
     },
     {
       id: 's2',
       code: 'ISO 14001',
       titleEn: 'Environmental Management',
-      titleAr: 'نظام إدارة البيئة',
+      titleAr: 'نظام إدارة البيئة (EMS)',
       descEn: 'Minimize environmental footprint and optimize resource consumption sustainably.',
       descAr: 'الحد من الأثر البيئي وتحسين استهلاك الموارد الطبيعية بكفاءة واستدامة.',
-      price: 1500,
+      price: 4495,
       icon: 'CheckCircle2'
     },
     {
       id: 's3',
-      code: 'ISO 27001',
-      titleEn: 'Information Security Management',
-      titleAr: 'نظام إدارة أمن المعلومات',
-      descEn: 'Protect critical data, intellectual property, and minimize cyber security risks.',
-      descAr: 'حماية البيانات الحساسة والملكية الفكرية والحد من مخاطر الأمن السيبراني.',
-      price: 2200,
-      icon: 'FileCheck'
-    },
-    {
-      id: 's4',
       code: 'ISO 45001',
       titleEn: 'Occupational Health & Safety',
-      titleAr: 'نظام السلامة والصحة المهنية',
+      titleAr: 'السلامة والصحة المهنية (OHSMS)',
       descEn: 'Ensure employee safety and cultivate high-standard workplace risk reduction.',
       descAr: 'ضمان سلامة الموظفين وتعزيز معايير الحد من المخاطر في بيئة العمل.',
-      price: 1800,
+      price: 4495,
       icon: 'Zap'
     }
   ],

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { Session } from '@supabase/supabase-js';
 import Sidebar from './components/Sidebar';
 import DashboardHome from './components/DashboardHome';
@@ -154,6 +154,44 @@ const App: React.FC = () => {
   useEffect(() => {
     fetchLandingConfig().then(setLandingConfig);
   }, []);
+
+  // Cosmetic-only address bar reflection (no route matching/guarding —
+  // Supabase RLS and the role checks elsewhere already gate actual access).
+  // Two halves: restore the right view once on load if the URL already
+  // points at a dashboard the account is allowed into (so a refresh keeps
+  // you where you were), then keep the bar in sync as navigation happens.
+  const didRestoreFromUrl = useRef(false);
+
+  useEffect(() => {
+    if (didRestoreFromUrl.current || !session || profile === null) return;
+    didRestoreFromUrl.current = true;
+
+    const path = window.location.pathname;
+    if (path === '/affiliatedashboard' && profile.role === 'partner') {
+      setViewMode('portal');
+    } else if (path === '/superadmindashboard' && profile.role === 'super_admin') {
+      setViewMode('portal');
+      setActiveTab('admin');
+    } else if (path === '/admindashboard' && (profile.role === 'admin' || profile.role === 'super_admin')) {
+      setViewMode('portal');
+      setActiveTab('admin');
+    } else if (path === '/clientdashboard') {
+      setViewMode('portal');
+    }
+  }, [session, profile]);
+
+  useEffect(() => {
+    let path = '/';
+    if (viewMode === 'portal' && session) {
+      if (profile?.role === 'partner') path = '/affiliatedashboard';
+      else if (profile?.role === 'super_admin' && activeTab === 'admin') path = '/superadmindashboard';
+      else if (profile?.role === 'admin' && activeTab === 'admin') path = '/admindashboard';
+      else path = '/clientdashboard';
+    }
+    if (window.location.pathname !== path) {
+      window.history.replaceState({}, '', path);
+    }
+  }, [viewMode, activeTab, profile, session]);
 
   const handleUpdateLandingConfig = (newConfig: LandingConfig) => {
     setLandingConfig(newConfig);
