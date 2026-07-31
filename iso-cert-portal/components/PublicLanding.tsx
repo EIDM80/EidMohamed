@@ -41,6 +41,8 @@ import { LandingConfig, LandingService, LandingSection } from '../landingConfig'
 import { Language, LANGUAGE_NAMES } from '../translations';
 import { submitTrainingLead, TrainingLeadInput } from '../lib/db';
 import { supabase } from '../lib/supabaseClient';
+import { ISO_STANDARDS } from '../constants';
+import { priceOrder, AED_PER_USD } from '../lib/pricing';
 import { LANDING_TRANSLATIONS, NewLang } from '../landingTranslations';
 import Logo from './Logo';
 
@@ -104,6 +106,23 @@ interface PublicLandingProps {
   onNavigateToPortal: (options?: { mode?: 'login' | 'signup'; preselectedISO?: string }) => void;
   isAuthenticated: boolean;
 }
+
+// Homepage prices must match what checkout actually charges — computed
+// from the same pricing engine used there, not a separately-editable
+// number that could silently drift out of sync. Returns null if any code
+// doesn't match a real standard (e.g. a custom/marketing-only entry an
+// admin added), so the caller can fall back to its own display price.
+const priceStandardsAedUsd = (codes: string[]): { usd: number; aed: number } | null => {
+  const standards = codes
+    .map((code) => ISO_STANDARDS.find((s) => s.code === code))
+    .filter((s): s is (typeof ISO_STANDARDS)[number] => Boolean(s));
+  if (standards.length !== codes.length || standards.length === 0) return null;
+  const pricing = priceOrder(standards, standards.length > 1 ? 'multi' : 'single', 'usd', '1y');
+  return {
+    usd: Math.round(pricing.totalUsd),
+    aed: Math.round(pricing.totalUsd * AED_PER_USD),
+  };
+};
 
 const PublicLanding: React.FC<PublicLandingProps> = ({ 
   config, 
@@ -227,6 +246,10 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const isAr = lang === 'ar';
+
+  // Real bundle price (9001+14001+45001, multi-standard discount applied),
+  // computed from the same engine checkout uses — see the featured IMS card.
+  const imsBundlePricing = priceStandardsAedUsd(['ISO 9001', 'ISO 14001', 'ISO 45001']);
 
   // Looks up fr/de/es/pt/it from the translation dictionary (keyed by the
   // English string); falls back to English for any string not yet in the
@@ -1098,8 +1121,15 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           {/* Pricing Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
 
-            {/* Admin-editable cards, driven by the Admin Panel's ISO Services tab */}
-            {config.services.map((service) => (
+            {/* Admin-editable cards, driven by the Admin Panel's ISO Services tab.
+                Price shown is computed from the real checkout pricing engine
+                whenever the code matches an actual ISO standard, so it can
+                never drift out of sync with what's actually charged; the
+                admin-set price is only a fallback for custom/marketing-only
+                entries that don't match a real standard. */}
+            {config.services.map((service) => {
+              const realPricing = priceStandardsAedUsd([service.code]);
+              return (
               <div key={service.id} className="bg-[#f8fafc] border border-slate-200/60 rounded-3xl p-6 flex flex-col justify-between hover:shadow-xl hover:border-indigo-200 transition-all relative overflow-hidden group">
                 <div className="space-y-4">
                   <span className="px-2.5 py-1 bg-indigo-50 text-indigo-700 text-[10px] font-black rounded uppercase tracking-wider block w-fit mb-2">
@@ -1115,7 +1145,14 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   )}
                   <div className="pt-2">
                     <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{L('Fixed fee', 'رسوم ثابتة')}</span>
-                    <span className="text-2xl font-black text-[#121c42]">AED {service.price.toLocaleString()}</span>
+                    {realPricing ? (
+                      <span className="text-2xl font-black text-[#121c42]">
+                        AED {realPricing.aed.toLocaleString()}
+                        <span className="text-sm font-bold text-slate-400"> / ${realPricing.usd.toLocaleString()}</span>
+                      </span>
+                    ) : (
+                      <span className="text-2xl font-black text-[#121c42]">AED {service.price.toLocaleString()}</span>
+                    )}
                   </div>
 
                   <div className="border-t border-slate-200/50 pt-4 mt-4">
@@ -1150,7 +1187,8 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   </button>
                 </div>
               </div>
-            ))}
+              );
+            })}
 
             {/* Card: Integrated Management System (IMS) — a fixed featured bundle, kept separate from the admin-editable list above */}
             <div className="bg-[#121c42] text-white border-2 border-indigo-500 rounded-3xl p-6 flex flex-col justify-between hover:shadow-2xl transition-all relative overflow-hidden group">
@@ -1168,7 +1206,14 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
                 <div className="pt-2">
                   <span className="text-xs font-bold text-slate-400 block uppercase tracking-widest">{L('All-inclusive fee', 'رسوم ثابتة شاملة')}</span>
-                  <span className="text-2xl font-black text-[#f7b500]">AED 10,995</span>
+                  {imsBundlePricing ? (
+                    <span className="text-2xl font-black text-[#f7b500]">
+                      AED {imsBundlePricing.aed.toLocaleString()}
+                      <span className="text-sm font-bold text-slate-400"> / ${imsBundlePricing.usd.toLocaleString()}</span>
+                    </span>
+                  ) : (
+                    <span className="text-2xl font-black text-[#f7b500]">AED 10,995</span>
+                  )}
                 </div>
 
                 <div className="border-t border-slate-700/60 pt-4 mt-4">
