@@ -371,6 +371,43 @@ async function startServer() {
     res.json({ success: true });
   });
 
+  app.post("/api/certificates/verify", async (req, res) => {
+    const certificateNumber = (req.body?.certificateNumber || "").trim();
+    if (!certificateNumber) {
+      return res.status(400).json({ error: "Certificate number is required" });
+    }
+
+    // Only a request that has actually reached "Certified" is a real,
+    // issued certificate — anything else (draft, in review, rejected) must
+    // never be confirmable here, even though its ID technically exists.
+    const { data, error } = await getSupabaseAdmin()
+      .from("iso_requests")
+      .select("accreditation_body, standards, created_at, subscription_status, companies(name)")
+      .eq("id", certificateNumber)
+      .eq("status", RequestStatus.CERTIFIED)
+      .maybeSingle();
+
+    if (error || !data) {
+      return res.json({ found: false });
+    }
+
+    const standards = (data.standards as { code: string }[]) || [];
+    const issueDate = new Date(data.created_at as string);
+    const expiryDate = new Date(issueDate);
+    expiryDate.setFullYear(expiryDate.getFullYear() + 3);
+    const company = Array.isArray(data.companies) ? data.companies[0] : data.companies;
+
+    res.json({
+      found: true,
+      company: (company as { name: string } | null)?.name || "",
+      standard: standards.map((s) => s.code).join(", "),
+      issued: issueDate.toISOString(),
+      expires: expiryDate.toISOString(),
+      body: data.accreditation_body,
+      active: data.subscription_status === "active" || data.subscription_status === "past_due",
+    });
+  });
+
   // API Routes
   app.post("/api/gemini/summarize", async (req, res) => {
     try {

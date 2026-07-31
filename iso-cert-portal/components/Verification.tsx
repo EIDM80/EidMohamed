@@ -1,36 +1,27 @@
 
 import React, { useState } from 'react';
-import { ShieldCheck, Search, Building2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { ShieldCheck, Search, Building2, CheckCircle2, AlertCircle, ExternalLink } from 'lucide-react';
 import { Language } from '../translations';
+import { verifyCertificate, VerifiedCertificate } from '../lib/db';
 
 interface VerificationProps {
   lang: Language;
   t: (key: any) => string;
 }
 
+const formatDate = (iso: string, lang: Language) =>
+  new Date(iso).toLocaleDateString(lang === 'ar' ? 'ar' : 'en-US', { day: 'numeric', month: 'short', year: 'numeric' });
+
 const Verification: React.FC<VerificationProps> = ({ lang, t }) => {
   const [certNo, setCertNo] = useState('');
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<VerifiedCertificate | 'not_found' | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleVerify = () => {
+  const handleVerify = async () => {
     setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      if (certNo === 'ISO-9001-ACME') {
-        setResult({
-          company: 'Acme International Ltd',
-          standard: 'ISO 9001:2015',
-          issued: 'Nov 15, 2023',
-          expires: 'Nov 14, 2026',
-          status: 'Active',
-          body: 'UKAS Accreditation'
-        });
-      } else {
-        setResult('not_found');
-      }
-      setLoading(false);
-    }, 1000);
+    const found = await verifyCertificate(certNo.trim());
+    setResult(found || 'not_found');
+    setLoading(false);
   };
 
   return (
@@ -49,7 +40,7 @@ const Verification: React.FC<VerificationProps> = ({ lang, t }) => {
             <Search className={`absolute ${lang === 'ar' ? 'right-4' : 'left-4'} top-1/2 -translate-y-1/2 text-slate-400`} size={20} />
             <input 
               type="text" 
-              placeholder={lang === 'ar' ? 'أدخل رقم الشهادة (مثلاً ISO-9001-ACME)' : "Enter Certificate Number (e.g. ISO-9001-ACME)"}
+              placeholder={lang === 'ar' ? 'أدخل رقم الشهادة كما هو مطبوع على شهادتك' : "Enter the Certificate No. printed on your certificate"}
               className={`w-full ${lang === 'ar' ? 'pr-12 pl-4 text-right' : 'pl-12 pr-4 text-left'} py-4 bg-slate-50 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all font-medium`}
               value={certNo}
               onChange={(e) => setCertNo(e.target.value)}
@@ -76,11 +67,19 @@ const Verification: React.FC<VerificationProps> = ({ lang, t }) => {
 
         {result && result !== 'not_found' && (
           <div className="space-y-6 animate-in zoom-in-95">
-            <div className="flex items-center gap-4 bg-emerald-50 p-6 rounded-2xl border border-emerald-100 text-emerald-700">
+            <div className={`flex items-center gap-4 p-6 rounded-2xl border ${result.active ? 'bg-emerald-50 border-emerald-100 text-emerald-700' : 'bg-amber-50 border-amber-100 text-amber-700'}`}>
               <CheckCircle2 size={32} className="shrink-0" />
               <div className={lang === 'ar' ? 'text-right' : 'text-left'}>
-                <p className="text-lg font-bold">{lang === 'ar' ? 'شهادة مصدقة' : 'Authenticated Certificate'}</p>
-                <p className="text-sm opacity-90">{lang === 'ar' ? 'هذه الشهادة حقيقية وصالحة حالياً في سجلنا.' : 'This certificate is genuine and currently valid in our registry.'}</p>
+                <p className="text-lg font-bold">
+                  {result.active
+                    ? (lang === 'ar' ? 'شهادة مصدقة وسارية' : 'Authenticated & Active Certificate')
+                    : (lang === 'ar' ? 'شهادة مصدقة لكنها غير سارية حالياً' : 'Authenticated Certificate — Currently Inactive')}
+                </p>
+                <p className="text-sm opacity-90">
+                  {result.active
+                    ? (lang === 'ar' ? 'هذه الشهادة حقيقية وصالحة حالياً في سجلنا.' : 'This certificate is genuine and currently valid in our registry.')
+                    : (lang === 'ar' ? 'هذه الشهادة حقيقية لكن اشتراك التجديد الخاص بها متوقف حالياً.' : 'This certificate is genuine, but its renewal subscription is not currently active.')}
+                </p>
               </div>
             </div>
 
@@ -98,23 +97,42 @@ const Verification: React.FC<VerificationProps> = ({ lang, t }) => {
               </div>
               <div className={`p-6 bg-slate-50 rounded-2xl border border-slate-100 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{lang === 'ar' ? 'تاريخ الإصدار' : 'Issue Date'}</p>
-                <p className="font-semibold text-slate-900 mt-2">{result.issued}</p>
+                <p className="font-semibold text-slate-900 mt-2">{formatDate(result.issued, lang)}</p>
               </div>
               <div className={`p-6 bg-slate-50 rounded-2xl border border-slate-100 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">{lang === 'ar' ? 'تاريخ الانتهاء' : 'Expiry Date'}</p>
-                <p className="font-semibold text-slate-900 mt-2">{result.expires}</p>
+                <p className="font-semibold text-slate-900 mt-2">{formatDate(result.expires, lang)}</p>
               </div>
             </div>
 
-            <div className={`flex items-center justify-between p-4 bg-indigo-50/50 rounded-2xl text-indigo-700 border border-indigo-100 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
-              <div className="flex items-center gap-2">
-                <ShieldCheck size={18} />
-                <span className="text-sm font-semibold">{result.body}</span>
-              </div>
-              <button className="text-xs font-bold hover:underline">{lang === 'ar' ? 'تحميل إثبات السجل' : 'Download Registry Proof'}</button>
+            <div className={`flex items-center gap-2 p-4 bg-indigo-50/50 rounded-2xl text-indigo-700 border border-indigo-100 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
+              <ShieldCheck size={18} className="shrink-0" />
+              <span className="text-sm font-semibold">{result.body}</span>
             </div>
           </div>
         )}
+      </div>
+
+      {/* Outbound link to the official IAF CertSearch global registry — the
+          authoritative source, independent of our own internal records. */}
+      <div className="mt-6 bg-[#0b1021] p-6 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className={lang === 'ar' ? 'text-right' : 'text-left'}>
+          <p className="text-white font-bold">{lang === 'ar' ? 'التحقق عبر السجل الرسمي العالمي' : 'Cross-check with the official global registry'}</p>
+          <p className="text-slate-400 text-sm mt-1">
+            {lang === 'ar'
+              ? 'كل شهادة نصدرها عبر هيئة اعتماد معتمدة مدرجة أيضاً في IAF CertSearch.'
+              : 'Every certificate we issue through an accredited body is also listed on IAF CertSearch.'}
+          </p>
+        </div>
+        <a
+          href="https://www.iafcertsearch.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-white text-[#0b1021] font-bold rounded-2xl hover:bg-slate-100 transition-all whitespace-nowrap"
+        >
+          <span>{lang === 'ar' ? 'زيارة IAF CertSearch' : 'Visit IAF CertSearch'}</span>
+          <ExternalLink size={16} />
+        </a>
       </div>
     </div>
   );

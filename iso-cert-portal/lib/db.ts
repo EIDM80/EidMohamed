@@ -225,6 +225,30 @@ export const submitTrainingLead = async (input: TrainingLeadInput): Promise<{ su
   }
 };
 
+export interface VerifiedCertificate {
+  company: string;
+  standard: string;
+  issued: string;
+  expires: string;
+  body: string;
+  active: boolean;
+}
+
+export const verifyCertificate = async (certificateNumber: string): Promise<VerifiedCertificate | null> => {
+  try {
+    const response = await fetch('/api/certificates/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ certificateNumber }),
+    });
+    const data = await response.json();
+    return data.found ? (data as VerifiedCertificate) : null;
+  } catch (error) {
+    console.error('verifyCertificate failed:', error);
+    return null;
+  }
+};
+
 export interface TrainingLead {
   id: string;
   fullName: string;
