@@ -3,7 +3,6 @@ import path from "path";
 import dotenv from "dotenv";
 import Stripe from "stripe";
 import { Resend } from "resend";
-import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import { getSupabaseAdmin } from "./lib/supabaseAdmin";
 import { priceOrder, Currency, RenewalTerm } from "./lib/pricing";
@@ -106,7 +105,9 @@ const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null;
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  // cPanel's Node.js App (Phusion Passenger) assigns and injects PORT itself;
+  // fall back to 3000 for local dev where nothing sets it.
+  const PORT = Number(process.env.PORT) || 3000;
 
   // Registered before express.json() below: Stripe's signature check needs
   // the exact raw request bytes, not the parsed-and-reserialized JSON.
@@ -414,8 +415,11 @@ async function startServer() {
     }
   });
 
-  // Vite middleware for development
+  // Vite middleware for development. Imported dynamically (rather than at
+  // the top of the file) so a production install — which reasonably omits
+  // devDependencies like vite — never even tries to resolve this module.
   if (process.env.NODE_ENV !== "production") {
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
@@ -424,7 +428,11 @@ async function startServer() {
   } else {
     const distPath = path.join(process.cwd(), 'dist');
     app.use(express.static(distPath));
-    app.get('*', (req, res) => {
+    // A plain middleware (not a route pattern) so it isn't parsed by
+    // path-to-regexp — Express 5's bare '*' route syntax throws at startup.
+    // Anything not already served as a static file falls through to here,
+    // which is what a client-side-routed SPA needs.
+    app.use((req, res) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
   }
