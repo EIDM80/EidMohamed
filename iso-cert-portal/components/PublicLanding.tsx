@@ -354,50 +354,17 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             </div>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation — driven by the Admin Panel's Navigation Menu tab */}
           <nav className="hidden lg:flex items-center gap-1">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
-            >
-              {L('Home', 'الرئيسية')}
-            </button>
-            <button
-              onClick={() => scrollToSection('about-cloud')}
-              className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
-            >
-              {L('About', 'عن المنصة')}
-            </button>
-            <button
-              onClick={() => scrollToSection('benefits')}
-              className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
-            >
-              {L('Why Us?', 'المزايا')}
-            </button>
-            <button
-              onClick={() => scrollToSection('how-it-works')}
-              className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
-            >
-              {L('How It Works', 'طريقة العمل')}
-            </button>
-            <button
-              onClick={() => scrollToSection('services')}
-              className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
-            >
-              {L('Certificates', 'الشهادات والأسعار')}
-            </button>
-            <button
-              onClick={() => scrollToSection('faq')}
-              className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
-            >
-              {L('FAQs', 'الأسئلة الشائعة')}
-            </button>
-            <button
-              onClick={() => scrollToSection('contact-section')}
-              className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
-            >
-              {L('Contact', 'اتصل بنا')}
-            </button>
+            {config.menuItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.targetSection)}
+                className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-indigo-600 rounded-lg hover:bg-slate-50 transition-all uppercase tracking-tight"
+              >
+                {L(item.labelEn, item.labelAr)}
+              </button>
+            ))}
           </nav>
 
           {/* Action Items */}
@@ -462,48 +429,15 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-x-0 top-[112px] bg-white z-30 flex flex-col p-6 border-b border-slate-100 shadow-xl max-h-[80vh] overflow-y-auto">
           <nav className="flex-1 space-y-2">
-            <button
-              onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
-            >
-              {L('Home', 'الرئيسية')}
-            </button>
-            <button
-              onClick={() => { setMobileMenuOpen(false); scrollToSection('about-cloud'); }}
-              className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
-            >
-              {L('About', 'عن المنصة')}
-            </button>
-            <button
-              onClick={() => { setMobileMenuOpen(false); scrollToSection('benefits'); }}
-              className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
-            >
-              {L('Why Us?', 'المزايا')}
-            </button>
-            <button
-              onClick={() => { setMobileMenuOpen(false); scrollToSection('how-it-works'); }}
-              className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
-            >
-              {L('How It Works', 'طريقة العمل')}
-            </button>
-            <button
-              onClick={() => { setMobileMenuOpen(false); scrollToSection('services'); }}
-              className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
-            >
-              {L('Certificates & Pricing', 'الشهادات والأسعار')}
-            </button>
-            <button
-              onClick={() => { setMobileMenuOpen(false); scrollToSection('faq'); }}
-              className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
-            >
-              {L('FAQs', 'الأسئلة الشائعة')}
-            </button>
-            <button
-              onClick={() => { setMobileMenuOpen(false); scrollToSection('contact-section'); }}
-              className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
-            >
-              {L('Contact', 'اتصل بنا')}
-            </button>
+            {config.menuItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => { setMobileMenuOpen(false); scrollToSection(item.targetSection); }}
+                className="w-full text-start font-bold text-slate-800 text-sm py-3 px-4 rounded-xl hover:bg-slate-50 block"
+              >
+                {L(item.labelEn, item.labelAr)}
+              </button>
+            ))}
           </nav>
           <div className="mt-6 pt-6 border-t border-slate-100 space-y-4">
             <button
@@ -540,7 +474,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">
-                {L('ISO Certification Made Simple', 'شهادات الـ ISO أصبحت في غاية السهولة')}
+                {L(config.hero.titleEn, config.hero.titleAr)}
               </h1>
 
               <p className="text-lg md:text-xl text-slate-300 leading-relaxed font-medium">
@@ -548,7 +482,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               </p>
 
               <p className="text-sm md:text-base text-slate-400 leading-relaxed">
-                {L('ISO Order Portal is the premier digital ISO platform dedicated to supporting your certification, offering localized workflow, automated document preparation, and swift access to globally recognized accreditation.', 'ISO Order Portal هي المنصة الرقمية الوحيدة المخصصة لتقديم خدمات الـ ISO مع دعم مخصص ومحلي متميز، لمساعدتك في إعداد الوثائق والحصول على اعتمادات دولية مرموقة ومعترف بها عالمياً.')}
+                {L(config.hero.subtitleEn, config.hero.subtitleAr)}
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-4">
@@ -556,7 +490,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                   onClick={() => scrollToSection('contact-section')}
                   className="px-8 py-4 bg-white hover:bg-slate-100 text-[#121c42] font-black rounded-full shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-2 text-sm uppercase tracking-wider"
                 >
-                  <span>{L('Contact Us', 'اتصل بنا')}</span>
+                  <span>{L(config.hero.ctaTextEn, config.hero.ctaTextAr)}</span>
                 </button>
                 <button
                   onClick={() => scrollToSection('services')}
@@ -568,7 +502,8 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               </div>
             </div>
 
-            {/* Floating Action Cards in Hero */}
+            {/* Floating Action Cards in Hero — hidden when the admin turns off "Show Digital Certificate Graphic Preview" */}
+            {config.hero.showImage && (
             <div className="lg:col-span-5 relative hidden lg:block">
               <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-indigo-300 rounded-[2rem] rotate-3 opacity-10 blur-xl"></div>
 
@@ -620,6 +555,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 </button>
               </div>
             </div>
+            )}
 
           </div>
         </div>
@@ -1573,6 +1509,25 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           </div>
         </div>
       </section>
+
+      {/* Admin-editable Custom Sections (Content Management System) */}
+      {config.customSections.filter((s) => s.visible).length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="max-w-5xl mx-auto px-4 md:px-8 space-y-16">
+            {config.customSections.filter((s) => s.visible).map((s) => (
+              <div key={s.id} className="text-center space-y-4">
+                <h2 className="text-2xl md:text-3xl font-black text-[#121c42] tracking-tight">
+                  {L(s.titleEn, s.titleAr)}
+                </h2>
+                <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+                <p className="max-w-3xl mx-auto text-slate-500 leading-relaxed font-medium whitespace-pre-line text-start sm:text-center">
+                  {L(s.contentEn, s.contentAr)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Section 10: Worldwide Offices */}
       <section className="py-20 bg-[#f8fafc] border-y border-slate-100">

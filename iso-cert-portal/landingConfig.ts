@@ -77,10 +77,12 @@ export const DEFAULT_LANDING_CONFIG: LandingConfig = {
   },
   menuItems: [
     { id: '1', labelEn: "Home", labelAr: "الرئيسية", targetSection: "hero" },
-    { id: '2', labelEn: "Featured Standards", labelAr: "معايير ISO المتميزة", targetSection: "services" },
-    { id: '3', labelEn: "Why Choose Us", labelAr: "لماذا تختارنا", targetSection: "why-choose-us" },
-    { id: '4', labelEn: "How It Works", labelAr: "طريقة التقديم", targetSection: "how-it-works" },
-    { id: '5', labelEn: "FAQ", labelAr: "الأسئلة الشائعة", targetSection: "faq" }
+    { id: '2', labelEn: "About", labelAr: "عن المنصة", targetSection: "about-cloud" },
+    { id: '3', labelEn: "Why Us?", labelAr: "المزايا", targetSection: "benefits" },
+    { id: '4', labelEn: "How It Works", labelAr: "طريقة العمل", targetSection: "how-it-works" },
+    { id: '5', labelEn: "Certificates", labelAr: "الشهادات والأسعار", targetSection: "services" },
+    { id: '6', labelEn: "FAQs", labelAr: "الأسئلة الشائعة", targetSection: "faq" },
+    { id: '7', labelEn: "Contact", labelAr: "اتصل بنا", targetSection: "contact-section" }
   ],
   services: [
     {

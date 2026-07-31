@@ -678,9 +678,6 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                 <Sparkles className="text-indigo-600" size={18} />
                 <span>{isAr ? 'تعديل البانر الرئيسي (Hero Section)' : 'Customize Hero Landing Section'}</span>
               </h3>
-              <p className="text-[11px] text-amber-600 font-bold mt-2">
-                {isAr ? '⚠ هذا القسم غير مربوط بعد بالصفحة الرئيسية الفعلية.' : '⚠ Not yet connected to the live homepage.'}
-              </p>
             </div>
 
             <div className="space-y-4">
@@ -997,9 +994,6 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
               <Plus className="text-indigo-600" size={18} />
               <span>{isAr ? 'إنشاء وإضافة قسم أو صفحة مخصصة للموقع' : 'Add a New Page or Custom Section Segment'}</span>
             </h3>
-            <p className="text-[11px] text-amber-600 font-bold -mt-4 mb-6">
-              {isAr ? '⚠ هذا القسم غير مربوط بعد بالصفحة الرئيسية الفعلية.' : '⚠ Not yet connected to the live homepage.'}
-            </p>
 
             <form onSubmit={handleAddSection} className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
@@ -1144,9 +1138,6 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
                 <Plus className="text-indigo-600" size={18} />
                 <span>{isAr ? 'إضافة رابط تنقل جديد في الهيدر' : 'Add Top Navigation Link'}</span>
               </h3>
-              <p className="text-[11px] text-amber-600 font-bold mt-2">
-                {isAr ? '⚠ هذا القسم غير مربوط بعد بقائمة التنقل الفعلية في الصفحة الرئيسية.' : '⚠ Not yet connected to the live homepage navigation menu.'}
-              </p>
             </div>
 
             <form onSubmit={handleAddMenuItem} className="space-y-4">
