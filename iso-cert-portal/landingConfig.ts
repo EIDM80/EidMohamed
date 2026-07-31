@@ -49,8 +49,6 @@ export interface LandingConfig {
     addressEn: string;
     addressAr: string;
     email: string;
-    phone: string;
-    whatsapp: string;
     hoursEn: string;
     hoursAr: string;
   };
@@ -74,8 +72,6 @@ export const DEFAULT_LANDING_CONFIG: LandingConfig = {
     addressEn: "Al Garhoud, Dubai, UAE",
     addressAr: "القرهود، دبي، الإمارات العربية المتحدة",
     email: "iso@gloria-c.com",
-    phone: "+971562703015",
-    whatsapp: "+971562703015",
     hoursEn: "Monday - Friday: 9:00 AM - 6:00 PM",
     hoursAr: "الأحد - الخميس: 9:00 صباحاً - 6:00 مساءً"
   },
@@ -132,8 +128,8 @@ export const DEFAULT_LANDING_CONFIG: LandingConfig = {
     {
       id: 'why-choose-us',
       type: 'feature',
-      titleEn: 'Why Choose GAMC Global Solutions',
-      titleAr: 'لماذا تختار GAMC للحلول العالمية؟',
+      titleEn: 'Why Choose ISO Order Portal',
+      titleAr: 'لماذا تختار ISO Order Portal؟',
       contentEn: 'We deliver transparent pricing, accelerated processing speeds, and accredited certificates that carry global prestige. Our state-of-the-art secure digital portal manages your compliance workflow with direct integration to international accreditation registries.',
       contentAr: 'نحن نقدم تسعيراً شفافاً، وسرعة في معالجة المعاملات، وشهادات معتمدة تحظى باعتراف دولي فائق. بوابتنا الرقمية الآمنة تدير عمليات الامتثال الخاصة بك بكفاءة عالية وباتصال مباشر مع سجلات الاعتماد الدولية.',
       visible: true

@@ -774,33 +774,12 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
             </div>
 
             <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Email Address</label>
-                  <input 
-                    type="email"
-                    value={landingConfig.contact.email}
-                    onChange={(e) => handleContactChange('email', e.target.value)}
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-medium text-xs"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Telephone Phone</label>
-                  <input 
-                    type="text"
-                    value={landingConfig.contact.phone}
-                    onChange={(e) => handleContactChange('phone', e.target.value)}
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-medium text-xs"
-                  />
-                </div>
-              </div>
-
               <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">WhatsApp Number (e.g. +97156...)</label>
-                <input 
-                  type="text"
-                  value={landingConfig.contact.whatsapp}
-                  onChange={(e) => handleContactChange('whatsapp', e.target.value)}
+                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Email Address</label>
+                <input
+                  type="email"
+                  value={landingConfig.contact.email}
+                  onChange={(e) => handleContactChange('email', e.target.value)}
                   className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 outline-none font-medium text-xs"
                 />
               </div>

@@ -120,7 +120,7 @@ export const startCheckout = async (input: {
   email: string;
 }): Promise<{ url: string } | { error: string }> => {
   try {
-    const referralCode = localStorage.getItem('gamc_referral_code') || undefined;
+    const referralCode = localStorage.getItem('iso_referral_code') || undefined;
     const response = await fetch('/api/stripe/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://iso-certification-management-system-tawny.vercel.app/sitemap.xml
+Sitemap: https://isoorder.com/sitemap.xml

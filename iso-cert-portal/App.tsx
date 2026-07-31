@@ -23,7 +23,6 @@ import {
   Info,
   Globe,
   Mail,
-  Phone,
   ShieldCheck,
   ArrowLeft,
   CheckCircle2,
@@ -88,7 +87,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const ref = new URLSearchParams(window.location.search).get('ref');
     if (ref) {
-      localStorage.setItem('gamc_referral_code', ref);
+      localStorage.setItem('iso_referral_code', ref);
     }
   }, []);
 
@@ -361,28 +360,20 @@ const App: React.FC = () => {
           <div className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-wider ${lang === 'ar' ? 'md:flex-row-reverse' : ''}`}>
             <div className="flex items-center gap-2 text-slate-900">
               <ShieldCheck size={16} className="text-indigo-600" />
-              <span>GAMC Global Solutions</span>
+              <span>ISO Order Portal</span>
               <span className="text-slate-300">|</span>
               <span className="text-slate-400 font-medium">Provider for ISO Certificates</span>
             </div>
-            
+
             <div className={`flex flex-wrap items-center justify-center gap-4 md:gap-8 ${lang === 'ar' ? 'flex-row-reverse' : ''}`}>
-              <a href="https://www.gloria-c.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-indigo-600 transition-colors">
-                <Globe size={14} />
-                www.gloria-c.com
-              </a>
               <a href="mailto:iso@gloria-c.com" className="flex items-center gap-1.5 hover:text-indigo-600 transition-colors">
                 <Mail size={14} />
                 iso@gloria-c.com
               </a>
-              <div className="flex items-center gap-1.5">
-                <Phone size={14} />
-                <span>Call / WhatsApp: +971 56 270 3015</span>
-              </div>
             </div>
 
             <div className="text-slate-400 opacity-60">
-              © 2026 GAMC
+              © 2026 ISO Order Portal
             </div>
           </div>
         </footer>

@@ -40,7 +40,7 @@ const AffiliateDashboard: React.FC<AffiliateDashboardProps> = ({ lang, onSetLang
           </div>
           <div>
             <h1 className="font-bold text-slate-900 leading-none text-sm">{isAr ? 'لوحة الشريك' : 'Affiliate Dashboard'}</h1>
-            <span className="text-[10px] text-slate-500 uppercase font-semibold tracking-wider">GAMC Global Solutions</span>
+            <span className="text-[10px] text-slate-500 uppercase font-semibold tracking-wider">ISO Order Portal</span>
           </div>
         </div>
         <div className="flex items-center gap-2 md:gap-4">

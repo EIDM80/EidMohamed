@@ -43,7 +43,7 @@ export default async function handler(req: any, res: any) {
 
   try {
     const resend = new Resend(resendKey);
-    const fromAddress = process.env.RESEND_FROM_EMAIL || "GAMC Website <noreply@gloria-c.com>";
+    const fromAddress = process.env.RESEND_FROM_EMAIL || "ISO Order Portal <noreply@gloria-c.com>";
     const { error: emailError } = await resend.emails.send({
       from: fromAddress,
       to: "iso@gloria-c.com",

@@ -58,12 +58,12 @@ export const LANDING_TRANSLATIONS: Record<string, Record<NewLang, string>> = {
     pt: 'A forma mais rápida e acessível de obter a certificação ISO reconhecida internacionalmente.',
     it: 'Il modo più rapido ed economico per ottenere una certificazione ISO riconosciuta a livello internazionale.'
   },
-  'GAMC is the premier digital ISO platform dedicated to supporting your certification, offering localized workflow, automated document preparation, and swift access to globally recognized accreditation.': {
-    fr: 'GAMC est la première plateforme numérique dédiée à votre certification ISO, avec un processus adapté localement, une préparation automatisée des documents et un accès rapide à une accréditation reconnue mondialement.',
-    de: 'GAMC ist die führende digitale ISO-Plattform, die Ihre Zertifizierung unterstützt – mit lokalisierten Abläufen, automatisierter Dokumentenerstellung und schnellem Zugang zu weltweit anerkannter Akkreditierung.',
-    es: 'GAMC es la principal plataforma digital de ISO dedicada a apoyar tu certificación, con un flujo de trabajo localizado, preparación automática de documentos y acceso rápido a una acreditación reconocida mundialmente.',
-    pt: 'A GAMC é a principal plataforma digital de ISO dedicada a apoiar a sua certificação, com fluxo de trabalho localizado, preparação automática de documentos e acesso rápido a uma acreditação reconhecida mundialmente.',
-    it: 'GAMC è la principale piattaforma digitale ISO dedicata a supportare la tua certificazione, con un flusso di lavoro localizzato, preparazione automatica dei documenti e accesso rapido a un accreditamento riconosciuto a livello globale.'
+  'ISO Order Portal is the premier digital ISO platform dedicated to supporting your certification, offering localized workflow, automated document preparation, and swift access to globally recognized accreditation.': {
+    fr: 'ISO Order Portal est la première plateforme numérique dédiée à votre certification ISO, avec un processus adapté localement, une préparation automatisée des documents et un accès rapide à une accréditation reconnue mondialement.',
+    de: 'ISO Order Portal ist die führende digitale ISO-Plattform, die Ihre Zertifizierung unterstützt – mit lokalisierten Abläufen, automatisierter Dokumentenerstellung und schnellem Zugang zu weltweit anerkannter Akkreditierung.',
+    es: 'ISO Order Portal es la principal plataforma digital de ISO dedicada a apoyar tu certificación, con un flujo de trabajo localizado, preparación automática de documentos y acceso rápido a una acreditación reconocida mundialmente.',
+    pt: 'A ISO Order Portal é a principal plataforma digital de ISO dedicada a apoiar a sua certificação, com fluxo de trabalho localizado, preparação automática de documentos e acesso rápido a uma acreditação reconhecida mundialmente.',
+    it: 'ISO Order Portal è la principale piattaforma digitale ISO dedicata a supportare la tua certificazione, con un flusso di lavoro localizzato, preparazione automatica dei documenti e accesso rapido a un accreditamento riconosciuto a livello globale.'
   },
   'Contact Us': { fr: 'Contactez-nous', de: 'Kontaktieren Sie uns', es: 'Contáctenos', pt: 'Fale connosco', it: 'Contattaci' },
   'Explore Packages': { fr: 'Découvrir les forfaits', de: 'Pakete entdecken', es: 'Explorar paquetes', pt: 'Explorar pacotes', it: 'Esplora i pacchetti' },
@@ -88,12 +88,12 @@ export const LANDING_TRANSLATIONS: Record<string, Record<NewLang, string>> = {
     pt: 'Cada certificado é genuíno e acreditado pela IAF',
     it: 'Ogni certificato è autentico e accreditato IAF'
   },
-  'GAMC issues certificates exclusively through accreditation bodies that are members of the International Accreditation Forum (IAF), and every certificate is instantly verifiable through the official IAF CertSearch global registry.': {
-    fr: 'GAMC délivre ses certificats exclusivement via des organismes d’accréditation membres du Forum International d’Accréditation (IAF), et chaque certificat est instantanément vérifiable via le registre mondial officiel IAF CertSearch.',
-    de: 'GAMC stellt Zertifikate ausschließlich über Akkreditierungsstellen aus, die Mitglieder des International Accreditation Forum (IAF) sind. Jedes Zertifikat ist sofort über das offizielle globale Register IAF CertSearch überprüfbar.',
-    es: 'GAMC emite certificados exclusivamente a través de organismos de acreditación que son miembros del Foro Internacional de Acreditación (IAF), y cada certificado puede verificarse al instante en el registro oficial global IAF CertSearch.',
-    pt: 'A GAMC emite certificados exclusivamente através de organismos de acreditação membros do Fórum Internacional de Acreditação (IAF), e cada certificado pode ser verificado instantaneamente no registo oficial global IAF CertSearch.',
-    it: 'GAMC rilascia certificati esclusivamente tramite enti di accreditamento membri dell’International Accreditation Forum (IAF), e ogni certificato è verificabile all’istante nel registro globale ufficiale IAF CertSearch.'
+  'ISO Order Portal issues certificates exclusively through accreditation bodies that are members of the International Accreditation Forum (IAF), and every certificate is instantly verifiable through the official IAF CertSearch global registry.': {
+    fr: 'ISO Order Portal délivre ses certificats exclusivement via des organismes d’accréditation membres du Forum International d’Accréditation (IAF), et chaque certificat est instantanément vérifiable via le registre mondial officiel IAF CertSearch.',
+    de: 'ISO Order Portal stellt Zertifikate ausschließlich über Akkreditierungsstellen aus, die Mitglieder des International Accreditation Forum (IAF) sind. Jedes Zertifikat ist sofort über das offizielle globale Register IAF CertSearch überprüfbar.',
+    es: 'ISO Order Portal emite certificados exclusivamente a través de organismos de acreditación que son miembros del Foro Internacional de Acreditación (IAF), y cada certificado puede verificarse al instante en el registro oficial global IAF CertSearch.',
+    pt: 'A ISO Order Portal emite certificados exclusivamente através de organismos de acreditação membros do Fórum Internacional de Acreditação (IAF), e cada certificado pode ser verificado instantaneamente no registo oficial global IAF CertSearch.',
+    it: 'ISO Order Portal rilascia certificati esclusivamente tramite enti di accreditamento membri dell’International Accreditation Forum (IAF), e ogni certificato è verificabile all’istante nel registro globale ufficiale IAF CertSearch.'
   },
   'Auditor Network': { fr: 'Réseau d’auditeurs', de: 'Auditoren-Netzwerk', es: 'Red de auditores', pt: 'Rede de auditores', it: 'Rete di auditor' },
   'IRCA Approved': { fr: 'Approuvé IRCA', de: 'IRCA-zugelassen', es: 'Aprobado por IRCA', pt: 'Aprovado pela IRCA', it: 'Approvato IRCA' },
@@ -106,12 +106,12 @@ export const LANDING_TRANSLATIONS: Record<string, Record<NewLang, string>> = {
     pt: 'Um sistema de documentação ISO baseado na nuvem que pode ser utilizado remotamente, eliminando o elevado custo da certificação ISO.',
     it: 'Un sistema di documentazione ISO basato sul cloud, utilizzabile da remoto, per eliminare gli alti costi della certificazione ISO.'
   },
-  'Our unique cloud solution accelerates the certification process, making us the quickest and most affordable provider of accredited ISO certificates. GAMC ensures absolute clarity, regulatory relevance, and seamless digital execution.': {
-    fr: 'Notre solution cloud unique accélère le processus de certification, faisant de nous le fournisseur le plus rapide et le plus abordable de certificats ISO accrédités. GAMC garantit une clarté absolue, une pertinence réglementaire et une exécution numérique fluide.',
-    de: 'Unsere einzigartige Cloud-Lösung beschleunigt den Zertifizierungsprozess und macht uns zum schnellsten und günstigsten Anbieter akkreditierter ISO-Zertifikate. GAMC garantiert absolute Klarheit, regulatorische Relevanz und nahtlose digitale Umsetzung.',
-    es: 'Nuestra exclusiva solución en la nube acelera el proceso de certificación, convirtiéndonos en el proveedor más rápido y asequible de certificados ISO acreditados. GAMC garantiza total claridad, relevancia normativa y una ejecución digital fluida.',
-    pt: 'A nossa solução exclusiva na nuvem acelera o processo de certificação, tornando-nos o fornecedor mais rápido e acessível de certificados ISO acreditados. A GAMC garante total clareza, relevância regulatória e execução digital sem falhas.',
-    it: 'La nostra esclusiva soluzione cloud accelera il processo di certificazione, rendendoci il fornitore più rapido e conveniente di certificati ISO accreditati. GAMC garantisce chiarezza assoluta, rilevanza normativa ed esecuzione digitale senza intoppi.'
+  'Our unique cloud solution accelerates the certification process, making us the quickest and most affordable provider of accredited ISO certificates. ISO Order Portal ensures absolute clarity, regulatory relevance, and seamless digital execution.': {
+    fr: 'Notre solution cloud unique accélère le processus de certification, faisant de nous le fournisseur le plus rapide et le plus abordable de certificats ISO accrédités. ISO Order Portal garantit une clarté absolue, une pertinence réglementaire et une exécution numérique fluide.',
+    de: 'Unsere einzigartige Cloud-Lösung beschleunigt den Zertifizierungsprozess und macht uns zum schnellsten und günstigsten Anbieter akkreditierter ISO-Zertifikate. ISO Order Portal garantiert absolute Klarheit, regulatorische Relevanz und nahtlose digitale Umsetzung.',
+    es: 'Nuestra exclusiva solución en la nube acelera el proceso de certificación, convirtiéndonos en el proveedor más rápido y asequible de certificados ISO acreditados. ISO Order Portal garantiza total claridad, relevancia normativa y una ejecución digital fluida.',
+    pt: 'A nossa solução exclusiva na nuvem acelera o processo de certificação, tornando-nos o fornecedor mais rápido e acessível de certificados ISO acreditados. A ISO Order Portal garante total clareza, relevância regulatória e execução digital sem falhas.',
+    it: 'La nostra esclusiva soluzione cloud accelera il processo di certificazione, rendendoci il fornitore più rapido e conveniente di certificati ISO accreditati. ISO Order Portal garantisce chiarezza assoluta, rilevanza normativa ed esecuzione digitale senza intoppi.'
   },
   'See Pricing': { fr: 'Voir les tarifs', de: 'Preise ansehen', es: 'Ver precios', pt: 'Ver preços', it: 'Vedi i prezzi' },
   'Satisfied Members': { fr: 'Membres satisfaits', de: 'Zufriedene Mitglieder', es: 'Miembros satisfechos', pt: 'Membros satisfeitos', it: 'Membri soddisfatti' },
@@ -162,12 +162,12 @@ export const LANDING_TRANSLATIONS: Record<string, Record<NewLang, string>> = {
   },
   'Satisfied Members & Verified Partners': { fr: 'Membres satisfaits et partenaires vérifiés', de: 'Zufriedene Mitglieder & verifizierte Partner', es: 'Miembros satisfechos y socios verificados', pt: 'Membros satisfeitos e parceiros verificados', it: 'Membri soddisfatti e partner verificati' },
   'Client Logo': { fr: 'Logo du client', de: 'Kundenlogo', es: 'Logo del cliente', pt: 'Logótipo do cliente', it: 'Logo del cliente' },
-  'Reasons To Choose GAMC For Your ISO Certificates': {
-    fr: 'Pourquoi choisir GAMC pour vos certificats ISO',
-    de: 'Warum GAMC für Ihre ISO-Zertifikate wählen',
-    es: 'Razones para elegir GAMC para tus certificados ISO',
-    pt: 'Motivos para escolher a GAMC para os seus certificados ISO',
-    it: 'Perché scegliere GAMC per i tuoi certificati ISO'
+  'Reasons To Choose ISO Order Portal For Your ISO Certificates': {
+    fr: 'Pourquoi choisir ISO Order Portal pour vos certificats ISO',
+    de: 'Warum ISO Order Portal für Ihre ISO-Zertifikate wählen',
+    es: 'Razones para elegir ISO Order Portal para tus certificados ISO',
+    pt: 'Motivos para escolher a ISO Order Portal para os seus certificados ISO',
+    it: 'Perché scegliere ISO Order Portal per i tuoi certificati ISO'
   },
   'Simple User Interface': { fr: 'Interface utilisateur simple', de: 'Einfache Benutzeroberfläche', es: 'Interfaz de usuario sencilla', pt: 'Interface de utilizador simples', it: 'Interfaccia utente semplice' },
   'A cloud-based layout ensures that companies of all sizes can easily finish and request certificates online.': {
@@ -193,12 +193,12 @@ export const LANDING_TRANSLATIONS: Record<string, Record<NewLang, string>> = {
     pt: 'Com uma taxa fixa única e sem custos de consultoria ocultos, tornamos a conformidade de qualidade acessível para equipas pequenas e grandes.',
     it: 'Con una tariffa fissa unica e nessun costo di consulenza nascosto, rendiamo la conformità di qualità accessibile a team piccoli e grandi.'
   },
-  'GAMC streamlines international certification with localized Arabic support, guiding you through modern steps.': {
-    fr: 'GAMC simplifie la certification internationale avec un support en arabe localisé, en vous guidant à travers des étapes modernes.',
-    de: 'GAMC vereinfacht die internationale Zertifizierung mit lokalisiertem arabischem Support und führt Sie durch moderne Schritte.',
-    es: 'GAMC simplifica la certificación internacional con soporte localizado en árabe, guiándote a través de pasos modernos.',
-    pt: 'A GAMC simplifica a certificação internacional com suporte localizado em árabe, guiando-o através de etapas modernas.',
-    it: 'GAMC semplifica la certificazione internazionale con supporto localizzato in arabo, guidandoti attraverso passaggi moderni.'
+  'ISO Order Portal streamlines international certification with localized Arabic support, guiding you through modern steps.': {
+    fr: 'ISO Order Portal simplifie la certification internationale avec un support en arabe localisé, en vous guidant à travers des étapes modernes.',
+    de: 'ISO Order Portal vereinfacht die internationale Zertifizierung mit lokalisiertem arabischem Support und führt Sie durch moderne Schritte.',
+    es: 'ISO Order Portal simplifica la certificación internacional con soporte localizado en árabe, guiándote a través de pasos modernos.',
+    pt: 'A ISO Order Portal simplifica a certificação internacional com suporte localizado em árabe, guiando-o através de etapas modernas.',
+    it: 'ISO Order Portal semplifica la certificazione internazionale con supporto localizzato in arabo, guidandoti attraverso passaggi moderni.'
   },
   'BASED IN DUBAI': { fr: 'BASÉ À DUBAÏ', de: 'MIT SITZ IN DUBAI', es: 'CON SEDE EN DUBÁI', pt: 'SEDIADA NO DUBAI', it: 'CON SEDE A DUBAI' },
   'Rapid Global Processing': { fr: 'Traitement mondial rapide', de: 'Schnelle weltweite Bearbeitung', es: 'Tramitación global rápida', pt: 'Processamento global rápido', it: 'Elaborazione globale rapida' },
@@ -343,12 +343,12 @@ export const LANDING_TRANSLATIONS: Record<string, Record<NewLang, string>> = {
     it: 'Questa richiesta riguarda solo la certificazione ISO aziendale (non i corsi di formazione ISO individuali)'
   },
   'Send': { fr: 'Envoyer', de: 'Senden', es: 'Enviar', pt: 'Enviar', it: 'Invia' },
-  'As a fully digital ISO certification platform with integrated training capabilities and dedicated help desk support, GAMC collaborates with a select network of ISO consultants around the world who leverage our online platform to deliver certification services to their clients efficiently and at scale.': {
-    fr: 'En tant que plateforme de certification ISO entièrement numérique, dotée de capacités de formation intégrées et d’une assistance dédiée, GAMC collabore avec un réseau sélectionné de consultants ISO dans le monde entier qui utilisent notre plateforme pour fournir des services de certification à leurs clients efficacement et à grande échelle.',
-    de: 'Als vollständig digitale ISO-Zertifizierungsplattform mit integrierten Schulungsfunktionen und eigenem Support arbeitet GAMC mit einem ausgewählten Netzwerk von ISO-Beratern weltweit zusammen, die unsere Plattform nutzen, um Zertifizierungsdienstleistungen effizient und skalierbar an ihre Kunden zu liefern.',
-    es: 'Como plataforma de certificación ISO totalmente digital, con capacidades de formación integradas y soporte técnico dedicado, GAMC colabora con una red seleccionada de consultores ISO en todo el mundo que utilizan nuestra plataforma para ofrecer servicios de certificación a sus clientes de forma eficiente y a gran escala.',
-    pt: 'Como plataforma de certificação ISO totalmente digital, com capacidades de formação integradas e suporte técnico dedicado, a GAMC colabora com uma rede selecionada de consultores ISO em todo o mundo que utilizam a nossa plataforma para prestar serviços de certificação aos seus clientes de forma eficiente e em grande escala.',
-    it: 'In qualità di piattaforma di certificazione ISO completamente digitale, con funzionalità di formazione integrate e assistenza dedicata, GAMC collabora con una rete selezionata di consulenti ISO in tutto il mondo che utilizzano la nostra piattaforma per fornire servizi di certificazione ai propri clienti in modo efficiente e su larga scala.'
+  'As a fully digital ISO certification platform with integrated training capabilities and dedicated help desk support, ISO Order Portal collaborates with a select network of ISO consultants around the world who leverage our online platform to deliver certification services to their clients efficiently and at scale.': {
+    fr: 'En tant que plateforme de certification ISO entièrement numérique, dotée de capacités de formation intégrées et d’une assistance dédiée, ISO Order Portal collabore avec un réseau sélectionné de consultants ISO dans le monde entier qui utilisent notre plateforme pour fournir des services de certification à leurs clients efficacement et à grande échelle.',
+    de: 'Als vollständig digitale ISO-Zertifizierungsplattform mit integrierten Schulungsfunktionen und eigenem Support arbeitet ISO Order Portal mit einem ausgewählten Netzwerk von ISO-Beratern weltweit zusammen, die unsere Plattform nutzen, um Zertifizierungsdienstleistungen effizient und skalierbar an ihre Kunden zu liefern.',
+    es: 'Como plataforma de certificación ISO totalmente digital, con capacidades de formación integradas y soporte técnico dedicado, ISO Order Portal colabora con una red seleccionada de consultores ISO en todo el mundo que utilizan nuestra plataforma para ofrecer servicios de certificación a sus clientes de forma eficiente y a gran escala.',
+    pt: 'Como plataforma de certificação ISO totalmente digital, com capacidades de formação integradas e suporte técnico dedicado, a ISO Order Portal colabora com uma rede selecionada de consultores ISO em todo o mundo que utilizam a nossa plataforma para prestar serviços de certificação aos seus clientes de forma eficiente e em grande escala.',
+    it: 'In qualità di piattaforma di certificazione ISO completamente digitale, con funzionalità di formazione integrate e assistenza dedicata, ISO Order Portal collabora con una rete selezionata di consulenti ISO in tutto il mondo che utilizzano la nostra piattaforma per fornire servizi di certificazione ai propri clienti in modo efficiente e su larga scala.'
   },
   'Our consultant partners benefit from a ready-made digital infrastructure, accredited certification pathways, and multilingual support, including the only full Arabic-language ISO training platform of its kind globally.': {
     fr: 'Nos partenaires consultants bénéficient d’une infrastructure numérique clé en main, de parcours de certification accrédités et d’un support multilingue, y compris la seule plateforme de formation ISO entièrement en arabe de ce type au monde.',
@@ -372,16 +372,16 @@ export const LANDING_TRANSLATIONS: Record<string, Record<NewLang, string>> = {
     it: 'Inviaci un’e-mail a iso@gloria-c.com con informazioni sulla tua consulenza, gli standard con cui lavori e i mercati che copri, e un membro del nostro team ti ricontatterà per fissare una chiamata.'
   },
   'Frequently Asked Questions': { fr: 'Foire aux questions', de: 'Häufig gestellte Fragen', es: 'Preguntas frecuentes', pt: 'Perguntas frequentes', it: 'Domande frequenti' },
-  'GAMC Worldwide Offices': { fr: 'Bureaux GAMC dans le monde', de: 'GAMC Standorte weltweit', es: 'Oficinas de GAMC en el mundo', pt: 'Escritórios da GAMC no mundo', it: 'Uffici GAMC nel mondo' },
+  'ISO Order Portal Worldwide Offices': { fr: 'Bureaux ISO Order Portal dans le monde', de: 'ISO Order Portal Standorte weltweit', es: 'Oficinas de ISO Order Portal en el mundo', pt: 'Escritórios da ISO Order Portal no mundo', it: 'Uffici ISO Order Portal nel mondo' },
   'United Arab Emirates': { fr: 'Émirats arabes unis', de: 'Vereinigte Arabische Emirate', es: 'Emiratos Árabes Unidos', pt: 'Emirados Árabes Unidos', it: 'Emirati Arabi Uniti' },
   'Al Garhoud, Dubai, United Arab Emirates.': { fr: 'Al Garhoud, Dubaï, Émirats arabes unis.', de: 'Al Garhoud, Dubai, Vereinigte Arabische Emirate.', es: 'Al Garhoud, Dubái, Emiratos Árabes Unidos.', pt: 'Al Garhoud, Dubai, Emirados Árabes Unidos.', it: 'Al Garhoud, Dubai, Emirati Arabi Uniti.' },
   'United Kingdom': { fr: 'Royaume-Uni', de: 'Vereinigtes Königreich', es: 'Reino Unido', pt: 'Reino Unido', it: 'Regno Unito' },
-  'Since 2015, GAMC has been redefining ISO certification. Our 100% online platform helps small and medium-sized businesses get certified quickly and confidently.': {
-    fr: 'Depuis 2015, GAMC redéfinit la certification ISO. Notre plateforme 100 % en ligne aide les PME à se faire certifier rapidement et en toute confiance.',
-    de: 'Seit 2015 definiert GAMC die ISO-Zertifizierung neu. Unsere 100 % Online-Plattform hilft kleinen und mittleren Unternehmen, sich schnell und sicher zertifizieren zu lassen.',
-    es: 'Desde 2015, GAMC redefine la certificación ISO. Nuestra plataforma 100% en línea ayuda a las pequeñas y medianas empresas a certificarse de forma rápida y segura.',
-    pt: 'Desde 2015, a GAMC tem redefinido a certificação ISO. A nossa plataforma 100% online ajuda pequenas e médias empresas a certificarem-se de forma rápida e confiante.',
-    it: 'Dal 2015, GAMC ridefinisce la certificazione ISO. La nostra piattaforma 100% online aiuta le piccole e medie imprese a certificarsi in modo rapido e sicuro.'
+  'Since 2015, ISO Order Portal has been redefining ISO certification. Our 100% online platform helps small and medium-sized businesses get certified quickly and confidently.': {
+    fr: 'Depuis 2015, ISO Order Portal redéfinit la certification ISO. Notre plateforme 100 % en ligne aide les PME à se faire certifier rapidement et en toute confiance.',
+    de: 'Seit 2015 definiert ISO Order Portal die ISO-Zertifizierung neu. Unsere 100 % Online-Plattform hilft kleinen und mittleren Unternehmen, sich schnell und sicher zertifizieren zu lassen.',
+    es: 'Desde 2015, ISO Order Portal redefine la certificación ISO. Nuestra plataforma 100% en línea ayuda a las pequeñas y medianas empresas a certificarse de forma rápida y segura.',
+    pt: 'Desde 2015, a ISO Order Portal tem redefinido a certificação ISO. A nossa plataforma 100% online ajuda pequenas e médias empresas a certificarem-se de forma rápida e confiante.',
+    it: 'Dal 2015, ISO Order Portal ridefinisce la certificazione ISO. La nostra piattaforma 100% online aiuta le piccole e medie imprese a certificarsi in modo rapido e sicuro.'
   },
   'We simplify every step providing continuous online guidance, clear pricing, and trusted support to make certification effortless and affordable.': {
     fr: 'Nous simplifions chaque étape en offrant un accompagnement en ligne continu, des tarifs clairs et un support de confiance pour rendre la certification simple et abordable.',
@@ -449,12 +449,12 @@ export const LANDING_TRANSLATIONS: Record<string, Record<NewLang, string>> = {
   'Chat with us on WhatsApp': { fr: 'Discutez avec nous sur WhatsApp', de: 'Chatten Sie mit uns auf WhatsApp', es: 'Chatea con nosotros por WhatsApp', pt: 'Converse connosco no WhatsApp', it: 'Chatta con noi su WhatsApp' },
 
   // FAQ
-  'How long does ISO certification take through GAMC?': {
-    fr: 'Combien de temps prend la certification ISO avec GAMC ?',
-    de: 'Wie lange dauert die ISO-Zertifizierung über GAMC?',
-    es: '¿Cuánto tiempo tarda la certificación ISO con GAMC?',
-    pt: 'Quanto tempo demora a certificação ISO através da GAMC?',
-    it: 'Quanto tempo richiede la certificazione ISO con GAMC?'
+  'How long does ISO certification take through ISO Order Portal?': {
+    fr: 'Combien de temps prend la certification ISO avec ISO Order Portal ?',
+    de: 'Wie lange dauert die ISO-Zertifizierung über ISO Order Portal?',
+    es: '¿Cuánto tiempo tarda la certificación ISO con ISO Order Portal?',
+    pt: 'Quanto tempo demora a certificação ISO através da ISO Order Portal?',
+    it: 'Quanto tempo richiede la certificazione ISO con ISO Order Portal?'
   },
   'Once your documents are submitted and reviewed, initial certification can move as fast as 3-7 business days, depending on the standard and accreditation body selected.': {
     fr: 'Une fois vos documents soumis et examinés, la certification initiale peut se faire en seulement 3 à 7 jours ouvrés, selon la norme et l’organisme d’accréditation choisis.',

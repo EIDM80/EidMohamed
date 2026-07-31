@@ -7,10 +7,9 @@ import {
   Building, 
   CheckCircle2, 
   FileCheck, 
-  ArrowRight, 
-  Languages, 
-  Phone, 
-  Mail, 
+  ArrowRight,
+  Languages,
+  Mail,
   MapPin, 
   ExternalLink, 
   Clock, 
@@ -27,7 +26,6 @@ import {
   DollarSign,
   Check,
   Send,
-  MessageSquare,
   ArrowUpRight,
   ShieldCheck,
   Leaf,
@@ -48,8 +46,8 @@ import Logo from './Logo';
 
 const FAQ_ITEMS: { qEn: string; qAr: string; aEn: string; aAr: string }[] = [
   {
-    qEn: 'How long does ISO certification take through GAMC?',
-    qAr: 'كم تستغرق مدة الحصول على شهادة ISO عبر GAMC؟',
+    qEn: 'How long does ISO certification take through ISO Order Portal?',
+    qAr: 'كم تستغرق مدة الحصول على شهادة ISO عبر ISO Order Portal؟',
     aEn: 'Once your documents are submitted and reviewed, initial certification can move as fast as 3-7 business days, depending on the standard and accreditation body selected.',
     aAr: 'بعد رفع ومراجعة مستنداتك، يمكن أن تتم عملية الاعتماد الأولية في غضون ٣ إلى ٧ أيام عمل، حسب المعيار وهيئة الاعتماد المختارة.'
   },
@@ -299,10 +297,6 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
       <div className="bg-[#121c42] text-[#e2e8f0] py-2.5 px-4 md:px-8 border-b border-slate-800 text-xs font-semibold">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-            <a href={`tel:${config.contact.phone}`} className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <Phone size={13} className="text-indigo-400" />
-              <span>{config.contact.phone}</span>
-            </a>
             <a href={`mailto:${config.contact.email}`} className="flex items-center gap-1.5 hover:text-white transition-colors">
               <Mail size={13} className="text-indigo-400" />
               <span>{config.contact.email}</span>
@@ -330,7 +324,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               <Logo size={32} color="white" />
             </div>
             <div>
-              <span className="font-black text-slate-900 text-xl tracking-tight leading-none block">GAMC</span>
+              <span className="font-black text-slate-900 text-xl tracking-tight leading-none block">ISO Order Portal</span>
               <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mt-0.5">
                 {L('Global ISO certification platform', 'المنصة العالمية لشهادات الأيزو')}
               </span>
@@ -531,7 +525,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               </p>
 
               <p className="text-sm md:text-base text-slate-400 leading-relaxed">
-                {L('GAMC is the premier digital ISO platform dedicated to supporting your certification, offering localized workflow, automated document preparation, and swift access to globally recognized accreditation.', 'GAMC هي المنصة الرقمية الوحيدة المخصصة لتقديم خدمات الـ ISO مع دعم مخصص ومحلي متميز، لمساعدتك في إعداد الوثائق والحصول على اعتمادات دولية مرموقة ومعترف بها عالمياً.')}
+                {L('ISO Order Portal is the premier digital ISO platform dedicated to supporting your certification, offering localized workflow, automated document preparation, and swift access to globally recognized accreditation.', 'ISO Order Portal هي المنصة الرقمية الوحيدة المخصصة لتقديم خدمات الـ ISO مع دعم مخصص ومحلي متميز، لمساعدتك في إعداد الوثائق والحصول على اعتمادات دولية مرموقة ومعترف بها عالمياً.')}
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-4">
@@ -554,20 +548,11 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             {/* Floating Action Cards in Hero */}
             <div className="lg:col-span-5 relative hidden lg:block">
               <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-indigo-300 rounded-[2rem] rotate-3 opacity-10 blur-xl"></div>
-              
-              {/* Overlay elements like the WhatsApp icon & chat bubble in mock */}
+
               <div className="absolute -top-8 -right-8 z-20 flex flex-col items-end space-y-3">
-                <a 
-                  href={`https://wa.me/${config.contact.whatsapp.replace(/\+/g, '')}`}
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="w-14 h-14 bg-[#25d366] rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
-                >
-                  <MessageSquare size={28} className="text-white fill-white" />
-                </a>
-                <div className="bg-[#121c42] border border-slate-700/80 text-white px-4 py-2.5 rounded-2xl text-[11px] font-bold shadow-xl flex items-center gap-2 animate-bounce">
+                <div className="bg-[#121c42] border border-slate-700/80 text-white px-4 py-2.5 rounded-2xl text-[11px] font-bold shadow-xl flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                  <span>{L('Chat With An ISO Advisor', 'تحدث مع مستشار ISO الآن')}</span>
+                  <span>{L('Talk To An ISO Advisor', 'تحدث مع مستشار ISO الآن')}</span>
                 </div>
               </div>
 
@@ -588,7 +573,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 </div>
 
                 <div className="border-t border-slate-700/60 pt-4 flex justify-between text-[10px] text-slate-400 font-mono">
-                  <span>GLORIA-SECURE</span>
+                  <span>ISO-ORDER-SECURE</span>
                   <span>STATUS: ACTIVE</span>
                 </div>
 
@@ -629,8 +614,8 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             </h3>
             <p className="text-sm text-slate-400 font-medium mt-1 max-w-2xl">
               {L(
-                'GAMC issues certificates exclusively through accreditation bodies that are members of the International Accreditation Forum (IAF), and every certificate is instantly verifiable through the official IAF CertSearch global registry.',
-                'تصدر GAMC شهاداتها حصرياً عبر هيئات اعتماد أعضاء في المنتدى الدولي للاعتماد (IAF)، ويمكن التحقق من صحة كل شهادة فوراً عبر السجل العالمي الرسمي IAF CertSearch.'
+                'ISO Order Portal issues certificates exclusively through accreditation bodies that are members of the International Accreditation Forum (IAF), and every certificate is instantly verifiable through the official IAF CertSearch global registry.',
+                'تصدر ISO Order Portal شهاداتها حصرياً عبر هيئات اعتماد أعضاء في المنتدى الدولي للاعتماد (IAF)، ويمكن التحقق من صحة كل شهادة فوراً عبر السجل العالمي الرسمي IAF CertSearch.'
               )}
             </p>
           </div>
@@ -688,7 +673,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
               <p className="text-slate-600 leading-relaxed font-medium">
                 {L(
-                  'Our unique cloud solution accelerates the certification process, making us the quickest and most affordable provider of accredited ISO certificates. GAMC ensures absolute clarity, regulatory relevance, and seamless digital execution.',
+                  'Our unique cloud solution accelerates the certification process, making us the quickest and most affordable provider of accredited ISO certificates. ISO Order Portal ensures absolute clarity, regulatory relevance, and seamless digital execution.',
                   'تتسارع بوابتنا الرقمية الفريدة من وتيرة الحصول على شهادات ISO بشكل مذهل، مما يجعلنا الخيار الأكثر كفاءة وموثوقية في تقديم الاعتمادات المعترف بها دولياً في الشرق الأوسط ومختلف دول العالم. نضمن الوضوح التام والشفافية مع الامتثال المكتمل لمتطلبات التدقيق.'
                 )}
               </p>
@@ -883,7 +868,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-black text-[#121c42] tracking-tight">
-              {L('Reasons To Choose GAMC For Your ISO Certificates', 'لماذا تختار GAMC للحصول على شهادات الـ ISO؟')}
+              {L('Reasons To Choose ISO Order Portal For Your ISO Certificates', 'لماذا تختار ISO Order Portal للحصول على شهادات الـ ISO؟')}
             </h2>
             <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
           </div>
@@ -962,8 +947,8 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
             <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
             <p className="text-slate-500 font-medium">
               {L(
-                'GAMC streamlines international certification with localized Arabic support, guiding you through modern steps.',
-                'تبسط GAMC الحصول على الشهادة بدعم كامل للغة العربية، لتوجيه الشركات عبر خطوات بسيطة وفعالة عبر الإنترنت.'
+                'ISO Order Portal streamlines international certification with localized Arabic support, guiding you through modern steps.',
+                'تبسط ISO Order Portal الحصول على الشهادة بدعم كامل للغة العربية، لتوجيه الشركات عبر خطوات بسيطة وفعالة عبر الإنترنت.'
               )}
             </p>
           </div>
@@ -1553,7 +1538,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               <div className="space-y-6 text-center lg:text-start">
                 <div className="text-center">
                   <h2 className="text-4xl md:text-5xl font-black text-slate-800 tracking-tight">
-                    GAMC
+                    ISO Order Portal
                   </h2>
                   <p className="text-xs md:text-sm text-indigo-800 font-bold uppercase tracking-wider mt-1">
                     {L('Global ISO certification platform', 'المنصة العالمية لشهادات الأيزو')}
@@ -1562,8 +1547,8 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
 
                 <p className="text-sm md:text-base text-slate-800 leading-relaxed font-medium">
                   {L(
-                    'As a fully digital ISO certification platform with integrated training capabilities and dedicated help desk support, GAMC collaborates with a select network of ISO consultants around the world who leverage our online platform to deliver certification services to their clients efficiently and at scale.',
-                    'بصفتنا منصة رقمية بالكامل لمنح شهادات ISO مع إمكانات تدريب متكاملة ودعم مخصص للمساعدة، تتعاون GAMC مع شبكة مختارة من مستشاري ISO حول العالم الذين يستفيدون من منصتنا الإلكترونية لتقديم خدمات إصدار الشهادات لعملائهم بكفاءة وعلى نطاق واسع.'
+                    'As a fully digital ISO certification platform with integrated training capabilities and dedicated help desk support, ISO Order Portal collaborates with a select network of ISO consultants around the world who leverage our online platform to deliver certification services to their clients efficiently and at scale.',
+                    'بصفتنا منصة رقمية بالكامل لمنح شهادات ISO مع إمكانات تدريب متكاملة ودعم مخصص للمساعدة، تتعاون ISO Order Portal مع شبكة مختارة من مستشاري ISO حول العالم الذين يستفيدون من منصتنا الإلكترونية لتقديم خدمات إصدار الشهادات لعملائهم بكفاءة وعلى نطاق واسع.'
                   )}
                 </p>
 
@@ -1637,7 +1622,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <h2 className="text-2xl md:text-3xl font-black text-[#121c42] tracking-tight">
-              {L('GAMC Worldwide Offices', 'مكاتب GAMC العالمية للتنسيق والاعتماد')}
+              {L('ISO Order Portal Worldwide Offices', 'مكاتب ISO Order Portal العالمية للتنسيق والاعتماد')}
             </h2>
             <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full"></div>
           </div>
@@ -1654,7 +1639,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 {L('Al Garhoud, Dubai, United Arab Emirates.', 'القرهود، دبي، الإمارات العربية المتحدة.')}
               </p>
               <div className="pt-2 text-[11px] text-slate-400 font-semibold space-y-1">
-                <p>Phone / WhatsApp: +971 56 270 3015</p>
+                <p>Email: iso@gloria-c.com</p>
               </div>
             </div>
 
@@ -1686,12 +1671,12 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center p-1.5 shadow-md">
                 <Logo size={28} color="white" />
               </div>
-              <span className="font-black text-white text-lg tracking-tight">GAMC Global Solutions</span>
+              <span className="font-black text-white text-lg tracking-tight">ISO Order Portal</span>
             </div>
             <p className="text-slate-500 font-medium leading-relaxed max-w-sm">
               {L(
-                'Since 2015, GAMC has been redefining ISO certification. Our 100% online platform helps small and medium-sized businesses get certified quickly and confidently.',
-                'منذ عام ٢٠١٥، تعمل GAMC على إعادة تعريف مفهوم شهادات الـ ISO. تساعد منصتنا الرقمية بالكامل بنسبة ١٠٠٪ الشركات الصغيرة والمتوسطة في الحصول على الاعتماد بسرعة وثقة.'
+                'Since 2015, ISO Order Portal has been redefining ISO certification. Our 100% online platform helps small and medium-sized businesses get certified quickly and confidently.',
+                'منذ عام ٢٠١٥، تعمل ISO Order Portal على إعادة تعريف مفهوم شهادات الـ ISO. تساعد منصتنا الرقمية بالكامل بنسبة ١٠٠٪ الشركات الصغيرة والمتوسطة في الحصول على الاعتماد بسرعة وثقة.'
               )}
             </p>
             <p className="text-slate-500 font-medium leading-relaxed max-w-sm">
@@ -1767,19 +1752,6 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
                 </button>
               </li>
             </ul>
-
-            {/* Quick Whatsapp Link inside Footer */}
-            <div className="pt-4">
-              <a 
-                href={`https://wa.me/${config.contact.whatsapp.replace(/\+/g, '')}`}
-                target="_blank" 
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-[#25d366]/10 hover:bg-[#25d366]/20 border border-[#25d366]/30 text-[#25d366] rounded-xl font-bold transition-all text-xs"
-              >
-                <MessageSquare size={14} className="fill-[#25d366]" />
-                <span>{L('WhatsApp Chat Support', 'تواصل عبر الواتساب')}</span>
-              </a>
-            </div>
           </div>
 
         </div>
@@ -1828,7 +1800,7 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
               ))}
             </div>
             <div>
-              © 2026 GAMC Global Solutions. All Rights Reserved.
+              © 2026 ISO Order Portal. All Rights Reserved.
             </div>
           </div>
         </div>
@@ -2113,17 +2085,6 @@ const PublicLanding: React.FC<PublicLandingProps> = ({
           </div>
         </div>
       )}
-
-      {/* Persistent floating WhatsApp button */}
-      <a
-        href={`https://wa.me/${config.contact.whatsapp.replace(/\+/g, '')}`}
-        target="_blank"
-        rel="noreferrer"
-        className={`fixed bottom-6 ${isAr ? 'left-6' : 'right-6'} z-50 w-14 h-14 bg-[#25d366] rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform`}
-        aria-label={L('Chat with us on WhatsApp', 'تواصل معنا عبر واتساب')}
-      >
-        <MessageSquare size={26} className="text-white fill-white" />
-      </a>
 
     </div>
   );

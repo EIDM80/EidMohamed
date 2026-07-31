@@ -1,15 +1,13 @@
 
 import React from 'react';
-import { 
-  Building, 
-  Users, 
-  Target, 
-  ShieldCheck, 
-  Award, 
-  Globe2, 
-  Mail, 
-  Phone, 
-  ExternalLink 
+import {
+  Building,
+  Users,
+  Target,
+  ShieldCheck,
+  Award,
+  Globe2,
+  Mail
 } from 'lucide-react';
 import { Language } from '../translations';
 import Logo from './Logo';
@@ -47,9 +45,9 @@ const AboutUs: React.FC<AboutUsProps> = ({ lang, t }) => {
             {isAr ? 'تبسيط طريقك إلى التميز العالمي' : 'Simplifying Your Path to Global Excellence'}
           </h3>
           <p className="text-slate-600 leading-relaxed">
-            {isAr 
-              ? 'تلتزم GAMC Global Solutions بجعل عملية الحصول على شهادة ISO تتسم بالكفاءة والشفافية والمصداقية. نحن ندرك أن الامتثال ليس مجرد مربع يتم التأشير عليه، بل هو أساس للنمو المستدام والثقة الدولية.' 
-              : 'GAMC Global Solutions is committed to making the ISO certification process efficient, transparent, and credible. We understand that compliance is not just a checkbox, but a foundation for sustainable growth and international trust.'}
+            {isAr
+              ? 'تلتزم ISO Order Portal بجعل عملية الحصول على شهادة ISO تتسم بالكفاءة والشفافية والمصداقية. نحن ندرك أن الامتثال ليس مجرد مربع يتم التأشير عليه، بل هو أساس للنمو المستدام والثقة الدولية.'
+              : 'ISO Order Portal is committed to making the ISO certification process efficient, transparent, and credible. We understand that compliance is not just a checkbox, but a foundation for sustainable growth and international trust.'}
           </p>
           <div className="grid grid-cols-2 gap-4">
             <div className="p-4 bg-white border border-slate-100 rounded-2xl shadow-sm">
@@ -106,9 +104,9 @@ const AboutUs: React.FC<AboutUsProps> = ({ lang, t }) => {
           <div className="flex-1 space-y-6">
             <h3 className="text-3xl font-black tracking-tight">{isAr ? 'مزود الخدمة المعتمد' : 'Authorized Provider Information'}</h3>
             <p className="text-indigo-100/70 text-lg leading-relaxed">
-              {isAr 
-                ? 'تعمل بوابة ISO-Cert Portal تحت إدارة شركة GAMC Global Solutions، وهي شريكك الموثوق في رحلة الامتثال الرقمي.'
-                : 'The ISO-Cert Portal is managed by GAMC Global Solutions, your trusted partner in the digital compliance journey.'}
+              {isAr
+                ? 'تعمل بوابة ISO-Cert Portal تحت إدارة ISO Order Portal، وهي شريكك الموثوق في رحلة الامتثال الرقمي.'
+                : 'The ISO-Cert Portal is managed by ISO Order Portal, your trusted partner in the digital compliance journey.'}
             </p>
             <div className="space-y-4">
               <div className={`flex items-center gap-4 ${isAr ? 'flex-row-reverse' : ''}`}>
@@ -117,7 +115,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ lang, t }) => {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-indigo-200/50 uppercase tracking-widest">{isAr ? 'الكيان القانوني' : 'Legal Entity'}</p>
-                  <p className="font-bold">GAMC Global Solutions</p>
+                  <p className="font-bold">ISO Order Portal</p>
                 </div>
               </div>
               <div className={`flex items-center gap-4 ${isAr ? 'flex-row-reverse' : ''}`}>
@@ -129,39 +127,21 @@ const AboutUs: React.FC<AboutUsProps> = ({ lang, t }) => {
                   <a href="mailto:iso@gloria-c.com" className="font-bold hover:text-[#f7b500] transition-colors">iso@gloria-c.com</a>
                 </div>
               </div>
-              <div className={`flex items-center gap-4 ${isAr ? 'flex-row-reverse' : ''}`}>
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                  <Phone size={20} className="text-[#f7b500]" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-indigo-200/50 uppercase tracking-widest">{isAr ? 'واتساب / اتصال' : 'WhatsApp / Call'}</p>
-                  <a href="tel:+971562703015" className="font-bold hover:text-[#f7b500] transition-colors">+971 56 270 3015</a>
-                </div>
-              </div>
             </div>
           </div>
           <div className="w-64 h-64 bg-white rounded-3xl p-8 flex flex-col items-center justify-center text-[#0a1128] shadow-xl relative overflow-hidden group">
             <div className="absolute top-[-20%] right-[-20%] w-32 h-32 bg-indigo-50 rounded-full opacity-50"></div>
             <div className="relative z-10 flex flex-col items-center text-center">
               <Logo size={64} color="#0a1128" className="mb-4" />
-              <h4 className="font-black text-xl mb-1">GAMC</h4>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Official Partner</p>
-              <a 
-                href="https://www.gloria-c.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-[#0a1128] text-white rounded-xl text-xs font-bold hover:bg-indigo-700 transition-all"
-              >
-                {isAr ? 'زيارة الموقع' : 'Visit Website'}
-                <ExternalLink size={14} />
-              </a>
+              <h4 className="font-black text-xl mb-1">ISO Order Portal</h4>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">{isAr ? 'المزود المعتمد' : 'Authorized Provider'}</p>
             </div>
           </div>
         </div>
       </div>
 
       <div className="mt-20 text-center text-slate-400 text-xs font-medium border-t border-slate-100 pt-8">
-        <p>© 2025 GAMC Global Solutions. {isAr ? 'جميع الحقوق محفوظة.' : 'All Rights Reserved.'}</p>
+        <p>© 2025 ISO Order Portal. {isAr ? 'جميع الحقوق محفوظة.' : 'All Rights Reserved.'}</p>
         <p className="mt-2">{isAr ? 'المزود المعتمد لشهادات ISO عالمياً.' : 'Authorized Provider for ISO Certificates Globally.'}</p>
       </div>
     </div>
