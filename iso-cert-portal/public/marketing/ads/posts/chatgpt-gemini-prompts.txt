@@ -1,0 +1,457 @@
+30 Ready-to-Paste Prompts — ChatGPT (DALL-E) / Gemini Image Generation
+ISO Order Portal — Instagram/Facebook Promo Posts (1080x1350, 4:5)
+======================================================================
+
+Paste each prompt as-is into ChatGPT or Gemini's image generation.
+Brand colors: background #0A0A0A (near-black) / #161616 (charcoal),
+accent lime-green #D7FF3F, text white, secondary text gray #9A9A9A.
+
+--- Prompt 01/30 — 01-construction (مقاولات) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art construction crane over a building silhouette drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · مقاولات" — "ISO" in lime-green monospace caps with letter-spacing, "مقاولات" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "عقد بقيمة مليون درهم ضاع بسبب ورقة واحدة" — highlight the word(s) "مليون" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 02/30 — 02-restaurant (مطاعم) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art food cloche (serving dome) with a rising steam wisp drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · مطاعم" — "ISO" in lime-green monospace caps with letter-spacing, "مطاعم" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "المفتش أغلق 3 مطاعم اليوم. مطعمك التالي؟" — highlight the word(s) "أغلق" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 03/30 — 03-food-factory (مصانع أغذية) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art conveyor belt with boxes/jars moving along it drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · مصانع أغذية" — "ISO" in lime-green monospace caps with letter-spacing, "مصانع أغذية" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "بدون هذي الشهادة، أكبر عميل بيرفضك" — highlight the word(s) "يرفضك" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 04/30 — 04-dental (عيادات أسنان) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art tooth with a small sparkle/shine mark drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · عيادات أسنان" — "ISO" in lime-green monospace caps with letter-spacing, "عيادات أسنان" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "المرضى يبحثون عن هذي الشهادة قبل الحجز" — highlight the word(s) "قبل الحجز" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 05/30 — 05-tech (شركات تقنية) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art open laptop with a code-bracket symbol on the screen drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · شركات تقنية" — "ISO" in lime-green monospace caps with letter-spacing, "شركات تقنية" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "صفقة سبعة أرقام سقطت لأن الشركة مو معتمدة" — highlight the word(s) "سقطت" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 06/30 — 06-logistics (لوجستيات) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art warehouse building with a forklift in front drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · لوجستيات" — "ISO" in lime-green monospace caps with letter-spacing, "لوجستيات" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "عملاؤك الكبار يشتغلون بس مع شركات معتمدة" — highlight the word(s) "معتمدة" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 07/30 — 07-manufacturing (صناعة) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art mechanical gear with a small robotic-arm accent drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · صناعة" — "ISO" in lime-green monospace caps with letter-spacing, "صناعة" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "التفتيش القادم يقدر يوقف خط الإنتاج بالكامل" — highlight the word(s) "يوقف" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 08/30 — 08-solar (طاقة شمسية) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art sun with a grid of solar panels beneath it drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · طاقة شمسية" — "ISO" in lime-green monospace caps with letter-spacing, "طاقة شمسية" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "المستثمرون يسألون سؤال واحد قبل أي توقيع" — highlight the word(s) "سؤال واحد" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 09/30 — 09-freight (شحن ونقل) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art cargo ship with a shipping container stack drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · شحن ونقل" — "ISO" in lime-green monospace caps with letter-spacing, "شحن ونقل" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "شحنتك ترجع من الجمرك بدون هذي الورقة" — highlight the word(s) "ترجع" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 10/30 — 10-labs (مختبرات) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art laboratory flask with bubbles drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · مختبرات" — "ISO" in lime-green monospace caps with letter-spacing, "مختبرات" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "نتيجة مختبرك ما تنقبل دولياً بدون اعتماد" — highlight the word(s) "ما تنقبل" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 11/30 — 11-hotels (فنادق) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art hotel bed with a headboard and pillow drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · فنادق" — "ISO" in lime-green monospace caps with letter-spacing, "فنادق" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "حجوزات الشركات تنسحب لو ما عندك هذي الشهادة" — highlight the word(s) "تنسحب" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 12/30 — 12-training (مراكز تدريب) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art chalkboard/whiteboard with a graph and pointer drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · مراكز تدريب" — "ISO" in lime-green monospace caps with letter-spacing, "مراكز تدريب" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "شهادتك التدريبية صارت بلا قيمة بدون هذا الاعتماد" — highlight the word(s) "بلا قيمة" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 13/30 — 13-real-estate (مقاولات) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art modern building facade with windows drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · مقاولات" — "ISO" in lime-green monospace caps with letter-spacing, "مقاولات" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "البلدية رفضت الترخيص. السبب؟ شهادة وحدة ناقصة" — highlight the word(s) "رفضت" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 14/30 — 14-cosmetics (تجميل) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art cosmetic spray bottle with droplets drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · تجميل" — "ISO" in lime-green monospace caps with letter-spacing, "تجميل" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "منتجك يوقف بالجمرك بدون هذي الشهادة" — highlight the word(s) "يوقف" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 15/30 — 15-security (أمن وحراسات) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art shield with a checkmark inside drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · أمن وحراسات" — "ISO" in lime-green monospace caps with letter-spacing, "أمن وحراسات" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "العقد الحكومي يروح لمنافسك المعتمد فقط" — highlight the word(s) "يروح" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 16/30 — 16-pharmacy (صيدليات) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art medicine pill/capsule drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · صيدليات" — "ISO" in lime-green monospace caps with letter-spacing, "صيدليات" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "وزارة الصحة بتسحب ترخيصك بدون هذا التجديد" — highlight the word(s) "بتسحب" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 17/30 — 17-consulting (استشارات) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art ascending bar chart with an arrow drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · استشارات" — "ISO" in lime-green monospace caps with letter-spacing, "استشارات" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "عملاء الشركات الكبيرة ما يوقعون بدون هذي الورقة" — highlight the word(s) "ما يوقعون" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 18/30 — 18-packaging (تعبئة وتغليف) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art open cardboard shipping box drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · تعبئة وتغليف" — "ISO" in lime-green monospace caps with letter-spacing, "تعبئة وتغليف" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "80% من طلبات التصدير ترفض بدون هذا الاعتماد" — highlight the word(s) "80%" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 19/30 — 19-poultry (مزارع دواجن) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art cluster of egg ovals in a carton shape drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · مزارع دواجن" — "ISO" in lime-green monospace caps with letter-spacing, "مزارع دواجن" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "الدفعة كلها ترجع لو ما فيه شهادة سلامة" — highlight the word(s) "ترجع" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 20/30 — 20-salon (صالونات وسبا) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art open hairdressing scissors drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · صالونات وسبا" — "ISO" in lime-green monospace caps with letter-spacing, "صالونات وسبا" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "بلدية دبي تقفل صالونات كل أسبوع. السبب؟" — highlight the word(s) "تقفل" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 21/30 — 21-textile (نسيج) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art spool of thread with thread trailing drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · نسيج" — "ISO" in lime-green monospace caps with letter-spacing, "نسيج" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "المشتري الأوروبي يلغي الطلبية بدون هذا الاعتماد" — highlight the word(s) "يلغي" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 22/30 — 22-medical-eq (معدات طبية) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art heartbeat/ECG pulse line with a small cross drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · معدات طبية" — "ISO" in lime-green monospace caps with letter-spacing, "معدات طبية" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "الجهاز الطبي ما يدخل السوق بدون هذي الشهادة" — highlight the word(s) "ما يدخل" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 23/30 — 23-distribution (توزيع) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art delivery truck in motion drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · توزيع" — "ISO" in lime-green monospace caps with letter-spacing, "توزيع" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "المورد الجديد يرفضك من أول اجتماع" — highlight the word(s) "يرفضك" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 24/30 — 24-bakery (مقاهي وبيكري) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art loaf of bread with a soft organic blob shape drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · مقاهي وبيكري" — "ISO" in lime-green monospace caps with letter-spacing, "مقاهي وبيكري" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "فوجئنا. البلدية أغلقت المقهى المجاور بسبب هذا" — highlight the word(s) "أغلقت" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 25/30 — 25-dealership (وكالات سيارات) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art car side silhouette drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · وكالات سيارات" — "ISO" in lime-green monospace caps with letter-spacing, "وكالات سيارات" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "الوكالة العالمية ترفض التعاقد بدون هذي الشهادة" — highlight the word(s) "ترفض" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 26/30 — 26-interior (تصميم داخلي) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art room floor-plan layout with furniture blocks drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · تصميم داخلي" — "ISO" in lime-green monospace caps with letter-spacing, "تصميم داخلي" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "المشروع الفندقي انسحب من العقد فجأة" — highlight the word(s) "انسحب" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 27/30 — 27-chemicals (كيماويات) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art flask with a single drip falling from it drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · كيماويات" — "ISO" in lime-green monospace caps with letter-spacing, "كيماويات" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "غرامة نصف مليون بسبب شهادة سلامة منتهية" — highlight the word(s) "غرامة" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 28/30 — 28-schools (تعليم) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art graduation cap drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · تعليم" — "ISO" in lime-green monospace caps with letter-spacing, "تعليم" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "أولياء الأمور صاروا يسألون عن هذي الشهادة قبل التسجيل" — highlight the word(s) "يسألون" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 29/30 — 29-vineyard (مزارع وتصدير) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art cluster of grapes on a small vine drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · مزارع وتصدير" — "ISO" in lime-green monospace caps with letter-spacing, "مزارع وتصدير" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "المستورد الأوروبي رفض الشحنة كاملة" — highlight the word(s) "رفض" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
+
+--- Prompt 30/30 — 30-general (ريادة أعمال) ---
+Create a 1080x1350px (4:5 portrait) Instagram/Facebook ad graphic for an ISO certification service called "ISO Order Portal" (isoorder.com). Flat vector / graphic-design style ad — NOT a photo, no stock photography, no human faces.
+
+BACKGROUND: near-black (#0A0A0A) with a subtle dark charcoal (#161616) gradient, a faint repeating dot-grid texture at low opacity, thin light-gray L-shaped corner brackets near all 4 corners (tech-HUD frame feel), soft dark vignette.
+
+TOP-CENTER ICON BADGE: a glowing dark circular badge (~140px) with a thin lime-green (#D7FF3F) outline ring and a soft lime glow halo behind it, containing a simple line-art ascending trend bars with an upward arrow drawn as simple white/lime minimal line-art (no color photo, just clean line icon).
+
+EYEBROW PILL (below badge): small centered label text "ISO · ريادة أعمال" — "ISO" in lime-green monospace caps with letter-spacing, "ريادة أعمال" in bold gray Arabic text, separated by a small dot.
+
+HEADLINE (center, vertically centered, right-to-left Arabic, bold, large, white, with soft dark drop-shadow for depth): "99% من الشركات الناجحة عندها هذي الشهادة. أنت؟" — highlight the word(s) "99%" in bright lime-green (#D7FF3F), rest of the headline in white. Use a clean modern bold Arabic sans-serif font (Noto Kufi Arabic / Cairo Bold style). Keep the Arabic text exactly as given, correctly shaped and right-to-left.
+
+BOTTOM CTA BLOCK: a thin horizontal divider line, then small gray tagline text "معتمدة دولياً · سعر ثابت · خلال 5 أيام · 100% أونلاين", then a rounded lime-green (#D7FF3F) pill button containing: a small dark circular back-arrow icon on the right, bold dark text "اطلب الآن", a thin dark divider, and monospace dark text "isoorder.com". Below the pill, small centered wordmark text "ISO Order Portal" in gray with "Portal" in lime-green.
+
+Overall mood: premium, minimal, high-contrast, shocking/attention-grabbing headline hook, consistent dark lime brand identity.
