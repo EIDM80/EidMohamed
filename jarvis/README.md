@@ -68,6 +68,37 @@ one short paragraph, the way a chief of staff would say it out loud.
 End with the single thing you'd do first if you were me today.
 ```
 
+## Video 1 is the 1.0 (`videos/jarvis.mp4`)
+
+Worth watching first: it's the same demo app and the same briefing, but with **one tool per
+step** — that's the version the 2.0 guide is a sequel to. The delta:
+
+| Job | 1.0 said | 2.0 says |
+|---|---|---|
+| Dashboard | Hand Claude a **reference image** and it one-shots it (*"took me five minutes"*) | Lovable *or* Higgsfield App Builder |
+| Talk to it | Claude **Voice mode** instead of typing | FluidVoice *or* Typeless |
+| The voice | ElevenLabs ("that British Jarvis voice") | ElevenLabs *or* Fish Audio |
+| Browser | Claude in Chrome | Claude for Chrome *or* Playwright MCP |
+| Revenue | RevenueCat MCP | RevenueCat *or* Stripe |
+| Social | **Buffer MCP** — publish everywhere in one command | Metricool *or* Ayrshare |
+| Inbox | Gmail MCP | Gmail *or* AgentMail |
+| Schedule | Routines | Routines *or* local cron |
+
+### Three things 1.0 has that 2.0 dropped
+
+Don't lose these — they're the parts that make it feel like staff rather than a dashboard:
+
+- **Meta's official Ads MCP** — run paid campaigns from the same agent. No 2.0 equivalent;
+  the 2.0 social slot is analytics-only.
+- **FAQs in Markdown → 90% of customer service.** Write your FAQs as plain `.md` files, point
+  Claude at them, and it answers the routine customer email itself. This is the cheapest
+  high-leverage step in either video and it costs nothing but the writing.
+- **Custom sub-agents with their own skills and connectors**, with the main agent handing
+  work off to the right one. This is what the 2.0 demo means at 0:48 by *"I handed it to Tom
+  to develop the agent"* — Tom is a sub-agent. 2.0 shows the result; 1.0 shows the mechanism.
+
+Full transcript: [`videos/jarvis.transcript.md`](videos/jarvis.transcript.md).
+
 ## How to actually start
 
 The guide's own advice, restated as an order of operations:
@@ -80,6 +111,8 @@ The guide's own advice, restated as an order of operations:
 3. **Step 9 last.** Schedule the briefing only once the connectors it reads from are
    working when you run them by hand.
 4. **Step 2 (dashboard) is optional** until you have something worth putting on a screen.
+5. **Then the 1.0 extras** (see below): FAQs in Markdown for customer service, and
+   sub-agents once one agent is juggling too many connectors.
 
 ### Cheapest working path
 
@@ -101,7 +134,8 @@ Claude Pro plan. That's a working Jarvis for the price of the Claude subscriptio
 |---|---|
 | `README.md` | This guide |
 | `source/Build_Your_Own_Jarvis.docx` | The original document, unmodified |
-| `videos/jarvis.mp4` | Walkthrough video 1 (1:22) |
+| `videos/jarvis.mp4` | Walkthrough video 1 (1:22) — the 1.0, one tool per step |
+| `videos/jarvis.transcript.md` | Timestamped transcript of video 1, decoded step by step |
 | `videos/jarvis_2.transcript.md` | Timestamped transcript of video 2, decoded step by step |
 | `videos/jarvis_2.mp4` | Walkthrough video 2 (1:12) — the demo briefing |
 
