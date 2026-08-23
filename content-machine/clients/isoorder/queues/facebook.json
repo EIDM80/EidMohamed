@@ -152,5 +152,21 @@
     "content_type": "ugc_talking_head",
     "engine": "fal.ai",
     "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين."
+  },
+  {
+    "id": "isoorder-falai-2026-08-23-construction-01-fb",
+    "status": "posted",
+    "date": "2026-08-23",
+    "topic": "construction",
+    "persona": "site-manager",
+    "hook": "shock-loss",
+    "content_type": "ugc_talking_head",
+    "engine": "fal.ai",
+    "source_video_url": "https://raw.githubusercontent.com/EIDM80/EidMohamed/claude/inspect-deploy-local-9l1858/iso-cert-portal/public/marketing/ads/video/ar-construction-falai-02-voiced.mp4",
+    "remotion_edit_url": "https://raw.githubusercontent.com/EIDM80/EidMohamed/claude/inspect-deploy-local-9l1858/iso-cert-portal/public/marketing/ads/video/ig/remotion-edit/ar-construction-falai-02-final-remotion.mp4",
+    "caption": "عقد بقيمة مليون درهم ضاع بسبب ورقة واحدة\n\nمعتمدة ومُوثقة على IAF CertSearch. سعر ثابت. خلال 5 أيام تقريباً. 100% أونلاين.\n\n#مقاولات #شهادة_ايزو #قطاع_الانشاءات #السعودية #الامارات #ايزو_9001\n\nاطلب شهادتك الآن من خلال isoorder.com 👆",
+    "platform_post_id": "942803874776449",
+    "posted_at": "2026-08-23T21:03:07Z",
+    "notes": "First real end-to-end pipeline run: fal.ai (alibaba/happy-horse) UGC video -> ElevenLabs Arabic narration (Mohammed Salman voice) muxed in -> Remotion edit -> published."
   }
 ]
