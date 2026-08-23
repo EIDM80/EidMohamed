@@ -133,6 +133,7 @@ Stripe MCP بمفاتيح قراءة مقيّدة (مجاني) ← الخطة ا
 | `README.ar.md` / `README.md` | هذا الدليل (عربي / إنجليزي) |
 | `hardware-plan.ar.md` | خطة محدّدة لجهاز الـRTX 4080 / 64 ج.ب: ميزانية الـVRAM، اختيار النماذج، ترتيب التثبيت |
 | `research/local-stack-research.ar.md` | منظومة بديلة مجانية ذاتية الاستضافة (Open WebUI + Ollama + …)، مع التحقق من الادعاءات ومقارنة المسارين |
+| `setup/` | تثبيت ويندوز 11: ملف `docker-compose.yml` وسكربت التحكم `jarvis.ps1` ودليل خطوة بخطوة |
 | `source/Build_Your_Own_Jarvis.docx` | المستند الأصلي كما هو |
 | `videos/jarvis.mp4` | فيديو 1 (1:22) — نسخة 1.0، أداة واحدة لكل خطوة |
 | `videos/jarvis.transcript.ar.md` | نص فيديو 1 بالتوقيتات، مفكوكاً خطوة بخطوة |

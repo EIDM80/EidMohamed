@@ -1,0 +1,36 @@
+# Jarvis — core services (Windows 11 + Docker Desktop / WSL2 backend)
+#
+# Ollama is NOT in this file on purpose: on Windows it runs natively so it talks to the
+# RTX 4080 directly, with no WSL2 GPU passthrough and no nvidia-container-toolkit needed.
+# Open WebUI is only a web interface — it never touches the GPU — so plain Docker is fine.
+#
+# Start:  .\jarvis.ps1 start        Stop: .\jarvis.ps1 stop
+
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: jarvis-open-webui
+    ports:
+      # host 3000 -> container 8080, leaving 8080 free for Open WebUI Computer (cptr)
+      - "${OPEN_WEBUI_PORT:-3000}:8080"
+    environment:
+      # host.docker.internal = the Windows host, where native Ollama listens
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - WEBUI_AUTH=${WEBUI_AUTH:-true}
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:?set WEBUI_SECRET_KEY in .env}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - open-webui-data:/app/backend/data
+    # "no" on purpose: this is a daily-driver machine, so services start when you ask,
+    # not at every boot. Change to unless-stopped on a dedicated always-on box.
+    restart: "no"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8080/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  open-webui-data:

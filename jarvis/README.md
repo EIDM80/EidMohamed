@@ -137,6 +137,7 @@ Claude Pro plan. That's a working Jarvis for the price of the Claude subscriptio
 | `README.md` / `README.ar.md` | This guide (English / Arabic) |
 | `hardware-plan.md` (+ `.ar.md`) | A concrete plan for the RTX 4080 / 64 GB box: VRAM budget, model picks, install order |
 | `research/local-stack-research.md` (+ `.ar.md`) | A self-hosted / free alternative stack (Open WebUI + Ollama + …), with claims verified and the two paths compared |
+| `setup/` | Windows 11 install: `docker-compose.yml`, `jarvis.ps1` control script, step-by-step guide |
 | `source/Build_Your_Own_Jarvis.docx` | The original document, unmodified |
 | `videos/jarvis.mp4` | Walkthrough video 1 (1:22) — the 1.0, one tool per step |
 | `videos/jarvis.transcript.md` (+ `.ar.md`) | Timestamped transcript of video 1, decoded step by step |
