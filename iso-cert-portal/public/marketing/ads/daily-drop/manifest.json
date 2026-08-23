@@ -1,6 +1,7 @@
 {
   "drive_folder_id": "1wkkcw8-BI9c3Km-X3-IAkZaskAtaBckz",
   "drive_folder_url": "https://drive.google.com/drive/folders/1wkkcw8-BI9c3Km-X3-IAkZaskAtaBckz",
+  "instagram_diagnostic_note": "As of 2026-08-23: INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH for IMAGE containers still returns 403 code 4 (Application request limit reached) on every attempt (solo, freshly-created, FINISHED-status container included) across 6+ attempts spanning 19+ hours. HOWEVER, video/Reel publishing (daily_queue.json flow, media_type=REELS) succeeded cleanly on first attempt today. This looks like a persistent block specific to the IMAGE publish endpoint for this app/account, not a general or time-based rate limit. Do not keep blind-retrying image publishes every run; retry at most once per day and flag to user if it persists beyond ~1 week — may need Meta app review or re-authorization specific to photo publishing.",
   "processed": [
     {
       "drive_file_id": "1H7ge0K9SudNog75DKyj2NSK3lTpxyJ0O",
