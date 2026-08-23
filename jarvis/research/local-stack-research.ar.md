@@ -1,85 +1,81 @@
-> **English** · [العربية](local-stack-research.ar.md)
+> **العربية** · [English](local-stack-research.md)
 
-# Research: a free / self-hosted Jarvis stack
+# بحث: منظومة Jarvis مجانية / ذاتية الاستضافة
 
-Source: a ChatGPT research session (GitHub + web search), pasted in full below.
-Question asked: *the best repository to create a Jarvis agent for free, without any
-payment — AI chatbots, AI call agents, AI video agents, and more.*
+المصدر: جلسة بحث في ChatGPT (بحث في GitHub وعلى الويب)، منقولة كاملة أدناه.
+السؤال المطروح: *أفضل مستودع لبناء وكيل Jarvis مجاناً وبلا أي دفع — شات بوتات، ووكلاء
+مكالمات، ووكلاء فيديو، وغيرها.*
 
-This is a **different project** from the [2.0 guide](../README.md), not an alternative
-tool list for the same one. See [Two different paths](#two-different-paths) below.
+هذا **مشروع مختلف** عن [دليل 2.0](../README.ar.md)، لا قائمة أدوات بديلة لنفس المشروع.
+انظر [مساران مختلفان](#مساران-مختلفان) أدناه.
 
-## Verification status
+## حالة التحقق
 
-Checked against GitHub and the web on 2026-08-23, because the load-bearing claims here are
-exactly the sort that get invented:
+تحققتُ من الادعاءات مقابل GitHub والويب بتاريخ 2026-08-23، لأن الادعاءات المحورية هنا هي
+تحديداً من النوع الذي يُختلق:
 
-| Claim | Status |
+| الادعاء | الحالة |
 |---|---|
-| **Open WebUI Computer** exists and does computer control | ✅ **Real.** `github.com/open-webui/computer` — "Your Computer. Anywhere." Serves files, terminal, editor, git, browser to any browser; exposes `/v1/chat/completions` so Open WebUI can drive it; per-chat approval controls. Install: `pip install cptr && cptr run` |
-| **PanPenek/JarvisAi** — wake word, screen vision, 31 tools, local | ✅ **Real** and matches the description: Whisper STT, Kokoro TTS, Ollama, agentic tool chaining, SQLite + ChromaDB memory |
-| **Mann473/jarvis-ai-assistant** | ⚠️ **Unconfirmed** — did not surface in search |
-| **134ertel/jarvis** | ⚠️ **Unconfirmed** — did not surface in search |
-| Ollama, LangGraph, CrewAI, LiveKit Agents, n8n, Dify, ComfyUI | ✅ All real, all self-hostable, as described |
+| **Open WebUI Computer** موجود ويتحكم في الحاسوب | ✅ **صحيح.** `github.com/open-webui/computer` — "حاسوبك، في أي مكان". يقدّم الملفات والطرفية والمحرر وgit والمتصفح إلى أي متصفح؛ ويكشف `/v1/chat/completions` ليقوده Open WebUI؛ مع ضوابط موافقة لكل محادثة. التثبيت: `pip install cptr && cptr run` |
+| **PanPenek/JarvisAi** — كلمة إيقاظ، رؤية شاشة، 31 أداة، محلي | ✅ **صحيح** ومطابق للوصف: Whisper STT وKokoro TTS وOllama، وتسلسل أدوات وكيلي، وذاكرة SQLite + ChromaDB |
+| **Mann473/jarvis-ai-assistant** | ⚠️ **غير مؤكد** — لم يظهر في البحث |
+| **134ertel/jarvis** | ⚠️ **غير مؤكد** — لم يظهر في البحث |
+| Ollama وLangGraph وCrewAI وLiveKit Agents وn8n وDify وComfyUI | ✅ كلها حقيقية وقابلة للاستضافة الذاتية كما وُصفت |
 
-Verified alternatives to the two unconfirmed repos, if you want a small reference
-implementation to read: [`EliseyRotar/jarvis-ai`](https://github.com/EliseyRotar/jarvis-ai)
-(openwakeword + faster-whisper + Piper TTS, agentic task engine, Linux/Windows) and
+بديلان موثّقان عن المستودعين غير المؤكدين، إن أردت تطبيقاً مرجعياً صغيراً تقرأه:
+[`EliseyRotar/jarvis-ai`](https://github.com/EliseyRotar/jarvis-ai)
+(openwakeword + faster-whisper + Piper TTS، محرك مهام وكيلي، لينكس وويندوز) و
 [`TimLukaHorstmann/J.A.R.V.I.S.`](https://github.com/TimLukaHorstmann/J.A.R.V.I.S.)
-(faster-whisper + pluggable TTS, SQLite sessions, FastAPI).
+(faster-whisper مع TTS قابل للتبديل، جلسات SQLite، FastAPI).
 
-### One catch the research missed: the Open WebUI license
+### نقطة فاتت البحث: ترخيص Open WebUI
 
-Open WebUI is **not plain BSD-3 anymore**. Since v0.6.6 (April 2025) it's BSD-3 plus a
-branding-protection clause: you may not alter, remove, or obscure Open WebUI branding
-(name, logo, UI marks) unless one of these holds —
+لم يعد Open WebUI تحت **BSD-3 الخالص**. فمنذ الإصدار 0.6.6 (أبريل 2025) صار BSD-3 مضافاً
+إليه شرط حماية العلامة: لا يجوز تعديل أو إزالة أو إخفاء علامة Open WebUI (الاسم، الشعار،
+علامات الواجهة) إلا في إحدى هذه الحالات —
 
-- fewer than **50 end users** in any rolling 30-day period, **or**
-- you're an official contributor with written permission, **or**
-- you hold an enterprise license.
+- أقل من **50 مستخدماً نهائياً** في أي 30 يوماً متتالية، **أو**
+- أن تكون مساهماً رسمياً بإذن كتابي مسبق، **أو**
+- أن تملك ترخيصاً للمؤسسات.
 
-**For a personal Jarvis this is a non-issue** — you're one user. It becomes a real
-constraint the moment you deploy it university-wide under USTF branding: over 50 users,
-the Open WebUI name has to stay visible or you need an enterprise license. Worth knowing
-before it's load-bearing. The change drew community backlash and fork talk, so a
-BSD-era fork may also be an option.
+**في Jarvis شخصي لا يعنيك هذا إطلاقاً** — أنت مستخدم واحد. لكنه يصير قيداً حقيقياً لحظة
+نشره على مستوى الجامعة بهوية USTF: تتجاوز الخمسين مستخدماً، فيجب إبقاء اسم Open WebUI ظاهراً
+أو الحصول على ترخيص مؤسسي. من الأفضل معرفة ذلك قبل أن يصير الأمر محورياً. وقد أثار هذا
+التغيير اعتراضاً في المجتمع وحديثاً عن نسخ متفرعة، فقد يكون التفرّع من إصدار BSD خياراً أيضاً.
 
-## Two different paths
+## مساران مختلفان
 
-The research is sound about *composition* — don't force a small Jarvis repo to become a
-platform, assemble it from projects that each do one layer well. But be clear about what
-you're choosing between:
+البحث محقّ في مسألة **التركيب** — لا تجبر مستودع Jarvis صغيراً على أن يصير منصة، بل ركّبها
+من مشاريع يتقن كل منها طبقة واحدة. لكن كن واضحاً فيما تختار بينه:
 
-| | **2.0 guide** (Claude + connectors) | **This research** (self-hosted stack) |
+| | **دليل 2.0** (Claude + موصّلات) | **هذا البحث** (منظومة ذاتية الاستضافة) |
 |---|---|---|
-| What it is | A briefing agent wired to accounts you already have | An AI platform you run yourself |
-| Time to first working version | Hours to days | Weeks |
-| Recurring cost | ~$20/mo Claude plan | $0 in API fees |
-| Real cost | The subscription | A GPU box that's always on, plus electricity, plus your ops time |
-| Ceiling | What the connectors expose | Anything you can self-host |
-| Fails when | A vendor changes its API or pricing | You have to debug six Docker services at midnight |
+| ما هو | وكيل إحاطات موصول بحسابات تملكها أصلاً | منصة ذكاء اصطناعي تشغّلها بنفسك |
+| الزمن حتى أول نسخة عاملة | ساعات إلى أيام | أسابيع |
+| التكلفة المتكررة | ~20$ شهرياً لباقة Claude | صفر في فواتير الـAPI |
+| التكلفة الحقيقية | الاشتراك | جهاز GPU يعمل دائماً، وكهرباء، ووقتك في التشغيل والصيانة |
+| السقف | ما تكشفه الموصّلات | أي شيء تستطيع استضافته |
+| يفشل حين | يغيّر مزوّد ما واجهته أو أسعاره | تضطر لتشخيص ست خدمات Docker منتصف الليل |
 
-**"Free" needs the asterisk the research itself gives it**: no API bills when the models
-run locally, but PSTN numbers and minutes for real phone calls, some social APIs,
-SMS/WhatsApp, and some search services still cost money. Build those as optional, never as
-core dependencies. And the research doesn't name hardware — running Ollama + ComfyUI +
-Dify + n8n + LiveKit + Open WebUI at once is a serious VRAM and ops commitment. Nail down
-the box before the architecture.
+**عبارة "مجاني" تحتاج التحفّظ الذي ذكره البحث نفسه**: لا فواتير API ما دامت النماذج تعمل
+محلياً، لكن أرقام الهاتف ودقائق PSTN للمكالمات الحقيقية، وبعض واجهات السوشال، والرسائل
+النصية وواتساب، وبعض خدمات البحث — كلها تكلّف مالاً. اجعلها اختيارية لا اعتماديات أساسية.
+كما أن البحث لا يحدّد العتاد: تشغيل Ollama وComfyUI وDify وn8n وLiveKit وOpen WebUI معاً
+التزام جادّ في ذاكرة كرت الشاشة وفي وقت التشغيل. احسم الجهاز قبل المعمارية.
 
-**Recommendation:** these aren't in competition — they answer different questions. Do the
-guide first: it gets a working Jarvis this week and teaches you which connectors you
-actually reach for. That answers the question the local stack can't tell you in advance —
-*what do I want it to do?* Then self-host the pieces that turn out to matter, and skip the
-ones that don't. Starting with nine services is how this becomes a project you abandon.
+**توصيتي:** المساران لا يتنافسان، بل يجيبان عن سؤالين مختلفين. نفّذ الدليل أولاً: يعطيك
+Jarvis عاملاً خلال أسبوع، ويعلّمك أي الموصّلات تمدّ يدك إليها فعلاً. وهذا يجيب عن السؤال
+الذي لا تستطيع المنظومة المحلية إجابته مسبقاً — *ماذا أريده أن يفعل؟* ثم استضِف محلياً ما
+ثبتت أهميته، واترك ما لم يثبت. البدء بتسع خدمات هو الطريق إلى مشروع تهجره.
 
-If you do start the local stack, start with **three** services, not nine: Ollama +
-Open WebUI + Open WebUI Computer. That's chat, voice, RAG, and computer control. Add
-LangGraph when one agent starts juggling too much state, LiveKit only when you actually
-need phone calls, ComfyUI only when you actually need generated video.
+وإن بدأت المنظومة المحلية فابدأ بـ**ثلاث** خدمات لا تسع: Ollama + Open WebUI +
+Open WebUI Computer. هذه وحدها تعطيك محادثة وصوتاً وRAG وتحكماً في الحاسوب. أضف LangGraph
+حين يبدأ وكيل واحد بالتخبّط في إدارة الحالة، وLiveKit فقط حين تحتاج مكالمات هاتفية فعلية،
+وComfyUI فقط حين تحتاج توليد فيديو فعلياً.
 
 ---
 
-## The research, verbatim
+## البحث، منقولاً حرفياً
 
 > بحثت في GitHub مباشرة، وبحثت كذلك في النتائج الحديثة على الويب مع التركيز على المشاريع التي تحقق أكبر قدر ممكن من هذه الشروط: Jarvis شخصي، Local-first، بدون اشتراكات/API مدفوعة، Voice + Chat + Vision + Tools + Automation + Multi-agent، وقابل للتوسع لاحقاً إلى Call Agents وVideo Agents.
 >

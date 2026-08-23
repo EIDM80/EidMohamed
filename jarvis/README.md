@@ -1,3 +1,5 @@
+> **English** · [العربية](README.ar.md)
+
 # Build Your Own Jarvis: The Complete 2.0 Guide
 
 Round two. Last time you got one tool per step. This time you get two, plus the exact
@@ -132,15 +134,16 @@ Claude Pro plan. That's a working Jarvis for the price of the Claude subscriptio
 
 | Path | What it is |
 |---|---|
-| `README.md` | This guide |
-| `research/local-stack-research.md` | A self-hosted / free alternative stack (Open WebUI + Ollama + …), with claims verified and the two paths compared |
+| `README.md` / `README.ar.md` | This guide (English / Arabic) |
+| `research/local-stack-research.md` (+ `.ar.md`) | A self-hosted / free alternative stack (Open WebUI + Ollama + …), with claims verified and the two paths compared |
 | `source/Build_Your_Own_Jarvis.docx` | The original document, unmodified |
 | `videos/jarvis.mp4` | Walkthrough video 1 (1:22) — the 1.0, one tool per step |
-| `videos/jarvis.transcript.md` | Timestamped transcript of video 1, decoded step by step |
-| `videos/jarvis_2.transcript.md` | Timestamped transcript of video 2, decoded step by step |
+| `videos/jarvis.transcript.md` (+ `.ar.md`) | Timestamped transcript of video 1, decoded step by step |
+| `videos/jarvis_2.transcript.md` (+ `.ar.md`) | Timestamped transcript of video 2, decoded step by step |
 | `videos/jarvis_2.mp4` | Walkthrough video 2 (1:12) — the demo briefing |
 
 The videos are stored in the repo directly — clone it and they come with it.
+Every document exists in English and Arabic; `.ar.md` is the Arabic twin of each file.
 
 ## The other path
 

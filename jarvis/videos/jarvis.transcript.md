@@ -1,3 +1,5 @@
+> **English** · [العربية](jarvis.transcript.ar.md)
+
 # jarvis.mp4 — transcript (1:22)
 
 This is the **1.0** video — one tool per step, which is what the 2.0 guide means by

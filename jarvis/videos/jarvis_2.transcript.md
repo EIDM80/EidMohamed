@@ -1,3 +1,5 @@
+> **English** · [العربية](jarvis_2.transcript.ar.md)
+
 # jarvis_2.mp4 — transcript (1:12)
 
 The video interleaves two tracks: the **Jarvis demo** answering "how's the app doing?",
