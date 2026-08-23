@@ -1,0 +1,79 @@
+[
+  {
+    "id": "isoorder-2026-W35-youtube-2026-08-24-01",
+    "status": "pending",
+    "date": "2026-08-24",
+    "topic": "food-factory",
+    "persona": "consultant",
+    "hook": "client-rejection",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+  },
+  {
+    "id": "isoorder-2026-W35-youtube-2026-08-25-01",
+    "status": "pending",
+    "date": "2026-08-25",
+    "topic": "hospitals",
+    "persona": "hotel-gm",
+    "hook": "testimonial",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+  },
+  {
+    "id": "isoorder-2026-W35-youtube-2026-08-26-01",
+    "status": "pending",
+    "date": "2026-08-26",
+    "topic": "restaurant",
+    "persona": "warehouse-manager",
+    "hook": "shock-loss",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-youtube-2026-08-27-01",
+    "status": "pending",
+    "date": "2026-08-27",
+    "topic": "car-maintenance",
+    "persona": "site-manager",
+    "hook": "client-rejection",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+  },
+  {
+    "id": "isoorder-2026-W35-youtube-2026-08-28-01",
+    "status": "pending",
+    "date": "2026-08-28",
+    "topic": "consulting",
+    "persona": "site-manager",
+    "hook": "shock-loss",
+    "content_type": "hero_cinematic",
+    "engine": "google-veo",
+    "notes": "أعلى جودة سينمائية، تكلفة أعلى بالثانية. يُستخدم فقط للمحتوى قليل العدد عالي الأثر (لانش، حملة مدفوعة، فيديو هوية أساسي)."
+  },
+  {
+    "id": "isoorder-2026-W35-youtube-2026-08-29-01",
+    "status": "pending",
+    "date": "2026-08-29",
+    "topic": "medical-labs",
+    "persona": "consultant",
+    "hook": "testimonial",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-youtube-2026-08-30-01",
+    "status": "pending",
+    "date": "2026-08-30",
+    "topic": "general",
+    "persona": "warehouse-manager",
+    "hook": "simple-solution",
+    "content_type": "camera_replacement",
+    "engine": "fal.ai",
+    "notes": "مرحلة ثانية فوق فيديو UGC جاهز — بتحط حركة كاميرا سينمائية. البرومبتات في content-machine/library/techniques/cinematic-camera-replacement.md. أرخص خيار بيدعم video-to-video فعلي."
+  }
+]

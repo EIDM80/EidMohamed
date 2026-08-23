@@ -1,0 +1,156 @@
+[
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-24-01",
+    "status": "pending",
+    "date": "2026-08-24",
+    "topic": "hospitality-hotels",
+    "persona": "site-manager",
+    "hook": "shock-loss",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-24-02",
+    "status": "pending",
+    "date": "2026-08-24",
+    "topic": "hospitality-hotels",
+    "persona": "general-success",
+    "hook": "shock-loss",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-25-01",
+    "status": "pending",
+    "date": "2026-08-25",
+    "topic": "gyms",
+    "persona": "tech-founder",
+    "hook": "shock-loss",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-25-02",
+    "status": "pending",
+    "date": "2026-08-25",
+    "topic": "tech",
+    "persona": "warehouse-manager",
+    "hook": "testimonial",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-26-01",
+    "status": "pending",
+    "date": "2026-08-26",
+    "topic": "hospitals",
+    "persona": "consultant",
+    "hook": "shock-loss",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-26-02",
+    "status": "pending",
+    "date": "2026-08-26",
+    "topic": "consulting",
+    "persona": "site-manager",
+    "hook": "inspector-crackdown",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-27-01",
+    "status": "pending",
+    "date": "2026-08-27",
+    "topic": "consulting",
+    "persona": "restaurant-owner",
+    "hook": "opportunity-cost",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-27-02",
+    "status": "pending",
+    "date": "2026-08-27",
+    "topic": "hospitals",
+    "persona": "hotel-gm",
+    "hook": "opportunity-cost",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-28-01",
+    "status": "pending",
+    "date": "2026-08-28",
+    "topic": "gyms",
+    "persona": "warehouse-manager",
+    "hook": "inspector-crackdown",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-28-02",
+    "status": "pending",
+    "date": "2026-08-28",
+    "topic": "food-factory",
+    "persona": "workshop-owner",
+    "hook": "inspector-crackdown",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-29-01",
+    "status": "pending",
+    "date": "2026-08-29",
+    "topic": "construction",
+    "persona": "hotel-gm",
+    "hook": "testimonial",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-29-02",
+    "status": "pending",
+    "date": "2026-08-29",
+    "topic": "consulting",
+    "persona": "consultant",
+    "hook": "inspector-crackdown",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-30-01",
+    "status": "pending",
+    "date": "2026-08-30",
+    "topic": "construction",
+    "persona": "workshop-owner",
+    "hook": "shock-loss",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-facebook-2026-08-30-02",
+    "status": "pending",
+    "date": "2026-08-30",
+    "topic": "tech",
+    "persona": "restaurant-owner",
+    "hook": "testimonial",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  }
+]

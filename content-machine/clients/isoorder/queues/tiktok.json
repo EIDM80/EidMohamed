@@ -1,0 +1,156 @@
+[
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-24-01",
+    "status": "pending",
+    "date": "2026-08-24",
+    "topic": "hospitals",
+    "persona": "tech-founder",
+    "hook": "client-rejection",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-24-02",
+    "status": "pending",
+    "date": "2026-08-24",
+    "topic": "food-factory",
+    "persona": "workshop-owner",
+    "hook": "inspector-crackdown",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-25-01",
+    "status": "pending",
+    "date": "2026-08-25",
+    "topic": "restaurant",
+    "persona": "tech-founder",
+    "hook": "testimonial",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-25-02",
+    "status": "pending",
+    "date": "2026-08-25",
+    "topic": "tech",
+    "persona": "consultant",
+    "hook": "shock-loss",
+    "content_type": "camera_replacement",
+    "engine": "fal.ai",
+    "notes": "مرحلة ثانية فوق فيديو UGC جاهز — بتحط حركة كاميرا سينمائية. البرومبتات في content-machine/library/techniques/cinematic-camera-replacement.md. أرخص خيار بيدعم video-to-video فعلي."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-26-01",
+    "status": "pending",
+    "date": "2026-08-26",
+    "topic": "car-maintenance",
+    "persona": "tech-founder",
+    "hook": "client-rejection",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-26-02",
+    "status": "pending",
+    "date": "2026-08-26",
+    "topic": "maintenance",
+    "persona": "workshop-owner",
+    "hook": "client-rejection",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-27-01",
+    "status": "pending",
+    "date": "2026-08-27",
+    "topic": "general",
+    "persona": "consultant",
+    "hook": "opportunity-cost",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-27-02",
+    "status": "pending",
+    "date": "2026-08-27",
+    "topic": "maintenance",
+    "persona": "general-success",
+    "hook": "shock-loss",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-28-01",
+    "status": "pending",
+    "date": "2026-08-28",
+    "topic": "construction",
+    "persona": "general-success",
+    "hook": "simple-solution",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-28-02",
+    "status": "pending",
+    "date": "2026-08-28",
+    "topic": "restaurant",
+    "persona": "tech-founder",
+    "hook": "testimonial",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-29-01",
+    "status": "pending",
+    "date": "2026-08-29",
+    "topic": "food-factory",
+    "persona": "qa-manager",
+    "hook": "testimonial",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-29-02",
+    "status": "pending",
+    "date": "2026-08-29",
+    "topic": "tech",
+    "persona": "warehouse-manager",
+    "hook": "testimonial",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-30-01",
+    "status": "pending",
+    "date": "2026-08-30",
+    "topic": "restaurant",
+    "persona": "warehouse-manager",
+    "hook": "testimonial",
+    "content_type": "camera_replacement",
+    "engine": "fal.ai",
+    "notes": "مرحلة ثانية فوق فيديو UGC جاهز — بتحط حركة كاميرا سينمائية. البرومبتات في content-machine/library/techniques/cinematic-camera-replacement.md. أرخص خيار بيدعم video-to-video فعلي."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-30-02",
+    "status": "pending",
+    "date": "2026-08-30",
+    "topic": "construction",
+    "persona": "warehouse-manager",
+    "hook": "client-rejection",
+    "content_type": "ugc_talking_head",
+    "engine": "higgsfield",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+  }
+]
