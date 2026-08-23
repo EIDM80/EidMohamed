@@ -3,77 +3,77 @@
     "id": "isoorder-2026-W35-youtube-2026-08-24-01",
     "status": "pending",
     "date": "2026-08-24",
-    "topic": "food-factory",
-    "persona": "consultant",
+    "topic": "hospitality-hotels",
+    "persona": "hotel-gm",
     "hook": "client-rejection",
-    "content_type": "motion_graphics_static_source",
-    "engine": "remotion",
-    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+    "content_type": "hero_cinematic",
+    "engine": "fal.ai",
+    "notes": "نماذج جوجل (Veo) عبر fal.ai بدل فتح حساب Google Cloud billing منفصل — رصيد واحد لكل الموديلات. يُستخدم فقط للمحتوى قليل العدد عالي الأثر (لانش، حملة مدفوعة، فيديو هوية أساسي) لأن التكلفة بالثانية أعلى من Kling/Seedance."
   },
   {
     "id": "isoorder-2026-W35-youtube-2026-08-25-01",
     "status": "pending",
     "date": "2026-08-25",
-    "topic": "hospitals",
-    "persona": "hotel-gm",
-    "hook": "testimonial",
-    "content_type": "motion_graphics_static_source",
-    "engine": "remotion",
-    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+    "topic": "hospitality-hotels",
+    "persona": "site-manager",
+    "hook": "shock-loss",
+    "content_type": "ugc_talking_head",
+    "engine": "fal.ai",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين."
   },
   {
     "id": "isoorder-2026-W35-youtube-2026-08-26-01",
     "status": "pending",
     "date": "2026-08-26",
-    "topic": "restaurant",
-    "persona": "warehouse-manager",
-    "hook": "shock-loss",
-    "content_type": "ugc_talking_head",
-    "engine": "higgsfield",
-    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+    "topic": "hospitality-hotels",
+    "persona": "consultant",
+    "hook": "client-rejection",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI، ومفيش أي اعتماد على fal.ai أو أي دومين محجوب."
   },
   {
     "id": "isoorder-2026-W35-youtube-2026-08-27-01",
     "status": "pending",
     "date": "2026-08-27",
-    "topic": "car-maintenance",
-    "persona": "site-manager",
-    "hook": "client-rejection",
-    "content_type": "motion_graphics_static_source",
-    "engine": "remotion",
-    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+    "topic": "logistics",
+    "persona": "restaurant-owner",
+    "hook": "testimonial",
+    "content_type": "hero_cinematic",
+    "engine": "fal.ai",
+    "notes": "نماذج جوجل (Veo) عبر fal.ai بدل فتح حساب Google Cloud billing منفصل — رصيد واحد لكل الموديلات. يُستخدم فقط للمحتوى قليل العدد عالي الأثر (لانش، حملة مدفوعة، فيديو هوية أساسي) لأن التكلفة بالثانية أعلى من Kling/Seedance."
   },
   {
     "id": "isoorder-2026-W35-youtube-2026-08-28-01",
     "status": "pending",
     "date": "2026-08-28",
-    "topic": "consulting",
-    "persona": "site-manager",
-    "hook": "shock-loss",
-    "content_type": "hero_cinematic",
-    "engine": "google-veo",
-    "notes": "أعلى جودة سينمائية، تكلفة أعلى بالثانية. يُستخدم فقط للمحتوى قليل العدد عالي الأثر (لانش، حملة مدفوعة، فيديو هوية أساسي)."
+    "topic": "restaurant",
+    "persona": "gym-owner",
+    "hook": "simple-solution",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI، ومفيش أي اعتماد على fal.ai أو أي دومين محجوب."
   },
   {
     "id": "isoorder-2026-W35-youtube-2026-08-29-01",
     "status": "pending",
     "date": "2026-08-29",
-    "topic": "medical-labs",
-    "persona": "consultant",
-    "hook": "testimonial",
-    "content_type": "ugc_talking_head",
-    "engine": "higgsfield",
-    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+    "topic": "tech",
+    "persona": "qa-manager",
+    "hook": "opportunity-cost",
+    "content_type": "hero_cinematic",
+    "engine": "fal.ai",
+    "notes": "نماذج جوجل (Veo) عبر fal.ai بدل فتح حساب Google Cloud billing منفصل — رصيد واحد لكل الموديلات. يُستخدم فقط للمحتوى قليل العدد عالي الأثر (لانش، حملة مدفوعة، فيديو هوية أساسي) لأن التكلفة بالثانية أعلى من Kling/Seedance."
   },
   {
     "id": "isoorder-2026-W35-youtube-2026-08-30-01",
     "status": "pending",
     "date": "2026-08-30",
-    "topic": "general",
-    "persona": "warehouse-manager",
+    "topic": "gyms",
+    "persona": "gym-owner",
     "hook": "simple-solution",
-    "content_type": "camera_replacement",
+    "content_type": "ugc_talking_head",
     "engine": "fal.ai",
-    "notes": "مرحلة ثانية فوق فيديو UGC جاهز — بتحط حركة كاميرا سينمائية. البرومبتات في content-machine/library/techniques/cinematic-camera-replacement.md. أرخص خيار بيدعم video-to-video فعلي."
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين."
   }
 ]

@@ -1,25 +1,26 @@
 {
   "_comment": "Default content-type -> generation-engine routing. Shared across all clients unless a client's config.json sets routing_overrides for a given content_type. Extend this file (add new content_type keys) as new engines/techniques come online instead of hardcoding routing logic in scripts.",
+  "_execution_note": "As of 2026-08-23: Higgsfield dropped (cost). fal.ai MCP is being set up on the user's LOCAL Claude Code CLI (C:\\Users\\dreid), a separate instance from any cloud/remote session — fal.ai's domain is egress-blocked from remote sessions, so generation via fal.ai must run from that local session, not from here. Until confirmed working, treat every entry below as 'engine chosen, execution still manual/local' rather than agent-callable from a remote session.",
   "ugc_talking_head": {
-    "engine": "higgsfield",
-    "workflow": "ugc",
-    "notes_ar": "شخص بيتكلم بزاوية كاميرا ثابتة. الافتراضي لمعظم الإعلانات القصيرة. Higgsfield MCP متاح مباشرة بدون رصيد إضافي لو المشروع مشترك فيه."
+    "engine": "fal.ai",
+    "model_options": ["kling", "seedance"],
+    "notes_ar": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين."
   },
   "camera_replacement": {
     "engine": "fal.ai",
     "model_options": ["kling", "seedance"],
     "requires": "source_video (UGC clip already generated/filmed)",
-    "notes_ar": "مرحلة ثانية فوق فيديو UGC جاهز — بتحط حركة كاميرا سينمائية. البرومبتات في content-machine/library/techniques/cinematic-camera-replacement.md. أرخص خيار بيدعم video-to-video فعلي."
+    "notes_ar": "مرحلة ثانية فوق فيديو UGC جاهز — بتحط حركة كاميرا سينمائية. البرومبتات في content-machine/library/techniques/cinematic-camera-replacement.md. نفس حساب fal.ai المستخدم لـugc_talking_head."
   },
   "hero_cinematic": {
-    "engine": "google-veo",
-    "access": "Gemini API / AI Studio",
-    "notes_ar": "أعلى جودة سينمائية، تكلفة أعلى بالثانية. يُستخدم فقط للمحتوى قليل العدد عالي الأثر (لانش، حملة مدفوعة، فيديو هوية أساسي)."
+    "engine": "fal.ai",
+    "model_options": ["veo"],
+    "notes_ar": "نماذج جوجل (Veo) عبر fal.ai بدل فتح حساب Google Cloud billing منفصل — رصيد واحد لكل الموديلات. يُستخدم فقط للمحتوى قليل العدد عالي الأثر (لانش، حملة مدفوعة، فيديو هوية أساسي) لأن التكلفة بالثانية أعلى من Kling/Seedance."
   },
   "motion_graphics_static_source": {
     "engine": "remotion",
     "requires": "source_video_or_image (client-owned footage/design)",
-    "notes_ar": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI."
+    "notes_ar": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI، ومفيش أي اعتماد على fal.ai أو أي دومين محجوب."
   },
   "kinetic_typography": {
     "engine": "remotion",
