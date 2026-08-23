@@ -20,6 +20,54 @@ apps you already use, one connector at a time**.
 | 8 | **Hand off the coding** | **Claude Code alone** — one agent that plans, builds, and reviews everything. Included in Claude Pro $20/mo | **Codex or Kimi Code** — cheaper tokens for similar results: Claude plans and reviews, they write the code. Codex is free with a ChatGPT sign-in; Kimi from $19/mo, roughly 5x cheaper |
 | 9 | **Run it before you wake up** | **Routines via `/schedule`** — the 6am briefing with your laptop shut: runs in Anthropic's cloud, included with Pro/Max | **Local cron/launchd + `claude -p`** — if the briefing needs your local files: $0, full control, machine must be awake |
 
+## What the demo looks like (`videos/jarvis_2.mp4`)
+
+The video is the whole guide compressed into one morning briefing. You say *"Hey Jarvis,
+wake up — so how's the app doing?"* and it answers:
+
+> Good evening, sir. Pulling up our apps now. Over the last seven days we have **2,459 new
+> downloads** and generated **$4,289 in revenue**. For organic content, I'm still posting
+> **3 short-form videos** today. Throughout the week you've seen **16 customer emails**.
+> Since you've already approved that direction, I handed it to Tom to develop the agent.
+
+Every sentence in that answer is one connector from the table above. That's the whole
+trick — the briefing isn't a feature you build, it's what falls out once the connectors
+are attached:
+
+| Line in the briefing | Comes from | Step |
+|---|---|---|
+| "Hey Jarvis, wake up…" (you, out loud) | FluidVoice / Typeless | 1 |
+| "Good evening, sir." (spoken back) | ElevenLabs / Fish Audio | 3 |
+| "Pulling up our apps now." | Lovable / Higgsfield dashboard | 2 |
+| "2,459 new downloads … $4,289 in revenue" | RevenueCat / Stripe | 5 |
+| "3 short-form videos today" | Metricool / Ayrshare | 6 |
+| "16 customer emails this week" | Gmail / AgentMail | 7 |
+| "I handed it to Tom to develop the agent" | Claude handing coding off to Codex / Kimi | 8 |
+| The fact that it ran before you woke up | Routines `/schedule` or cron | 9 |
+
+Full timestamped transcript: [`videos/jarvis_2.transcript.md`](videos/jarvis_2.transcript.md).
+
+### The briefing prompt
+
+Reconstructed from the demo — this is the thing you put in `/schedule` (or in a
+`claude -p` cron job) once the connectors are attached. Trim it to whichever connectors
+you actually have:
+
+```text
+Good morning briefing. Keep it under 60 seconds spoken, no preamble, no bullet lists —
+one short paragraph, the way a chief of staff would say it out loud.
+
+1. Revenue + installs: last 7 days vs the 7 before. Give me the numbers, and only flag
+   the trend if it moved more than 10%.
+2. Social: what's scheduled to post today, and any post from yesterday that beat its
+   own average.
+3. Inbox: how many customer emails came in this week, how many still need me, and draft
+   replies for the ones that don't.
+4. Engineering: what shipped since yesterday, what's in progress, what's blocked on me.
+
+End with the single thing you'd do first if you were me today.
+```
+
 ## How to actually start
 
 The guide's own advice, restated as an order of operations:
@@ -54,6 +102,7 @@ Claude Pro plan. That's a working Jarvis for the price of the Claude subscriptio
 | `README.md` | This guide |
 | `source/Build_Your_Own_Jarvis.docx` | The original document, unmodified |
 | `videos/jarvis.mp4` | Walkthrough video 1 (1:22) |
-| `videos/jarvis_2.mp4` | Walkthrough video 2 (1:12) |
+| `videos/jarvis_2.transcript.md` | Timestamped transcript of video 2, decoded step by step |
+| `videos/jarvis_2.mp4` | Walkthrough video 2 (1:12) — the demo briefing |
 
 The videos are stored in the repo directly — clone it and they come with it.
