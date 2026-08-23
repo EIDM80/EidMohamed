@@ -133,6 +133,7 @@ Claude Pro plan. That's a working Jarvis for the price of the Claude subscriptio
 | Path | What it is |
 |---|---|
 | `README.md` | This guide |
+| `research/local-stack-research.md` | A self-hosted / free alternative stack (Open WebUI + Ollama + …), with claims verified and the two paths compared |
 | `source/Build_Your_Own_Jarvis.docx` | The original document, unmodified |
 | `videos/jarvis.mp4` | Walkthrough video 1 (1:22) — the 1.0, one tool per step |
 | `videos/jarvis.transcript.md` | Timestamped transcript of video 1, decoded step by step |
@@ -140,3 +141,11 @@ Claude Pro plan. That's a working Jarvis for the price of the Claude subscriptio
 | `videos/jarvis_2.mp4` | Walkthrough video 2 (1:12) — the demo briefing |
 
 The videos are stored in the repo directly — clone it and they come with it.
+
+## The other path
+
+There's a second, very different way to build this: self-host everything on your own GPU
+instead of renting connectors. See [`research/local-stack-research.md`](research/local-stack-research.md)
+— it's not a competing tool list, it's a different project with a different time and cost
+shape. Short version: do this guide first to learn what you actually want Jarvis to *do*,
+then self-host the pieces that earned it.
