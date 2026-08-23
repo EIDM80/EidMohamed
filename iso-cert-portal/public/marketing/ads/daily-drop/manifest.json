@@ -79,6 +79,171 @@
       "instagram_creation_id": "18089664890237571",
       "instagram_published": false,
       "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4, Application request limit reached)"
+    },
+    {
+      "drive_file_id": "1VIpqKtX9-NyZywdXTdpK66rLofZ5yT9G",
+      "local_id": "2026-08-23-08-logistics",
+      "sector": "logistics",
+      "headline": "تأخير شحنة بسبب عدم الاعتماد يكلفك آلاف الدراهم",
+      "facebook_post_id": "1526689146151310",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "1ITzD2feFZk6MQmfevLdXUXzFKWg3Qykn",
+      "local_id": "2026-08-23-09-medical-labs",
+      "sector": "medical-labs",
+      "headline": "تقرير غير معتمد يعني فقدان ثقة المرضى",
+      "facebook_post_id": "1526689139484644",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "19FRy8s8LOSChRhazKT7AhUaN3n7SXvMF",
+      "local_id": "2026-08-23-10-hospitals",
+      "sector": "hospitals",
+      "headline": "هيئة الاعتماد علّقت التعاقدات لعدم مطابقة معايير ISO",
+      "facebook_post_id": "1526689152817976",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "1TeBb5DHKM6Rx1EIAXkLaD6MlUC6Q_cZO",
+      "local_id": "2026-08-23-11-maintenance",
+      "sector": "maintenance",
+      "headline": "بدون شهادة ISO معتمدة لن توقع مع شركات التأمين",
+      "facebook_post_id": "1526689112817980",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "15b4s9-epp7N_PC4-JbEfuej4dPO5kcHU",
+      "local_id": "2026-08-23-12-consulting",
+      "sector": "consulting",
+      "headline": "عميل دولي طلب ISO وأعطاه لمنافسك خسرت العقد",
+      "facebook_post_id": "1526689286151296",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "1OEDaFTRFuvM7VV4XGRdl2AWIM7Cv1j9g",
+      "local_id": "2026-08-23-13-shipping",
+      "sector": "shipping",
+      "headline": "بدون ISO معتمدة شحنتك معرضة للرفض والتأخير",
+      "facebook_post_id": "1526689296151295",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "1PU6ZM3Jb57RboyY2XlzkymPaJG-ohXqc",
+      "local_id": "2026-08-23-14-tech",
+      "sector": "tech",
+      "headline": "صفقة سبعة أرقام سقطت لأن الشركة مو معتمدة",
+      "facebook_post_id": "1526689312817960",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "13E1S6q9L_tgOOMp7k5yE4X1gQuycZ6nD",
+      "local_id": "2026-08-23-15-hospitality",
+      "sector": "hospitality",
+      "headline": "بدون شهادة ISO، مبيعاتك في خطر",
+      "facebook_post_id": "1526689332817958",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "1P7H-FTa-LDVNYWSCwAHzEq__gCmUW2F4",
+      "local_id": "2026-08-23-17-services",
+      "sector": "services",
+      "headline": "المنافسون معتمدون ISO... وأنت لسه متأخر؟",
+      "facebook_post_id": "1526689696151255",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "1P-7h4hj98p5MwQ13sAMharnsgphZpH8o",
+      "local_id": "2026-08-23-18-car-maintenance",
+      "sector": "car-maintenance",
+      "headline": "بدون هذي الشهادة، شركات التأمين قد ترفض تغطيتك",
+      "facebook_post_id": "1526689742817917",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "1zFpCPR7xNWIF4C-wyjJxCbQ-v9ugtCnO",
+      "local_id": "2026-08-23-19-hotels",
+      "sector": "hotels",
+      "headline": "بدون شهادة ISO، لن تُدرج في قوائم الفنادق الموثوقة",
+      "facebook_post_id": "1526689709484587",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "1RnpGnobApEFWJbrKc1wF7BSkn_4aQpT9",
+      "local_id": "2026-08-23-20-gyms",
+      "sector": "gyms",
+      "headline": "بدون شهادة ISO، عضوياتك مهددة في أي وقت لا تخاطر!",
+      "facebook_post_id": "1526689702817921",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "1IejJXZOzZ2wUjT_PshQMWlbEZVClFrUS",
+      "local_id": "2026-08-23-22-food-factory-m",
+      "sector": "food-factory-m",
+      "headline": "بدون هذه الشهادة، أكبر عميل بيرفضك",
+      "facebook_post_id": "1526689976151227",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "1Xn_Ww0Ex-l37GRr-mcxdVZODZTWgkS9h",
+      "local_id": "2026-08-23-23-food-factory-f",
+      "sector": "food-factory-f",
+      "headline": "بدون هذه الشهادة، أكبر عميل بيرفضك",
+      "facebook_post_id": "1526689959484562",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "1niHZOVwA6Q3_5NPvGSyF6lx3PbT0eCEl",
+      "local_id": "2026-08-23-24-general",
+      "sector": "general",
+      "headline": "بدون شهادة ISO، قد تخسر أكبر الفرص!",
+      "facebook_post_id": "1526689946151230",
+      "facebook_published": true,
+      "instagram_creation_id": null,
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
     }
   ]
 }
