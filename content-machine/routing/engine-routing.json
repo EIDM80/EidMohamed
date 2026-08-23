@@ -1,6 +1,9 @@
 {
   "_comment": "Default content-type -> generation-engine routing. Shared across all clients unless a client's config.json sets routing_overrides for a given content_type. Extend this file (add new content_type keys) as new engines/techniques come online instead of hardcoding routing logic in scripts.",
-  "_execution_note": "As of 2026-08-23: Higgsfield dropped (cost). fal.ai MCP is being set up on the user's LOCAL Claude Code CLI (C:\\Users\\dreid), a separate instance from any cloud/remote session — fal.ai's domain is egress-blocked from remote sessions, so generation via fal.ai must run from that local session, not from here. Until confirmed working, treat every entry below as 'engine chosen, execution still manual/local' rather than agent-callable from a remote session.",
+  "_execution_note": "As of 2026-08-23: Higgsfield dropped (cost). fal.ai MCP confirmed CONNECTED and WORKING on the user's LOCAL Claude Code CLI (C:\\Users\\dreid) — verified end-to-end with a real 3s text-to-video generation (alibaba/happy-horse/text-to-video, $0.14/sec, ~$0.42 for 3s, 1920x1080 output — note: default aspect ratio was 16:9, must be explicitly requested as 9:16/vertical for ISO Order's social formats). fal.ai's domain is still egress-blocked from remote/cloud sessions, so generation must continue to run from that local session — the user runs the prompt there and hands the output file to the remote session for post-production + publishing.",
+  "_cost_reference": {
+    "alibaba/happy-horse/text-to-video": "$0.14/sec (verified 2026-08-23)"
+  },
   "ugc_talking_head": {
     "engine": "fal.ai",
     "model_options": ["kling", "seedance"],
