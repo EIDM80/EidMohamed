@@ -7,7 +7,9 @@
   "ugc_talking_head": {
     "engine": "fal.ai",
     "model_options": ["kling", "seedance"],
-    "notes_ar": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين."
+    "voice_engine": "ElevenLabs (creative_generate_speech, model eleven_multilingual_v2)",
+    "notes_ar": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين.",
+    "critical_gotcha_ar": "فيديوهات fal.ai المولّدة مفيهاش حوار حقيقي (صوت خلفية بس). edit_and_push.py (المستخدم للـRemotion overlay) مبيولّدش صوت — هو بس بيزامن الكابشنز مع أعلى نقطة طاقة صوتية في الفيديو المصدر. لازم تولّد التعليق الصوتي بـElevenLabs الأول، تدمجه (ffmpeg -map 0:v -map 1:a -c:v copy -af volume=8dB -c:a aac) فوق صوت الفيديو الخام بديل، وبعدين تشغّل edit_and_push.py على النسخة المدموجة دي — مش على فيديو fal.ai الخام مباشرة. اتأكد بعد الدمج إن max_volume حوالي -3 لـ-7dB (مش أضعف من كده) قبل ما تكمل. اكتُشفت المشكلة دي فعليًا يوم 2026-08-23 (أول فيديو خرج بدون صوت مفهوم لحد ما اتصلح)."
   },
   "camera_replacement": {
     "engine": "fal.ai",
