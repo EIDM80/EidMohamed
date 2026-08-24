@@ -11,6 +11,25 @@ directly — no WSL2 GPU passthrough, no nvidia-container-toolkit. Open WebUI is
 interface and never touches the GPU, so plain Docker is enough. That deletes the step
 most people get stuck on.
 
+## Fast path: one command
+
+To skip the manual steps, run this **as Administrator** from inside the `setup` folder:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\bootstrap.ps1
+```
+
+It installs Ollama, Docker and Python via winget if missing, sets the environment
+variables, adds the firewall rule, pulls both models, generates `.env` with a secret key,
+and starts Open WebUI. Safe to re-run — every step checks before acting.
+
+**One expected stop:** if Docker Desktop isn't installed, the script installs it and then
+asks you to reboot and launch it once manually, then re-run — it skips everything already
+done.
+
+To understand and do each step yourself, read on.
+
 ## Before you start
 
 ```powershell
