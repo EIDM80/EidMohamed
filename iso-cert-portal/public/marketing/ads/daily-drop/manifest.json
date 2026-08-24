@@ -1,7 +1,7 @@
 {
   "drive_folder_id": "1wkkcw8-BI9c3Km-X3-IAkZaskAtaBckz",
   "drive_folder_url": "https://drive.google.com/drive/folders/1wkkcw8-BI9c3Km-X3-IAkZaskAtaBckz",
-  "instagram_diagnostic_note": "As of 2026-08-23: INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH for IMAGE containers still returns 403 code 4 (Application request limit reached) on every attempt (solo, freshly-created, FINISHED-status container included) across 6+ attempts spanning 19+ hours. HOWEVER, video/Reel publishing (daily_queue.json flow, media_type=REELS) succeeded cleanly on first attempt today. This looks like a persistent block specific to the IMAGE publish endpoint for this app/account, not a general or time-based rate limit. Do not keep blind-retrying image publishes every run; retry at most once per day and flag to user if it persists beyond ~1 week — may need Meta app review or re-authorization specific to photo publishing.",
+  "instagram_diagnostic_note": "As of 2026-08-23: INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH for IMAGE containers still returns 403 code 4 (Application request limit reached) on every attempt (solo, freshly-created, FINISHED-status container included) across 6+ attempts spanning 19+ hours. HOWEVER, video/Reel publishing (daily_queue.json flow, media_type=REELS) succeeded cleanly on first attempt today. This looks like a persistent block specific to the IMAGE publish endpoint for this app/account, not a general or time-based rate limit. Do not keep blind-retrying image publishes every run; retry at most once per day and flag to user if it persists beyond ~1 week — may need Meta app review or re-authorization specific to photo publishing. As of 2026-08-24: still blocked on daily single-retry attempt for a newly-created image container (gyms post). Now confirmed blocked 3 consecutive days (08-22, 08-23, 08-24) despite video/Reel publishing continuing to work fine on the same account. This has crossed from \"wait it out\" into \"likely needs action\" — flagging to user per standing instructions.",
   "processed": [
     {
       "drive_file_id": "1H7ge0K9SudNog75DKyj2NSK3lTpxyJ0O",
@@ -244,6 +244,17 @@
       "instagram_creation_id": null,
       "instagram_published": false,
       "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+    },
+    {
+      "drive_file_id": "11ukYYef8GcXtR4UrMxtsxlFah2sxnMto",
+      "local_id": "2026-08-24-01-gyms",
+      "sector": "gyms",
+      "headline": "بدون شهادة ISO، عضوياتك مهددة في أي وقت. لا تخاطر!",
+      "facebook_post_id": "319209918151149_1527520732734818",
+      "facebook_published": true,
+      "instagram_creation_id": "18090136352237571",
+      "instagram_published": false,
+      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4, Application request limit reached) — still blocked as of 2026-08-24, now 3rd consecutive day observed (first seen 2026-08-22)."
     }
   ]
 }
