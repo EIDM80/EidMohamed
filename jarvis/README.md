@@ -136,6 +136,7 @@ Claude Pro plan. That's a working Jarvis for the price of the Claude subscriptio
 |---|---|
 | `README.md` / `README.ar.md` | This guide (English / Arabic) |
 | `hardware-plan.md` (+ `.ar.md`) | A concrete plan for the RTX 4080 / 64 GB box: VRAM budget, model picks, install order |
+| `mark-li/README.md` | The Mark LI project: source assessment, licence, install guide |
 | `research/local-stack-research.md` (+ `.ar.md`) | A self-hosted / free alternative stack (Open WebUI + Ollama + …), with claims verified and the two paths compared |
 | `setup/START-HERE.md` | **Start here** — step-by-step install for a non-technical reader |
 | `setup/` | Windows 11 install: `docker-compose.yml`, `jarvis.ps1` control script, step-by-step guide |
