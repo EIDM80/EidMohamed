@@ -187,6 +187,11 @@
       "skillPath": "skills/yahav-fuchs/aeo-visibility-tracking/SKILL.md",
       "computedHash": "8331c42f09587ba3f44ad7121e29769b565ac80ab70fb9e17a8958f95922c471"
     },
+    "ai-history-vlog": {
+      "source": "../../../tmp/claude-0/-home-user-EidMohamed/4ffa0f47-dcce-578b-86a0-2db35b5e0103/scratchpad/aihistoryvlogskill/ai-history-vlog",
+      "sourceType": "local",
+      "computedHash": "22727439421e1d095fde1e4893526c07e475f839abb640ee5f47e2b9601884d4"
+    },
     "ai-personalization-prompts": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
