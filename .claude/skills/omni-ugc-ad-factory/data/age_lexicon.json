@@ -1,0 +1,63 @@
+{
+  "_comment": "Age-texture decoupling, enforced. The gate requires >=4 required terms present and 0 banned terms in the physiology text for the chosen bracket. Terms are lowercase substrings.",
+  "brackets": {
+    "20s": {
+      "opening": "An unedited front-camera selfie photo of",
+      "required_any": [
+        "oily", "visible pores", "large pores", "active blemish", "healing spot",
+        "post-acne mark", "plump", "taut", "translucen", "flush", "peach fuzz",
+        "vellus hair", "blood", "specular shine", "dynamic", "under-eye fat"
+      ],
+      "min_required": 4,
+      "banned": [
+        "fine lines", "etched", "resting lines", "resting creases", "chapped", "dryness",
+        "dry skin", "sallow", "crepey", "nasolabial", "sun spot", "lentigin", "age spot",
+        "vertical lip lines", "thinning", "hollowing", "volume loss", "jowl", "weathered",
+        "wrinkle", "mottling", "grey-yellow", "powdery", "matte skin"
+      ],
+      "note": "Never write 'young'. Age falls out of physiology. Creases only as dynamic-with-expression, and must say they vanish at rest."
+    },
+    "40s": {
+      "opening": "A straight-out-of-camera close portrait photo of",
+      "required_any": [
+        "fine lines", "under-eye texture", "uneven tone", "mild redness",
+        "visible pores", "vertical lip lines", "slight dryness", "faint discoloration",
+        "nasolabial", "shallow creases", "imperfect hairline"
+      ],
+      "min_required": 4,
+      "banned": [
+        "acne across the forehead", "braces", "baby-faced", "teenage",
+        "deep wrinkles", "jowls", "liver spot", "crepey", "gaunt", "sagging"
+      ],
+      "note": "This is the master prompt's home bracket - natural texture as written."
+    },
+    "50s": {
+      "opening": "A straight-out-of-camera close portrait photo of",
+      "required_any": [
+        "etched resting lines", "crepey", "nasolabial", "thinning vermilion",
+        "thinner lips", "sun spot", "lentigin", "age spot", "grey", "silver strands",
+        "hollowing", "volume loss", "crow's feet", "neck lines", "softened jaw",
+        "desaturat"
+      ],
+      "min_required": 4,
+      "banned": [
+        "active blemish", "acne", "plump wet lips", "baby-faced", "taut over the cheekbone",
+        "peach fuzz", "teenage"
+      ],
+      "note": "Invert the young table deliberately - here the aging vocabulary is correct, and should be a notch more noticeable than the 40s default."
+    }
+  },
+  "global_banned": [
+    "masterpiece", "best quality", "8k", "ultra-detailed", "ultra detailed", "award-winning",
+    "stunning", "flawless", "gorgeous", "beautiful", "perfect skin", "poreless",
+    "glass skin", "porcelain", "doll face", "cgi", "plastic", "airbrushed",
+    "beauty-retouched", "influencer face", "hyperreal", "cinematic", "photorealistic"
+  ],
+  "device_banned": [
+    "iphone", "smartphone", "tripod", "selfie stick", "ring light", "dslr",
+    "gopro", "webcam", "shot on", "camera rig", "phone"
+  ],
+  "device_allowed_phrases": [
+    "front-camera selfie"
+  ]
+}

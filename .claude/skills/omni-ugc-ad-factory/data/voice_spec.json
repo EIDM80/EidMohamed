@@ -1,0 +1,21 @@
+{
+  "_comment": "The voice block is required, written ONCE, and byte-identical across both clips. Without it Omni defaults to monotone. The gate requires at least min_required of these categories to be evidenced in the voice text, by substring match.",
+  "min_required": 5,
+  "categories": {
+    "pitch_placement": ["low in her chest", "mid-range", "sits low", "sits high", "pitch sits", "register"],
+    "texture": ["creak", "fry", "breathy", "rasp", "hoarse", "clear-toned", "worn at the edges"],
+    "pacing": ["pace", "pacing", "unhurried", "words crowd", "tumbling", "quick bursts", "slow and level", "uneven tempo"],
+    "volume_dynamics": ["volume", "mutter", "drops to", "under her breath", "never raises", "louder on"],
+    "terminal_pitch": ["falls at the end", "statements fall", "pitch falls", "flat at the end", "downward at the end", "no upward lift"],
+    "accent_mechanics": ["rhotic", "lands the r", "drops the r", "vowel", "short a", "flat american"]
+  },
+  "city_hint": {
+    "_comment": "A city anchors the accent better than a country. Missing city = warning, not failure.",
+    "cities": ["chicago", "portland", "austin", "columbus", "denver", "phoenix", "atlanta", "boston", "seattle", "minneapolis", "nashville", "san diego", "philadelphia", "london", "manchester", "dublin", "toronto", "sydney", "melbourne"]
+  },
+  "banned_emotion_words": [
+    "angry", "furious", "sad", "depressed", "frustrated", "excited", "nervous",
+    "anxious", "happy", "upset", "annoyed", "emotional", "fed up", "exasperated",
+    "desperate", "miserable", "joyful", "enthusiastic", "passionate"
+  ]
+}

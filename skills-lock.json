@@ -1357,6 +1357,12 @@
       "skillPath": "skills/tanyo-gochev/objection-mining/SKILL.md",
       "computedHash": "a275f54a1a704b31537c84a7b3f6762ce8609cb5fa11720e9eb6cc3848b45dfe"
     },
+    "omni-ugc-ad-factory": {
+      "source": "MegaTroll222/OMNI-UGC-AD-FACTORY",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "ef4051baf854dd1722e048ce5eef625b5d1f213c7ac338fabfaffb17f0f469c8"
+    },
     "operating-cadence-designer": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",

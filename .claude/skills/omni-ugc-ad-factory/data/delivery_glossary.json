@@ -1,0 +1,272 @@
+{
+  "_comment": "Micro-behavior glossary. Every behavior is written as a STATE the person is in, never a cue. The agent tags each script beat with a state, picks behaviors valid for that state, and must use the behavior's phrasing (adapted to her, but containing one of match_any). The gate verifies ids, state fit, budgets, and that the phrasing actually made it into the delivery text.",
+  "states": [
+    "venting", "fed_up", "ashamed", "embarrassed", "resigned", "tired",
+    "thinking", "deciding", "confiding", "skeptical", "relieved", "amused"
+  ],
+  "budget": {
+    "min_per_clip": 3,
+    "max_per_clip": 6,
+    "min_categories_per_clip": 2
+  },
+  "behaviors": [
+    {
+      "id": "gaze_drop",
+      "category": "gaze",
+      "states": ["ashamed", "embarrassed", "resigned", "confiding", "tired"],
+      "max_per_clip": 2,
+      "phrasing": "her eyes drop away from the lens for a moment without her deciding to, then come back",
+      "match_any": ["eyes drop", "gaze drops", "looks down without"]
+    },
+    {
+      "id": "gaze_away_thinking",
+      "category": "gaze",
+      "states": ["thinking", "deciding", "venting", "skeptical"],
+      "max_per_clip": 2,
+      "phrasing": "she looks off to the side while she finds the words, not at anything, then her eyes come back to the lens",
+      "match_any": ["looks off to the side", "looks away while", "eyes drift", "finds the words"]
+    },
+    {
+      "id": "gaze_past_lens",
+      "category": "gaze",
+      "states": ["resigned", "confiding", "tired"],
+      "max_per_clip": 1,
+      "phrasing": "on the hardest part she stares slightly past the lens instead of into it",
+      "match_any": ["past the lens", "through the camera", "not quite at the lens"]
+    },
+    {
+      "id": "refocus_lens",
+      "category": "gaze",
+      "states": ["deciding", "venting", "fed_up", "confiding"],
+      "max_per_clip": 2,
+      "phrasing": "she comes back to the lens and holds it, the way you look at a friend when you mean it",
+      "match_any": ["holds the lens", "back to the lens", "straight down the lens"]
+    },
+    {
+      "id": "inhale_new_thought",
+      "category": "breath",
+      "states": ["venting", "thinking", "deciding", "confiding", "fed_up"],
+      "max_per_clip": 2,
+      "phrasing": "an audible inhale arrives before a new thought, because the thought arrives before the air does",
+      "match_any": ["audible inhale", "breath before", "inhales before"]
+    },
+    {
+      "id": "nose_exhale",
+      "category": "breath",
+      "states": ["fed_up", "resigned", "amused", "skeptical", "tired"],
+      "max_per_clip": 2,
+      "phrasing": "she pushes a short exhale out through her nose at the end of the line, the ghost of a laugh with no humor in it",
+      "match_any": ["exhale through", "through her nose", "exhale-laugh", "breath out of her nose"]
+    },
+    {
+      "id": "breath_runs_out",
+      "category": "breath",
+      "states": ["venting", "tired", "resigned"],
+      "max_per_clip": 2,
+      "phrasing": "she runs out of air toward the end of the phrase, so her voice sags into a low creak on its own, without her intending it",
+      "match_any": ["runs out of air", "sags into", "creak on its own"]
+    },
+    {
+      "id": "hitched_inhale",
+      "category": "breath",
+      "states": ["ashamed", "embarrassed", "confiding"],
+      "max_per_clip": 1,
+      "phrasing": "one inhale comes in shallow and slightly hitched, and she talks over it rather than acknowledge it",
+      "match_any": ["hitched", "shallow inhale", "catches slightly"]
+    },
+    {
+      "id": "lip_press",
+      "category": "mouth",
+      "states": ["ashamed", "resigned", "deciding", "fed_up", "embarrassed"],
+      "max_per_clip": 2,
+      "phrasing": "after the line lands she presses her lips together for a beat, holding in whatever the next sentence would have been",
+      "match_any": ["presses her lips", "lips press", "squeezes her lips"]
+    },
+    {
+      "id": "lip_smack_open",
+      "category": "mouth",
+      "states": ["venting", "tired", "confiding", "thinking"],
+      "max_per_clip": 1,
+      "phrasing": "the clip opens on a small lip smack and an exhale before the first word, the sound of someone who has already been sitting there a while",
+      "match_any": ["lip smack", "smack before", "opens on a small"]
+    },
+    {
+      "id": "half_smile_suppressed",
+      "category": "mouth",
+      "states": ["amused", "embarrassed", "skeptical", "confiding"],
+      "max_per_clip": 1,
+      "phrasing": "a half-smile starts at one corner of her mouth and she pulls it back down without finishing it",
+      "match_any": ["half-smile", "pulls it back", "corner of her mouth"]
+    },
+    {
+      "id": "tongue_teeth",
+      "category": "mouth",
+      "states": ["thinking", "deciding", "skeptical"],
+      "max_per_clip": 1,
+      "phrasing": "her tongue pushes against her teeth for a second before she commits to the sentence",
+      "match_any": ["tongue", "against her teeth"]
+    },
+    {
+      "id": "throat_clear",
+      "category": "throat",
+      "states": ["confiding", "deciding", "embarrassed"],
+      "max_per_clip": 1,
+      "max_per_ad": 1,
+      "phrasing": "she clears her throat once, quickly, mid-thought, and keeps going like it did not happen",
+      "match_any": ["clears her throat", "throat clear"]
+    },
+    {
+      "id": "swallow",
+      "category": "throat",
+      "states": ["ashamed", "confiding", "deciding"],
+      "max_per_clip": 1,
+      "phrasing": "an audible swallow sits in the gap between two sentences",
+      "match_any": ["swallow"]
+    },
+    {
+      "id": "nostril_flare",
+      "category": "face",
+      "states": ["fed_up", "venting", "deciding"],
+      "max_per_clip": 2,
+      "phrasing": "her nostrils widen a little when the push behind her breath is more than the volume needs",
+      "match_any": ["nostrils widen", "nostril", "flare"]
+    },
+    {
+      "id": "brow_flash",
+      "category": "face",
+      "states": ["venting", "skeptical", "amused", "fed_up"],
+      "max_per_clip": 2,
+      "phrasing": "her eyebrows flick up for half a second on the part she cannot believe she is saying out loud",
+      "match_any": ["eyebrows flick", "brow flash", "brows lift"]
+    },
+    {
+      "id": "brow_knit",
+      "category": "face",
+      "states": ["thinking", "ashamed", "confiding", "tired"],
+      "max_per_clip": 2,
+      "phrasing": "her brows pull together while she is searching for the word, and release when she finds it",
+      "match_any": ["brows pull together", "brow knits", "brows knit"]
+    },
+    {
+      "id": "squint_recall",
+      "category": "face",
+      "states": ["thinking", "skeptical"],
+      "max_per_clip": 1,
+      "phrasing": "she squints slightly at nothing while pulling the memory up",
+      "match_any": ["squints", "squint"]
+    },
+    {
+      "id": "jaw_set",
+      "category": "face",
+      "states": ["fed_up", "deciding", "venting"],
+      "max_per_clip": 1,
+      "phrasing": "her jaw is set tighter than it needs to be and the ends of words get bitten off short",
+      "match_any": ["jaw is set", "jaw tighter", "bitten off"]
+    },
+    {
+      "id": "eyelid_weight",
+      "category": "face",
+      "states": ["tired", "resigned"],
+      "max_per_clip": 1,
+      "phrasing": "her eyelids sit heavy, blinking slower than the sentence, like the day is still on them",
+      "match_any": ["eyelids sit heavy", "blinking slower", "heavy-lidded"]
+    },
+    {
+      "id": "head_shake_small",
+      "category": "head",
+      "states": ["ashamed", "resigned", "skeptical", "fed_up"],
+      "max_per_clip": 2,
+      "phrasing": "a small head shake runs under the admission, disagreeing with her own sentence while she says it",
+      "match_any": ["small head shake", "shakes her head slightly", "head shake runs"]
+    },
+    {
+      "id": "head_tilt_aside",
+      "category": "head",
+      "states": ["amused", "confiding", "skeptical", "venting"],
+      "max_per_clip": 1,
+      "phrasing": "her head tilts a few degrees on the aside, and the aside drops in volume like it was not for the camera",
+      "match_any": ["head tilts", "tilt on the aside", "drops in volume"]
+    },
+    {
+      "id": "chin_settle_end",
+      "category": "head",
+      "states": ["resigned", "deciding", "relieved", "tired"],
+      "max_per_clip": 1,
+      "phrasing": "at the end her chin settles down a fraction and she just looks at the lens, done talking before the clip is done",
+      "match_any": ["chin settles", "settles down", "done talking"]
+    },
+    {
+      "id": "hair_tuck",
+      "category": "self_touch",
+      "states": ["embarrassed", "confiding", "thinking", "tired"],
+      "max_per_clip": 1,
+      "phrasing": "she tucks a strand of hair back without noticing she is doing it, mid-sentence",
+      "match_any": ["tucks a strand", "hair tuck", "tucks her hair"]
+    },
+    {
+      "id": "face_rub",
+      "category": "self_touch",
+      "states": ["tired", "resigned", "fed_up"],
+      "max_per_clip": 1,
+      "max_per_ad": 1,
+      "phrasing": "she drags a hand down over her cheek once, briefly, the way people do when the topic itself is tiring",
+      "match_any": ["hand down over", "rubs her face", "drags a hand"]
+    },
+    {
+      "id": "grip_shift",
+      "category": "posture",
+      "states": ["venting", "confiding", "deciding"],
+      "max_per_clip": 1,
+      "phrasing": "she re-settles her grip so the whole frame shifts a few degrees and does not get corrected",
+      "match_any": ["re-settles her grip", "frame shifts", "grip shifts"]
+    },
+    {
+      "id": "shoulders_drop",
+      "category": "posture",
+      "states": ["resigned", "relieved", "tired"],
+      "max_per_clip": 1,
+      "phrasing": "her shoulders come down on the exhale, the sentence taking the posture with it",
+      "match_any": ["shoulders come down", "shoulders drop"]
+    },
+    {
+      "id": "lean_in_confide",
+      "category": "posture",
+      "states": ["confiding", "deciding", "venting"],
+      "max_per_clip": 1,
+      "phrasing": "she leans a little closer to the lens for the part that feels like a secret, then eases back",
+      "match_any": ["leans a little closer", "leans in", "closer to the lens"]
+    },
+    {
+      "id": "mutter_aside",
+      "category": "voice",
+      "states": ["skeptical", "amused", "fed_up", "resigned"],
+      "max_per_clip": 2,
+      "phrasing": "the aside drops to a mutter, half-volume, said mostly to herself",
+      "match_any": ["drops to a mutter", "mutter", "half-volume"]
+    },
+    {
+      "id": "repetition_deflate",
+      "category": "voice",
+      "states": ["resigned", "ashamed", "tired"],
+      "max_per_clip": 1,
+      "phrasing": "when she repeats the line, the second one comes out smaller than the first",
+      "match_any": ["second one comes out smaller", "repeats it smaller", "repetition deflates"]
+    },
+    {
+      "id": "trail_off",
+      "category": "voice",
+      "states": ["thinking", "resigned", "confiding", "tired"],
+      "max_per_clip": 1,
+      "phrasing": "the sentence loses interest in itself before it ends, and she lets it",
+      "match_any": ["loses interest in itself", "trails off", "lets it"]
+    },
+    {
+      "id": "pause_uneven",
+      "category": "voice",
+      "states": ["thinking", "deciding", "confiding", "ashamed", "resigned", "venting", "tired", "skeptical"],
+      "max_per_clip": 3,
+      "phrasing": "she stops because she is thinking, not for effect, and the gaps are uneven and slightly too long",
+      "match_any": ["gaps are uneven", "stops because she is thinking", "slightly too long"]
+    }
+  ]
+}

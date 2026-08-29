@@ -1,0 +1,33 @@
+{
+  "_comment": "Fixed vocabulary for describing what the camera did to color and light. The casting gate requires terms from >=3 categories. All phrased as image qualities - never device names.",
+  "categories": {
+    "white_balance": [
+      "slightly too warm", "slightly too cool", "warm cast from indoor bulbs",
+      "mixed daylight-and-lamp cast", "neutral white balance that misses slightly",
+      "auto white balance drifting warm"
+    ],
+    "exposure": [
+      "slightly overexposed", "slightly underexposed", "flat even exposure",
+      "auto-exposure sitting a touch bright", "the window behind is blown out",
+      "face a half-stop dark against the window"
+    ],
+    "contrast": [
+      "lifted matte shadows", "crushed blacks", "gentle contrast",
+      "flat computational-photography tone", "hdr flatness", "soft highlight rolloff"
+    ],
+    "saturation": [
+      "muted saturation", "natural unforced color", "slightly boosted consumer-camera saturation",
+      "colors a touch thin in the shadows"
+    ],
+    "skin_cast": [
+      "mild red patches reading warmer than the rest", "slight green cast from overhead fluorescent",
+      "neutral skin with warm and cool patches", "subsurface flush showing through"
+    ],
+    "artifacts": [
+      "faint noise in the shadow areas", "fine detail slightly smeared in low light",
+      "mild sharpening halos at high-contrast edges", "highlight clipping on the brightest skin",
+      "slight softness where focus missed by an inch"
+    ]
+  },
+  "min_categories": 3
+}
