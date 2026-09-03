@@ -5,9 +5,11 @@ from __future__ import annotations
 import httpx
 import respx
 
+from dataclasses import replace
+
 from app.db import SessionLocal
 from app.models import Quota
-from app.routers.chat import limiter
+from app.plans import get_plan
 
 DIFY_CHAT = "http://dify.test/v1/chat-messages"
 
@@ -62,25 +64,40 @@ def test_usage_accumulates_against_the_quota(client, make_tenant, login):
 
 
 @respx.mock
-def test_rate_limit_is_per_tenant(client, make_tenant, login):
+def test_rate_limit_is_per_tenant(client, make_tenant, login, monkeypatch):
     respx.post(DIFY_CHAT).mock(return_value=_reply())
     make_tenant("Acme", email="a@acme.io")
     make_tenant("Globex", email="g@globex.io")
     acme_token = login("a@acme.io")
     globex_token = login("g@globex.io")
 
-    limiter._limit = 2
-    try:
-        for _ in range(2):
-            r = client.post("/api/chat", json={"query": "hi"}, headers={"Authorization": f"Bearer {acme_token}"})
-            assert r.status_code == 200
+    tight = replace(get_plan("pro"), requests_per_minute=2)
+    monkeypatch.setattr("app.routers.chat.get_plan", lambda _plan: tight)
 
-        blocked = client.post("/api/chat", json={"query": "hi"}, headers={"Authorization": f"Bearer {acme_token}"})
-        assert blocked.status_code == 429
-        assert "Retry-After" in blocked.headers
+    for _ in range(2):
+        allowed = client.post("/api/chat", json={"query": "hi"}, headers={"Authorization": f"Bearer {acme_token}"})
+        assert allowed.status_code == 200
 
-        # A noisy tenant must not throttle a quiet one.
-        other = client.post("/api/chat", json={"query": "hi"}, headers={"Authorization": f"Bearer {globex_token}"})
-        assert other.status_code == 200
-    finally:
-        limiter._limit = 1000
+    blocked = client.post("/api/chat", json={"query": "hi"}, headers={"Authorization": f"Bearer {acme_token}"})
+    assert blocked.status_code == 429
+    assert "Retry-After" in blocked.headers
+
+    # A noisy tenant must not throttle a quiet one.
+    other = client.post("/api/chat", json={"query": "hi"}, headers={"Authorization": f"Bearer {globex_token}"})
+    assert other.status_code == 200
+
+
+@respx.mock
+def test_plan_sets_the_rate_allowance(client, make_tenant, login):
+    """The free plan's 10/minute must apply without any per-test patching."""
+    respx.post(DIFY_CHAT).mock(return_value=_reply(tokens=1))
+    make_tenant("Small", email="s@small.io", plan="free", token_limit=1_000_000)
+    token = login("s@small.io")
+
+    codes = [
+        client.post("/api/chat", json={"query": "hi"}, headers={"Authorization": f"Bearer {token}"}).status_code
+        for _ in range(11)
+    ]
+
+    assert codes[:10] == [200] * 10
+    assert codes[10] == 429

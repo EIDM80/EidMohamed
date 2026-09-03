@@ -1,0 +1,33 @@
+# نموذج مختصر لسير عمل يطبّق العزل بشكل صحيح.
+# استبدله بتصديرك الفعلي من Dify — هذا للتوضيح والمقارنة فقط.
+app:
+  name: Support Chat
+  mode: advanced-chat
+workflow:
+  graph:
+    nodes:
+      - id: start
+        data:
+          type: start
+          title: Start
+
+      - id: retrieve
+        data:
+          type: knowledge-retrieval
+          title: Retrieve tenant documents
+          query_variable_selector: [sys, query]
+          # The two lines that isolate tenants. Removing either one opens every
+          # customer's documents to every other customer.
+          metadata_filtering_mode: manual
+          metadata_filtering_conditions:
+            logical_operator: and
+            conditions:
+              - name: tenant_id
+                comparison_operator: is
+                # Resolved per request from the `user` field the gateway sends.
+                value: '{{#sys.user_id#}}'
+
+      - id: answer
+        data:
+          type: llm
+          title: Answer

@@ -9,15 +9,27 @@ services:
     env_file: .env
     environment:
       GATEWAY_DATABASE_URL: postgresql+psycopg://gateway:gateway@gateway_db:5432/gateway
+      REDIS_URL: redis://gateway_redis:6379/0
     ports:
       - "8000:8000"
+    command: >
+      sh -c "alembic upgrade head &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000"
     depends_on:
       gateway_db:
         condition: service_healthy
+      gateway_redis:
+        condition: service_started
     networks:
       - gateway_net
       # Uncomment once Dify's compose defines this network as external.
       # - dify_default
+
+  gateway_redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    networks:
+      - gateway_net
 
   gateway_db:
     image: postgres:16-alpine

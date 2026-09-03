@@ -191,14 +191,97 @@ class DifyClient:
                     elif kind == "error":
                         raise DifyError(str(event.get("message") or "dify stream error"))
 
+    # ---------------------------------------------------------------- knowledge
+
+    async def _json(self, method: str, path: str, **kwargs) -> dict[str, Any]:
+        async with httpx.AsyncClient(timeout=self._timeout) as client:
+            resp = await client.request(method, f"{self._base_url}{path}", headers=self._headers, **kwargs)
+        if resp.status_code >= 400:
+            raise DifyError(f"dify responded {resp.status_code} for {path}", status_code=502)
+        if not resp.content:
+            return {}
+        return resp.json()
+
     async def create_dataset(self, name: str) -> str:
         """Create a dedicated knowledge base — the storage-level isolation option."""
+        body = await self._json(
+            "POST", "/datasets", json={"name": name, "permission": "only_me"}
+        )
+        return body["id"]
+
+    async def ensure_metadata_field(self, dataset_id: str, field_name: str) -> str:
+        """Return the id of `field_name`, creating it if the dataset lacks it.
+
+        The retrieval filter matches on this field, so it must exist before any
+        document is tagged — otherwise documents carry no tenant and the filter
+        silently returns nothing.
+        """
+        listing = await self._json("GET", f"/datasets/{dataset_id}/metadata")
+        for field in listing.get("doc_metadata") or []:
+            if field.get("name") == field_name:
+                return field["id"]
+
+        created = await self._json(
+            "POST",
+            f"/datasets/{dataset_id}/metadata",
+            json={"type": "string", "name": field_name},
+        )
+        return created["id"]
+
+    async def upload_document(
+        self,
+        dataset_id: str,
+        *,
+        filename: str,
+        content: bytes,
+        content_type: str,
+        indexing_technique: str = "high_quality",
+    ) -> dict[str, Any]:
+        """Upload one file. Indexing runs asynchronously on Dify's side."""
+        data = {
+            "indexing_technique": indexing_technique,
+            "process_rule": {"mode": "automatic"},
+        }
         async with httpx.AsyncClient(timeout=self._timeout) as client:
             resp = await client.post(
-                f"{self._base_url}/datasets",
-                headers=self._headers,
-                json={"name": name, "permission": "only_me"},
+                f"{self._base_url}/datasets/{dataset_id}/document/create-by-file",
+                headers={"Authorization": f"Bearer {self._app_key}"},
+                files={"file": (filename, content, content_type or "application/octet-stream")},
+                data={"data": json.dumps(data)},
             )
         if resp.status_code >= 400:
-            raise DifyError(f"dify responded {resp.status_code}", status_code=502)
-        return resp.json()["id"]
+            raise DifyError(f"dify responded {resp.status_code} on upload", status_code=502)
+        return resp.json()
+
+    async def tag_document(self, dataset_id: str, document_id: str, *, field_id: str, field_name: str, value: str) -> None:
+        """Write the tenant tag onto a document.
+
+        Nothing isolates an untagged document: the retrieval filter matches on
+        this value, so tagging is not optional bookkeeping — it is the boundary.
+        """
+        await self._json(
+            "POST",
+            f"/datasets/{dataset_id}/documents/metadata",
+            json={
+                "operation_data": [
+                    {
+                        "document_id": document_id,
+                        "metadata_list": [{"id": field_id, "name": field_name, "value": value}],
+                        "partial_update": True,
+                    }
+                ]
+            },
+        )
+
+    async def list_documents(self, dataset_id: str, *, page: int = 1, limit: int = 20) -> dict[str, Any]:
+        return await self._json(
+            "GET",
+            f"/datasets/{dataset_id}/documents",
+            params={"page": page, "limit": limit},
+        )
+
+    async def delete_document(self, dataset_id: str, document_id: str) -> None:
+        await self._json("DELETE", f"/datasets/{dataset_id}/documents/{document_id}")
+
+    async def indexing_status(self, dataset_id: str, batch: str) -> dict[str, Any]:
+        return await self._json("GET", f"/datasets/{dataset_id}/documents/{batch}/indexing-status")

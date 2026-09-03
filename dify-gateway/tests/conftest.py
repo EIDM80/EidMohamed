@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 import os
 import tempfile
 
@@ -11,6 +12,7 @@ os.environ.setdefault("GATEWAY_DATABASE_URL", f"sqlite+pysqlite:///{_tmpdir}/tes
 os.environ.setdefault("GATEWAY_SECRET_KEY", "test-secret-key")
 os.environ.setdefault("DIFY_BASE_URL", "http://dify.test/v1")
 os.environ.setdefault("RATE_LIMIT_PER_MINUTE", "1000")
+os.environ.setdefault("ADMIN_API_KEY", "test-admin-key")
 
 from fastapi.testclient import TestClient  # noqa: E402
 
@@ -18,6 +20,9 @@ from app.db import Base, SessionLocal, engine  # noqa: E402
 from app.main import app  # noqa: E402
 from app.models import DifyBinding, Quota, Tenant, User  # noqa: E402
 from app.routers.chat import limiter  # noqa: E402
+
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("gateway.access").setLevel(logging.WARNING)
 from app.security import hash_password  # noqa: E402
 from app.usage import current_period  # noqa: E402
 
@@ -49,9 +54,11 @@ def make_tenant():
         app_key: str = "app-test-key",
         token_limit: int = 100_000,
         tokens_used: int = 0,
+        dataset_id: str | None = None,
+        plan: str = "pro",
     ) -> dict:
         with SessionLocal() as db:
-            tenant = Tenant(name=name, plan="pro")
+            tenant = Tenant(name=name, plan=plan)
             db.add(tenant)
             db.flush()
 
@@ -62,6 +69,7 @@ def make_tenant():
                     tenant_id=tenant.id,
                     purpose="default",
                     app_key=app_key,
+                    dataset_id=dataset_id,
                     metadata_value=tenant.id,
                 )
             )

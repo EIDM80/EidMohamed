@@ -10,6 +10,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app ./app
 COPY scripts ./scripts
+COPY migrations ./migrations
+COPY alembic.ini .
 
 RUN useradd --create-home --uid 10001 gateway
 USER gateway

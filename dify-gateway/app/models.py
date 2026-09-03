@@ -53,11 +53,14 @@ class User(Base):
     """A person inside a tenant."""
 
     __tablename__ = "users"
-    __table_args__ = (UniqueConstraint("tenant_id", "email", name="uq_users_tenant_email"),)
+    # Login is by email alone, so it has to identify exactly one account across
+    # every tenant. A per-tenant constraint would let two tenants share an
+    # address, and the login lookup would then match two rows.
+    __table_args__ = (UniqueConstraint("email", name="uq_users_email"),)
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
     tenant_id: Mapped[str] = mapped_column(String(36), ForeignKey("tenants.id"), nullable=False, index=True)
-    email: Mapped[str] = mapped_column(String(320), nullable=False)
+    email: Mapped[str] = mapped_column(String(320), nullable=False, index=True)
     password_hash: Mapped[str] = mapped_column(String(200), nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
@@ -121,4 +124,30 @@ class UsageEvent(Base):
     currency: Mapped[str | None] = mapped_column(String(10), nullable=True)
     latency_ms: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     status: Mapped[str] = mapped_column(String(20), nullable=False, default="ok")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, index=True)
+
+
+class Document(Base):
+    """Ownership record for a file a tenant uploaded.
+
+    Dify's document ids are opaque and its list endpoint returns everything in
+    a dataset. In a shared dataset that would let one tenant list or delete
+    another's files by id, so the gateway keeps its own mapping and authorizes
+    every read and delete against this table rather than against Dify.
+    """
+
+    __tablename__ = "documents"
+    __table_args__ = (
+        UniqueConstraint("dataset_id", "dify_document_id", name="uq_documents_dataset_doc"),
+        Index("ix_documents_tenant_created", "tenant_id", "created_at"),
+    )
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid)
+    tenant_id: Mapped[str] = mapped_column(String(36), ForeignKey("tenants.id"), nullable=False, index=True)
+    purpose: Mapped[str] = mapped_column(String(80), nullable=False, default="default")
+    dataset_id: Mapped[str] = mapped_column(String(36), nullable=False)
+    dify_document_id: Mapped[str] = mapped_column(String(64), nullable=False)
+    name: Mapped[str] = mapped_column(String(500), nullable=False)
+    size_bytes: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    batch: Mapped[str | None] = mapped_column(String(64), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, index=True)

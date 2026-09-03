@@ -17,12 +17,14 @@ from app.config import get_settings
 from app.deps import Principal, current_principal, get_binding
 from app.dify import ChatResult, DifyClient, DifyError
 from app.db import SessionLocal, get_db
-from app.ratelimit import SlidingWindowLimiter
+from app.plans import get_plan
+from app.ratelimit import build_limiter
 from app.schemas import ChatRequest, ChatResponse
 from app.usage import assert_within_quota, record_usage
 
+settings = get_settings()
 router = APIRouter(prefix="/api", tags=["chat"])
-limiter = SlidingWindowLimiter(get_settings().rate_limit_per_minute)
+limiter = build_limiter(settings.redis_url or None, settings.rate_limit_per_minute)
 
 
 @router.post("/chat", response_model=ChatResponse)
@@ -31,7 +33,7 @@ async def chat(
     principal: Principal = Depends(current_principal),
     db: Session = Depends(get_db),
 ) -> ChatResponse:
-    limiter.check(principal.tenant_id)
+    limiter.check(principal.tenant_id, get_plan(principal.plan).requests_per_minute)
     assert_within_quota(db, principal.tenant_id)
     binding = get_binding(db, principal.tenant_id, body.purpose)
 
@@ -74,7 +76,7 @@ async def chat_stream(
     principal: Principal = Depends(current_principal),
     db: Session = Depends(get_db),
 ) -> StreamingResponse:
-    limiter.check(principal.tenant_id)
+    limiter.check(principal.tenant_id, get_plan(principal.plan).requests_per_minute)
     assert_within_quota(db, principal.tenant_id)
     binding = get_binding(db, principal.tenant_id, body.purpose)
 
