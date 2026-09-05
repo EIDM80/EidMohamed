@@ -1,7 +1,7 @@
 {
   "drive_folder_id": "1wkkcw8-BI9c3Km-X3-IAkZaskAtaBckz",
   "drive_folder_url": "https://drive.google.com/drive/folders/1wkkcw8-BI9c3Km-X3-IAkZaskAtaBckz",
-  "instagram_diagnostic_note": "As of 2026-08-23: INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH for IMAGE containers still returns 403 code 4 (Application request limit reached) on every attempt (solo, freshly-created, FINISHED-status container included) across 6+ attempts spanning 19+ hours. HOWEVER, video/Reel publishing (daily_queue.json flow, media_type=REELS) succeeded cleanly on first attempt today. This looks like a persistent block specific to the IMAGE publish endpoint for this app/account, not a general or time-based rate limit. Do not keep blind-retrying image publishes every run; retry at most once per day and flag to user if it persists beyond ~1 week — may need Meta app review or re-authorization specific to photo publishing. As of 2026-08-24: still blocked on daily single-retry attempt for a newly-created image container (gyms post). Now confirmed blocked 3 consecutive days (08-22, 08-23, 08-24) despite video/Reel publishing continuing to work fine on the same account. This has crossed from \"wait it out\" into \"likely needs action\" — flagging to user per standing instructions. As of 2026-08-25: still blocked, now 4 consecutive days (08-22 through 08-25). Fresh container test on a brand-new image (2026-08-25-01-general) failed identically with 403 code 4. The 30-item promo batch (ig-creation-ids.json) was not re-tested today since its creation_ids are now 3+ days stale and the same account/endpoint just failed on a fresh container seconds earlier — re-testing would only reconfirm the same block. This is well past the 1-week soft threshold from the original diagnostic; user should check whether the Instagram/Facebook connection in Composio needs re-authorization or the app needs Meta review for instagram_content_publish. As of 2026-08-26: still blocked, now 5 consecutive days (08-22 through 08-26). Fresh container test (same 2026-08-25-01-general image, new creation_id 18090747329237571) failed identically with 403 code 4. No new Drive files today (28/28 already in manifest). Already flagged to user; not re-flagging daily unless it clears or reaches ~2 weeks. As of 2026-08-27: still blocked, now 6 consecutive days (08-22 through 08-27). Fresh container test (2026-08-25-02-general image, creation_id 18091039310237571) failed identically with 403 code 4. No new Drive files today (28/28 already in manifest). As of 2026-08-28: still blocked, now 7 consecutive days (08-22 through 08-28). Fresh container test (2026-08-22-01-general-en image, creation_id 18091351103237571) failed identically at the publish step (container creation itself succeeded, publish returned 403 code 4). No new Drive files today (28/28 already in manifest, checked via full pagination). Note: the separate 30-item promo batch (ig-creation-ids.json, tracked outside this manifest in session scratchpad) could not be re-tested today because the scratchpad container was recycled and that file no longer exists — its creation_ids and pending status are unrecoverable from this session; would need to be rebuilt from the source posts if the user wants that batch retried. As of 2026-08-29: still blocked, now 8 consecutive days (08-22 through 08-29). Fresh container test (2026-08-22-02-tech image, creation_id 18091672346237571) failed identically at the publish step. No new Drive files (first-page check matches known 28; full pagination done yesterday confirmed no new files). Scratchpad-tracked 30-item promo batch remains unrecoverable (container still not rebuilt as of this run, ~24h+ into that outage). Already flagged to user twice; per standing policy not re-flagging again until it clears or crosses ~2 weeks. As of 2026-08-30: still blocked, now 9 consecutive days (08-22 through 08-30). Fresh container test (2026-08-22-03-food-factory image, creation_id 18091994909237571) failed identically. Update: the Remotion editing pipeline itself was rebuilt earlier today (separate 3-day scratchpad-wipe outage, now resolved and posting normally again on YouTube/Instagram-video/Facebook/TikTok) — but the specific 30-item promo batch (ig-creation-ids.json/posts.json/captions.json) was never backed up and is still gone; would need to be rebuilt from source if the user wants that batch retried. As of 2026-08-31: still blocked, now 10 consecutive days (08-22 through 08-31). Fresh container test (2026-08-22-04-restaurant image, creation_id 18092342060237571) failed identically at the publish step. No new Drive files. Video/Reel posting on all four platforms continues normally and unaffected. As of 2026-09-01: still blocked, now 11 consecutive days (08-22 through 09-01). Fresh container test (2026-08-25-03-general image, creation_id 18092693033237571) failed identically at the publish step. No new Drive files today (28/28 already in manifest, full pagination checked). Video/Reel posting on all four platforms continues normally and unaffected. Approaching the ~2-week soft threshold; will flag again if it crosses 14 days. As of 2026-09-02: still blocked, now 12 consecutive days (08-22 through 09-02). Fresh container test (2026-08-25-04-general image, creation_id 18093041312237571) failed identically at the publish step. No new Drive files today (28/28 already in manifest). Video/Reel posting on all four platforms continues normally and unaffected. Two days from the ~2-week soft threshold. As of 2026-09-03: still blocked, now 13 consecutive days (08-22 through 09-03). Fresh container test (2026-08-25-05-food-factory image, creation_id 18093374567237571) failed identically at the publish step. No new Drive files today (28/28 already in manifest). Video/Reel posting on all four platforms continues normally and unaffected. One day short of the ~2-week soft threshold; will flag to user tomorrow if still blocked. As of 2026-09-04: still blocked, now 14 consecutive days (08-22 through 09-04) — crosses the ~2-week soft threshold. Fresh container test (2026-08-22-01-general-en image, creation_id 18093772436237571) failed identically at the publish step. No new Drive files today (28/28 already in manifest, full pagination checked). Video/Reel posting on all four platforms continues normally and unaffected. Flagging to user per the 14-day threshold.",
+  "instagram_diagnostic_note": "As of 2026-08-23: INSTAGRAM_POST_IG_USER_MEDIA_PUBLISH for IMAGE containers still returns 403 code 4 (Application request limit reached) on every attempt (solo, freshly-created, FINISHED-status container included) across 6+ attempts spanning 19+ hours. HOWEVER, video/Reel publishing (daily_queue.json flow, media_type=REELS) succeeded cleanly on first attempt today. This looks like a persistent block specific to the IMAGE publish endpoint for this app/account, not a general or time-based rate limit. Do not keep blind-retrying image publishes every run; retry at most once per day and flag to user if it persists beyond ~1 week — may need Meta app review or re-authorization specific to photo publishing. As of 2026-08-24: still blocked on daily single-retry attempt for a newly-created image container (gyms post). Now confirmed blocked 3 consecutive days (08-22, 08-23, 08-24) despite video/Reel publishing continuing to work fine on the same account. This has crossed from \"wait it out\" into \"likely needs action\" — flagging to user per standing instructions. As of 2026-08-25: still blocked, now 4 consecutive days (08-22 through 08-25). Fresh container test on a brand-new image (2026-08-25-01-general) failed identically with 403 code 4. The 30-item promo batch (ig-creation-ids.json) was not re-tested today since its creation_ids are now 3+ days stale and the same account/endpoint just failed on a fresh container seconds earlier — re-testing would only reconfirm the same block. This is well past the 1-week soft threshold from the original diagnostic; user should check whether the Instagram/Facebook connection in Composio needs re-authorization or the app needs Meta review for instagram_content_publish. As of 2026-08-26: still blocked, now 5 consecutive days (08-22 through 08-26). Fresh container test (same 2026-08-25-01-general image, new creation_id 18090747329237571) failed identically with 403 code 4. No new Drive files today (28/28 already in manifest). Already flagged to user; not re-flagging daily unless it clears or reaches ~2 weeks. As of 2026-08-27: still blocked, now 6 consecutive days (08-22 through 08-27). Fresh container test (2026-08-25-02-general image, creation_id 18091039310237571) failed identically with 403 code 4. No new Drive files today (28/28 already in manifest). As of 2026-08-28: still blocked, now 7 consecutive days (08-22 through 08-28). Fresh container test (2026-08-22-01-general-en image, creation_id 18091351103237571) failed identically at the publish step (container creation itself succeeded, publish returned 403 code 4). No new Drive files today (28/28 already in manifest, checked via full pagination). Note: the separate 30-item promo batch (ig-creation-ids.json, tracked outside this manifest in session scratchpad) could not be re-tested today because the scratchpad container was recycled and that file no longer exists — its creation_ids and pending status are unrecoverable from this session; would need to be rebuilt from the source posts if the user wants that batch retried. As of 2026-08-29: still blocked, now 8 consecutive days (08-22 through 08-29). Fresh container test (2026-08-22-02-tech image, creation_id 18091672346237571) failed identically at the publish step. No new Drive files (first-page check matches known 28; full pagination done yesterday confirmed no new files). Scratchpad-tracked 30-item promo batch remains unrecoverable (container still not rebuilt as of this run, ~24h+ into that outage). Already flagged to user twice; per standing policy not re-flagging again until it clears or crosses ~2 weeks. As of 2026-08-30: still blocked, now 9 consecutive days (08-22 through 08-30). Fresh container test (2026-08-22-03-food-factory image, creation_id 18091994909237571) failed identically. Update: the Remotion editing pipeline itself was rebuilt earlier today (separate 3-day scratchpad-wipe outage, now resolved and posting normally again on YouTube/Instagram-video/Facebook/TikTok) — but the specific 30-item promo batch (ig-creation-ids.json/posts.json/captions.json) was never backed up and is still gone; would need to be rebuilt from source if the user wants that batch retried. As of 2026-08-31: still blocked, now 10 consecutive days (08-22 through 08-31). Fresh container test (2026-08-22-04-restaurant image, creation_id 18092342060237571) failed identically at the publish step. No new Drive files. Video/Reel posting on all four platforms continues normally and unaffected. As of 2026-09-01: still blocked, now 11 consecutive days (08-22 through 09-01). Fresh container test (2026-08-25-03-general image, creation_id 18092693033237571) failed identically at the publish step. No new Drive files today (28/28 already in manifest, full pagination checked). Video/Reel posting on all four platforms continues normally and unaffected. Approaching the ~2-week soft threshold; will flag again if it crosses 14 days. As of 2026-09-02: still blocked, now 12 consecutive days (08-22 through 09-02). Fresh container test (2026-08-25-04-general image, creation_id 18093041312237571) failed identically at the publish step. No new Drive files today (28/28 already in manifest). Video/Reel posting on all four platforms continues normally and unaffected. Two days from the ~2-week soft threshold. As of 2026-09-03: still blocked, now 13 consecutive days (08-22 through 09-03). Fresh container test (2026-08-25-05-food-factory image, creation_id 18093374567237571) failed identically at the publish step. No new Drive files today (28/28 already in manifest). Video/Reel posting on all four platforms continues normally and unaffected. One day short of the ~2-week soft threshold; will flag to user tomorrow if still blocked. As of 2026-09-04: still blocked, now 14 consecutive days (08-22 through 09-04) — crosses the ~2-week soft threshold. Fresh container test (2026-08-22-01-general-en image, creation_id 18093772436237571) failed identically at the publish step. No new Drive files today (28/28 already in manifest, full pagination checked). Video/Reel posting on all four platforms continues normally and unaffected. Flagging to user per the 14-day threshold. As of 2026-09-05: the Meta app-level rate limit CLEARED after 15 consecutive days (08-22 through 09-05). Fresh-container test (2026-08-22-02-tech) published successfully. Immediately retried all remaining stuck daily-drop images: 14 of 27 published successfully before a burst-volume rate limit (403 code 4) was re-triggered partway through the batch. The 13 still-stuck items (2026-08-23-14-tech, 2026-08-23-15-hospitality, 2026-08-23-19-hotels, 2026-08-23-20-gyms, 2026-08-23-22-food-factory-m, 2026-08-23-23-food-factory-f, 2026-08-23-24-general, 2026-08-24-01-gyms, 2026-08-25-01-general through 2026-08-25-05-food-factory) are left for the next day's run per the no-aggressive-retry policy. No new Drive files today (28/28 already in manifest).",
   "processed": [
     {
       "drive_file_id": "1H7ge0K9SudNog75DKyj2NSK3lTpxyJ0O",
@@ -10,9 +10,9 @@
       "headline": "ISO CERTIFICATION MADE SIMPLE. Globally Recognized. Business Empowered.",
       "facebook_post_id": "319209918151149_1526068889546669",
       "facebook_published": true,
-      "instagram_creation_id": "18093772436237571",
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4, Application request limit reached) - still blocked as of 2026-09-04, day 14"
+      "instagram_creation_id": "18094117268237571",
+      "instagram_published": true,
+      "instagram_publish_id": "17894627457394932"
     },
     {
       "drive_file_id": "1-L0Zxw3wS4-gu1y1pBvNWSb5uyr-ovBy",
@@ -21,9 +21,9 @@
       "headline": "سبعة أرقام سقطت لأن الشركة مو معتمدة",
       "facebook_post_id": "319209918151149_1526068899546668",
       "facebook_published": true,
-      "instagram_creation_id": "18091672346237571",
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4, Application request limit reached) - still blocked as of 2026-08-29, day 8"
+      "instagram_creation_id": "18094116296237571",
+      "instagram_published": true,
+      "instagram_publish_id": "17907220125535643"
     },
     {
       "drive_file_id": "1Z2Se5r3W-UmfCiVGThQJjJgRG4mZ3pF8",
@@ -32,9 +32,9 @@
       "headline": "بدون هذي الشهادة، أكبر عميل بيرفضك",
       "facebook_post_id": "319209918151149_1526068892880002",
       "facebook_published": true,
-      "instagram_creation_id": "18091994909237571",
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4, Application request limit reached) - still blocked as of 2026-08-30, day 9"
+      "instagram_creation_id": "18094117262237571",
+      "instagram_published": true,
+      "instagram_publish_id": "18104810716914568"
     },
     {
       "drive_file_id": "14zOJXwVKVD5PI-mBcFVFpl2MPwaThpVp",
@@ -43,9 +43,9 @@
       "headline": "المفتش أغلق 3 مطاعم اليوم. مطعمك التالي؟",
       "facebook_post_id": "319209918151149_1526068896213335",
       "facebook_published": true,
-      "instagram_creation_id": "18092342060237571",
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4, Application request limit reached) - still blocked as of 2026-08-31, day 10"
+      "instagram_creation_id": "18094117265237571",
+      "instagram_published": true,
+      "instagram_publish_id": "18114379024960009"
     },
     {
       "drive_file_id": "1-eVgqfMXlW7RpINv66NVciy0FoFHbU4_",
@@ -54,9 +54,9 @@
       "headline": "عقد بقيمة مليون درهم ضاع بسبب ورقة واحدة",
       "facebook_post_id": "319209918151149_1526069076213317",
       "facebook_published": true,
-      "instagram_creation_id": "18089664887237571",
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4, Application request limit reached)"
+      "instagram_creation_id": "18094117259237571",
+      "instagram_published": true,
+      "instagram_publish_id": "17912077284462829"
     },
     {
       "drive_file_id": "1IP3VuX90mdyuHcLhQu1OsYvGzhZGoYd-",
@@ -65,9 +65,9 @@
       "headline": "Simplifying ISO Certification. Fast. Simple. Trusted.",
       "facebook_post_id": "319209918151149_1526069112879980",
       "facebook_published": true,
-      "instagram_creation_id": "18089664893237571",
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4, Application request limit reached)"
+      "instagram_creation_id": "18094117364237571",
+      "instagram_published": true,
+      "instagram_publish_id": "17993168228833299"
     },
     {
       "drive_file_id": "1l2XSUR-WD0RmNhg3v6xsmR6oUpmKgxr5",
@@ -76,9 +76,9 @@
       "headline": "تأخير شحنة بسبب عدم الاعتماد يكلفك آلاف الدراهم",
       "facebook_post_id": "319209918151149_1526069116213313",
       "facebook_published": true,
-      "instagram_creation_id": "18089664890237571",
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4, Application request limit reached)"
+      "instagram_creation_id": "18094117367237571",
+      "instagram_published": true,
+      "instagram_publish_id": "18132549595631060"
     },
     {
       "drive_file_id": "1VIpqKtX9-NyZywdXTdpK66rLofZ5yT9G",
@@ -87,9 +87,9 @@
       "headline": "تأخير شحنة بسبب عدم الاعتماد يكلفك آلاف الدراهم",
       "facebook_post_id": "1526689146151310",
       "facebook_published": true,
-      "instagram_creation_id": null,
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+      "instagram_creation_id": "18094117373237571",
+      "instagram_published": true,
+      "instagram_publish_id": "17884322550486615"
     },
     {
       "drive_file_id": "1ITzD2feFZk6MQmfevLdXUXzFKWg3Qykn",
@@ -98,9 +98,9 @@
       "headline": "تقرير غير معتمد يعني فقدان ثقة المرضى",
       "facebook_post_id": "1526689139484644",
       "facebook_published": true,
-      "instagram_creation_id": null,
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+      "instagram_creation_id": "18094117370237571",
+      "instagram_published": true,
+      "instagram_publish_id": "18195777064391635"
     },
     {
       "drive_file_id": "19FRy8s8LOSChRhazKT7AhUaN3n7SXvMF",
@@ -109,9 +109,9 @@
       "headline": "هيئة الاعتماد علّقت التعاقدات لعدم مطابقة معايير ISO",
       "facebook_post_id": "1526689152817976",
       "facebook_published": true,
-      "instagram_creation_id": null,
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+      "instagram_creation_id": "18094117457237571",
+      "instagram_published": true,
+      "instagram_publish_id": "17975787522067017"
     },
     {
       "drive_file_id": "1TeBb5DHKM6Rx1EIAXkLaD6MlUC6Q_cZO",
@@ -120,9 +120,9 @@
       "headline": "بدون شهادة ISO معتمدة لن توقع مع شركات التأمين",
       "facebook_post_id": "1526689112817980",
       "facebook_published": true,
-      "instagram_creation_id": null,
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+      "instagram_creation_id": "18094117454237571",
+      "instagram_published": true,
+      "instagram_publish_id": "18113500940048198"
     },
     {
       "drive_file_id": "15b4s9-epp7N_PC4-JbEfuej4dPO5kcHU",
@@ -131,9 +131,9 @@
       "headline": "عميل دولي طلب ISO وأعطاه لمنافسك خسرت العقد",
       "facebook_post_id": "1526689286151296",
       "facebook_published": true,
-      "instagram_creation_id": null,
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+      "instagram_creation_id": "18094117451237571",
+      "instagram_published": true,
+      "instagram_publish_id": "18002779260004727"
     },
     {
       "drive_file_id": "1OEDaFTRFuvM7VV4XGRdl2AWIM7Cv1j9g",
@@ -142,9 +142,9 @@
       "headline": "بدون ISO معتمدة شحنتك معرضة للرفض والتأخير",
       "facebook_post_id": "1526689296151295",
       "facebook_published": true,
-      "instagram_creation_id": null,
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+      "instagram_creation_id": "18094117460237571",
+      "instagram_published": true,
+      "instagram_publish_id": "18056276927630614"
     },
     {
       "drive_file_id": "1PU6ZM3Jb57RboyY2XlzkymPaJG-ohXqc",
@@ -175,9 +175,9 @@
       "headline": "المنافسون معتمدون ISO... وأنت لسه متأخر؟",
       "facebook_post_id": "1526689696151255",
       "facebook_published": true,
-      "instagram_creation_id": null,
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+      "instagram_creation_id": "18094117541237571",
+      "instagram_published": true,
+      "instagram_publish_id": "18018818969925941"
     },
     {
       "drive_file_id": "1P-7h4hj98p5MwQ13sAMharnsgphZpH8o",
@@ -186,9 +186,9 @@
       "headline": "بدون هذي الشهادة، شركات التأمين قد ترفض تغطيتك",
       "facebook_post_id": "1526689742817917",
       "facebook_published": true,
-      "instagram_creation_id": null,
-      "instagram_published": false,
-      "instagram_publish_blocked_reason": "Meta app-level rate limit (403 code 4) persists on IMAGE publish specifically; video/reel publish confirmed working same day. Not retried per-file to avoid wasting cycles on a known block."
+      "instagram_creation_id": "18094117547237571",
+      "instagram_published": true,
+      "instagram_publish_id": "18092139335398637"
     },
     {
       "drive_file_id": "1zFpCPR7xNWIF4C-wyjJxCbQ-v9ugtCnO",
