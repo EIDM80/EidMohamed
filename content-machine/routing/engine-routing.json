@@ -1,0 +1,34 @@
+{
+  "_comment": "Default content-type -> generation-engine routing. Shared across all clients unless a client's config.json sets routing_overrides for a given content_type. Extend this file (add new content_type keys) as new engines/techniques come online instead of hardcoding routing logic in scripts.",
+  "_execution_note": "As of 2026-08-23: Higgsfield dropped (cost). fal.ai MCP confirmed CONNECTED and WORKING on the user's LOCAL Claude Code CLI (C:\\Users\\dreid) — verified end-to-end with a real 3s text-to-video generation (alibaba/happy-horse/text-to-video, $0.14/sec, ~$0.42 for 3s, 1920x1080 output — note: default aspect ratio was 16:9, must be explicitly requested as 9:16/vertical for ISO Order's social formats). fal.ai's domain is still egress-blocked from remote/cloud sessions, so generation must continue to run from that local session — the user runs the prompt there and hands the output file to the remote session for post-production + publishing.",
+  "_cost_reference": {
+    "alibaba/happy-horse/text-to-video": "$0.14/sec (verified 2026-08-23)"
+  },
+  "ugc_talking_head": {
+    "engine": "fal.ai",
+    "model_options": ["kling", "seedance"],
+    "voice_engine": "ElevenLabs (creative_generate_speech, model eleven_multilingual_v2)",
+    "notes_ar": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين.",
+    "critical_gotcha_ar": "فيديوهات fal.ai المولّدة مفيهاش حوار حقيقي (صوت خلفية بس). edit_and_push.py (المستخدم للـRemotion overlay) مبيولّدش صوت — هو بس بيزامن الكابشنز مع أعلى نقطة طاقة صوتية في الفيديو المصدر. لازم تولّد التعليق الصوتي بـElevenLabs الأول، تدمجه (ffmpeg -map 0:v -map 1:a -c:v copy -af volume=8dB -c:a aac) فوق صوت الفيديو الخام بديل، وبعدين تشغّل edit_and_push.py على النسخة المدموجة دي — مش على فيديو fal.ai الخام مباشرة. اتأكد بعد الدمج إن max_volume حوالي -3 لـ-7dB (مش أضعف من كده) قبل ما تكمل. اكتُشفت المشكلة دي فعليًا يوم 2026-08-23 (أول فيديو خرج بدون صوت مفهوم لحد ما اتصلح)."
+  },
+  "camera_replacement": {
+    "engine": "fal.ai",
+    "model_options": ["kling", "seedance"],
+    "requires": "source_video (UGC clip already generated/filmed)",
+    "notes_ar": "مرحلة ثانية فوق فيديو UGC جاهز — بتحط حركة كاميرا سينمائية. البرومبتات في content-machine/library/techniques/cinematic-camera-replacement.md. نفس حساب fal.ai المستخدم لـugc_talking_head."
+  },
+  "hero_cinematic": {
+    "engine": "fal.ai",
+    "model_options": ["veo"],
+    "notes_ar": "نماذج جوجل (Veo) عبر fal.ai بدل فتح حساب Google Cloud billing منفصل — رصيد واحد لكل الموديلات. يُستخدم فقط للمحتوى قليل العدد عالي الأثر (لانش، حملة مدفوعة، فيديو هوية أساسي) لأن التكلفة بالثانية أعلى من Kling/Seedance."
+  },
+  "motion_graphics_static_source": {
+    "engine": "remotion",
+    "requires": "source_video_or_image (client-owned footage/design)",
+    "notes_ar": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI، ومفيش أي اعتماد على fal.ai أو أي دومين محجوب."
+  },
+  "kinetic_typography": {
+    "engine": "remotion",
+    "notes_ar": "نفس مصدر motion_graphics بس بمعالجة KineticCaptions (hero/punch/support word tiers) بدل الكابشنز العادية."
+  }
+}
