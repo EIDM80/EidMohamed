@@ -7,6 +7,12 @@
       "skillPath": "skills/ivan-falco/1-to-1-abm-ads/SKILL.md",
       "computedHash": "6a31c15182224afe8a67272051422f04232b4e315bcca91df86b9601e871f0f9"
     },
+    "3dviz-pro-max": {
+      "source": "viettranx/3dviz-pro-max",
+      "sourceType": "github",
+      "skillPath": "skills/3dviz-pro-max/SKILL.md",
+      "computedHash": "2d322ab3eb281952224f617b70ebccebe28ad7c5b20696ac4b01ed5b7ca338e9"
+    },
     "52-newsletter-ideas": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
