@@ -828,6 +828,12 @@
       "skillPath": "skills/alex-vacca/email-writing-frameworks/SKILL.md",
       "computedHash": "bc14bc606b32fb07099547c6c9a7f84d94dbbe862eb05aece2e31ef58561324f"
     },
+    "embedded-captions": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/embedded-captions/SKILL.md",
+      "computedHash": "51a841e11fd489f9ddcae6e64dd408ffb9d428fd541c17d7ad2da0516e8d01b0"
+    },
     "enrich-company": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -996,6 +1002,18 @@
       "skillPath": "skills/rutger-katz/expansion-revenue-architect/SKILL.md",
       "computedHash": "93c20bce0cd2644f478f8af1a3b4d1d347bb0a29c33254fef79039856f94a425"
     },
+    "faceless-explainer": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/faceless-explainer/SKILL.md",
+      "computedHash": "96be5fde104b67a1aa87c20add4e0e57cab789ddbdd9f44c31792c63b3f15046"
+    },
+    "figma": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/figma/SKILL.md",
+      "computedHash": "036ab209910487e3bfeba7423318d1c7576f3179fe4d69551621ac95c72216d3"
+    },
     "find-b2b-creators-linkedin": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -1037,6 +1055,12 @@
       "sourceType": "github",
       "skillPath": "skills/alex-vacca/frontal-messaging-templates/SKILL.md",
       "computedHash": "ae6468c515e6d447373b13179411da32552072ca5d17d64a6b9fb6eac606be86"
+    },
+    "general-video": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/general-video/SKILL.md",
+      "computedHash": "62c1e71f9ad1df75f3b4c84bf6d45610fa07678be363224c51a3637b9fe261b6"
     },
     "give-first-cold-email": {
       "source": "swan-gtm/gtm-skills",
@@ -1157,6 +1181,60 @@
       "sourceType": "github",
       "skillPath": "skills/ryan-iyengar/hygiene-gated-outbound/SKILL.md",
       "computedHash": "d98e4a472eb19af76bccaa22fa355ca0081d74099e2610aff9ab08e6bf90a4f7"
+    },
+    "hyperframes": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/hyperframes/SKILL.md",
+      "computedHash": "624d97640378e13c6e914514ae6948333789e4e506beecdde68340ff6117c511"
+    },
+    "hyperframes-animation": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/hyperframes-animation/SKILL.md",
+      "computedHash": "f54b2bae3289389055e09d4e5c3d8daf6ac1e7b0f68e1fcede34edcff1c5c752"
+    },
+    "hyperframes-audio": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/hyperframes-audio/SKILL.md",
+      "computedHash": "0761783373029943ba6b59620d9ca4689b07fcfa7243e45eb83b29c9cf598389"
+    },
+    "hyperframes-cli": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/hyperframes-cli/SKILL.md",
+      "computedHash": "a18c30c33bf0a1e325f60c741556b0a359fa470cf89707d942212b7af2224c81"
+    },
+    "hyperframes-core": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/hyperframes-core/SKILL.md",
+      "computedHash": "a6cd873cf90f8801ba8a22832216594e96faa6081185972ebf30653fb97f58ac"
+    },
+    "hyperframes-creative": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/hyperframes-creative/SKILL.md",
+      "computedHash": "263464b5dd0b7bc18754fdf1177ffa54923ca1ebe4d7c01fe992eafc5efd20b8"
+    },
+    "hyperframes-keyframes": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/hyperframes-keyframes/SKILL.md",
+      "computedHash": "fc5657f4f5cbbeeab23f951ed739e0fe9e29a9865cdabb80d9e87840628a2a46"
+    },
+    "hyperframes-registry": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/hyperframes-registry/SKILL.md",
+      "computedHash": "610456c5b6aa1b05a6594e85ab591ad78c52a7bef5ad8e40221058bb56210d9d"
+    },
+    "hyperframes-studio": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/hyperframes-studio/SKILL.md",
+      "computedHash": "c5465f4276cc293d893334e664802bdbdc20cc57c801e1efab07c223e37d8dba"
     },
     "i-made-this-for-you-email": {
       "source": "swan-gtm/gtm-skills",
@@ -1458,6 +1536,12 @@
       "skillPath": "skills/gali-firon/media-pr-outreach/SKILL.md",
       "computedHash": "ef6dd7c659f0a1be4ac604ce3f1341e1a839c6069a713c6f087572b1bc14cbae"
     },
+    "media-use": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/media-use/SKILL.md",
+      "computedHash": "de4f0c160e63c797899155f55886be382649efc7b155a7ed7622a9e5519268b5"
+    },
     "meeting-prep": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -1554,6 +1638,12 @@
       "skillPath": "skills/ivan-falco/meta-third-party-conversion-tracking/SKILL.md",
       "computedHash": "947a730468d15662da2a16bff77e79ef3f7f7f1bec462c23ef9124bc8c3b90eb"
     },
+    "motion-graphics": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/motion-graphics/SKILL.md",
+      "computedHash": "62b6e2d32dd922e31afd9b9d7851dfab5a70186bdeb3c7cdb0fb0a974dc3423c"
+    },
     "move-gtm-diagnostic": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -1583,6 +1673,12 @@
       "sourceType": "github",
       "skillPath": "skills/erwann-lefevre/multichannel-campaign-builder/SKILL.md",
       "computedHash": "2740538896d35542c12bd521b7ae8da00f87976a50e401efbe297bc6083b14f8"
+    },
+    "music-to-video": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/music-to-video/SKILL.md",
+      "computedHash": "056d0cfffaff61259a9d88aef7899def30d2fc46d0a1722765eac6eda578313e"
     },
     "negotiate-creator-rate": {
       "source": "swan-gtm/gtm-skills",
@@ -1788,6 +1884,12 @@
       "skillPath": "skills/ido-goldberg/post-radar/SKILL.md",
       "computedHash": "c656af1b2dd27f71f63b6a88a24ed1d23dca52a1e8b714b56d38305ca17a123e"
     },
+    "pr-to-video": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/pr-to-video/SKILL.md",
+      "computedHash": "6bf0e11cd566d276763b05e71b4c607ac28fcbcb83995f0830ecdf4385b961ac"
+    },
     "price-optimization-tool": {
       "source": "nexscope-ai/eCommerce-Skills",
       "sourceType": "github",
@@ -1811,6 +1913,12 @@
       "sourceType": "github",
       "skillPath": "product-launch-strategy/SKILL.md",
       "computedHash": "9d162ef2f657586ffba2830a14298ef83fbe3d8090cfeb3f0e9fdddf397b9c98"
+    },
+    "product-launch-video": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/product-launch-video/SKILL.md",
+      "computedHash": "542324cd77e2de829946ca794081194ecc55fda7b60799729a557dcfa660f559"
     },
     "product-page-seo": {
       "source": "nexscope-ai/eCommerce-Skills",
@@ -1901,6 +2009,18 @@
       "sourceType": "github",
       "skillPath": "skills/yahav-fuchs/reddit-comment-safety/SKILL.md",
       "computedHash": "2cdc5ffdf8f5f4f8b8b3bd91713c7d6a7751ed3c34d9178ff23a7a2189c2f0f7"
+    },
+    "remotion-motion-graphics": {
+      "source": "haidrrrry/claude-remotion-skill",
+      "sourceType": "github",
+      "skillPath": "remotion-motion-graphics/SKILL.md",
+      "computedHash": "f3557d026c87e290d2c10376e49e043086f657ac8d5eb261ac07e9c8cf423e21"
+    },
+    "remotion-to-hyperframes": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/remotion-to-hyperframes/SKILL.md",
+      "computedHash": "c0784bd3748050055c896db2b697f1b6e5eb3bddd4f8ba56949cc694e06eef7a"
     },
     "reply-pull-gate": {
       "source": "swan-gtm/gtm-skills",
@@ -2304,6 +2424,12 @@
       "skillPath": "skills/ido-goldberg/skillify/SKILL.md",
       "computedHash": "c99759fb7bb63a10baa45369ed1c6c30bd0f739f94943b0d748ba98d5d5129f6"
     },
+    "slideshow": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/slideshow/SKILL.md",
+      "computedHash": "4d0b55d4ee90c365d0a7ae6626c2b66639d1a4e2db1251491eb4d53a068fb97e"
+    },
     "social-media-monitor": {
       "source": "nexscope-ai/eCommerce-Skills",
       "sourceType": "github",
@@ -2327,6 +2453,12 @@
       "sourceType": "github",
       "skillPath": "skills/yahav-fuchs/subreddit-research/SKILL.md",
       "computedHash": "1be4c42f43af9b221e33f7a85dd0270c36bb3233f56a6d07f1e8542fef7394de"
+    },
+    "talking-head-recut": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/talking-head-recut/SKILL.md",
+      "computedHash": "3fc6674c1779256fe073454b2e3c47a0928d7e7c3aed5256aba4c63c2ba90430"
     },
     "tam-builder": {
       "source": "swan-gtm/gtm-skills",
@@ -2501,6 +2633,12 @@
       "sourceType": "github",
       "skillPath": "skills/brad-smith/vc-portfolio-research/SKILL.md",
       "computedHash": "067df88ae7ba6ce9ead07b07be1842aebe71b85b9c360384769311556c29409f"
+    },
+    "video-use": {
+      "source": "browser-use/video-use",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "28475024cf8e567c4f57be8132654bf79b34e72cec51cb8d3b688ae9cf8536a0"
     },
     "viral-linkedin-lead-magnet-post": {
       "source": "swan-gtm/gtm-skills",
