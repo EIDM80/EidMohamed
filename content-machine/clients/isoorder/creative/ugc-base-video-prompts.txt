@@ -1,0 +1,95 @@
+10 Ready-to-Paste Prompts — Meta AI (free video generation)
+ISO Order Portal — raw UGC-style clips for the Remotion pipeline
+=================================================================
+
+HOW TO USE:
+1. افتح meta.ai (أو تطبيق Meta AI / داخل انستجرام أو واتساب) على جهازك.
+2. روح لخاصية توليد الفيديو (Imagine Video / Video).
+3. انسخ أي برومبت من تحت والصقه زي ما هو.
+4. حمّل الفيديو الناتج وابعتهولي هنا.
+5. أنا هكمل عليه: تعليق صوتي/كابشنز متزامنة + الهوية البصرية (Remotion) + نشر على المنصات.
+
+ملاحظة: البرومبتات دي بتوصف مشهد بصري (شخص + مكان + رد فعل) بدون حوار
+منطوق مؤكد، عشان تشتغل مهما كانت قدرة الأداة على الصوت — الصوت والكابشنز
+هنضيفهم إحنا بعدين بنفس الأسلوب المستخدم في كل الفيديوهات المنشورة حالياً.
+
+--- Prompt 01/10 — مقاولات ---
+A realistic vertical UGC-style video, 8-10 seconds. A Middle Eastern
+construction site manager in his 30s, wearing a hard hat and a hi-vis safety
+vest, standing at an active construction site with cranes and rebar visible
+behind him. He looks directly at the camera with a frustrated, worried
+expression, rubbing his forehead, then shakes his head slowly as if he just
+lost something important. Natural daylight, handheld phone-camera look,
+realistic skin tones, documentary/vlog style, no text overlays, no subtitles.
+
+--- Prompt 02/10 — مطاعم ---
+A realistic vertical UGC-style video, 8-10 seconds. A restaurant owner in
+chef whites stands in his own commercial kitchen, arms crossed, stainless
+steel equipment and warm pendant lighting behind him. He looks at the camera
+with a stressed, anxious expression, then glances toward the kitchen door as
+if expecting bad news. Natural indoor lighting, handheld phone-camera look,
+realistic skin tones, documentary/vlog style, no text overlays.
+
+--- Prompt 03/10 — شركات تقنية ---
+A realistic vertical UGC-style video, 8-10 seconds. A young tech startup
+founder sits at a desk in a modern glass-walled office, laptop open in front
+of him, city skyline visible through the window behind. He stares at the
+laptop screen with a shocked, disappointed expression, then leans back in
+his chair and rubs his eyes in frustration. Natural window light, handheld
+phone-camera look, realistic skin tones, documentary/vlog style, no text.
+
+--- Prompt 04/10 — لوجستيات وشحن ---
+A realistic vertical UGC-style video, 8-10 seconds. A logistics warehouse
+manager wearing a hi-vis safety vest stands in a large warehouse aisle with
+tall shelving and a forklift blurred in the background. He looks down at a
+tablet in his hands with a worried expression, then looks up at the camera
+and shakes his head. Industrial lighting, handheld phone-camera look,
+realistic skin tones, documentary/vlog style, no text overlays.
+
+--- Prompt 05/10 — فنادق ---
+A realistic vertical UGC-style video, 8-10 seconds. A hotel general manager
+in formal business attire stands behind an elegant hotel reception desk,
+marble counter and soft ambient lighting behind him. He looks at a computer
+screen with a disappointed expression, sighs, then looks up at the camera
+with a concerned look. Warm interior lighting, handheld phone-camera look,
+realistic skin tones, documentary/vlog style, no text overlays.
+
+--- Prompt 06/10 — صالات رياضية ---
+A realistic vertical UGC-style video, 8-10 seconds. A gym owner in athletic
+wear stands in the middle of a modern gym with weight racks and mirrors
+behind him. He looks at the camera with a stressed expression, gestures with
+open hands as if explaining a problem, then crosses his arms. Bright indoor
+gym lighting, handheld phone-camera look, realistic skin tones,
+documentary/vlog style, no text overlays.
+
+--- Prompt 07/10 — ورش صيانة سيارات ---
+A realistic vertical UGC-style video, 8-10 seconds. A car maintenance
+workshop owner in a work uniform stands in his garage, car lifts and tools
+visible behind him. He wipes his hands with a cloth, looks at the camera
+with a concerned expression, then shrugs with raised eyebrows as if
+something unexpected happened. Workshop lighting, handheld phone-camera
+look, realistic skin tones, documentary/vlog style, no text overlays.
+
+--- Prompt 08/10 — استشارات ---
+A realistic vertical UGC-style video, 8-10 seconds. A business consultant in
+a sharp suit stands in a modern glass meeting room, a whiteboard with charts
+blurred behind him. He looks at the camera with a serious, thoughtful
+expression, nods slowly, then gestures forward with one hand as if making a
+confident point. Bright office lighting, handheld phone-camera look,
+realistic skin tones, documentary/vlog style, no text overlays.
+
+--- Prompt 09/10 — مصانع أغذية ---
+A realistic vertical UGC-style video, 8-10 seconds. A food factory quality
+manager in a white coat and hairnet stands on a production line with
+conveyor belts and packaged goods blurred behind him. He holds a clipboard,
+looks at the camera with a concerned expression, then taps the clipboard
+twice as if emphasizing a point. Bright industrial lighting, handheld
+phone-camera look, realistic skin tones, documentary/vlog style, no text.
+
+--- Prompt 10/10 — عام / نجاح ---
+A realistic vertical UGC-style video, 8-10 seconds. A confident, successful
+business owner in modern business attire stands in a bright modern office,
+a framed certificate visible on the wall behind him. He smiles at the
+camera with a proud, confident expression, nods once, then gives a thumbs
+up. Bright natural office lighting, handheld phone-camera look, realistic
+skin tones, documentary/vlog style, no text overlays.

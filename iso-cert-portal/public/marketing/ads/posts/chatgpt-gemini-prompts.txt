@@ -1,0 +1,456 @@
+30 Ready-to-Paste Prompts — ChatGPT (DALL-E) / Gemini Image Generation
+ISO Order Portal — Instagram/Facebook Promo Posts (1080x1350, 4:5)
+VERSION 2: vibrant colors + real people + lively editorial-photo look
+======================================================================
+
+Paste each prompt as-is into ChatGPT or Gemini's image generation.
+
+--- Prompt 01/30 — 01-construction (مقاولات) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a Middle Eastern construction site manager in a hard hat and safety vest, standing on an active construction site with cranes and rebar in the background, gripping a rolled-up blueprint, frustrated/worried expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around warm construction orange and steel blue — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "عقد بقيمة مليون درهم ضاع بسبب ورقة واحدة" — highlight the word(s) "مليون" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · مقاولات" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 02/30 — 02-restaurant (مطاعم) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a restaurant owner/chef in chef whites, standing in his own restaurant kitchen with pots and burners behind him, arms crossed, stressed expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around rich appetizing red and warm gold — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "المفتش أغلق 3 مطاعم اليوم. مطعمك التالي؟" — highlight the word(s) "أغلق" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · مطاعم" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 03/30 — 03-food-factory (مصانع أغذية) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a food factory quality manager in a white coat and hairnet, standing on a production line with conveyor belts and packaged goods behind him, concerned expression, holding a clipboard. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around fresh produce green and clean white — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "بدون هذي الشهادة، أكبر عميل بيرفضك" — highlight the word(s) "يرفضك" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · مصانع أغذية" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 04/30 — 04-dental (عيادات أسنان) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a professional dentist in blue scrubs standing in a bright modern dental clinic, arms crossed, confident but slightly concerned expression, dental chair visible behind. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around medical teal and soft mint white — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "المرضى يبحثون عن هذي الشهادة قبل الحجز" — highlight the word(s) "قبل الحجز" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · عيادات أسنان" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 05/30 — 05-tech (شركات تقنية) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a young tech startup founder in a modern glass-walled office, sitting at a desk with a laptop showing a declined deal, frustrated expression, city skyline through the window. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around electric blue and vivid purple — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "صفقة سبعة أرقام سقطت لأن الشركة مو معتمدة" — highlight the word(s) "سقطت" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · شركات تقنية" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 06/30 — 06-logistics (لوجستيات) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a logistics warehouse manager in a hi-vis safety vest, standing in a huge warehouse aisle with tall shelving and forklifts, looking at a tablet with a worried expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around deep navy and warehouse orange — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "عملاؤك الكبار يشتغلون بس مع شركات معتمدة" — highlight the word(s) "معتمدة" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · لوجستيات" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 07/30 — 07-manufacturing (صناعة) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a factory floor manager in safety goggles and gloves, standing beside large industrial machinery on a production floor, concerned expression, sparks/motion blur in background. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around industrial yellow and charcoal gray — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "التفتيش القادم يقدر يوقف خط الإنتاج بالكامل" — highlight the word(s) "يوقف" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · صناعة" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 08/30 — 08-solar (طاقة شمسية) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a solar energy business owner standing on a rooftop covered with solar panels under a bright sky, holding investment documents, thoughtful expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around golden sunlight yellow and sky blue — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "المستثمرون يسألون سؤال واحد قبل أي توقيع" — highlight the word(s) "سؤال واحد" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · طاقة شمسية" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 09/30 — 09-freight (شحن ونقل) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a shipping and freight manager standing at a busy port with stacked shipping containers and a cargo ship behind him, on the phone, stressed expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around deep ocean blue and warning orange — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "شحنتك ترجع من الجمرك بدون هذي الورقة" — highlight the word(s) "ترجع" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · شحن ونقل" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 10/30 — 10-labs (مختبرات) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a lab technician in a white coat, gloves and goggles, standing in a modern laboratory holding a test sample up to the light, concerned expression, lab equipment behind. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around clinical cyan and crisp white — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "نتيجة مختبرك ما تنقبل دولياً بدون اعتماد" — highlight the word(s) "ما تنقبل" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · مختبرات" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 11/30 — 11-hotels (فنادق) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a hotel general manager in formal business attire standing at an elegant hotel reception desk, looking at a booking cancellation on the screen, disappointed expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around luxury gold and deep burgundy — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "حجوزات الشركات تنسحب لو ما عندك هذي الشهادة" — highlight the word(s) "تنسحب" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · فنادق" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 12/30 — 12-training (مراكز تدريب) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a training center instructor standing in front of a classroom whiteboard covered in diagrams, holding a certificate, uncertain expression, empty chairs behind. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around royal purple and bright yellow — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "شهادتك التدريبية صارت بلا قيمة بدون هذا الاعتماد" — highlight the word(s) "بلا قيمة" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · مراكز تدريب" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 13/30 — 13-real-estate (مقاولات) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a real estate developer in a hard hat standing at a stalled construction site holding a rejected permit document, frustrated expression, unfinished building behind. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around corporate navy and gold — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "البلدية رفضت الترخيص. السبب؟ شهادة وحدة ناقصة" — highlight the word(s) "رفضت" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · مقاولات" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 14/30 — 14-cosmetics (تجميل) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a cosmetics brand owner in a small production lab surrounded by bottles and packaging, holding a customs hold notice, worried expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around cosmetic pink and rose gold — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "منتجك يوقف بالجمرك بدون هذي الشهادة" — highlight the word(s) "يوقف" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · تجميل" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 15/30 — 15-security (أمن وحراسات) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a security company manager in a formal uniform standing at a corporate building entrance, holding a declined contract letter, stern concerned expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around authoritative navy and alert red — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "العقد الحكومي يروح لمنافسك المعتمد فقط" — highlight the word(s) "يروح" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · أمن وحراسات" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 16/30 — 16-pharmacy (صيدليات) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a pharmacist in a white coat standing behind a pharmacy counter full of medicine shelves, holding an official warning letter, worried expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around pharmacy green and clean white — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "وزارة الصحة بتسحب ترخيصك بدون هذا التجديد" — highlight the word(s) "بتسحب" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · صيدليات" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 17/30 — 17-consulting (استشارات) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a business consultant in a sharp suit standing in a glass meeting room, client visible turning away in the background, frustrated expression, holding a folder. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around consulting navy and teal — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "عملاء الشركات الكبيرة ما يوقعون بدون هذي الورقة" — highlight the word(s) "ما يوقعون" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · استشارات" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 18/30 — 18-packaging (تعبئة وتغليف) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a packaging factory manager standing in a warehouse full of cardboard boxes and export pallets, holding a rejected shipment document, stressed expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around kraft brown and bright orange — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "80% من طلبات التصدير ترفض بدون هذا الاعتماد" — highlight the word(s) "80%" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · تعبئة وتغليف" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 19/30 — 19-poultry (مزارع دواجن) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a poultry farm owner standing in a large poultry farm facility, holding a returned-shipment notice, worried expression, crates of eggs nearby. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around warm farm yellow and earthy brown — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "الدفعة كلها ترجع لو ما فيه شهادة سلامة" — highlight the word(s) "ترجع" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · مزارع دواجن" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 20/30 — 20-salon (صالونات وسبا) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a beauty salon owner standing in her salon in front of a large front window, a municipal closure notice taped to the glass behind her, shocked expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around beauty pink and elegant purple — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "بلدية دبي تقفل صالونات كل أسبوع. السبب؟" — highlight the word(s) "تقفل" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · صالونات وسبا" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 21/30 — 21-textile (نسيج) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a textile factory manager standing among tall rolls of colorful fabric, holding a cancelled purchase order on his phone, frustrated expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around deep textile red and mustard yellow — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "المشتري الأوروبي يلغي الطلبية بدون هذا الاعتماد" — highlight the word(s) "يلغي" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · نسيج" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 22/30 — 22-medical-eq (معدات طبية) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a medical equipment company representative in a clinic setting, holding a modern medical device, looking at a rejected import notice on a tablet, concerned expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around medical blue and clean white — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "الجهاز الطبي ما يدخل السوق بدون هذي الشهادة" — highlight the word(s) "ما يدخل" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · معدات طبية" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 23/30 — 23-distribution (توزيع) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a distribution company owner standing in a large logistics warehouse, being handed back a contract by a new supplier, disappointed expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around distribution orange and deep navy — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "المورد الجديد يرفضك من أول اجتماع" — highlight the word(s) "يرفضك" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · توزيع" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 24/30 — 24-bakery (مقاهي وبيكري) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a bakery and cafe owner in an apron, standing in the doorway of his bakery, a 'closed by municipality' notice visible on the shop next door through the window, shocked expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around warm bakery brown and cream — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "فوجئنا. البلدية أغلقت المقهى المجاور بسبب هذا" — highlight the word(s) "أغلقت" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · مقاهي وبيكري" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 25/30 — 25-dealership (وكالات سيارات) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a car dealership owner standing in a showroom among shiny new cars, holding a rejected franchise agreement, frustrated expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around automotive red and metallic silver — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "الوكالة العالمية ترفض التعاقد بدون هذي الشهادة" — highlight the word(s) "ترفض" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · وكالات سيارات" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 26/30 — 26-interior (تصميم داخلي) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: an interior design studio owner standing among furniture samples and mood boards, holding a phone showing a cancelled hotel project notice, disappointed expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around warm terracotta and sage green — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "المشروع الفندقي انسحب من العقد فجأة" — highlight the word(s) "انسحب" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · تصميم داخلي" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 27/30 — 27-chemicals (كيماويات) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a chemical plant manager in protective gear and a hard hat, standing near industrial tanks, holding a large fine notice, stressed expression. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around hazard yellow and dark industrial gray — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "غرامة نصف مليون بسبب شهادة سلامة منتهية" — highlight the word(s) "غرامة" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · كيماويات" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 28/30 — 28-schools (تعليم) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a school principal standing in a school hallway talking with a concerned parent, holding a clipboard, serious expression, lockers in background. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around trustworthy blue and cheerful yellow — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "أولياء الأمور صاروا يسألون عن هذي الشهادة قبل التسجيل" — highlight the word(s) "يسألون" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · تعليم" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 29/30 — 29-vineyard (مزارع وتصدير) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a farm export manager standing among crates of fresh produce at a shipping dock, holding a rejected shipment notice, frustrated expression, farm truck behind. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around deep vineyard purple and fresh green — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "المستورد الأوروبي رفض الشحنة كاملة" — highlight the word(s) "رفض" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · مزارع وتصدير" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.
+
+--- Prompt 30/30 — 30-general (ريادة أعمال) ---
+Create a vibrant, photo-realistic 1080x1350px (4:5 portrait) Instagram/Facebook ad for an ISO certification service called "ISO Order Portal" (isoorder.com). This should look like a real, professionally shot editorial photo — NOT a flat vector graphic, NOT a simple icon design.
+
+MAIN SUBJECT: a confident, successful business owner in modern business attire standing in a bright office, arms crossed with a proud smile, a framed certificate visible on the wall behind. Shot like a real photograph — natural skin tones, realistic lighting and shadows, shallow depth of field, candid and emotionally authentic, genuine human expression that matches the dramatic headline below.
+
+COLOR MOOD: Bright, vivid, energetic color grading built around vibrant lime green and near-black — rich saturated tones, warm/cool contrast, NOT dark or monochrome. The photo should feel alive, dynamic and eye-catching, like a premium modern social-media ad, not a corporate stock photo.
+
+TEXT OVERLAY: Bold, large Arabic headline text placed over the image (top third or bottom third, whichever reads best over the photo), with a soft dark gradient scrim behind it for legibility. Right-to-left Arabic, bold modern sans-serif (Cairo Bold / Noto Kufi Arabic style). Exact headline text: "99% من الشركات الناجحة عندها هذي الشهادة. أنت؟" — highlight the word(s) "99%" in a bright vivid accent color (yellow or lime-green) that pops against the photo, keep the rest of the headline in white with a strong drop shadow.
+
+SMALL LABEL: a small rounded pill tag reading "ISO · ريادة أعمال" in white text on a semi-transparent dark background, placed near the top corner.
+
+BOTTOM CTA: A bold, colorful, high-contrast button/pill near the bottom containing the Arabic text "اطلب الآن" and "isoorder.com", using a bright accent color (lime-green or golden yellow) that stands out sharply against the photo — should look tappable and urgent, like a real app/ad button, with a subtle glow or shadow.
+
+Overall mood: modern, dynamic, high-energy social-media ad photography, real human emotion, rich saturated colors, dramatic lighting, attention-grabbing and "stop the scroll" style — think professional Instagram ad creative, not corporate stock photography and not a plain graphic design template.

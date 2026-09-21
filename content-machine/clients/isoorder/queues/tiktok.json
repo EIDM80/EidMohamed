@@ -1,0 +1,156 @@
+[
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-24-01",
+    "status": "pending",
+    "date": "2026-08-24",
+    "topic": "maintenance",
+    "persona": "qa-manager",
+    "hook": "testimonial",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI، ومفيش أي اعتماد على fal.ai أو أي دومين محجوب."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-24-02",
+    "status": "pending",
+    "date": "2026-08-24",
+    "topic": "hospitals",
+    "persona": "warehouse-manager",
+    "hook": "opportunity-cost",
+    "content_type": "ugc_talking_head",
+    "engine": "fal.ai",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-25-01",
+    "status": "pending",
+    "date": "2026-08-25",
+    "topic": "construction",
+    "persona": "site-manager",
+    "hook": "shock-loss",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI، ومفيش أي اعتماد على fal.ai أو أي دومين محجوب."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-25-02",
+    "status": "pending",
+    "date": "2026-08-25",
+    "topic": "consulting",
+    "persona": "consultant",
+    "hook": "testimonial",
+    "content_type": "ugc_talking_head",
+    "engine": "fal.ai",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-26-01",
+    "status": "pending",
+    "date": "2026-08-26",
+    "topic": "food-factory",
+    "persona": "warehouse-manager",
+    "hook": "simple-solution",
+    "content_type": "ugc_talking_head",
+    "engine": "fal.ai",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-26-02",
+    "status": "pending",
+    "date": "2026-08-26",
+    "topic": "food-factory",
+    "persona": "hotel-gm",
+    "hook": "simple-solution",
+    "content_type": "ugc_talking_head",
+    "engine": "fal.ai",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-27-01",
+    "status": "pending",
+    "date": "2026-08-27",
+    "topic": "logistics",
+    "persona": "qa-manager",
+    "hook": "testimonial",
+    "content_type": "camera_replacement",
+    "engine": "fal.ai",
+    "notes": "مرحلة ثانية فوق فيديو UGC جاهز — بتحط حركة كاميرا سينمائية. البرومبتات في content-machine/library/techniques/cinematic-camera-replacement.md. نفس حساب fal.ai المستخدم لـugc_talking_head."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-27-02",
+    "status": "pending",
+    "date": "2026-08-27",
+    "topic": "general",
+    "persona": "restaurant-owner",
+    "hook": "testimonial",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI، ومفيش أي اعتماد على fal.ai أو أي دومين محجوب."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-28-01",
+    "status": "pending",
+    "date": "2026-08-28",
+    "topic": "medical-labs",
+    "persona": "general-success",
+    "hook": "client-rejection",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI، ومفيش أي اعتماد على fal.ai أو أي دومين محجوب."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-28-02",
+    "status": "pending",
+    "date": "2026-08-28",
+    "topic": "hospitals",
+    "persona": "qa-manager",
+    "hook": "opportunity-cost",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI، ومفيش أي اعتماد على fal.ai أو أي دومين محجوب."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-29-01",
+    "status": "pending",
+    "date": "2026-08-29",
+    "topic": "general",
+    "persona": "workshop-owner",
+    "hook": "simple-solution",
+    "content_type": "motion_graphics_static_source",
+    "engine": "remotion",
+    "notes": "تصميم/فيديو مصدر من العميل + طبقة Remotion (كابشنز، هوية بصرية، EndCard). صفر تكلفة توليد AI، ومفيش أي اعتماد على fal.ai أو أي دومين محجوب."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-29-02",
+    "status": "pending",
+    "date": "2026-08-29",
+    "topic": "hospitals",
+    "persona": "site-manager",
+    "hook": "testimonial",
+    "content_type": "ugc_talking_head",
+    "engine": "fal.ai",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-30-01",
+    "status": "pending",
+    "date": "2026-08-30",
+    "topic": "hospitality-hotels",
+    "persona": "consultant",
+    "hook": "simple-solution",
+    "content_type": "hero_cinematic",
+    "engine": "fal.ai",
+    "notes": "نماذج جوجل (Veo) عبر fal.ai بدل فتح حساب Google Cloud billing منفصل — رصيد واحد لكل الموديلات. يُستخدم فقط للمحتوى قليل العدد عالي الأثر (لانش، حملة مدفوعة، فيديو هوية أساسي) لأن التكلفة بالثانية أعلى من Kling/Seedance."
+  },
+  {
+    "id": "isoorder-2026-W35-tiktok-2026-08-30-02",
+    "status": "pending",
+    "date": "2026-08-30",
+    "topic": "restaurant",
+    "persona": "workshop-owner",
+    "hook": "opportunity-cost",
+    "content_type": "ugc_talking_head",
+    "engine": "fal.ai",
+    "notes": "شخص بيتكلم بزاوية كاميرا ثابتة. المحرك الأساسي بعد إلغاء Higgsfield. التنفيذ من جلسة Claude Code المحلية اللي عليها fal.ai MCP، مش من أي جلسة سحابية محجوب عنها الدومين."
+  }
+]

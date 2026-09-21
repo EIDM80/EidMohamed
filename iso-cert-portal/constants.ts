@@ -1,0 +1,40 @@
+
+import { AccreditationBody, ISOStandard } from './types.js';
+
+// Only these accreditation bodies have fixed, published prices online;
+// every other body requires a custom quote.
+export const PRICED_ACCREDITATION_BODIES: AccreditationBody[] = [AccreditationBody.UAF, AccreditationBody.IAS];
+
+export const ISO_STANDARDS: ISOStandard[] = [
+  { id: '1', code: 'ISO 9001', title: 'Quality Management Systems', description: 'Standard for quality management and customer satisfaction.', basePrice: 1200 },
+  { id: '2', code: 'ISO 14001', title: 'Environmental Management', description: 'Enhance your environmental performance and sustainability.', basePrice: 1500 },
+  { id: '3', code: 'ISO 45001', title: 'Occupational Health & Safety', description: 'Ensure workplace safety and reduce occupational risks.', basePrice: 1800 },
+  { id: '4', code: 'ISO 27001', title: 'Information Security Management', description: 'Protect sensitive information assets globally.', basePrice: 2200 },
+  { id: '5', code: 'ISO 20000', title: 'IT Service Management', description: 'Deliver high-quality IT services with standardized processes.', basePrice: 1900 },
+  { id: '6', code: 'ISO 37001', title: 'Anti-Bribery Management', description: 'Establish controls to prevent and detect bribery.', basePrice: 2500 },
+  { id: '7', code: 'ISO 22301', title: 'Business Continuity Management', description: 'Ensure business resilience during disruptions.', basePrice: 2100 },
+  { id: '8', code: 'ISO 13485', title: 'Medical Devices Quality', description: 'Requirements for a quality management system for medical devices.', basePrice: 2800 },
+  { id: '9', code: 'ISO 55001', title: 'Asset Management', description: 'Management of physical assets for performance.', basePrice: 2000 },
+  { id: '10', code: 'ISO 44001', title: 'Collaborative Business Relationships', description: 'Framework for effective collaborative business relationships.', basePrice: 1700 },
+  { id: '11', code: 'ISO 54001', title: 'Quality Management for Elections', description: 'Ensuring integrity and transparency in electoral processes.', basePrice: 2400 },
+  { id: '12', code: 'ISO 41001', title: 'Facility Management', description: 'Improve facility management efficiency and sustainability.', basePrice: 1850 },
+  { id: '13', code: 'ISO 50001', title: 'Energy Management', description: 'Reduce energy consumption and improve efficiency.', basePrice: 2300 },
+  { id: '14', code: 'ISO 21001', title: 'Educational Organizations', description: 'Management system for providers of educational products.', basePrice: 1600 },
+  { id: '15', code: 'ISO 29001', title: 'Oil & Gas Industry Quality', description: 'Quality requirements for petrochemical and gas industries.', basePrice: 3200 },
+  { id: '16', code: 'ISO 20121', title: 'Event Sustainability Management', description: 'Host sustainable events with reduced social impact.', basePrice: 1500 },
+  { id: '17', code: 'ISO 19650', title: 'BIM Information Management', description: 'Building Information Modelling (BIM) lifecycle standards.', basePrice: 2900 },
+  { id: '18', code: 'ISO 30401', title: 'Knowledge Management Systems', description: 'Capture and utilize organizational knowledge effectively.', basePrice: 2100 },
+  { id: '19', code: 'SA 8000', title: 'Social Accountability', description: 'Standard for social and ethical workplace conditions.', basePrice: 2000 },
+  { id: '20', code: 'ISO 80079-34', title: 'Explosive Atmospheres', description: 'Quality systems for equipment in explosive atmospheres.', basePrice: 3500 },
+  { id: '21', code: 'ISO 46001', title: 'Water Efficiency Management', description: 'Optimize water use and reduce waste.', basePrice: 1950 },
+  { id: '22', code: 'ISO 22000', title: 'Food Safety Management', description: 'Ensuring safety throughout the food supply chain.', basePrice: 1800 },
+  { id: '23', code: 'ISO 26000', title: 'Social Responsibility', description: 'Guidance on acting in an ethical and transparent way.', basePrice: 1400 },
+  { id: '24', code: 'ISO 22716', title: 'Cosmetics Good Manufacturing', description: 'GMP guidelines for the cosmetics industry.', basePrice: 2200 },
+  { id: '25', code: 'ISO 22241', title: 'Diesel Engines - AdBlue', description: 'Standards for NOx reduction agent AUS 32.', basePrice: 2600 },
+  { id: '26', code: 'ISO 21678', title: 'Sustainable Construction', description: 'Sustainability indicators for civil engineering works.', basePrice: 2100 },
+  { id: '27', code: 'ISO 42001', title: 'Artificial Intelligence Management', description: 'Managing AI systems responsibly and ethically.', basePrice: 4500 },
+  { id: '28', code: 'ISO 27018', title: 'PII Protection in Public Clouds', description: 'Protecting personal data in the cloud.', basePrice: 2400 },
+  { id: '29', code: 'ISO Renewal', title: 'ISO Certification Renewal', description: 'Formal process for renewing existing ISO certifications.', basePrice: 1000 },
+  { id: '30', code: 'IMS', title: 'Integrated Management System', description: 'Combining multiple ISO standards into one framework.', basePrice: 5000 },
+  { id: '31', code: 'HACCP', title: 'HACCP Certification', description: 'Food Safety Hazard Analysis and Critical Control Points.', basePrice: 1300 }
+];

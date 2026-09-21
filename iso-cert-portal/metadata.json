@@ -1,0 +1,10 @@
+{
+  "name": "ISO-Cert Portal",
+  "description": "A professional ISO certification request and management platform for companies and accreditation bodies.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

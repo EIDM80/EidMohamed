@@ -1,0 +1,71 @@
+{
+  "client_id": "isoorder",
+  "display_name": "ISO Order Portal",
+  "website": "https://isoorder.com",
+  "created_at": "2026-08-23",
+  "brand": {
+    "languages": ["ar", "en"],
+    "primary_language": "ar",
+    "voice": "مباشر، جاد، يعتمد على خسارة/مخاطرة حقيقية ثم حل بسيط وسريع — بدون مبالغة أو حشو",
+    "cta": "اطلب شهادتك الآن على isoorder.com",
+    "remotion_project_ref": "remotion-edit (see content-machine/library/techniques/)",
+    "endcard_tagline": {
+      "ar": "معتمدة دولياً · سعر ثابت · 100% أونلاين",
+      "en": "Accredited · Fixed Price · 100% Online"
+    },
+    "handles": {
+      "instagram": "@isoordercom",
+      "tiktok": "@isoorder.com",
+      "facebook_page": "Isoorderdotcom",
+      "youtube_channel": "ISO Order Portal (@isoordercom)"
+    }
+  },
+  "platforms": {
+    "youtube": {"enabled": true, "handle": "@isoordercom", "posts_per_day": 1, "queue_file": "queues/youtube.json"},
+    "instagram": {"enabled": true, "handle": "@isoordercom", "posts_per_day": 2, "queue_file": "queues/instagram.json"},
+    "facebook": {"enabled": true, "handle": "Isoorderdotcom", "posts_per_day": 2, "queue_file": "queues/facebook.json"},
+    "tiktok": {"enabled": true, "handle": "@isoorder.com", "posts_per_day": 2, "queue_file": "queues/tiktok.json"}
+  },
+  "topics": [
+    {"id": "construction", "label_ar": "مقاولات", "label_en": "Construction"},
+    {"id": "restaurant", "label_ar": "مطاعم", "label_en": "Restaurants"},
+    {"id": "tech", "label_ar": "شركات تقنية", "label_en": "Tech companies"},
+    {"id": "logistics", "label_ar": "لوجستيات وشحن", "label_en": "Logistics & shipping"},
+    {"id": "hospitality-hotels", "label_ar": "فنادق", "label_en": "Hotels"},
+    {"id": "gyms", "label_ar": "صالات رياضية", "label_en": "Gyms"},
+    {"id": "car-maintenance", "label_ar": "ورش صيانة سيارات", "label_en": "Car maintenance workshops"},
+    {"id": "consulting", "label_ar": "استشارات", "label_en": "Consulting"},
+    {"id": "food-factory", "label_ar": "مصانع أغذية", "label_en": "Food factories"},
+    {"id": "medical-labs", "label_ar": "مختبرات طبية", "label_en": "Medical labs"},
+    {"id": "hospitals", "label_ar": "مستشفيات", "label_en": "Hospitals"},
+    {"id": "maintenance", "label_ar": "صيانة عامة", "label_en": "General maintenance services"},
+    {"id": "general", "label_ar": "عام/نجاح", "label_en": "General / success"}
+  ],
+  "personas": [
+    {"id": "site-manager", "label_ar": "مدير موقع إنشاءات", "label_en": "Construction site manager"},
+    {"id": "restaurant-owner", "label_ar": "صاحب مطعم", "label_en": "Restaurant owner"},
+    {"id": "tech-founder", "label_ar": "مؤسس شركة تقنية", "label_en": "Tech startup founder"},
+    {"id": "warehouse-manager", "label_ar": "مدير مخزن/لوجستيات", "label_en": "Logistics warehouse manager"},
+    {"id": "hotel-gm", "label_ar": "مدير عام فندق", "label_en": "Hotel general manager"},
+    {"id": "gym-owner", "label_ar": "صاحب صالة رياضية", "label_en": "Gym owner"},
+    {"id": "workshop-owner", "label_ar": "صاحب ورشة صيانة سيارات", "label_en": "Car workshop owner"},
+    {"id": "consultant", "label_ar": "مستشار أعمال", "label_en": "Business consultant"},
+    {"id": "qa-manager", "label_ar": "مدير جودة مصنع أغذية", "label_en": "Food factory QA manager"},
+    {"id": "general-success", "label_ar": "رائد أعمال ناجح", "label_en": "Successful business owner"}
+  ],
+  "hooks": [
+    {"id": "shock-loss", "label_ar": "خسارة مادية صادمة", "pattern": "رقم/عقد كبير ضاع بسبب عدم الاعتماد"},
+    {"id": "inspector-crackdown", "label_ar": "تفتيش/إغلاق مفاجئ", "pattern": "المفتش بيقفل منشآت غير معتمدة اليوم"},
+    {"id": "client-rejection", "label_ar": "فقدان عميل كبير", "pattern": "أكبر عميل بيرفض التعامل من غير شهادة"},
+    {"id": "simple-solution", "label_ar": "الحل بسيط وسريع", "pattern": "رسالة إيجابية مباشرة: الاعتماد أسهل مما تتخيل"},
+    {"id": "testimonial", "label_ar": "شهادة عميل", "pattern": "عميل حقيقي بيشرح تجربته مع الاعتماد"},
+    {"id": "opportunity-cost", "label_ar": "فرصة ضايعة", "pattern": "فرصة/مناقصة اتفوتت بسبب التأخير في الاعتماد"}
+  ],
+  "content_type_mix": {
+    "ugc_talking_head": 0.5,
+    "camera_replacement": 0.15,
+    "hero_cinematic": 0.05,
+    "motion_graphics_static_source": 0.3
+  },
+  "routing_overrides": {}
+}
