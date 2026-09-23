@@ -1638,6 +1638,12 @@
       "skillPath": "skills/ivan-falco/meta-third-party-conversion-tracking/SKILL.md",
       "computedHash": "947a730468d15662da2a16bff77e79ef3f7f7f1bec462c23ef9124bc8c3b90eb"
     },
+    "moneyprinterturbo-video": {
+      "source": "harry0703/MoneyPrinterTurbo",
+      "sourceType": "github",
+      "skillPath": "docs/skill/SKILL.md",
+      "computedHash": "7c4d854761279d9db5763fa026c467fe766d530e8c023bc8bb62d577c789fb04"
+    },
     "motion-graphics": {
       "source": "heygen-com/hyperframes",
       "sourceType": "github",
