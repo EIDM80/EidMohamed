@@ -1,7 +1,8 @@
 {
   "enabledPlugins": {
     "claude-seo@agricidaniel-claude-seo": true,
-    "ecc@ecc": true
+    "ecc@ecc": true,
+    "claude-blog@agricidaniel-blog": true
   },
   "extraKnownMarketplaces": {
     "agricidaniel-claude-seo": {
@@ -14,6 +15,12 @@
       "source": {
         "source": "github",
         "repo": "affaan-m/ECC"
+      }
+    },
+    "agricidaniel-blog": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-blog"
       }
     }
   }
