@@ -1,51 +1,43 @@
-# claude-code-templates (vendored skills)
+# claude-code-templates (vendored, sanitized)
 
-Source: https://github.com/davila7/claude-code-templates (MIT, see LICENSE), upstream commit 42886b2, path `cli-tool/components/skills/`.
+Source: https://github.com/davila7/claude-code-templates (MIT, see `LICENSE`), upstream commit `42886b2`.
+Some skills carry their own `LICENSE.txt` inside their folder (for example the Anthropic-authored ones).
 
-Only a curated subset for social media, content, design, video and analytics was installed into `.claude/skills/`. Some skills (canvas-design, theme-factory, etc.) carry their own LICENSE.txt inside their folder.
+Everything under `cli-tool/components/{skills,agents,commands}` is installed:
 
-`brand-guidelines-community` was renamed from `brand-guidelines` to avoid clashing with the Anthropic brand-guidelines skill.
+| Component | Source | Installed to |
+|---|---|---|
+| 913 skills | `skills/**/SKILL.md` | `.claude/skills/<name>/` (flattened; nested skills get their own folder) |
+| 423 agents | `agents/<category>/*.md` | `.claude/agents/<name>.md` |
+| 348 commands | `commands/**.md` | `.claude/commands/<category>/...` (invoked as `/category:name`) |
 
-| Skill | Upstream category |
-|---|---|
-| `social-content` | business-marketing |
-| `content-creator` | business-marketing |
-| `copywriting` | business-marketing |
-| `copy-editing` | business-marketing |
-| `marketing-ideas` | business-marketing |
-| `marketing-psychology` | business-marketing |
-| `launch-strategy` | business-marketing |
-| `paid-ads` | business-marketing |
-| `competitive-ads-extractor` | business-marketing |
-| `content-research-writer` | business-marketing |
-| `seo-audit` | business-marketing |
-| `seo-fundamentals` | business-marketing |
-| `schema-markup` | business-marketing |
-| `marketing-strategy-pmm` | business-marketing |
-| `marketing-demand-acquisition` | business-marketing |
-| `analytics-tracking` | business-marketing |
-| `ab-test-setup` | business-marketing |
-| `page-cro` | business-marketing |
-| `competitor-alternatives` | business-marketing |
-| `brand-guidelines-community` | business-marketing |
-| `x-twitter-scraper` | marketing |
-| `meme-factory` | creative-design |
-| `imagegen` | creative-design |
-| `luma-imagegen` | creative-design |
-| `theme-factory` | creative-design |
-| `ui-design-system` | creative-design |
-| `frontend-design` | creative-design |
-| `premium-web-design` | creative-design |
-| `executing-marketing-campaigns` | creative-design |
-| `marp-slide` | creative-design |
-| `excalidraw` | creative-design |
-| `mermaid-diagrams` | creative-design |
-| `remotion-best-practices` | creative-design |
-| `transcribe` | media |
-| `video-downloader` | media |
-| `image-enhancer` | media |
-| `speech` | media |
-| `remotion` | video |
-| `google-analytics` | analytics |
+`manifest.json` lists every item, its source path, and the name it was installed under.
 
-To add more from the catalog: `npx claude-code-templates@latest --skill <category>/<name>` or browse https://aitmpl.com.
+## Safety changes from upstream
+
+- **`allowed-tools` removed** from every skill, agent and command frontmatter (380 files). Upstream, many of
+  them pre-approved `Bash` (one granted `Bash(*)`), so tools ran without asking. Now every tool use goes
+  through the normal permission prompt. Agents keep their `tools:` field, which only limits what they can use.
+- **`hooks` removed** from frontmatter (4 files: `gh-address-comments`, `git-commit-helper`,
+  `planning-with-files`, and the `read-only-auditor` agent). Nothing runs automatically on tool use or session
+  events. `read-only-auditor` is still limited to Read, Grep and Glob by its `tools:` field.
+- The security category (penetration-testing skills and agents) is included as upstream ships it; use it only
+  for authorized testing.
+- Many skills need their own API keys or CLIs (OpenAI, Luma, Railway, Supabase, Datadog, and others).
+- 221 files have frontmatter that strict YAML parsers reject (unquoted colons in descriptions). This is the
+  same in upstream, and Claude Code still loads them.
+
+## Name clashes
+
+When a name was already taken (by a skill already in this repo, or by another catalog category), the item was
+installed as `<name>-<category>` and its frontmatter `name:` updated. Items identical to one already installed
+were skipped (`already-present` / `duplicate-skipped` in the manifest). `brand-guidelines-community` was renamed
+from `brand-guidelines`.
+
+## Reinstall or update
+
+```bash
+git clone --depth 1 https://github.com/davila7/claude-code-templates.git /tmp/cct
+python3 third_party/claude-code-templates/install.py /tmp/cct          # installs and sanitizes
+python3 third_party/claude-code-templates/install.py --sanitize-only  # re-strip permissions/hooks
+```
