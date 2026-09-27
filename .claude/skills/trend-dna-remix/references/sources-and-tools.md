@@ -32,6 +32,7 @@ Tool availability depends on which connectors are enabled in the session. Check 
 - Brand consistency: ElevenLabs brand kits (`creative_create_brand_kit_from_website`), or the user's brand colours and fonts stated in the prompt.
 - Resizing and format conversion: the `image-editing` skill (for example 1080x1350 for a LinkedIn or Instagram portrait, 1080x1080 square, 1920x1080 landscape).
 - Carousels or documents: build the slides as HTML and export them to PDF, or use the `pptx` skill and export. Design review: the `visual-argument-review` skill.
+- Repurposing a trending video into Arabic: the `krillinai-subtitle`, `krillinai-tts` and `krillinai-render-vertical` skills can transcribe it, translate it, dub it, and render a vertical cut with bilingual subtitles. They need the KrillinAI CLI (see `krillinai-cli`), and the right to reuse the footage.
 - Short video: `remotion-motion-graphics`, `hyperframes`, `embedded-captions` (which has its own visual DNA registry for captions), `talking-head-recut`, or Everygen and Higgsfield video generation.
 
 ## Related skills to chain
