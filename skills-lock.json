@@ -2640,6 +2640,12 @@
       "skillPath": "skills/brad-smith/vc-portfolio-research/SKILL.md",
       "computedHash": "067df88ae7ba6ce9ead07b07be1842aebe71b85b9c360384769311556c29409f"
     },
+    "video-shotcraft": {
+      "source": "Vincentwei1021/video-shotcraft",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "33d7e4bff87e864d9bcdf434e05f5b420c5930a864d69c7043616fbc932b6401"
+    },
     "video-use": {
       "source": "browser-use/video-use",
       "sourceType": "github",
