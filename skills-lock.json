@@ -474,6 +474,12 @@
       "skillPath": "skills/tanyo-gochev/cold-offer-architect/SKILL.md",
       "computedHash": "c0ee134c17feaf586a3e4382fac3da53e893e92ea45d7a677e80043a7e205ac9"
     },
+    "collage-broll-explainers": {
+      "source": "MegaTroll222/VOX-COLLAGE-BROLL",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "52d1c6e26715233aefeee0999c2cd5423d8748bd6b9d320328ec154e623698c0"
+    },
     "community-radar": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
