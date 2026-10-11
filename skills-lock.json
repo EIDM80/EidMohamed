@@ -2064,6 +2064,12 @@
       "skillPath": "skills/rutger-katz/revenue-operating-cadence/SKILL.md",
       "computedHash": "f27633239470b1fbbb60d57ba7f2e86188695325182f15a951f0ddafdb390391"
     },
+    "reverse-engineer-anything": {
+      "source": "morluto/rea",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/reverse-engineer-anything/SKILL.md",
+      "computedHash": "8f3c120ac134df1fcb9dd91c0724b97f0028e233ef1fe047abafb07cd0e7c2a9"
+    },
     "reverse-etl-activation": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
