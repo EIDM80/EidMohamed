@@ -1746,6 +1746,12 @@
       "skillPath": "SKILL.md",
       "computedHash": "ef4051baf854dd1722e048ce5eef625b5d1f213c7ac338fabfaffb17f0f469c8"
     },
+    "onetake": {
+      "source": "feitangyuan/onetake",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "d3062dabde7acb92ec576b3c47d9025316d537c9417cab271a87c83ef8c18a98"
+    },
     "operating-cadence-designer": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
