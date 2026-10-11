@@ -228,6 +228,18 @@
       "skillPath": "skills/gali-firon/anti-ai-slop-writing/SKILL.md",
       "computedHash": "6a288a6b1a131149096a9d61bd5294556bc30a33af703af012e99d2e6ebc3f02"
     },
+    "api-security-testing": {
+      "source": "usestrix/strix",
+      "sourceType": "github",
+      "skillPath": "skills/api-security-testing/SKILL.md",
+      "computedHash": "4baa317508f5e01e72a0c292d3c9ea6a71249cfa3414971e97aa6e0fabae25f5"
+    },
+    "application-security-testing": {
+      "source": "usestrix/strix",
+      "sourceType": "github",
+      "skillPath": "skills/application-security-testing/SKILL.md",
+      "computedHash": "5963d33bb6f5cfb0ce2657daa20090c922f68c309aa5906b9c80d1761fb33e05"
+    },
     "atl-btl-messaging": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -281,6 +293,12 @@
       "sourceType": "github",
       "skillPath": "skills/ryan-estes/beehiiv-newsletter-report/SKILL.md",
       "computedHash": "d2e20fa7d2f9b2c25574c75bdf8ef64f6904120a52bfcd2d0c6ac41a6e0bb3be"
+    },
+    "book-to-skill": {
+      "source": "afazhriel/booktoskill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "4687c109f94448fae286a798867f935ed28d4e7ab0ca64317e216623039112e4"
     },
     "brand-mention-monitor": {
       "source": "swan-gtm/gtm-skills",
@@ -389,6 +407,12 @@
       "sourceType": "github",
       "skillPath": "skills/ariel-cohen/champion-move-detection/SKILL.md",
       "computedHash": "37354e1aafd5c9019bb35d0bc948fd83b982cfd1c69e746d5187cb9b272bf5e0"
+    },
+    "ci-security-scanning-with-strix": {
+      "source": "usestrix/strix",
+      "sourceType": "github",
+      "skillPath": "skills/ci-security-scanning-with-strix/SKILL.md",
+      "computedHash": "66a98fadc68569c62884c2aa76000be6e7adb98a6dc2e4a0fb38b18773298f71"
     },
     "citation-gap-outreach": {
       "source": "swan-gtm/gtm-skills",
@@ -504,11 +528,23 @@
       "skillPath": "skills/sabahudin-murtic/competitive-intelligence-radar/SKILL.md",
       "computedHash": "721f437c5e687c6b3732a64fd956849e7cd08382d780fb8bdf21d6b411cd5705"
     },
+    "competitive-landscape": {
+      "source": "afazhriel/openseo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/competitive-landscape/SKILL.md",
+      "computedHash": "8c98a19868c913450d222ea3261cd17ffb15f85a9f0e68aee2b885b7e8540511"
+    },
     "competitive-pricing-strategy": {
       "source": "nexscope-ai/eCommerce-Skills",
       "sourceType": "github",
       "skillPath": "competitive-pricing-strategy/SKILL.md",
       "computedHash": "1282500b0d93f5e73d2c99fe1e45677a8752af4a622e45f5f9b9f737661c8b8f"
+    },
+    "competitor-analysis": {
+      "source": "afazhriel/openseo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/competitor-analysis/SKILL.md",
+      "computedHash": "9645a4829de2bedaa2b91418ddd877eab8ea1d2e9da9683c660d47d033428244"
     },
     "competitor-connection-displacement": {
       "source": "swan-gtm/gtm-skills",
@@ -1026,6 +1062,18 @@
       "skillPath": "skills/thomas-marcelle/find-b2b-creators-linkedin/SKILL.md",
       "computedHash": "f7cb6a70a91e64b0102642ca98d8ddc85437e59c45f5540bc743a2f434bbb9a0"
     },
+    "find-security-vulnerabilities-in-code": {
+      "source": "usestrix/strix",
+      "sourceType": "github",
+      "skillPath": "skills/find-security-vulnerabilities-in-code/SKILL.md",
+      "computedHash": "551afea3693d77172cc83278bd6185cfb232be75e5c683506fd00b9630691272"
+    },
+    "fix-security-vulnerabilities-with-strix": {
+      "source": "usestrix/strix",
+      "sourceType": "github",
+      "skillPath": "skills/fix-security-vulnerabilities-with-strix/SKILL.md",
+      "computedHash": "f5fcf1365bbaa650b246c9a0e6338db2e40ecc46fba60ff64fd2f6311eed901c"
+    },
     "forecast-creator-pipeline": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -1055,6 +1103,12 @@
       "sourceType": "github",
       "skillPath": "skills/danni-chen/founder-post-triggers-24/SKILL.md",
       "computedHash": "f7cceeafb07aaaa52fbe6709eedacf24ca0c3927a5eaf45fa3ebb38da59a4d6e"
+    },
+    "freehire-search": {
+      "source": "MadsLorentzen/ai-job-search",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/freehire-search/SKILL.md",
+      "computedHash": "9cc816532fce0619f9c657a0d2fc00f56a90140399e405f9558a2a67f5972d19"
     },
     "frontal-messaging-templates": {
       "source": "swan-gtm/gtm-skills",
@@ -1242,6 +1296,12 @@
       "skillPath": "skills/hyperframes-studio/SKILL.md",
       "computedHash": "c5465f4276cc293d893334e664802bdbdc20cc57c801e1efab07c223e37d8dba"
     },
+    "i-have-adhd": {
+      "source": "m1insights/i-have-adhd",
+      "sourceType": "github",
+      "skillPath": "skill/SKILL.md",
+      "computedHash": "81b687842367099fea3efba7cc47c0c476bea4729e87debdfda75099c94bc92c"
+    },
     "i-made-this-for-you-email": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -1308,11 +1368,53 @@
       "skillPath": "skills/ariel-cohen/influencer-post-engager-capture/SKILL.md",
       "computedHash": "105065f3a61ac24aa9e53d566d52a336f73767a779470f214428dd3ca5a3cb37"
     },
+    "job-application-assistant": {
+      "source": "MadsLorentzen/ai-job-search",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/job-application-assistant/SKILL.md",
+      "computedHash": "b3724052f5b6ccb7fdfd153b860898ea9950c1ba7036b5b10fdd78d7361716ee"
+    },
+    "jobbank-search": {
+      "source": "MadsLorentzen/ai-job-search",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/jobbank-search/SKILL.md",
+      "computedHash": "39a581ebd76b1ad15d98e0baca2c245053ad16eea3b4d06ac7784906f39b131e"
+    },
+    "jobdanmark-search": {
+      "source": "MadsLorentzen/ai-job-search",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/jobdanmark-search/SKILL.md",
+      "computedHash": "e0a1207143e61e8a92080b2d836cbcb5d3d7d6ba89afc629c8fc3628975dd131"
+    },
+    "jobindex-search": {
+      "source": "MadsLorentzen/ai-job-search",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/jobindex-search/SKILL.md",
+      "computedHash": "4ca12779d32880e353b19bfcb54a744cbc598cc79991584c4a5c0197d9c6d1c2"
+    },
+    "jobnet-search": {
+      "source": "MadsLorentzen/ai-job-search",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/jobnet-search/SKILL.md",
+      "computedHash": "0905d4212fd56dc3fd10e397df951b5d9064237f0e109d767fb246c3151788a3"
+    },
     "josh-braun-copywriting": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
       "skillPath": "skills/alex-vacca/josh-braun-copywriting/SKILL.md",
       "computedHash": "d5ecf8efc786a7569fb55990aa1e604008b6f4a7f9c8b2ec8dc94dac423b7627"
+    },
+    "keyword-clustering": {
+      "source": "afazhriel/openseo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/keyword-clustering/SKILL.md",
+      "computedHash": "968f0a36800e42d2a931f6877955209d1335687bdd55a14c4be2a825b1399951"
+    },
+    "keyword-research": {
+      "source": "afazhriel/openseo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/keyword-research/SKILL.md",
+      "computedHash": "bbb7aeabe35c3a6f5925ee838c2d27e3d00c763bfb2f70ade3b5be32bb5d98c9"
     },
     "launch-monitor": {
       "source": "swan-gtm/gtm-skills",
@@ -1355,6 +1457,12 @@
       "sourceType": "github",
       "skillPath": "skills/eliezer-cohen/leaked-demand-recovery/SKILL.md",
       "computedHash": "2143c7a5695d47febe0341cbbc9252563e5587051fa0761265a2543fb9844ffe"
+    },
+    "link-prospecting": {
+      "source": "afazhriel/openseo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/link-prospecting/SKILL.md",
+      "computedHash": "73adb5a6df599aae5611e48c12468114e2ca63a2d466f27936aa2ccaed2abf2a"
     },
     "linkedin-7-day-warmup": {
       "source": "swan-gtm/gtm-skills",
@@ -1464,6 +1572,12 @@
       "skillPath": "skills/daniel-bustamante/linkedin-post-to-newsletter/SKILL.md",
       "computedHash": "0ad9e511dfe13c0c3d7171ee141b56ae06cfe687b0446fe3fbd21009710841fe"
     },
+    "linkedin-search": {
+      "source": "MadsLorentzen/ai-job-search",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/linkedin-search/SKILL.md",
+      "computedHash": "eb76ea0b72bc0f230ea7ad762dfb292f0a7a35848253465f851d9f3821677ec8"
+    },
     "linkedin-success-factors": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -1499,6 +1613,12 @@
       "sourceType": "github",
       "skillPath": "skills/omer-levy/lusha-prospector/SKILL.md",
       "computedHash": "5ec26ac2042de40c4e5163ff426a38fe17c4ec043e206926cebee92eb1207a80"
+    },
+    "managed-pentesting-with-strix": {
+      "source": "usestrix/strix",
+      "sourceType": "github",
+      "skillPath": "skills/managed-pentesting-with-strix/SKILL.md",
+      "computedHash": "2e429eaafeb1471a01718b094b215bfff34605ffb5fc090ea665d9fcfc96d8ff"
     },
     "map-contacts": {
       "source": "swan-gtm/gtm-skills",
@@ -1740,6 +1860,12 @@
       "skillPath": "skills/daniel-bustamante/newsletter-welcome-sequence/SKILL.md",
       "computedHash": "9949f07062dd9a5beafff41475e575a3d48febdf529c27349c36d016d835f7a1"
     },
+    "no-ai-slop": {
+      "source": "petergyang/no-ai-slop",
+      "sourceType": "github",
+      "skillPath": "skills/no-ai-slop/SKILL.md",
+      "computedHash": "77d287e3c8e09874e144ee35f6fb0ee1adcf609012c7c3273e9c8fe2054ce5af"
+    },
     "objection-mining": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -1806,6 +1932,12 @@
       "skillPath": "skills/yoni-tserruya/outreach-personalization/SKILL.md",
       "computedHash": "111444cf308911e9ca128d5910c58848f08b252ab8cf27446f64f3edbfa70500"
     },
+    "owasp-top-10-testing": {
+      "source": "usestrix/strix",
+      "sourceType": "github",
+      "skillPath": "skills/owasp-top-10-testing/SKILL.md",
+      "computedHash": "da33339f2d052ea5445b9fb7fc75e3fe4dd9eafc51ea8141e2b3ceab722fbe0e"
+    },
     "pain-is-the-pitch": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -1829,6 +1961,12 @@
       "sourceType": "github",
       "skillPath": "skills/thebigasif/patent-backed-seo-quick-wins/SKILL.md",
       "computedHash": "31fde0014c6f40c42f8afebc55d01fa97492a1f3a3b2499a9b116d0c97b269e3"
+    },
+    "penetration-testing-with-strix": {
+      "source": "usestrix/strix",
+      "sourceType": "github",
+      "skillPath": "skills/penetration-testing-with-strix/SKILL.md",
+      "computedHash": "476406af8b4d3bf8d09873cf6445f66b428e3efa8b5f55e69f52b1d0685f7fe2"
     },
     "persona-mapping-framework": {
       "source": "swan-gtm/gtm-skills",
@@ -2208,6 +2346,12 @@
       "skillPath": "skills/ido-goldberg/score/SKILL.md",
       "computedHash": "af9ea1bf3aa0e6f04b317b1b669159755799fc358bf3a6516584aef2d73d1674"
     },
+    "scrape": {
+      "source": "MadsLorentzen/ai-job-search",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/job-scraper/SKILL.md",
+      "computedHash": "7933df916cbe5f4ab468418bd421d9f39bc2ecd3895dab55ae7e6ce42c868609"
+    },
     "sdr-master-prompts": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -2220,6 +2364,12 @@
       "skillPath": "skills/alex-vacca/sdr-outbound-rules/SKILL.md",
       "computedHash": "bbe3afca9745fac177dfad6aa27e11bc8a2101fcf63d29f2a1ca64150d44ba61"
     },
+    "seo-audit": {
+      "source": "afazhriel/openseo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/seo-audit/SKILL.md",
+      "computedHash": "a9a7cc09a6ac388d0fb920e70efdd15dd590857abca7c8e0c7355dae804a6514"
+    },
     "seo-business-context": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -2231,6 +2381,12 @@
       "sourceType": "github",
       "skillPath": "skills/sam-dunning/seo-business-fit-filter/SKILL.md",
       "computedHash": "f3ddfedf30ef9fbfc7532ed98284cc43d5f662b58594191b9c1039581fa98898"
+    },
+    "seo-coach": {
+      "source": "afazhriel/openseo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/seo-coach/SKILL.md",
+      "computedHash": "123427b66ce3cbdb45e4c80a6110da1928d99a4953acce61ebb8f1819f9839a0"
     },
     "seo-intel": {
       "source": "swan-gtm/gtm-skills",
@@ -2249,6 +2405,12 @@
       "sourceType": "github",
       "skillPath": "skills/sam-dunning/seo-opportunity-extraction/SKILL.md",
       "computedHash": "ba1aa74ff43212445be22b62b28157dce8ebfc97ed9a37dc23d5c6203bbdf2d6"
+    },
+    "seo-project-setup": {
+      "source": "afazhriel/openseo",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/seo-project-setup/SKILL.md",
+      "computedHash": "ea089ba8f0d1f07252233cdb4d0bd4c2d8174a292a4a8c5f8fdf40df6fb01fc1"
     },
     "seo-serp-qualification": {
       "source": "swan-gtm/gtm-skills",
@@ -2652,6 +2814,12 @@
       "skillPath": "skills/ryan-iyengar/trigger-based-outbound/SKILL.md",
       "computedHash": "c09df4f2edc3e638cc57c48fb9e95e111415f4615c1882e75aecb93cb5d1374c"
     },
+    "upskill": {
+      "source": "MadsLorentzen/ai-job-search",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/upskill/SKILL.md",
+      "computedHash": "81f8caabec73281dd6a93656a594bca05952430b2decc0a6fe70c137a3213d4d"
+    },
     "vc-portfolio-research": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -2747,6 +2915,12 @@
       "sourceType": "github",
       "skillPath": "skills/din-arbel/warm-intro-intelligence/SKILL.md",
       "computedHash": "fa2fb4bf4b6cdbb25ce13a30fb2332d562fe066a724bf46dd1a94c51a79b4e6d"
+    },
+    "web-app-penetration-testing": {
+      "source": "usestrix/strix",
+      "sourceType": "github",
+      "skillPath": "skills/web-app-penetration-testing/SKILL.md",
+      "computedHash": "734aaa972fd526b3962ff3ff29ef701c2eae6191f27c8dc479f9c37f9445de69"
     },
     "website-to-signals": {
       "source": "swan-gtm/gtm-skills",
