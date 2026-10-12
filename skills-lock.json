@@ -19,6 +19,12 @@
       "skillPath": "skills/daniel-bustamante/52-newsletter-ideas/SKILL.md",
       "computedHash": "859a4bb1679a72217e50f44dc1761985a57b630107f517e643a815966dd6c170"
     },
+    "Agent Cost Report": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/agent-cost-report/SKILL.md",
+      "computedHash": "aedeccb88f501df91d9dda1d53015ccdd27b2569327079c77cd0ff0a0707a2f9"
+    },
     "abm-engagement-scoring": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -282,6 +288,12 @@
       "skillPath": "skills/tim-yakubson/b2b-cold-email-copywriting/SKILL.md",
       "computedHash": "4517179f1bb250a67f6fa61db844527f0fc1491bedbd390160da0c302b50c4e2"
     },
+    "babysit": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/babysit/SKILL.md",
+      "computedHash": "1e0610afc6110fad8c012f44dd5aa09cdd25530198f515f49e5d94eda08a4465"
+    },
     "battlecard": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -449,6 +461,12 @@
       "sourceType": "github",
       "skillPath": "skills/ariel-cohen/closed-won-replication-play/SKILL.md",
       "computedHash": "51f9fccd9b6cc7a1c40c14f7f0437024b3dbfe512d4db3d172617756cae6364e"
+    },
+    "cloud-sync": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/cloud-sync/SKILL.md",
+      "computedHash": "09771e93653eaccf7b5c39bc3ee5d34fc1b40306cc142646492a299aa49efefe"
     },
     "cold-call-scripts": {
       "source": "swan-gtm/gtm-skills",
@@ -702,11 +720,23 @@
       "skillPath": "skills/ivan-falco/demand-lifecycle/SKILL.md",
       "computedHash": "e5848bee8a26ec0c09c62af1509a58625b2605c8965e3f5e00ce320838d07b34"
     },
+    "design-is": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/design-is/SKILL.md",
+      "computedHash": "f2912e5eb57ebf3dafa2c08fa92af2294309951cef124b83d35214aebc98de8d"
+    },
     "dev-tool-pricing": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
       "skillPath": "skills/shane-oconnor/dev-tool-pricing/SKILL.md",
       "computedHash": "8ce37d2da6e9cd66e1eae0408b27d68311083cd43930c98dcfcb0097ac764dab"
+    },
+    "do": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/do/SKILL.md",
+      "computedHash": "ac80a2338872768e8d9e24bcad9d7a379019afa062167a20b525c4562405a2a3"
     },
     "draft-creator-campaign-brief": {
       "source": "swan-gtm/gtm-skills",
@@ -1230,11 +1260,23 @@
       "skillPath": "skills/ido-goldberg/handle-reply/SKILL.md",
       "computedHash": "8f7139222fccbb741fdf2fa81436a2ce5793b90efd1475e1f9abd12b5d245f7e"
     },
+    "handoff": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/handoff/SKILL.md",
+      "computedHash": "714ac6a416a5fff5bace8d2308200b6d6ae82a406eee1550afe190fa08ed9ada"
+    },
     "hiring-radar": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
       "skillPath": "skills/dusan-vystrcil/hiring-radar/SKILL.md",
       "computedHash": "c3c788666ed02678974ab4a1222a42da1f65f25b11c68c35206846430f0a5fee"
+    },
+    "how-it-works": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/how-it-works/SKILL.md",
+      "computedHash": "84ec7ac6b5607879c85819d8e25a4a0f1f6789b532028962f5b1188c42c103e3"
     },
     "human-mannerisms": {
       "source": "swan-gtm/gtm-skills",
@@ -1428,6 +1470,12 @@
       "skillPath": ".agents/skills/keyword-research/SKILL.md",
       "computedHash": "bbb7aeabe35c3a6f5925ee838c2d27e3d00c763bfb2f70ade3b5be32bb5d98c9"
     },
+    "knowledge-agent": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/knowledge-agent/SKILL.md",
+      "computedHash": "52a8f2c5351a0b73b3c55296c3dcd46ade6070f66f0d59ccd01832a9f77123f6"
+    },
     "launch-monitor": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -1469,6 +1517,12 @@
       "sourceType": "github",
       "skillPath": "skills/eliezer-cohen/leaked-demand-recovery/SKILL.md",
       "computedHash": "2143c7a5695d47febe0341cbbc9252563e5587051fa0761265a2543fb9844ffe"
+    },
+    "learn-codebase": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/learn-codebase/SKILL.md",
+      "computedHash": "9142aab8302123f63d8db49430d1f59e2ff2bdcb885d6b3f054f22f7d92f5791"
     },
     "link-prospecting": {
       "source": "afazhriel/openseo",
@@ -1626,6 +1680,12 @@
       "skillPath": "skills/omer-levy/lusha-prospector/SKILL.md",
       "computedHash": "5ec26ac2042de40c4e5163ff426a38fe17c4ec043e206926cebee92eb1207a80"
     },
+    "make-plan": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/make-plan/SKILL.md",
+      "computedHash": "828c96bc3eab1c8c46db001b3a6a71fe07dfb32814081678ddfe067ba0978664"
+    },
     "managed-pentesting-with-strix": {
       "source": "usestrix/strix",
       "sourceType": "github",
@@ -1685,6 +1745,12 @@
       "sourceType": "github",
       "skillPath": "skills/alon-goldenberg/meeting-prep/SKILL.md",
       "computedHash": "2d7cc162e91710e45d4e00bf85449b0959f324d3751c724257e28a463723de1f"
+    },
+    "mem-search": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/mem-search/SKILL.md",
+      "computedHash": "c373d0415f04f16638f29be7358d2f2bf0e05e345911c1e65cc220eed3caa2fd"
     },
     "message-validation": {
       "source": "swan-gtm/gtm-skills",
@@ -1775,6 +1841,12 @@
       "sourceType": "github",
       "skillPath": "skills/ivan-falco/meta-third-party-conversion-tracking/SKILL.md",
       "computedHash": "947a730468d15662da2a16bff77e79ef3f7f7f1bec462c23ef9124bc8c3b90eb"
+    },
+    "mode-creator": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/mode-creator/SKILL.md",
+      "computedHash": "c98b72b5c9ff1bb9705c12ee3e18096ca267d93e8043e9ea852ed21f0095e742"
     },
     "moneyprinterturbo-video": {
       "source": "harry0703/MoneyPrinterTurbo",
@@ -1884,6 +1956,12 @@
       "skillPath": "skills/tanyo-gochev/objection-mining/SKILL.md",
       "computedHash": "a275f54a1a704b31537c84a7b3f6762ce8609cb5fa11720e9eb6cc3848b45dfe"
     },
+    "oh-my-issues": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/oh-my-issues/SKILL.md",
+      "computedHash": "cee3669201ddc7eb488e3c20699ad46428ded9ff29e98c7c1fbfc696e1d29cfd"
+    },
     "omni-ugc-ad-factory": {
       "source": "MegaTroll222/OMNI-UGC-AD-FACTORY",
       "sourceType": "github",
@@ -1973,6 +2051,12 @@
       "sourceType": "github",
       "skillPath": "skills/thebigasif/patent-backed-seo-quick-wins/SKILL.md",
       "computedHash": "31fde0014c6f40c42f8afebc55d01fa97492a1f3a3b2499a9b116d0c97b269e3"
+    },
+    "pathfinder": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/pathfinder/SKILL.md",
+      "computedHash": "96bf2edcbffd36a3119d4dea942561b02ecf355cc872d73cf21cc346092e3db2"
     },
     "penetration-testing-with-strix": {
       "source": "usestrix/strix",
@@ -2364,6 +2448,12 @@
       "skillPath": ".claude/skills/job-scraper/SKILL.md",
       "computedHash": "7933df916cbe5f4ab468418bd421d9f39bc2ecd3895dab55ae7e6ce42c868609"
     },
+    "screenpipe": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/screenpipe/SKILL.md",
+      "computedHash": "d21a78e4bba206ffdb503dca52c7bd497af17f24aee5355fdd5e0af1e0593d7a"
+    },
     "sdr-master-prompts": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -2628,6 +2718,12 @@
       "skillPath": "skills/slideshow/SKILL.md",
       "computedHash": "4d0b55d4ee90c365d0a7ae6626c2b66639d1a4e2db1251491eb4d53a068fb97e"
     },
+    "smart-explore": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/smart-explore/SKILL.md",
+      "computedHash": "9a1725dd93477d0b1c698f3b47734dc10491c6edeb89cb728d2f33ab4ac35fce"
+    },
     "social-media-monitor": {
       "source": "nexscope-ai/eCommerce-Skills",
       "sourceType": "github",
@@ -2639,6 +2735,12 @@
       "sourceType": "github",
       "skillPath": "skills/tanyo-gochev/stage-aware-follow-up/SKILL.md",
       "computedHash": "5ed569db875429e998089f4593d6fd123441e8436584462ddb7e57e189f2348a"
+    },
+    "standup": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/standup/SKILL.md",
+      "computedHash": "d297e73c460cc806b578f7c4a97ada138035320d7d53cff4357e5d9ce9664631"
     },
     "subreddit-pre-post-check": {
       "source": "swan-gtm/gtm-skills",
@@ -2814,6 +2916,12 @@
       "skillPath": "tiktok-shop-trending-products/SKILL.md",
       "computedHash": "5caa5cfb14918b2d5ca9dbc9ed376651086d5ce89ae1e104e688e64f9d4d4c83"
     },
+    "timeline-report": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/timeline-report/SKILL.md",
+      "computedHash": "f1cabe0ece06cf0932a432d96d59441a14c5f6a64c244c0a8df40f93a2930295"
+    },
     "track-contact-job-changes": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -2940,17 +3048,35 @@
       "skillPath": "skills/peter-cools/website-to-signals/SKILL.md",
       "computedHash": "18676c50a71b93b7b2d6b897557fc1267c86007114123c39cc2bf6f1919cff36"
     },
+    "weekly-digests": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/weekly-digests/SKILL.md",
+      "computedHash": "7f7c19f47354e23952205ed63e828f4b953d830a24f0d93d45e119d9db6e87d5"
+    },
     "weekly-roundup-email": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
       "skillPath": "skills/daniel-bustamante/weekly-roundup-email/SKILL.md",
       "computedHash": "6213d62f56b520cf9d070f60d3a6766942bd3ac5ee11fca5ca010d4da46620f7"
     },
+    "what-the": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/what-the/SKILL.md",
+      "computedHash": "89d95f90e4299972cec11765a2db44dd4cb60c8c9f10b58eebfbcb1eec7aaf41"
+    },
     "won-deal-icp-finder": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
       "skillPath": "skills/erwann-lefevre/won-deal-icp-finder/SKILL.md",
       "computedHash": "796a7d010611da1b8298ea045fd9cf16a44088a807cfc44b6e2acc18612ee0f6"
+    },
+    "wowerpoint": {
+      "source": "thedotmack/claude-mem",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/wowerpoint/SKILL.md",
+      "computedHash": "1f3e37d16463d0a9a55b178f3fb0325f10906891a3e2ec1bdbb970696190d5a5"
     },
     "write-b2b-sponsored-post": {
       "source": "swan-gtm/gtm-skills",
