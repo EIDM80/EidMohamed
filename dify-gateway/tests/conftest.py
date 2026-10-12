@@ -13,6 +13,8 @@ os.environ.setdefault("GATEWAY_SECRET_KEY", "test-secret-key")
 os.environ.setdefault("DIFY_BASE_URL", "http://dify.test/v1")
 os.environ.setdefault("RATE_LIMIT_PER_MINUTE", "1000")
 os.environ.setdefault("ADMIN_API_KEY", "test-admin-key")
+os.environ.setdefault("BILLING_WEBHOOK_SECRET", "whsec-test")
+os.environ.setdefault("BILLING_PRICE_MAP", "price_pro:pro,price_ent:enterprise")
 
 from fastapi.testclient import TestClient  # noqa: E402
 

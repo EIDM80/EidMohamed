@@ -29,7 +29,10 @@ jobs:
       - name: Tenant isolation check on exported workflows
         run: python -m scripts.check_workflow_dsl workflows/*.yml
 
-      - name: Migrations apply cleanly
+      - name: Migrations apply and reverse cleanly
         env:
           GATEWAY_DATABASE_URL: sqlite+pysqlite:///./ci.db
-        run: alembic upgrade head
+        run: |
+          alembic upgrade head
+          alembic downgrade base
+          alembic upgrade head

@@ -1,4 +1,4 @@
-.PHONY: install dev test lint migrate revision seed check-workflows docker
+.PHONY: install dev test migrate revision seed check-workflows docker prod backup secrets
 
 VENV ?= .venv
 PY   := $(VENV)/bin/python
@@ -32,3 +32,19 @@ check-workflows:
 
 docker:
 	docker compose up -d --build
+
+# Production overlay: Dify on an internal network, secrets as files.
+prod:
+	docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+
+backup:
+	./scripts/backup.sh $(dest)
+
+# Generate the three secret files the production overlay mounts.
+secrets:
+	mkdir -p secrets
+	test -s secrets/gateway_secret_key || $(PY) -c "import secrets;print(secrets.token_urlsafe(48))" > secrets/gateway_secret_key
+	test -s secrets/admin_api_key || $(PY) -c "import secrets;print(secrets.token_urlsafe(32))" > secrets/admin_api_key
+	test -s secrets/billing_webhook_secret || echo "paste-your-provider-webhook-secret" > secrets/billing_webhook_secret
+	chmod 600 secrets/*
+	@echo "secrets/ written. Keep it out of git (already in .gitignore)."

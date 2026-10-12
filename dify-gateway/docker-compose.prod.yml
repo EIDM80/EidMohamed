@@ -1,0 +1,52 @@
+# Production overlay: docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+#
+# What this changes:
+#   - Dify is joined as an internal network. Its own compose file must stop
+#     publishing ports, so the gateway is the only way in.
+#   - Secrets are mounted as files under /run/secrets instead of living in the
+#     environment, where `docker inspect` and crash dumps expose them.
+#   - The gateway itself binds to localhost; put a TLS terminator in front.
+#
+# Requires Compose v2.24.4+ for the !override tag. It is load-bearing, not
+# cosmetic: Compose APPENDS port lists when merging files, so without it this
+# overlay would add 127.0.0.1:8000 while keeping the base file's 0.0.0.0:8000
+# and the gateway would stay publicly bound.
+services:
+  gateway:
+    ports: !override
+      - "127.0.0.1:8000:8000"
+    environment:
+      JSON_LOGS: "true"
+      LOG_LEVEL: INFO
+    secrets:
+      - gateway_secret_key
+      - admin_api_key
+      - billing_webhook_secret
+    networks:
+      - gateway_net
+      - dify_internal
+    healthcheck:
+      # Readiness, not liveness: an unhealthy container is one that should not
+      # receive traffic.
+      test: ["CMD-SHELL", "python -c \"import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/ready').status==200 else 1)\""]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+
+secrets:
+  gateway_secret_key:
+    file: ./secrets/gateway_secret_key
+  admin_api_key:
+    file: ./secrets/admin_api_key
+  billing_webhook_secret:
+    file: ./secrets/billing_webhook_secret
+
+networks:
+  dify_internal:
+    external: true
+    name: docker_default   # the network Dify's own compose creates

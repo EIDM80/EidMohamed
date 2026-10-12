@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة التحكم</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+  :root{
+    --ground:#F6F7F5; --surface:#FFFFFF; --surface-2:#EFF2F0;
+    --ink:#131C1B; --muted:#596866;
+    --accent:#14766B; --accent-soft:#DCEDE9;
+    --danger:#A8372A;
+    --line:#DFE5E2; --line-strong:#C6D0CD;
+    --f-body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+    --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0D1413; --surface:#151E1D; --surface-2:#1B2625;
+      --ink:#E6EDEB; --muted:#93A6A3;
+      --accent:#4FCDB9; --accent-soft:#12302C;
+      --danger:#E0775F;
+      --line:#24312F; --line-strong:#33433F;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);line-height:1.7;font-size:15.5px}
+  .wrap{max-width:900px;margin-inline:auto;padding:24px 20px 60px}
+  h1{font-size:1.4rem;font-weight:600;margin:0}
+  h2{font-size:1rem;font-weight:600;margin:0 0 12px}
+  button{font-family:inherit;font-size:.9rem;cursor:pointer;border-radius:8px;border:1px solid var(--line-strong);
+    background:var(--surface);color:var(--ink);padding:9px 16px}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  button:disabled{opacity:.5;cursor:default}
+  button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  input,textarea{font-family:inherit;font-size:.95rem;width:100%;padding:10px 12px;border-radius:8px;
+    border:1px solid var(--line-strong);background:var(--surface);color:var(--ink)}
+  textarea{resize:vertical;min-height:72px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    padding-bottom:16px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+  .bar .sp{margin-inline-start:auto}
+  .muted{color:var(--muted);font-size:.86rem}
+  .mono{font-family:var(--f-mono);font-size:.8rem;direction:ltr;unicode-bidi:embed;display:inline-block}
+  .hidden{display:none!important}
+  .msg{padding:12px 14px;border-radius:10px;margin-bottom:10px;white-space:pre-wrap;word-break:break-word}
+  .msg.me{background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent)}
+  .msg.bot{background:var(--surface-2);border:1px solid var(--line)}
+  #log{max-height:46vh;overflow-y:auto;margin-bottom:14px}
+  .meter{height:6px;border-radius:999px;background:var(--surface-2);overflow:hidden;margin-top:8px}
+  .meter i{display:block;height:100%;background:var(--accent)}
+  .doc{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+  .doc:last-child{border-bottom:0}
+  .doc .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .doc button{padding:5px 11px;font-size:.8rem;color:var(--danger);border-color:var(--line)}
+  .note{padding:11px 14px;border-radius:8px;font-size:.88rem;margin-bottom:14px;
+    background:var(--surface-2);border:1px solid var(--line)}
+  .note.bad{color:var(--danger);border-color:color-mix(in srgb,var(--danger) 35%,transparent)}
+  .stack{display:grid;gap:12px}
+  label{font-size:.86rem;color:var(--muted);display:block;margin-bottom:5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ sign in ============ -->
+  <section id="gate" class="card" style="max-width:420px;margin-inline:auto">
+    <h2>تسجيل الدخول</h2>
+    <div id="gate-note" class="note bad hidden"></div>
+    <form id="login" class="stack">
+      <div><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" required></div>
+      <div><label for="pw">كلمة المرور</label><input id="pw" type="password" autocomplete="current-password" required></div>
+      <button class="primary" type="submit">دخول</button>
+    </form>
+  </section>
+
+  <!-- ============ app ============ -->
+  <main id="app" class="hidden">
+    <div class="bar">
+      <h1>لوحة التحكم</h1>
+      <span class="sp"></span>
+      <span id="who" class="muted"></span>
+      <button id="out">خروج</button>
+    </div>
+
+    <div id="note" class="note hidden"></div>
+
+    <section class="card">
+      <h2>الاستهلاك هذا الشهر</h2>
+      <div class="muted"><span id="used">—</span> من <span id="limit">—</span> رمز</div>
+      <div class="meter"><i id="meter" style="width:0%"></i></div>
+    </section>
+
+    <section class="card">
+      <h2>المحادثة</h2>
+      <div id="log"></div>
+      <form id="ask" class="stack">
+        <textarea id="q" placeholder="اكتب سؤالك…" required></textarea>
+        <div class="row">
+          <button class="primary" type="submit" id="send">إرسال</button>
+          <button type="button" id="fresh">محادثة جديدة</button>
+          <span id="conv" class="mono muted"></span>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>قاعدة المعرفة</h2>
+      <div class="row" style="margin-bottom:14px">
+        <input id="file" type="file" style="flex:1">
+        <button id="up" class="primary" type="button">رفع</button>
+      </div>
+      <div id="docs" class="muted">…</div>
+    </section>
+  </main>
+</div>
+
+<script>
+// The dashboard talks only to this gateway: no upstream key, no upstream
+// endpoint, and no tenant id in any request. The server derives the tenant from
+// the session token, which is the whole point of the architecture. Keeping the
+// engine unnamed here is deliberate — the page is public, the stack is not.
+const KEY = "gateway.token";
+const el = (id) => document.getElementById(id);
+let token = null;
+let conversationId = null;
+
+function setNote(where, text, bad) {
+  const n = el(where);
+  n.textContent = text || "";
+  n.classList.toggle("hidden", !text);
+  n.classList.toggle("bad", !!bad);
+}
+
+async function api(path, options = {}) {
+  const headers = Object.assign({}, options.headers || {});
+  if (token) headers.Authorization = "Bearer " + token;
+  if (options.json !== undefined) {
+    headers["Content-Type"] = "application/json";
+    options.body = JSON.stringify(options.json);
+  }
+  const res = await fetch(path, { method: options.method || "GET", headers, body: options.body });
+
+  if (res.status === 401) { signOut(); throw new Error("انتهت الجلسة. سجّل الدخول مرة أخرى."); }
+  if (!res.ok) {
+    let detail = "تعذّر إكمال الطلب.";
+    try { const body = await res.json(); if (body.detail) detail = body.detail; } catch (_) {}
+    throw new Error(detail);
+  }
+  return res.status === 204 ? null : res.json();
+}
+
+function signOut() {
+  token = null;
+  try { localStorage.removeItem(KEY); } catch (_) {}
+  el("app").classList.add("hidden");
+  el("gate").classList.remove("hidden");
+}
+
+async function signIn(email, password) {
+  const body = await api("/api/auth/login", { method: "POST", json: { email, password } });
+  token = body.access_token;
+  try { localStorage.setItem(KEY, token); } catch (_) {}
+  el("who").textContent = email;
+  el("gate").classList.add("hidden");
+  el("app").classList.remove("hidden");
+  await Promise.all([loadUsage(), loadDocs()]);
+}
+
+async function loadUsage() {
+  try {
+    const u = await api("/api/account/usage");
+    el("used").textContent = u.tokens_used.toLocaleString("ar-EG");
+    el("limit").textContent = u.monthly_token_limit.toLocaleString("ar-EG");
+    const pct = u.monthly_token_limit ? Math.min(100, (u.tokens_used / u.monthly_token_limit) * 100) : 0;
+    el("meter").style.width = pct + "%";
+  } catch (e) { setNote("note", e.message, true); }
+}
+
+async function loadDocs() {
+  try {
+    const body = await api("/api/documents");
+    const host = el("docs");
+    if (!body.documents.length) { host.textContent = "لا توجد مستندات بعد."; return; }
+    host.textContent = "";
+    host.className = "";
+    for (const doc of body.documents) {
+      const row = document.createElement("div");
+      row.className = "doc";
+      const name = document.createElement("span");
+      name.className = "n";
+      name.textContent = doc.name;
+      const del = document.createElement("button");
+      del.type = "button";
+      del.textContent = "حذف";
+      del.onclick = async () => {
+        del.disabled = true;
+        try { await api("/api/documents/" + doc.id, { method: "DELETE" }); await loadDocs(); }
+        catch (e) { setNote("note", e.message, true); del.disabled = false; }
+      };
+      row.append(name, del);
+      host.append(row);
+    }
+  } catch (e) {
+    el("docs").textContent = e.message;
+  }
+}
+
+function bubble(cls, text) {
+  const node = document.createElement("div");
+  node.className = "msg " + cls;
+  node.textContent = text;
+  el("log").append(node);
+  el("log").scrollTop = el("log").scrollHeight;
+  return node;
+}
+
+async function ask(question) {
+  bubble("me", question);
+  const answer = bubble("bot", "…");
+  const headers = { Authorization: "Bearer " + token, "Content-Type": "application/json" };
+  const payload = { query: question };
+  if (conversationId) payload.conversation_id = conversationId;
+
+  const res = await fetch("/api/chat/stream", {
+    method: "POST", headers, body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    if (res.status === 401) { signOut(); throw new Error("انتهت الجلسة. سجّل الدخول مرة أخرى."); }
+    let detail = "المساعد غير متاح الآن.";
+    try { const body = await res.json(); if (body.detail) detail = body.detail; } catch (_) {}
+    answer.textContent = detail;
+    throw new Error(detail);
+  }
+
+  // Stream the reply so the first words appear before the whole answer is done.
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let text = "";
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    text += decoder.decode(value, { stream: true });
+    answer.textContent = text;
+    el("log").scrollTop = el("log").scrollHeight;
+  }
+  if (!text) answer.textContent = "(لا توجد إجابة)";
+
+  // The conversation id is only needed to continue the thread; the first reply
+  // establishes it from the history list.
+  if (!conversationId) {
+    try {
+      const list = await api("/api/conversations?limit=1");
+      if (list.conversations.length) {
+        conversationId = list.conversations[0].id;
+        el("conv").textContent = conversationId.slice(0, 8);
+      }
+    } catch (_) {}
+  }
+  await loadUsage();
+}
+
+el("login").onsubmit = async (event) => {
+  event.preventDefault();
+  setNote("gate-note", "");
+  try { await signIn(el("email").value.trim(), el("pw").value); }
+  catch (e) { setNote("gate-note", e.message, true); }
+};
+
+el("ask").onsubmit = async (event) => {
+  event.preventDefault();
+  const question = el("q").value.trim();
+  if (!question) return;
+  el("q").value = "";
+  el("send").disabled = true;
+  setNote("note", "");
+  try { await ask(question); } catch (e) { setNote("note", e.message, true); }
+  finally { el("send").disabled = false; }
+};
+
+el("fresh").onclick = () => {
+  conversationId = null;
+  el("log").textContent = "";
+  el("conv").textContent = "";
+};
+
+el("up").onclick = async () => {
+  const file = el("file").files[0];
+  if (!file) { setNote("note", "اختر ملفاً أولاً.", true); return; }
+  const form = new FormData();
+  form.append("file", file);
+  el("up").disabled = true;
+  setNote("note", "جارٍ الرفع…");
+  try {
+    await api("/api/documents", { method: "POST", body: form });
+    setNote("note", "تم الرفع. الفهرسة تجري الآن.");
+    el("file").value = "";
+    await loadDocs();
+  } catch (e) { setNote("note", e.message, true); }
+  finally { el("up").disabled = false; }
+};
+
+el("out").onclick = signOut;
+
+// Resume a session if one is stored. Storage can throw in a private window, so
+// the page must render correctly when it does.
+try {
+  const stored = localStorage.getItem(KEY);
+  if (stored) {
+    token = stored;
+    el("gate").classList.add("hidden");
+    el("app").classList.remove("hidden");
+    Promise.all([loadUsage(), loadDocs()]).catch(() => {});
+  }
+} catch (_) {}
+</script>
+</body>
+</html>

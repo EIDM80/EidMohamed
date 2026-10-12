@@ -285,3 +285,48 @@ class DifyClient:
 
     async def indexing_status(self, dataset_id: str, batch: str) -> dict[str, Any]:
         return await self._json("GET", f"/datasets/{dataset_id}/documents/{batch}/indexing-status")
+
+    # ------------------------------------------------------------ conversations
+
+    async def list_conversations(
+        self, *, tenant_id: str, user_id: str, limit: int = 20, last_id: str | None = None
+    ) -> dict[str, Any]:
+        """List this end user's conversations.
+
+        The `user` parameter is what scopes the result. Dify returns only
+        conversations belonging to that EndUser, which is why the gateway can
+        serve many tenants from one app without filtering afterwards.
+        """
+        params: dict[str, Any] = {"user": end_user_id(tenant_id, user_id), "limit": limit}
+        if last_id:
+            params["last_id"] = last_id
+        return await self._json("GET", "/conversations", params=params)
+
+    async def list_messages(
+        self, *, conversation_id: str, tenant_id: str, user_id: str, limit: int = 50
+    ) -> dict[str, Any]:
+        return await self._json(
+            "GET",
+            "/messages",
+            params={
+                "conversation_id": conversation_id,
+                "user": end_user_id(tenant_id, user_id),
+                "limit": limit,
+            },
+        )
+
+    async def rename_conversation(
+        self, *, conversation_id: str, tenant_id: str, user_id: str, name: str
+    ) -> dict[str, Any]:
+        return await self._json(
+            "POST",
+            f"/conversations/{conversation_id}/name",
+            json={"name": name, "user": end_user_id(tenant_id, user_id)},
+        )
+
+    async def delete_conversation(self, *, conversation_id: str, tenant_id: str, user_id: str) -> None:
+        await self._json(
+            "DELETE",
+            f"/conversations/{conversation_id}",
+            json={"user": end_user_id(tenant_id, user_id)},
+        )

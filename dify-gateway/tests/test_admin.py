@@ -154,3 +154,24 @@ def test_billing_export_totals_per_tenant(client, make_tenant):
 
 def test_billing_export_rejects_a_malformed_period(client):
     assert client.get("/api/admin/billing/2026", headers=ADMIN).status_code == 400
+
+
+def test_provision_links_the_billing_customer(client):
+    """Without this link a subscription webhook can never find the tenant."""
+    from app.db import SessionLocal
+    from app.models import Tenant
+
+    resp = client.post(
+        "/api/admin/tenants",
+        headers=ADMIN,
+        json={
+            "name": "Acme",
+            "email": "owner@acme.io",
+            "app_key": "app-acme",
+            "billing_customer_id": "cus_acme",
+        },
+    )
+    assert resp.status_code == 200, resp.text
+
+    with SessionLocal() as db:
+        assert db.get(Tenant, resp.json()["tenant_id"]).billing_customer_id == "cus_acme"

@@ -46,6 +46,9 @@ class ProvisionRequest(BaseModel):
     # Reuse a shared knowledge base, or leave empty to create a dedicated one
     # when the plan calls for it.
     dataset_id: str | None = None
+    # Billing provider's customer id. Webhooks match on this, so without it a
+    # subscription event cannot find this tenant.
+    billing_customer_id: str | None = None
 
 
 class ProvisionResponse(BaseModel):
@@ -70,7 +73,7 @@ async def provision(body: ProvisionRequest, db: Session = Depends(get_db)) -> Pr
     plan = get_plan(body.plan)
     password = body.password or secrets.token_urlsafe(12)
 
-    tenant = Tenant(name=body.name, plan=plan.key)
+    tenant = Tenant(name=body.name, plan=plan.key, billing_customer_id=body.billing_customer_id)
     db.add(tenant)
     db.flush()
 
@@ -168,6 +171,7 @@ def list_tenants(db: Session = Depends(get_db)) -> dict:
                 "name": t.name,
                 "plan": t.plan,
                 "is_active": t.is_active,
+                "billing_customer_id": t.billing_customer_id,
                 "tokens_used": getattr(quotas.get(t.id), "tokens_used", 0),
                 "monthly_token_limit": getattr(quotas.get(t.id), "monthly_token_limit", 0),
                 "documents": docs.get(t.id, 0),

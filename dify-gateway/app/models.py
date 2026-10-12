@@ -42,6 +42,10 @@ class Tenant(Base):
     name: Mapped[str] = mapped_column(String(200), nullable=False)
     plan: Mapped[str] = mapped_column(String(50), nullable=False, default="free")
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    # Billing provider's customer id. Webhooks arrive keyed on this, not on
+    # anything the customer can set, so it is how a payment event finds a tenant.
+    billing_customer_id: Mapped[str | None] = mapped_column(String(120), nullable=True, index=True)
+    billing_subscription_id: Mapped[str | None] = mapped_column(String(120), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
 
     users: Mapped[list[User]] = relationship(back_populates="tenant")
@@ -151,3 +155,18 @@ class Document(Base):
     size_bytes: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     batch: Mapped[str | None] = mapped_column(String(64), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now, index=True)
+
+
+class WebhookEvent(Base):
+    """Every billing event id we have already applied.
+
+    Providers retry deliveries, and a retried subscription event would
+    otherwise re-apply a plan change or downgrade. The primary key is the
+    provider's event id, so a duplicate insert fails and the handler can skip.
+    """
+
+    __tablename__ = "webhook_events"
+
+    event_id: Mapped[str] = mapped_column(String(200), primary_key=True)
+    event_type: Mapped[str] = mapped_column(String(100), nullable=False)
+    received_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_now)
