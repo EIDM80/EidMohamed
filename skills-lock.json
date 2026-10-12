@@ -1212,6 +1212,12 @@
       "skillPath": "skills/alex-vacca/gtm-plays-11/SKILL.md",
       "computedHash": "1d7df0746d0c8e9ec575da49112d053a50ac7163e7619c0e043014aaec00eb35"
     },
+    "gui-automation": {
+      "source": "trycua/cua",
+      "sourceType": "github",
+      "skillPath": "skills/gui-automation/SKILL.md",
+      "computedHash": "034ba82cdf14fd200eb28c4687a268602a98332c7cb6803138f13a08df591d87"
+    },
     "handle-linkedin-profile-view-signal": {
       "source": "swan-gtm/gtm-skills",
       "sourceType": "github",
@@ -1367,6 +1373,12 @@
       "sourceType": "github",
       "skillPath": "skills/ariel-cohen/influencer-post-engager-capture/SKILL.md",
       "computedHash": "105065f3a61ac24aa9e53d566d52a336f73767a779470f214428dd3ca5a3cb37"
+    },
+    "jev-use": {
+      "source": "trycua/cua",
+      "sourceType": "github",
+      "skillPath": "skills/jev-use/SKILL.md",
+      "computedHash": "40dc8cd0e848cf06ea816268200d2bd6d3b9e261e9e13d44dd41f959cff85265"
     },
     "job-application-assistant": {
       "source": "MadsLorentzen/ai-job-search",
