@@ -1524,6 +1524,12 @@
       "skillPath": "plugin/skills/learn-codebase/SKILL.md",
       "computedHash": "9142aab8302123f63d8db49430d1f59e2ff2bdcb885d6b3f054f22f7d92f5791"
     },
+    "lemo-opuscar": {
+      "source": "lemomo-ai/lemo-opuscar",
+      "sourceType": "github",
+      "skillPath": "plugin/skills/lemo-opuscar/SKILL.md",
+      "computedHash": "50076498718de9d5243c6a320999ea2d860318baa0da1cee73e3c6bddf9690ce"
+    },
     "link-prospecting": {
       "source": "afazhriel/openseo",
       "sourceType": "github",
