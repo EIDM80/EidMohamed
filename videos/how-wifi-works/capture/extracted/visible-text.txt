@@ -1,0 +1,53 @@
+Topic: How Does Wi-Fi Actually Work?
+
+Core idea: Wi-Fi feels invisible and magical, but it's just radio waves carrying
+digital information — the same physics as an FM radio station, tuned to a
+different frequency and carrying a different kind of signal.
+
+Key points to cover:
+
+1. Your router is a tiny radio transmitter and receiver. It broadcasts on
+   specific frequency bands — mainly 2.4 GHz and 5 GHz (and increasingly
+   6 GHz with newer standards).
+
+2. Data doesn't travel as "WiFi" in some special form — it travels as
+   electromagnetic radio waves. Your device's wireless chip encodes digital
+   bits (1s and 0s) by rapidly varying properties of that wave — its
+   amplitude, phase, and frequency. This encoding scheme is what lets a huge
+   number of bits ride on a signal that, physically, is just an invisible
+   wave rippling through the air.
+
+3. The two main bands trade off range vs. speed:
+   - 2.4 GHz: longer wavelength, travels farther, penetrates walls better,
+     but is slower and more crowded (shared with Bluetooth, microwaves,
+     baby monitors).
+   - 5 GHz: shorter wavelength, faster, less crowded, but drops off faster
+     over distance and struggles more with walls.
+
+4. Why walls and distance hurt your signal: radio waves lose energy
+   (attenuate) as they spread out and as they pass through or reflect off
+   materials. Dense materials (concrete, metal, water — including the water
+   in a human body) absorb or reflect more of the signal than wood or
+   drywall. This is why moving one room over, or even just standing in the
+   wrong spot, can tank your connection.
+
+5. Interference: Wi-Fi shares its radio spectrum with other devices.
+   Overlapping signals from neighboring routers, or other 2.4 GHz devices,
+   collide and corrupt data, forcing retransmission — which is what shows up
+   to you as lag or buffering, not just "weak signal."
+
+6. The handshake: when your phone "connects" to Wi-Fi, it's doing a
+   back-and-forth negotiation with the router — authenticating, agreeing on
+   encryption keys, and establishing a channel — all before any of your
+   actual data (a webpage, a video, a message) starts flowing.
+
+7. The bigger picture: once your data is on the router, Wi-Fi's job is
+   basically done — the router hands it off to a wired connection (ethernet,
+   fiber, cable) that carries it the rest of the way to the internet. Wi-Fi
+   is only the last short hop, wirelessly, between your device and that
+   router.
+
+Takeaway: Wi-Fi isn't magic — it's a radio conversation happening constantly
+between your device and your router, encoded cleverly enough to carry video,
+voice, and data, but still bound by the same physical limits as any radio
+signal: distance, obstacles, and interference.
