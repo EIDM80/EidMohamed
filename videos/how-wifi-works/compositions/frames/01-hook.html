@@ -1,0 +1,109 @@
+<template>
+  <style>
+    #root {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      container-type: size;
+      font-family: serif;
+    }
+
+    /* full-bleed ground — a dedicated clip on the lowest track, never on #root */
+    .hook01-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #f0ebde;
+    }
+    .hook01-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.65; /* background role dimmed ~35% so the type reads sharp against it */
+      background-image: linear-gradient(to right, rgba(31, 43, 224, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(31, 43, 224, 0.1) 1px, transparent 1px);
+      background-size: 2cqw 2cqw;
+    }
+
+    /* stage — the question's safe-area box, well clear of the bottom 17% caption band */
+    .hook01-stage {
+      position: absolute;
+      left: 50%;
+      top: 20cqh;
+      bottom: 20cqh;
+      width: 90cqw;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3.2cqh;
+      text-align: center;
+    }
+
+    .hook01-line {
+      margin: 0;
+      color: #1f2be0;
+      font-weight: 400;
+      font-size: 7.6cqw;
+      line-height: 1.16;
+      letter-spacing: -0.01em;
+      max-width: 88cqw;
+      will-change: transform, filter, opacity;
+    }
+  </style>
+
+  <div id="root" data-composition-id="01-hook">
+    <div class="hook01-bg clip" data-start="0" data-duration="3.84" data-track-index="0"></div>
+
+    <div class="hook01-stage">
+      <p id="hook01-p1" class="hook01-line clip" data-start="0" data-duration="3.84" data-track-index="1">
+        Ever wonder
+      </p>
+      <p id="hook01-p2" class="hook01-line clip" data-start="1.05" data-duration="2.79" data-track-index="2">
+        what's actually happening
+      </p>
+      <p id="hook01-p3" class="hook01-line clip" data-start="2.25" data-duration="1.59" data-track-index="3">
+        when you connect to Wi-Fi?
+      </p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // Beat 1 (0.0s) — "Ever wonder": scale+blur slam, the kinetic-beat-slam default hit.
+      tl.fromTo(
+        "#hook01-p1",
+        { scale: 1.4, filter: "blur(16px)", opacity: 0 },
+        { scale: 1, filter: "blur(0px)", opacity: 1, duration: 0.5, ease: "power4.out" },
+        0,
+      );
+
+      // Beat 2 (1.05s) — "what's actually happening": side-snap slide, a distinct entrance axis.
+      tl.fromTo(
+        "#hook01-p2",
+        { x: -140, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "expo.out" },
+        1.05,
+      );
+
+      // Beat 3 (2.25s) — "when you connect to Wi-Fi?": rise + slight rotation settle, a third distinct axis.
+      tl.fromTo(
+        "#hook01-p3",
+        { y: 60, rotation: 4, opacity: 0 },
+        { y: 0, rotation: 0, opacity: 1, duration: 0.55, ease: "circ.out" },
+        2.25,
+      );
+
+      // Final beat lands at 2.80s; the shot holds still on the last word with no further motion
+      // through the end of the 3.84s duration — a deliberate settle, not a front-loaded freeze.
+
+      window.__timelines["01-hook"] = tl;
+      tl.seek(0);
+    })();
+  </script>
+</template>
