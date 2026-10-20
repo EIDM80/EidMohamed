@@ -290,7 +290,6 @@
         {
           "id": "d7c10a14-21f1-4ebb-9845-f60c818bc737",
           "scope": "project",
-          "report": "/home/user/EidMohamed/videos/how-wifi-works/.hyperframes/artifacts/checks/d7c10a14-21f1-4ebb-9845-f60c818bc737.json",
           "metadata": {
             "ok": false,
             "browserSkipped": false,
@@ -312,14 +311,15 @@
           "revision": "185220ec-0720-4243-8146-a0015a82837a",
           "inputFingerprint": "ab24a2226ca7180375af1eeb794e0efe859a27c6b2f033d61c31f5ffdb7efe3b",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "272748ed-98ae-43ed-8ada-0a0cd92c11af"
         }
       ],
       "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1": [
         {
           "id": "af592d8a-53d8-45dd-afd4-b7435ade3193",
           "scope": "project",
-          "report": "/home/user/EidMohamed/videos/how-wifi-works/.hyperframes/artifacts/checks/af592d8a-53d8-45dd-afd4-b7435ade3193.json",
           "metadata": {
             "ok": true,
             "browserSkipped": false,
@@ -341,7 +341,9 @@
           "revision": "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1",
           "inputFingerprint": "e2a32bb37bee8b4cc343c7ae83fb89b2176593ab655e0a60f7632bbc09eed22b",
           "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
+          "attribution": "recorded-revision",
+          "status": "cleaned",
+          "cleanedAfterRender": "272748ed-98ae-43ed-8ada-0a0cd92c11af"
         }
       ],
       "a56f924b-27a4-42d5-8588-c60469672295": [
@@ -636,5 +638,18 @@
       ]
     },
     "unversioned": []
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "272748ed-98ae-43ed-8ada-0a0cd92c11af",
+      "completedAt": 1792490341642,
+      "output": "/home/user/EidMohamed/videos/how-wifi-works/renders/video.mp4",
+      "status": "completed",
+      "revision": "a56f924b-27a4-42d5-8588-c60469672295"
+    },
+    "retainedRevisions": [
+      "a56f924b-27a4-42d5-8588-c60469672295"
+    ]
+  },
+  "pendingArtifactCleanup": []
 }
