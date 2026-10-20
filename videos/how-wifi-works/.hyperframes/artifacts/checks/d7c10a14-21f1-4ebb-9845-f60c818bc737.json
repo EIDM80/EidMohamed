@@ -1,0 +1,1214 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 42,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "caption_track_kind_missing",
+        "severity": "warning",
+        "message": "<div id=\"el-captions\"> looks like captions but is not marked as such, so the timeline cannot group it on the caption track.",
+        "selector": "#el-captions",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add data-track-kind=\"captions\" to <div id=\"el-captions\">."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"hook01-bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/01-hook.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"bg-field\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/02-concept.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"glitch-col\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/02-concept.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"hairline\" data-start=\"0\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/02-concept.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"hairline\" data-start=\"0\" data-track-index=\"6\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/02-concept.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"kicker\" data-start=\"0\" data-track-index=\"3\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/02-concept.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"wordmark-wrap\" data-start=\"0\" data-track-index=\"4\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/02-concept.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"subline\" data-start=\"3.6\" data-track-index=\"5\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/02-concept.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "gsap_repeated_fromto_without_baseline",
+        "severity": "warning",
+        "message": "2 tl.fromTo() calls target \".wordmark-wrap\" with no stable baseline. The last-authored fromTo \"from\" values become the element's resting state for any seek before the first tween actually runs, because GSAP applies fromTo from-values at authoring time (immediateRender), not at tween position.",
+        "selector": ".wordmark-wrap",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/02-concept.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add `immediateRender: false` to every fromTo except the earliest-positioned one (at 0.05s), so pre-first-tween seeks keep its \"from\" values. A hiding `tl.set(..., 0)` baseline trips gsap_timeline_set_initial_hide, and a `gsap.set` authored before the fromTo calls is overwritten by them."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f03bands-bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/03-bands.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"enc-bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"enc-content\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"enc-kicker\" data-start=\"0\" data-track-index=\"6\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"enc-wave-wrap\" data-start=\"0\" data-track-index=\"7\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"enc-label-swap\" data-start=\"2.8\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"enc-ticker-row\" data-start=\"6.5\" data-track-index=\"3\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"enc-counter-group\" data-start=\"6.5\" data-track-index=\"4\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"enc-chrome\" data-start=\"0\" data-track-index=\"5\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"atn05-bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/05-attenuation.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"atn05-tag\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/05-attenuation.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"atn05-router\" data-start=\"0\" data-track-index=\"4\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/05-attenuation.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<svg class=\"atn05-ringwrap\" data-start=\"0\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/05-attenuation.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"atn05-band\" data-start=\"2.3\" data-track-index=\"5\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/05-attenuation.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"atn05-band\" data-start=\"5.0\" data-track-index=\"6\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/05-attenuation.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"atn05-callout\" data-start=\"7.5\" data-track-index=\"3\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/05-attenuation.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"atn05-callout\" data-start=\"7.5\" data-track-index=\"7\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/05-attenuation.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f06-bg\" data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f06-node\" data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f06-node\" data-start=\"2.5\" data-track-index=\"3\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f06-node\" data-start=\"3.6\" data-track-index=\"4\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f06-node\" data-start=\"4.8\" data-track-index=\"5\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f06-collision\" data-start=\"6.5\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f06-glitch\" data-start=\"6.4\" data-track-index=\"6\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f06-spinner-wrap\" data-start=\"9.5\" data-track-index=\"7\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div class=\"f06-retry\" data-start=\"9.7\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-start=\"0\" data-track-index=\"0\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/07-landing.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-start=\"0\" data-track-index=\"1\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/07-landing.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-start=\"0\" data-track-index=\"2\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/07-landing.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<svg data-start=\"0\" data-track-index=\"3\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/07-landing.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-start=\"0\" data-track-index=\"4\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/07-landing.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      },
+      {
+        "code": "studio_missing_editable_id",
+        "severity": "warning",
+        "message": "<div data-start=\"0\" data-track-index=\"5\"> has no id, so Studio cannot use a stable edit target for its timeline and canvas controls.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/EidMohamed/videos/how-wifi-works/compositions/frames/07-landing.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Add a stable, human-readable id such as id=\"hero-title\" or id=\"scene-1-card\" to every timeline-visible element you want agents or Studio to edit."
+      }
+    ],
+    "filesScanned": 9
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 3,
+    "warningCount": 0,
+    "infoCount": 6,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 50.151,
+        "selector": "div.f06-chaos > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 482.08,
+          "top": 620.17,
+          "right": 597.91,
+          "bottom": 638.16,
+          "width": 115.83,
+          "height": 17.99
+        },
+        "containerSelector": "[data-start=\"2.5\"] > div:nth-of-type(2)",
+        "text": "YOUR ROUTER",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 482.08,
+          "y": 620.17,
+          "width": 115.83,
+          "height": 17.99
+        },
+        "firstSeen": 46.845,
+        "lastSeen": 50.265,
+        "occurrences": 12,
+        "heldMs": 3420.000000000002,
+        "times": [
+          46.845,
+          47.187,
+          47.529,
+          47.871,
+          48.213,
+          48.555,
+          48.897,
+          49.239,
+          49.581,
+          49.923,
+          50.151,
+          50.265
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 50.151,
+        "selector": "[data-start=\"2.5\"] > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 489.9,
+          "top": 602.18,
+          "right": 590.1,
+          "bottom": 638.16,
+          "width": 100.2,
+          "height": 35.98
+        },
+        "containerSelector": "div.f06-chaos > div:nth-of-type(3) > div:nth-of-type(2)",
+        "text": "NEIGHBOR'S ROUTER",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 489.9,
+          "y": 602.18,
+          "width": 100.2,
+          "height": 35.98
+        },
+        "firstSeen": 46.845,
+        "lastSeen": 50.265,
+        "occurrences": 12,
+        "heldMs": 3420.000000000002,
+        "times": [
+          46.845,
+          47.187,
+          47.529,
+          47.871,
+          48.213,
+          48.555,
+          48.897,
+          49.239,
+          49.581,
+          49.923,
+          50.151,
+          50.265
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 50.151,
+        "selector": "div.f06-chaos > div:nth-of-type(3) > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 489.48,
+          "top": 602.18,
+          "right": 590.52,
+          "bottom": 620.17,
+          "width": 101.04,
+          "height": 17.99
+        },
+        "containerSelector": "[data-start=\"4.8\"] > div:nth-of-type(2)",
+        "text": "MICROWAVE",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 489.48,
+          "y": 602.18,
+          "width": 101.04,
+          "height": 17.99
+        },
+        "firstSeen": 47.529,
+        "lastSeen": 50.265,
+        "occurrences": 10,
+        "heldMs": 2735.9999999999973,
+        "times": [
+          47.529,
+          47.871,
+          48.213,
+          48.555,
+          48.897,
+          49.239,
+          49.581,
+          49.923,
+          50.151,
+          50.265
+        ]
+      },
+      {
+        "code": "text_box_overflow",
+        "severity": "info",
+        "time": 30.091,
+        "selector": "#enc-ticker-strip",
+        "message": "Text extends outside its nearest visual/container box.",
+        "rect": {
+          "left": -1510,
+          "top": 1046.86,
+          "right": 8678,
+          "bottom": 1099.86,
+          "width": 10188,
+          "height": 53
+        },
+        "containerSelector": "#el-04-encoding > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4)",
+        "text": "1011001101001110100101100111010010110100111010010110011101001011001101 1011001101001110100101100111010010110100111010010110011101001011001101 1011001101001110100101100111010010110100111010010110011101001011001101 1011001101001110100101100111010010110100111010010110011101001011001101",
+        "fixHint": "Text is 10188px x 53px inside 900px x 64px and overflows by up to 7688px; widen the container to at least ~10188px or shrink font-size from 40px to ~4px, or allow wrapping with max-width/fitTextFontSize.",
+        "containerRect": {
+          "left": 90,
+          "top": 1044,
+          "right": 990,
+          "bottom": 1108,
+          "width": 900,
+          "height": 64
+        },
+        "overflow": {
+          "left": 1600,
+          "right": 7688
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": -1510,
+          "y": 1046.86,
+          "width": 10188,
+          "height": 53
+        },
+        "firstSeen": 30.091,
+        "lastSeen": 30.091,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          30.091
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 30.091,
+        "selector": "#enc-ticker-strip",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1510,
+          "top": 1046.86,
+          "right": 8678,
+          "bottom": 1099.86,
+          "width": 10188,
+          "height": 53
+        },
+        "containerSelector": "#root",
+        "text": "1011001101001110100101100111010010110100111010010110011101001011001101 1011001101001110100101100111010010110100111010010110011101001011001101 1011001101001110100101100111010010110100111010010110011101001011001101 1011001101001110100101100111010010110100111010010110011101001011001101",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 1510,
+          "right": 7598
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": -1510,
+          "y": 1046.86,
+          "width": 10188,
+          "height": 53
+        },
+        "firstSeen": 30.091,
+        "lastSeen": 30.091,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          30.091
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 30.091,
+        "selector": "#enc-ticker-strip",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -1510,
+          "top": 1046.86,
+          "right": 8678,
+          "bottom": 1099.86,
+          "width": 10188,
+          "height": 53
+        },
+        "containerSelector": "#el-04-encoding > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 90,
+          "top": 1044,
+          "right": 990,
+          "bottom": 1108,
+          "width": 900,
+          "height": 64
+        },
+        "overflow": {
+          "left": 1600,
+          "right": 7688
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": -1510,
+          "y": 1046.86,
+          "width": 10188,
+          "height": 53
+        },
+        "firstSeen": 30.091,
+        "lastSeen": 30.091,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          30.091
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 30.091,
+        "selector": "#enc-ticker-strip",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -1510,
+          "top": 1046.86,
+          "right": 8678,
+          "bottom": 1099.86,
+          "width": 10188,
+          "height": 53
+        },
+        "containerSelector": "#el-04-encoding > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4)",
+        "text": "1011001101001110100101100111010010110100111010010110011101001011001101 1011001101001110100101100111010010110100111010010110011101001011001101 1011001101001110100101100111010010110100111010010110011101001011001101 1011001101001110100101100111010010110100111010010110011101001011001101",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 90,
+          "top": 1044,
+          "right": 990,
+          "bottom": 1108,
+          "width": 900,
+          "height": 64
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/04-encoding.html",
+        "bbox": {
+          "x": -1510,
+          "y": 1046.86,
+          "width": 10188,
+          "height": 53
+        },
+        "firstSeen": 30.091,
+        "lastSeen": 30.091,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          30.091
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 36.777,
+        "selector": "circle.atn05-ring",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -545.78,
+          "top": -550.78,
+          "right": 1155.78,
+          "bottom": 1150.78,
+          "width": 1701.57,
+          "height": 1701.57
+        },
+        "containerSelector": "#el-05-attenuation > div:nth-of-type(1) > svg:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 545.78,
+          "right": 75.78,
+          "top": 550.78
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/05-attenuation.html",
+        "bbox": {
+          "x": -545.78,
+          "y": -550.78,
+          "width": 1701.57,
+          "height": 1701.57
+        },
+        "firstSeen": 36.777,
+        "lastSeen": 36.777,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          36.777
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 50.151,
+        "selector": "[data-start=\"2.5\"] > div:nth-of-type(2)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 489.9,
+          "top": 602.18,
+          "right": 590.1,
+          "bottom": 638.16,
+          "width": 100.2,
+          "height": 35.98
+        },
+        "containerSelector": "#f06-bar-5",
+        "text": "Neighbor'sRouter",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 0.06,
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 489.9,
+          "y": 602.18,
+          "width": 100.2,
+          "height": 35.98
+        },
+        "firstSeen": 50.151,
+        "lastSeen": 50.151,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          50.151
+        ]
+      }
+    ],
+    "duration": 60.181,
+    "samples": [
+      3.343,
+      10.03,
+      16.717,
+      23.404,
+      30.091,
+      36.777,
+      43.464,
+      50.151,
+      56.838
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 9,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 3.8:1; WCAG AA requires 4.5:1.",
+        "text": "01",
+        "fg": "rgb(85,96,229)",
+        "bg": "rgb(230,224,206)",
+        "ratio": 3.8,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(76,86,206)",
+        "large": false,
+        "selector": "#f03bands-tag-top",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/03-bands.html",
+        "bbox": {
+          "x": 147.013916015625,
+          "y": 334.17779541015625,
+          "width": 32.22894287109375,
+          "height": 30.83233642578125
+        },
+        "time": 16.717,
+        "times": [
+          16.717
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 3.8:1; WCAG AA requires 4.5:1.",
+        "text": "02",
+        "fg": "rgb(85,96,229)",
+        "bg": "rgb(230,224,206)",
+        "ratio": 3.8,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(76,86,206)",
+        "large": false,
+        "selector": "#f03bands-tag-bottom",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/03-bands.html",
+        "bbox": {
+          "x": 166.97418212890625,
+          "y": 915.9164428710938,
+          "width": 30.52252197265625,
+          "height": 27.7855224609375
+        },
+        "time": 16.717,
+        "times": [
+          16.717
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 4.21:1; WCAG AA requires 4.5:1.",
+        "text": "Your Router",
+        "fg": "rgb(85,96,229)",
+        "bg": "rgb(240,235,222)",
+        "ratio": 4.21,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(81,92,219)",
+        "large": false,
+        "selector": "div > div:nth-of-type(6) > div > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/frames/06-interference.html",
+        "bbox": {
+          "x": 482.046875,
+          "y": 620,
+          "width": 115.890625,
+          "height": 18
+        },
+        "time": 43.464,
+        "times": [
+          43.464
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      3.343,
+      16.717,
+      30.091,
+      43.464,
+      56.838
+    ],
+    "checked": 28,
+    "passed": 25
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

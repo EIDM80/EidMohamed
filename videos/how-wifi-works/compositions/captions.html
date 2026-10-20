@@ -1,5 +1,5 @@
 <template id="captions-template" data-composition-id="captions" data-width="1080" data-height="1920">
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script src="assets/vendor/gsap.min.js"></script>
 
 
 <style data-brand-tokens>
@@ -83,7 +83,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.1em 0.34em;
-    font-family: "Newsreader", Georgia, serif;
+    font-family: Georgia, serif;
     font-weight: 400;
     font-size: clamp(40px, 4.4vw, 58px);
     line-height: 1.16;
@@ -118,7 +118,7 @@
   }
   /* numerals / data — the body sans voice, slightly recessed */
   .caption-word.cap-num {
-    font-family: "Hanken Grotesk", ui-monospace, monospace;
+    font-family: ui-monospace, monospace;
     color: color-mix(in srgb, var(--cap-ink, #1f2be0) 72%, var(--cap-canvas, #f0ebde));
   }
   /* emphasis — a cobalt hairline underline (no second hue; emphasis is the ink) */
