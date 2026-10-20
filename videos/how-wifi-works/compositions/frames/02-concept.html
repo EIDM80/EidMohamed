@@ -1,0 +1,205 @@
+<template>
+<style>
+  #root {
+    width: 1080px;
+    height: 1920px;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  /* ---- full-bleed ground: paper + permanent graph-paper grid ---- */
+  [data-composition-id="02-concept"] .bg-field {
+    position: absolute;
+    inset: 0;
+    background-color: #f0ebde;
+    background-image:
+      linear-gradient(to right, rgba(31, 43, 224, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(31, 43, 224, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* ---- stair-stepped pixel-glitch column (left edge, low opacity) ---- */
+  [data-composition-id="02-concept"] .glitch-col {
+    position: absolute;
+    left: 0;
+    top: 96px;
+    width: 84px;
+    height: 1404px;
+    opacity: 0;
+    background-image: repeating-linear-gradient(
+      90deg,
+      #1f2be0 0px,
+      #1f2be0 2px,
+      transparent 2px,
+      transparent 10px
+    );
+    clip-path: polygon(0 0, 100% 0, 100% 22%, 64% 22%, 64% 48%, 100% 48%, 100% 74%, 52% 74%, 52% 100%, 0 100%);
+  }
+
+  /* ---- top / bottom cobalt hairlines (framing chrome, kept inside keep-out) ---- */
+  [data-composition-id="02-concept"] .hairline {
+    position: absolute;
+    left: 56px;
+    right: 56px;
+    height: 2px;
+    background: #1f2be0;
+  }
+  [data-composition-id="02-concept"] .hairline-top {
+    top: 96px;
+  }
+  [data-composition-id="02-concept"] .hairline-bottom {
+    top: 1500px;
+  }
+
+  /* ---- small mono/sans kicker label, left of the glitch column clearance ---- */
+  [data-composition-id="02-concept"] .kicker {
+    position: absolute;
+    left: 140px;
+    top: 128px;
+    font-family: "SF Mono", "Menlo", "Consolas", ui-monospace, monospace;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #1f2be0;
+    opacity: 0;
+  }
+
+  /* ---- hero wordmark: fixed center anchor, hard-cut token swap ---- */
+  [data-composition-id="02-concept"] .wordmark-wrap {
+    position: absolute;
+    left: 50%;
+    top: 620px;
+    text-align: center;
+    opacity: 0;
+    will-change: transform;
+  }
+  [data-composition-id="02-concept"] .wordmark-flash {
+    position: absolute;
+    inset: -22px -36px;
+    background: #1f2be0;
+    opacity: 0;
+    z-index: 1;
+  }
+  [data-composition-id="02-concept"] .wordmark-text {
+    position: relative;
+    z-index: 2;
+    display: block;
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-weight: 400;
+    font-size: 136px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: #1f2be0;
+    white-space: nowrap;
+  }
+
+  /* ---- subline: per-word reveal beneath the wordmark (ink-soft, editorial) ---- */
+  [data-composition-id="02-concept"] .subline {
+    position: absolute;
+    left: 50%;
+    top: 862px;
+    transform: translateX(-50%);
+    width: 86%;
+    max-width: 880px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+  }
+  [data-composition-id="02-concept"] .subline-word {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #5560e5;
+    opacity: 0;
+  }
+</style>
+
+<div id="root" data-composition-id="02-concept" data-start="0" data-duration="6.379" data-width="1080" data-height="1920">
+  <div class="clip bg-field" data-start="0" data-duration="6.379" data-track-index="0"></div>
+
+  <div class="clip glitch-col" data-start="0" data-duration="6.379" data-track-index="1"></div>
+
+  <div class="clip hairline hairline-top" data-start="0" data-duration="6.379" data-track-index="2"></div>
+  <div class="clip hairline hairline-bottom" data-start="0" data-duration="6.379" data-track-index="2"></div>
+
+  <div class="clip kicker" data-start="0" data-duration="6.379" data-track-index="3">Signal</div>
+
+  <div class="clip wordmark-wrap" data-start="0" data-duration="6.379" data-track-index="4">
+    <div class="wordmark-flash"></div>
+    <span class="wordmark-text">WI-FI</span>
+  </div>
+
+  <div class="clip subline" data-start="3.6" data-duration="2.779" data-track-index="5">
+    <span class="subline-word">Same</span>
+    <span class="subline-word">physics.</span>
+    <span class="subline-word">different</span>
+    <span class="subline-word">tuning.</span>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+  (function () {
+    var root = document.querySelector('[data-composition-id="02-concept"]');
+    var glitch = root.querySelector(".glitch-col");
+    var kicker = root.querySelector(".kicker");
+    var wrap = root.querySelector(".wordmark-wrap");
+    var flash = root.querySelector(".wordmark-flash");
+    var text = root.querySelector(".wordmark-text");
+    var words = root.querySelectorAll(".subline-word");
+
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    var SWAP_T = 1.8; // Scene 2 — hard-cut token swap, same position/scale
+
+    // ---- chrome: quiet fade-ins, held for the rest of the shot ----
+    tl.fromTo(glitch, { opacity: 0 }, { opacity: 0.14, duration: 0.6, ease: "none" }, 0.0);
+    tl.fromTo(kicker, { opacity: 0, y: 6 }, { opacity: 0.55, y: 0, duration: 0.45, ease: "power2.out" }, 0.15);
+
+    // ---- Scene 1 (0.0-1.8s): wordmark lands centered, held one beat ----
+    tl.fromTo(
+      wrap,
+      { xPercent: -50, yPercent: -50, opacity: 0, scale: 1.08 },
+      { xPercent: -50, yPercent: -50, opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" },
+      0.05,
+    );
+
+    // ---- Scene 2 (1.8-3.6s): hard-cut flash covers the instant, text swaps
+    //      underneath while hidden, flash clears to reveal "RADIO WAVES" in
+    //      the exact same position/scale — discrete-text-sequence mechanic ----
+    tl.set(flash, { opacity: 1 }, SWAP_T);
+    tl.set(text, { color: "#f0ebde" }, SWAP_T);
+    tl.set(text, { textContent: "RADIO WAVES" }, SWAP_T);
+    tl.fromTo(
+      wrap,
+      { xPercent: -50, yPercent: -50, scale: 1.04 },
+      { xPercent: -50, yPercent: -50, scale: 1, duration: 0.2, ease: "power3.out" },
+      SWAP_T,
+    );
+    tl.set(flash, { opacity: 0 }, SWAP_T + 0.09);
+    tl.set(text, { color: "#1f2be0" }, SWAP_T + 0.09);
+
+    // ---- Scene 3 (3.6-6.379s): subline per-word reveal, lands and holds
+    //      still on the final word (kinetic-beat-slam-style distinct onsets
+    //      on one shared grid) ----
+    var ONSETS = [3.65, 4.05, 4.45, 4.85];
+    words.forEach(function (w, i) {
+      tl.fromTo(
+        w,
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+        ONSETS[i],
+      );
+    });
+
+    window.__timelines["02-concept"] = tl;
+    tl.seek(0);
+  })();
+</script>
+</template>

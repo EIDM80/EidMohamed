@@ -1,0 +1,416 @@
+<template>
+  <style>
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      font-family: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    #root .f06-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #f0ebde;
+      background-image:
+        linear-gradient(rgba(31, 43, 224, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 43, 224, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    #root .f06-chaos,
+    #root .f06-resolve {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    /* ---- node (own router / neighbor devices) ---- */
+    #root .f06-node {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #root .f06-node .f06-ringstack {
+      position: relative;
+      flex: none;
+    }
+    #root .f06-node .f06-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: #1f2be0;
+      opacity: 0;
+    }
+    #root .f06-node .f06-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid #1f2be0;
+      opacity: 0;
+    }
+    #root .f06-node .f06-label {
+      margin-top: 10px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+    }
+
+    /* own router */
+    #root .f06-own {
+      left: 430px;
+      top: 510px;
+      width: 220px;
+    }
+    #root .f06-own .f06-ringstack {
+      width: 100px;
+      height: 100px;
+    }
+    #root .f06-own .f06-dot {
+      width: 18px;
+      height: 18px;
+      left: 41px;
+      top: 41px;
+    }
+    #root .f06-own .f06-ring {
+      left: 38px;
+      top: 38px;
+      width: 24px;
+      height: 24px;
+      opacity: 0;
+    }
+    #root .f06-own .f06-label {
+      font-size: 15px;
+      color: #5560e5;
+    }
+
+    /* neighbor devices */
+    #root .f06-nb {
+      width: 190px;
+    }
+    #root .f06-nb .f06-ringstack {
+      width: 64px;
+      height: 64px;
+    }
+    #root .f06-nb .f06-dot {
+      width: 10px;
+      height: 10px;
+      left: 27px;
+      top: 27px;
+    }
+    #root .f06-nb .f06-ring {
+      left: 2px;
+      top: 2px;
+      width: 60px;
+      height: 60px;
+    }
+    #root .f06-nb .f06-label {
+      font-size: 15px;
+      color: #1f2be0;
+    }
+
+    #root .f06-nb1 { left: 65px; top: 228px; }
+    #root .f06-nb2 { left: 825px; top: 268px; }
+    #root .f06-nb3 { left: 445px; top: 1148px; }
+
+    /* collision label */
+    #root .f06-collision {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 352px;
+      text-align: center;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      font-size: 50px;
+      letter-spacing: -0.01em;
+      color: #1f2be0;
+      opacity: 0;
+    }
+
+    /* glitch / static cluster */
+    #root .f06-glitch {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #root .f06-bar {
+      position: absolute;
+      background: #1f2be0;
+      opacity: 0;
+    }
+
+    /* buffering spinner */
+    #root .f06-spinner-wrap {
+      position: absolute;
+      left: 490px;
+      top: 510px;
+      width: 100px;
+      height: 100px;
+      opacity: 0;
+    }
+    #root .f06-spinner-wrap svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    #root .f06-retry {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: 648px;
+      text-align: center;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 26px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1f2be0;
+      opacity: 0;
+    }
+  </style>
+
+  <div
+    id="root"
+    data-composition-id="06-interference"
+    data-start="0"
+    data-duration="12.587"
+    data-width="1080"
+    data-height="1920"
+  >
+    <div class="clip f06-bg" data-start="0" data-duration="12.587" data-track-index="0"></div>
+
+    <div class="f06-chaos">
+      <!-- own router: calm center ring -->
+      <div class="clip f06-node f06-own" data-start="0" data-duration="9.6" data-track-index="1">
+        <div class="f06-ringstack">
+          <div class="f06-dot"></div>
+          <div class="f06-ring f06-own-ring1"></div>
+          <div class="f06-ring f06-own-ring2"></div>
+          <div class="f06-ring f06-own-ring3"></div>
+          <div class="f06-ring f06-own-ring4"></div>
+        </div>
+        <div class="f06-label">Your Router</div>
+      </div>
+
+      <!-- neighbor's router -->
+      <div class="clip f06-node f06-nb f06-nb1" data-start="2.5" data-duration="7.1" data-track-index="1">
+        <div class="f06-ringstack">
+          <div class="f06-ring"></div>
+          <div class="f06-dot"></div>
+        </div>
+        <div class="f06-label">Neighbor's<br />Router</div>
+      </div>
+
+      <!-- microwave -->
+      <div class="clip f06-node f06-nb f06-nb2" data-start="3.6" data-duration="6.0" data-track-index="1">
+        <div class="f06-ringstack">
+          <div class="f06-ring"></div>
+          <div class="f06-dot"></div>
+        </div>
+        <div class="f06-label">Microwave</div>
+      </div>
+
+      <!-- baby monitor -->
+      <div class="clip f06-node f06-nb f06-nb3" data-start="4.8" data-duration="4.8" data-track-index="1">
+        <div class="f06-ringstack">
+          <div class="f06-ring"></div>
+          <div class="f06-dot"></div>
+        </div>
+        <div class="f06-label">Baby Monitor</div>
+      </div>
+
+      <div class="clip f06-collision" data-start="6.5" data-duration="3.1" data-track-index="2">Collision</div>
+
+      <div class="clip f06-glitch" data-start="6.4" data-duration="3.2" data-track-index="2">
+        <div class="f06-bar" id="f06-bar-0" style="left: 486px; top: 514px; width: 8px; height: 26px;"></div>
+        <div class="f06-bar" id="f06-bar-1" style="left: 584px; top: 500px; width: 10px; height: 22px;"></div>
+        <div class="f06-bar" id="f06-bar-2" style="left: 474px; top: 572px; width: 7px; height: 30px;"></div>
+        <div class="f06-bar" id="f06-bar-3" style="left: 592px; top: 580px; width: 12px; height: 20px;"></div>
+        <div class="f06-bar" id="f06-bar-4" style="left: 516px; top: 488px; width: 9px; height: 24px;"></div>
+        <div class="f06-bar" id="f06-bar-5" style="left: 558px; top: 616px; width: 8px; height: 22px;"></div>
+        <div class="f06-bar" id="f06-bar-6" style="left: 466px; top: 552px; width: 11px; height: 18px;"></div>
+        <div class="f06-bar" id="f06-bar-7" style="left: 602px; top: 546px; width: 7px; height: 28px;"></div>
+      </div>
+    </div>
+
+    <div class="f06-resolve">
+      <div class="clip f06-spinner-wrap" data-start="9.5" data-duration="3.087" data-track-index="1">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(31,43,224,0.18)" stroke-width="6" />
+          <circle
+            class="f06-spin-arc"
+            cx="50"
+            cy="50"
+            r="38"
+            fill="none"
+            stroke="#1f2be0"
+            stroke-width="6"
+            stroke-linecap="round"
+            stroke-dasharray="130 220"
+          />
+        </svg>
+      </div>
+      <div class="clip f06-retry" data-start="9.7" data-duration="2.887" data-track-index="2">Retrying&hellip;</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines["06-interference"] = tl;
+
+      // ---------- own router (calm pulsing center) ----------
+      tl.fromTo(
+        "#root .f06-own .f06-dot",
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.6)" },
+        0.05
+      );
+      tl.fromTo(
+        "#root .f06-own .f06-label",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+        0.2
+      );
+
+      var ownPulses = [".f06-own-ring1", ".f06-own-ring2", ".f06-own-ring3", ".f06-own-ring4"];
+      var ownPulseStarts = [0.1, 1.35, 2.6, 4.0];
+      ownPulses.forEach(function (sel, i) {
+        tl.fromTo(
+          "#root .f06-own " + sel,
+          { scale: 1, opacity: 0.85 },
+          { scale: 9.6, opacity: 0, duration: 1.3, ease: "power2.out" },
+          ownPulseStarts[i]
+        );
+      });
+
+      // ---------- neighbor devices: pop in + close toward center ----------
+      function nodeEntrance(sel, popStart, labelStart) {
+        tl.fromTo(
+          "#root " + sel + " .f06-ringstack",
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.5)" },
+          popStart
+        );
+        tl.fromTo(
+          "#root " + sel + " .f06-dot",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.3, ease: "power1.out" },
+          popStart + 0.1
+        );
+        tl.fromTo(
+          "#root " + sel + " .f06-ring",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.3, ease: "power1.out" },
+          popStart + 0.1
+        );
+        tl.fromTo(
+          "#root " + sel + " .f06-label",
+          { opacity: 0, y: 6 },
+          { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" },
+          labelStart
+        );
+      }
+
+      function nodeCloseIn(sel, travelStart, travelDur, dx, dy) {
+        tl.fromTo(
+          "#root " + sel,
+          { x: 0, y: 0 },
+          { x: dx, y: dy, duration: travelDur, ease: "power3.inOut" },
+          travelStart
+        );
+      }
+
+      function nodeOverwhelmDip(sel, t) {
+        tl.fromTo(
+          "#root " + sel,
+          { opacity: 1 },
+          { opacity: 0.45, duration: 0.35, ease: "power1.inOut" },
+          t
+        );
+      }
+
+      // neighbor's router: upper-left -> center
+      nodeEntrance(".f06-nb1", 2.5, 2.65);
+      nodeCloseIn(".f06-nb1", 3.0, 3.5, 380, 300);
+      nodeOverwhelmDip(".f06-nb1", 6.5);
+
+      // microwave: upper-right -> center
+      nodeEntrance(".f06-nb2", 3.6, 3.75);
+      nodeCloseIn(".f06-nb2", 4.1, 2.4, -380, 260);
+      nodeOverwhelmDip(".f06-nb2", 6.5);
+
+      // baby monitor: below -> center
+      nodeEntrance(".f06-nb3", 4.8, 4.95);
+      nodeCloseIn(".f06-nb3", 5.3, 1.2, 0, -620);
+      nodeOverwhelmDip(".f06-nb3", 6.5);
+
+      nodeOverwhelmDip(".f06-own", 6.5);
+
+      // ---------- collision label ----------
+      tl.fromTo(
+        "#root .f06-collision",
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+        6.5
+      );
+
+      // ---------- jittered static burst at the collision point ----------
+      var bars = [0, 1, 2, 3, 4, 5, 6, 7];
+      var flickerOn = [1, 0.15, 0.9, 0.1, 1, 0.2, 0.85, 0];
+      bars.forEach(function (i) {
+        var baseT = 6.4 + i * 0.09;
+        var sel = "#root #f06-bar-" + i;
+        tl.set(sel, { scaleY: 0.4, opacity: 0 }, baseT);
+        for (var k = 0; k < 6; k++) {
+          var step = (k + i) % flickerOn.length;
+          tl.to(
+            sel,
+            {
+              opacity: flickerOn[step],
+              scaleY: 0.5 + (flickerOn[step] > 0.5 ? 0.6 : 0.15),
+              duration: 0.06,
+              ease: "none",
+            },
+            baseT + k * 0.14
+          );
+        }
+        tl.to(sel, { opacity: 0, duration: 0.15, ease: "power1.out" }, 9.1 + i * 0.02);
+      });
+
+      // ---------- swap: chaos fades/blurs out, spinner resolves in ----------
+      tl.fromTo(
+        "#root .f06-chaos",
+        { opacity: 1, scale: 1, filter: "blur(0px)" },
+        { opacity: 0, scale: 0.9, filter: "blur(6px)", duration: 0.4, ease: "power2.in" },
+        9.15
+      );
+
+      tl.fromTo(
+        "#root .f06-spinner-wrap",
+        { opacity: 0, scale: 0.55 },
+        { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.5)" },
+        9.5
+      );
+      tl.fromTo(
+        "#root .f06-spin-arc",
+        { rotation: 0 },
+        { rotation: 760, duration: 3.087, ease: "none" },
+        9.5
+      );
+      tl.fromTo(
+        "#root .f06-retry",
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+        9.7
+      );
+
+      tl.seek(0);
+    })();
+  </script>
+</template>

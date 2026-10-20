@@ -6,7 +6,6 @@
           width: 1080px;
           height: 1920px;
           overflow: hidden;
-          background: #f0ebde;
           font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
 
@@ -19,6 +18,13 @@
             linear-gradient(rgba(31, 43, 224, 0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(31, 43, 224, 0.1) 1px, transparent 1px);
           background-size: 22px 22px;
+        }
+        /* content layer: a second full-bleed direct-child clip; everything
+           positioned inside it is nested (not a root direct-child), so the
+           runtime's automatic top:0/left:0 root-clip layout never touches it */
+        .enc-content {
+          position: absolute;
+          inset: 0;
         }
         .enc-hairline {
           position: absolute;
@@ -164,38 +170,41 @@
         data-width="1080"
         data-height="1920"
       >
-        <div class="enc-bg clip" data-start="0" data-duration="11.584" data-track-index="0"></div>
-        <div class="enc-hairline enc-hairline--top clip" data-start="0" data-duration="11.584" data-track-index="0"></div>
-        <div class="enc-hairline enc-hairline--bottom clip" data-start="0" data-duration="11.584" data-track-index="0"></div>
-
-        <div class="enc-kicker clip" data-start="0" data-duration="11.584" data-track-index="1">Signal Encoding</div>
-
-        <div class="enc-wave-wrap clip" data-start="0" data-duration="11.584" data-track-index="1">
-          <svg viewBox="0 0 900 360">
-            <path id="enc-wave-path" d="" />
-          </svg>
+        <div class="enc-bg clip" data-start="0" data-duration="11.584" data-track-index="0">
+          <div class="enc-hairline enc-hairline--top"></div>
+          <div class="enc-hairline enc-hairline--bottom"></div>
         </div>
 
-        <div class="enc-label-swap clip" data-start="2.8" data-duration="3.7" data-track-index="2">
-          <span class="enc-label" id="enc-label-amp">Amplitude</span>
-          <span class="enc-label" id="enc-label-phase">Phase</span>
-          <span class="enc-label" id="enc-label-freq">Frequency</span>
-        </div>
+        <div class="enc-content clip" data-start="0" data-duration="11.584" data-track-index="1">
+          <div class="enc-kicker clip" data-start="0" data-duration="11.584" data-track-index="1">Signal Encoding</div>
 
-        <div class="enc-ticker-row clip" data-start="6.5" data-duration="5.084" data-track-index="3">
-          <div class="enc-ticker-strip" id="enc-ticker-strip"></div>
-        </div>
-
-        <div class="enc-counter-group clip" data-start="6.5" data-duration="5.084" data-track-index="4">
-          <div class="enc-counter-wrap">
-            <span class="enc-counter-num" id="enc-counter-num">0</span><span class="enc-counter-suffix">/s</span>
+          <div class="enc-wave-wrap clip" data-start="0" data-duration="11.584" data-track-index="1">
+            <svg viewBox="0 0 900 360">
+              <path id="enc-wave-path" d="" />
+            </svg>
           </div>
-          <div class="enc-counter-label">Bits Encoded</div>
-        </div>
 
-        <div class="enc-chrome clip" data-start="0" data-duration="11.584" data-track-index="0">
-          <span>Encoding</span>
-          <span>04 / 07</span>
+          <div class="enc-label-swap clip" data-start="2.8" data-duration="3.7" data-track-index="2">
+            <span class="enc-label" id="enc-label-amp">Amplitude</span>
+            <span class="enc-label" id="enc-label-phase">Phase</span>
+            <span class="enc-label" id="enc-label-freq">Frequency</span>
+          </div>
+
+          <div class="enc-ticker-row clip" data-start="6.5" data-duration="5.084" data-track-index="3">
+            <div class="enc-ticker-strip" id="enc-ticker-strip"></div>
+          </div>
+
+          <div class="enc-counter-group clip" data-start="6.5" data-duration="5.084" data-track-index="4">
+            <div class="enc-counter-wrap">
+              <span class="enc-counter-num" id="enc-counter-num">0</span><span class="enc-counter-suffix">/s</span>
+            </div>
+            <div class="enc-counter-label">Bits Encoded</div>
+          </div>
+
+          <div class="enc-chrome clip" data-start="0" data-duration="11.584" data-track-index="0">
+            <span>Encoding</span>
+            <span>04 / 07</span>
+          </div>
         </div>
       </div>
 

@@ -36,7 +36,7 @@
     /* ---------- ambient glow blooms (behind each card) ---------- */
     .f03bands-glow {
       position: absolute;
-      left: 50%;
+      left: 130px;
       width: 820px;
       height: 820px;
       border-radius: 0;
@@ -46,15 +46,17 @@
         rgba(31, 43, 224, 0.18) 42%,
         rgba(31, 43, 224, 0) 72%
       );
-      transform: translate(-50%, -50%);
       opacity: 0;
       pointer-events: none;
     }
+    /* centered at (540, 550) and (540, 1120) without a CSS transform —
+       #f03bands-glow-top/bottom are GSAP-animated on scale/opacity, so
+       centering must not live on `transform` (it would be overwritten). */
     .f03bands-glow-top {
-      top: 550px;
+      top: 140px;
     }
     .f03bands-glow-bottom {
-      top: 1120px;
+      top: 710px;
     }
 
     /* ---------- title ---------- */
@@ -171,12 +173,16 @@
       border-radius: 0;
       transform-origin: 50% 50%;
     }
+    /* Badges live on the STAGE (the parent), never inside a tilted card —
+       a child of a preserve-3d/rotateX card would inherit the tilt. */
     .f03bands-badge-top {
-      top: 460px;
+      /* overlaps card-top's inner (bottom) edge by ~45px into the gap */
+      top: 495px;
       right: 46px;
     }
     .f03bands-badge-bottom {
-      top: 40px;
+      /* overlaps card-bottom's inner (top) edge by ~45px into the gap */
+      top: 525px;
       left: 46px;
     }
   </style>
@@ -237,9 +243,6 @@
               <path class="f03bands-wave-path" id="f03bands-wave-path-top"></path>
             </svg>
           </div>
-          <div class="f03bands-badge f03bands-badge-top" id="f03bands-badge-top">
-            far &middot; slow
-          </div>
         </div>
 
         <div
@@ -261,9 +264,15 @@
               <path class="f03bands-wave-path" id="f03bands-wave-path-bottom"></path>
             </svg>
           </div>
-          <div class="f03bands-badge f03bands-badge-bottom" id="f03bands-badge-bottom">
-            fast &middot; shorter range
-          </div>
+        </div>
+
+        <!-- Badges are siblings of the cards on the stage (the parent) so they
+             never inherit a card's rotateX tilt — see split-tilt-cards constraints. -->
+        <div class="f03bands-badge f03bands-badge-top" id="f03bands-badge-top">
+          far &middot; slow
+        </div>
+        <div class="f03bands-badge f03bands-badge-bottom" id="f03bands-badge-bottom">
+          fast &middot; shorter range
         </div>
       </div>
     </div>
