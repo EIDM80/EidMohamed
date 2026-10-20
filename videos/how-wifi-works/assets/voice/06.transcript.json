@@ -1,0 +1,176 @@
+[
+  {
+    "text": "And",
+    "start": 0.11,
+    "end": 0.23,
+    "id": "w0"
+  },
+  {
+    "text": "it's",
+    "start": 0.23,
+    "end": 0.53,
+    "id": "w1"
+  },
+  {
+    "text": "not",
+    "start": 0.53,
+    "end": 0.76,
+    "id": "w2"
+  },
+  {
+    "text": "just",
+    "start": 0.76,
+    "end": 1.06,
+    "id": "w3"
+  },
+  {
+    "text": "distance.",
+    "start": 1.06,
+    "end": 1.92,
+    "id": "w4"
+  },
+  {
+    "text": "Your",
+    "start": 2.03,
+    "end": 2.15,
+    "id": "w5"
+  },
+  {
+    "text": "neighbor's",
+    "start": 2.15,
+    "end": 2.72,
+    "id": "w6"
+  },
+  {
+    "text": "router,",
+    "start": 2.72,
+    "end": 3.18,
+    "id": "w7"
+  },
+  {
+    "text": "a",
+    "start": 3.2,
+    "end": 3.22,
+    "id": "w8"
+  },
+  {
+    "text": "microwave,",
+    "start": 3.33,
+    "end": 4.16,
+    "id": "w9"
+  },
+  {
+    "text": "a",
+    "start": 4.16,
+    "end": 4.27,
+    "id": "w10"
+  },
+  {
+    "text": "baby",
+    "start": 4.27,
+    "end": 4.71,
+    "id": "w11"
+  },
+  {
+    "text": "monitor,",
+    "start": 4.71,
+    "end": 5.48,
+    "id": "w12"
+  },
+  {
+    "text": "they",
+    "start": 5.59,
+    "end": 5.79,
+    "id": "w13"
+  },
+  {
+    "text": "all",
+    "start": 5.79,
+    "end": 6.02,
+    "id": "w14"
+  },
+  {
+    "text": "compete",
+    "start": 6.02,
+    "end": 6.56,
+    "id": "w15"
+  },
+  {
+    "text": "for",
+    "start": 6.56,
+    "end": 6.73,
+    "id": "w16"
+  },
+  {
+    "text": "the",
+    "start": 6.87,
+    "end": 6.99,
+    "id": "w17"
+  },
+  {
+    "text": "same",
+    "start": 6.99,
+    "end": 7.47,
+    "id": "w18"
+  },
+  {
+    "text": "frequency.",
+    "start": 7.47,
+    "end": 8.28,
+    "id": "w19"
+  },
+  {
+    "text": "Collisions",
+    "start": 8.39,
+    "end": 9.1,
+    "id": "w20"
+  },
+  {
+    "text": "mean",
+    "start": 9.1,
+    "end": 9.41,
+    "id": "w21"
+  },
+  {
+    "text": "retransmits.",
+    "start": 9.48,
+    "end": 10.6,
+    "id": "w22"
+  },
+  {
+    "text": "That's",
+    "start": 10.71,
+    "end": 11.05,
+    "id": "w23"
+  },
+  {
+    "text": "the",
+    "start": 11.05,
+    "end": 11.27,
+    "id": "w24"
+  },
+  {
+    "text": "real",
+    "start": 11.27,
+    "end": 11.57,
+    "id": "w25"
+  },
+  {
+    "text": "cause",
+    "start": 11.57,
+    "end": 11.86,
+    "id": "w26"
+  },
+  {
+    "text": "of",
+    "start": 11.99,
+    "end": 12.09,
+    "id": "w27"
+  },
+  {
+    "text": "lag.",
+    "start": 12.09,
+    "end": 12.56,
+    "id": "w28"
+  }
+]

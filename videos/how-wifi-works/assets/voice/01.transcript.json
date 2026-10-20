@@ -1,0 +1,62 @@
+[
+  {
+    "text": "Ever",
+    "start": 0.11,
+    "end": 0.27,
+    "id": "w0"
+  },
+  {
+    "text": "wonder",
+    "start": 0.27,
+    "end": 0.67,
+    "id": "w1"
+  },
+  {
+    "text": "what's",
+    "start": 0.67,
+    "end": 1.07,
+    "id": "w2"
+  },
+  {
+    "text": "actually",
+    "start": 1.07,
+    "end": 1.61,
+    "id": "w3"
+  },
+  {
+    "text": "happening",
+    "start": 1.61,
+    "end": 2.23,
+    "id": "w4"
+  },
+  {
+    "text": "when",
+    "start": 2.24,
+    "end": 2.51,
+    "id": "w5"
+  },
+  {
+    "text": "you",
+    "start": 2.51,
+    "end": 2.71,
+    "id": "w6"
+  },
+  {
+    "text": "connect",
+    "start": 2.71,
+    "end": 3.18,
+    "id": "w7"
+  },
+  {
+    "text": "to",
+    "start": 3.18,
+    "end": 3.31,
+    "id": "w8"
+  },
+  {
+    "text": "Wi-Fi?",
+    "start": 3.31,
+    "end": 3.68,
+    "id": "w9"
+  }
+]

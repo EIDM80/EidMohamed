@@ -1,0 +1,15 @@
+1
+00:00:00,060 --> 00:00:02,700
+Your router broadcasts on two bands.
+
+2
+00:00:02,760 --> 00:00:06,520
+2.4 gigahertz travels far, goes slow.
+
+3
+00:00:06,630 --> 00:00:09,130
+Five gigahertz fast, but it doesn't go as
+
+4
+00:00:09,300 --> 00:00:09,490
+far.

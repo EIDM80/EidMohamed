@@ -1,0 +1,23 @@
+1
+00:00:00,110 --> 00:00:01,920
+And it's not just distance.
+
+2
+00:00:02,030 --> 00:00:04,270
+Your neighbor's router, a microwave, a
+
+3
+00:00:04,270 --> 00:00:06,990
+baby monitor, they all compete for the
+
+4
+00:00:06,990 --> 00:00:08,280
+same frequency.
+
+5
+00:00:08,390 --> 00:00:10,600
+Collisions mean retransmits.
+
+6
+00:00:10,710 --> 00:00:12,560
+That's the real cause of lag.

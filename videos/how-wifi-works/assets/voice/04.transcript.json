@@ -1,0 +1,176 @@
+[
+  {
+    "text": "That",
+    "start": 0.08,
+    "end": 0.3,
+    "id": "w0"
+  },
+  {
+    "text": "wave",
+    "start": 0.3,
+    "end": 0.6,
+    "id": "w1"
+  },
+  {
+    "text": "gets",
+    "start": 0.6,
+    "end": 0.88,
+    "id": "w2"
+  },
+  {
+    "text": "twisted",
+    "start": 0.96,
+    "end": 1.35,
+    "id": "w3"
+  },
+  {
+    "text": "in",
+    "start": 1.45,
+    "end": 1.57,
+    "id": "w4"
+  },
+  {
+    "text": "amplitude,",
+    "start": 1.57,
+    "end": 2.36,
+    "id": "w5"
+  },
+  {
+    "text": "phase,",
+    "start": 2.53,
+    "end": 3.02,
+    "id": "w6"
+  },
+  {
+    "text": "frequency,",
+    "start": 3.12,
+    "end": 4.12,
+    "id": "w7"
+  },
+  {
+    "text": "thousands",
+    "start": 4.19,
+    "end": 4.8,
+    "id": "w8"
+  },
+  {
+    "text": "of",
+    "start": 4.85,
+    "end": 5,
+    "id": "w9"
+  },
+  {
+    "text": "times",
+    "start": 5,
+    "end": 5.41,
+    "id": "w10"
+  },
+  {
+    "text": "a",
+    "start": 5.41,
+    "end": 5.48,
+    "id": "w11"
+  },
+  {
+    "text": "second.",
+    "start": 5.57,
+    "end": 6.24,
+    "id": "w12"
+  },
+  {
+    "text": "Each",
+    "start": 6.32,
+    "end": 6.57,
+    "id": "w13"
+  },
+  {
+    "text": "twist",
+    "start": 6.57,
+    "end": 6.99,
+    "id": "w14"
+  },
+  {
+    "text": "carries",
+    "start": 6.99,
+    "end": 7.56,
+    "id": "w15"
+  },
+  {
+    "text": "a",
+    "start": 7.57,
+    "end": 7.59,
+    "id": "w16"
+  },
+  {
+    "text": "bit.",
+    "start": 7.69,
+    "end": 8.18,
+    "id": "w17"
+  },
+  {
+    "text": "That's",
+    "start": 8.26,
+    "end": 8.63,
+    "id": "w18"
+  },
+  {
+    "text": "how",
+    "start": 8.63,
+    "end": 8.85,
+    "id": "w19"
+  },
+  {
+    "text": "a",
+    "start": 8.85,
+    "end": 8.92,
+    "id": "w20"
+  },
+  {
+    "text": "signal",
+    "start": 8.92,
+    "end": 9.3,
+    "id": "w21"
+  },
+  {
+    "text": "in",
+    "start": 9.38,
+    "end": 9.52,
+    "id": "w22"
+  },
+  {
+    "text": "thin",
+    "start": 9.52,
+    "end": 9.77,
+    "id": "w23"
+  },
+  {
+    "text": "air",
+    "start": 9.84,
+    "end": 10.08,
+    "id": "w24"
+  },
+  {
+    "text": "becomes",
+    "start": 10.08,
+    "end": 10.5,
+    "id": "w25"
+  },
+  {
+    "text": "your",
+    "start": 10.5,
+    "end": 10.78,
+    "id": "w26"
+  },
+  {
+    "text": "video",
+    "start": 10.78,
+    "end": 11.12,
+    "id": "w27"
+  },
+  {
+    "text": "call.",
+    "start": 11.12,
+    "end": 11.64,
+    "id": "w28"
+  }
+]

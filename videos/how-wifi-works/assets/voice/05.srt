@@ -1,0 +1,15 @@
+1
+00:00:00,060 --> 00:00:02,700
+That wave loses energy as it spreads out,
+
+2
+00:00:02,760 --> 00:00:05,480
+and loses more passing through walls.
+
+3
+00:00:05,540 --> 00:00:07,940
+Concrete and metal eat the signal.
+
+4
+00:00:08,000 --> 00:00:09,700
+Drywall barely touches it.

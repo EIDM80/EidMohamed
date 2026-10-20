@@ -1,0 +1,23 @@
+1
+00:00:00,080 --> 00:00:02,360
+That wave gets twisted in amplitude,
+
+2
+00:00:02,530 --> 00:00:05,480
+phase, frequency, thousands of times a
+
+3
+00:00:05,570 --> 00:00:06,240
+second.
+
+4
+00:00:06,320 --> 00:00:08,180
+Each twist carries a bit.
+
+5
+00:00:08,260 --> 00:00:10,500
+That's how a signal in thin air becomes
+
+6
+00:00:10,500 --> 00:00:11,640
+your video call.

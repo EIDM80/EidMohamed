@@ -1,0 +1,128 @@
+[
+  {
+    "text": "Your",
+    "start": 0.06,
+    "end": 0.35,
+    "id": "w0"
+  },
+  {
+    "text": "router",
+    "start": 0.35,
+    "end": 0.87,
+    "id": "w1"
+  },
+  {
+    "text": "broadcasts",
+    "start": 0.88,
+    "end": 1.76,
+    "id": "w2"
+  },
+  {
+    "text": "on",
+    "start": 1.77,
+    "end": 1.94,
+    "id": "w3"
+  },
+  {
+    "text": "two",
+    "start": 1.94,
+    "end": 2.07,
+    "id": "w4"
+  },
+  {
+    "text": "bands.",
+    "start": 2.18,
+    "end": 2.7,
+    "id": "w5"
+  },
+  {
+    "text": "2.4",
+    "start": 2.76,
+    "end": 3.43,
+    "id": "w6"
+  },
+  {
+    "text": "gigahertz",
+    "start": 3.43,
+    "end": 4.16,
+    "id": "w7"
+  },
+  {
+    "text": "travels",
+    "start": 4.16,
+    "end": 4.71,
+    "id": "w8"
+  },
+  {
+    "text": "far,",
+    "start": 4.72,
+    "end": 5.2,
+    "id": "w9"
+  },
+  {
+    "text": "goes",
+    "start": 5.44,
+    "end": 5.64,
+    "id": "w10"
+  },
+  {
+    "text": "slow.",
+    "start": 5.7,
+    "end": 6.52,
+    "id": "w11"
+  },
+  {
+    "text": "Five",
+    "start": 6.63,
+    "end": 6.88,
+    "id": "w12"
+  },
+  {
+    "text": "gigahertz",
+    "start": 6.88,
+    "end": 7.52,
+    "id": "w13"
+  },
+  {
+    "text": "fast,",
+    "start": 7.57,
+    "end": 8.04,
+    "id": "w14"
+  },
+  {
+    "text": "but",
+    "start": 8.08,
+    "end": 8.27,
+    "id": "w15"
+  },
+  {
+    "text": "it",
+    "start": 8.28,
+    "end": 8.41,
+    "id": "w16"
+  },
+  {
+    "text": "doesn't",
+    "start": 8.41,
+    "end": 8.83,
+    "id": "w17"
+  },
+  {
+    "text": "go",
+    "start": 8.83,
+    "end": 9,
+    "id": "w18"
+  },
+  {
+    "text": "as",
+    "start": 9,
+    "end": 9.13,
+    "id": "w19"
+  },
+  {
+    "text": "far.",
+    "start": 9.3,
+    "end": 9.49,
+    "id": "w20"
+  }
+]

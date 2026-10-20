@@ -1,0 +1,15 @@
+1
+00:00:00,070 --> 00:00:02,580
+So next time it drops, it's not magic
+
+2
+00:00:02,760 --> 00:00:03,640
+failing.
+
+3
+00:00:03,710 --> 00:00:06,120
+It's a radio conversation bumping into
+
+4
+00:00:06,120 --> 00:00:06,760
+physics.

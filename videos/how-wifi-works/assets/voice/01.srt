@@ -1,0 +1,7 @@
+1
+00:00:00,110 --> 00:00:02,510
+Ever wonder what's actually happening when
+
+2
+00:00:02,510 --> 00:00:03,680
+you connect to Wi-Fi?

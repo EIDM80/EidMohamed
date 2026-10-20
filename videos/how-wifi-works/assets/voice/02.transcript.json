@@ -1,0 +1,92 @@
+[
+  {
+    "text": "It's",
+    "start": 0.02,
+    "end": 0.38,
+    "id": "w0"
+  },
+  {
+    "text": "not",
+    "start": 0.44,
+    "end": 0.7,
+    "id": "w1"
+  },
+  {
+    "text": "magic,",
+    "start": 0.7,
+    "end": 1.44,
+    "id": "w2"
+  },
+  {
+    "text": "it's",
+    "start": 1.47,
+    "end": 1.84,
+    "id": "w3"
+  },
+  {
+    "text": "radio",
+    "start": 1.84,
+    "end": 2.35,
+    "id": "w4"
+  },
+  {
+    "text": "waves",
+    "start": 2.35,
+    "end": 2.72,
+    "id": "w5"
+  },
+  {
+    "text": "the",
+    "start": 2.89,
+    "end": 3.05,
+    "id": "w6"
+  },
+  {
+    "text": "same",
+    "start": 3.05,
+    "end": 3.27,
+    "id": "w7"
+  },
+  {
+    "text": "physics",
+    "start": 3.41,
+    "end": 3.8,
+    "id": "w8"
+  },
+  {
+    "text": "as",
+    "start": 3.8,
+    "end": 3.92,
+    "id": "w9"
+  },
+  {
+    "text": "an",
+    "start": 3.92,
+    "end": 4.18,
+    "id": "w10"
+  },
+  {
+    "text": "FM",
+    "start": 4.31,
+    "end": 4.56,
+    "id": "w11"
+  },
+  {
+    "text": "station,",
+    "start": 4.56,
+    "end": 5.41,
+    "id": "w12"
+  },
+  {
+    "text": "tuned",
+    "start": 5.41,
+    "end": 5.73,
+    "id": "w13"
+  },
+  {
+    "text": "differently.",
+    "start": 5.73,
+    "end": 6.28,
+    "id": "w14"
+  }
+]

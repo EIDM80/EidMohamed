@@ -21,7 +21,7 @@ music: none
 - voiceover: "Ever wonder what's actually happening when you connect to Wi-Fi?"
 - duration: 3.84s
 - transition_in: cut
-- status: outline
+- status: animated
 - src: compositions/frames/01-hook.html
 - type: hook
 - persuasion: Rhetorical question
@@ -41,7 +41,7 @@ Scene 1 (0.0–3.84s): the question assembles via per-word staggered reveal, tim
 - voiceover: "It's not magic. It's radio waves — the same physics as an FM station, tuned differently."
 - duration: 6.379s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/02-concept.html
 - type: product_intro
 - persuasion: Analogy / metaphor
@@ -65,7 +65,7 @@ Scene 3 (3.6–6.379s): on "the same physics as an FM station, tuned differently
 - voiceover: "Your router broadcasts on two bands. 2.4 gigahertz — travels far, goes slow. 5 gigahertz — fast, but it doesn't go as far."
 - duration: 9.493s
 - transition_in: push-slide RIGHT
-- status: outline
+- status: animated
 - src: compositions/frames/03-bands.html
 - type: feature_showcase
 - persuasion: Comparison of two options
@@ -87,7 +87,7 @@ Scene 3 (5.7–9.493s): on "5 gigahertz — fast, but it doesn't go as far," the
 - voiceover: "That wave gets twisted — in amplitude, phase, frequency — thousands of times a second. Each twist carries a bit. That's how a signal in thin air becomes your video call."
 - duration: 11.584s
 - transition_in: push-slide RIGHT
-- status: outline
+- status: animated
 - src: compositions/frames/04-encoding.html
 - type: feature_showcase
 - persuasion: Demonstration (show the mechanism running)
@@ -112,7 +112,7 @@ Scene 4 (9.3–11.584s): on "that's how a signal in thin air becomes your video 
 - voiceover: "That wave loses energy as it spreads out — and loses more passing through walls. Concrete and metal eat the signal. Drywall barely touches it."
 - duration: 9.621s
 - transition_in: push-slide RIGHT
-- status: outline
+- status: animated
 - src: compositions/frames/05-attenuation.html
 - type: feature_showcase
 - persuasion: Causal chain (A → B → C)
@@ -135,7 +135,7 @@ Scene 4 (7.5–9.621s): on "Drywall barely touches it," the two bands hold side 
 - voiceover: "And it's not just distance. Your neighbor's router, a microwave, a baby monitor — they all compete for the same frequency. Collisions mean retransmits. That's the real cause of lag."
 - duration: 12.587s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/06-interference.html
 - type: social_proof
 - persuasion: Counterexample (here is when it breaks)
@@ -160,7 +160,7 @@ Scene 4 (9.5–12.587s): on "Collisions mean retransmits. That's the real cause 
 - voiceover: "So next time it drops — it's not magic failing. It's a radio conversation, bumping into physics."
 - duration: 6.677s
 - transition_in: crossfade
-- status: outline
+- status: animated
 - src: compositions/frames/07-landing.html
 - type: branding
 - persuasion: Distillation (compress to one line)
