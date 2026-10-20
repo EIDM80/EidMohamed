@@ -1,0 +1,233 @@
+<template><div id="root" data-composition-id="05-attenuation">
+  <style>
+    #root {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    #root .clip {
+      position: absolute;
+    }
+
+    /* ---- full-bleed ground (never on #root) ---- */
+    .atn05-bg {
+      inset: 0;
+      background-color: #F0EBDE;
+      background-image:
+        linear-gradient(to right, rgba(31,43,224,0.10) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(31,43,224,0.10) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .atn05-bg .atn05-hairline {
+      position: absolute;
+      left: 48px;
+      right: 48px;
+      height: 1.5px;
+      background: #1F2BE0;
+    }
+    .atn05-bg .atn05-hairline.top { top: 56px; }
+    .atn05-bg .atn05-hairline.bottom { top: 1558px; }
+
+    /* ---- top mono tag ---- */
+    .atn05-tag {
+      left: 48px;
+      top: 92px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 22px;
+      letter-spacing: 0.16em;
+      color: #1F2BE0;
+      opacity: 0;
+    }
+    .atn05-tag .idx {
+      color: #5560E5;
+      margin-right: 14px;
+    }
+
+    /* ---- router icon ---- */
+    .atn05-router {
+      left: 220px;
+      top: 230px;
+      width: 170px;
+      height: 140px;
+      opacity: 0;
+    }
+    .atn05-router svg { width: 100%; height: 100%; display: block; }
+    .atn05-router .body { fill: #F0EBDE; stroke: #1F2BE0; stroke-width: 5; }
+    .atn05-router .antenna { stroke: #1F2BE0; stroke-width: 5; stroke-linecap: square; }
+    .atn05-router .dot { fill: #1F2BE0; }
+
+    /* ---- wave ring ---- */
+    .atn05-ringwrap { inset: 0; }
+    .atn05-ringwrap svg { width: 100%; height: 100%; display: block; }
+    .atn05-ring { fill: none; stroke: #1F2BE0; }
+
+    /* ---- material bands ---- */
+    .atn05-band {
+      left: 0;
+      width: 1080px;
+      opacity: 0;
+      transform-origin: left center;
+    }
+    .atn05-band-dry {
+      top: 640px;
+      height: 50px;
+      background: rgba(31,43,224,0.10);
+      border-top: 1.5px solid #1F2BE0;
+      border-bottom: 1.5px solid #1F2BE0;
+    }
+    .atn05-band-concrete {
+      top: 1140px;
+      height: 90px;
+      background: #1F2BE0;
+      border-top: 1.5px solid #5560E5;
+      border-bottom: 1.5px solid #5560E5;
+    }
+    .atn05-band-label {
+      position: absolute;
+      right: 48px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      opacity: 0;
+    }
+    .atn05-band-dry .atn05-band-label {
+      top: 13px;
+      color: #1F2BE0;
+    }
+    .atn05-band-concrete .atn05-band-label {
+      top: 32px;
+      color: #F0EBDE;
+    }
+
+    /* ---- scene 4 comparison callouts ---- */
+    .atn05-callout {
+      left: 48px;
+      width: 480px;
+      height: 56px;
+      opacity: 0;
+    }
+    .atn05-callout-dry { top: 712px; }
+    .atn05-callout-concrete { top: 1248px; }
+    .atn05-callout svg { position: absolute; left: 0; top: 0; width: 56px; height: 56px; }
+    .atn05-callout-ring { fill: none; stroke: #1F2BE0; stroke-width: 3; }
+    .atn05-callout-text {
+      position: absolute;
+      left: 72px;
+      top: 15px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 22px;
+      letter-spacing: 0.14em;
+      color: #1F2BE0;
+    }
+  </style>
+
+  <!-- ground -->
+  <div class="clip atn05-bg" data-start="0" data-duration="9.621" data-track-index="0">
+    <div class="atn05-hairline top"></div>
+    <div class="atn05-hairline bottom"></div>
+  </div>
+
+  <!-- section tag -->
+  <div class="clip atn05-tag" data-start="0" data-duration="9.621" data-track-index="1">
+    <span class="idx">05</span>SIGNAL ATTENUATION
+  </div>
+
+  <!-- router icon (foreground subject) -->
+  <div class="clip atn05-router" data-start="0" data-duration="9.621" data-track-index="1">
+    <svg viewBox="0 0 170 140">
+      <line class="antenna" x1="55" y1="90" x2="30" y2="14"></line>
+      <line class="antenna" x1="85" y1="90" x2="85" y2="6"></line>
+      <line class="antenna" x1="115" y1="90" x2="140" y2="14"></line>
+      <rect class="body" x="25" y="90" width="120" height="32"></rect>
+      <rect class="dot" x="79" y="101" width="10" height="10"></rect>
+    </svg>
+  </div>
+
+  <!-- expanding, fading wave ring (focal) -->
+  <svg class="clip atn05-ringwrap" data-start="0" data-duration="9.621" data-track-index="2" viewBox="0 0 1080 1920">
+    <circle class="atn05-ring" cx="305" cy="300" r="48"
+      stroke-width="5" stroke-opacity="1"
+      stroke-dasharray="301.6" stroke-dashoffset="301.6"></circle>
+  </svg>
+
+  <!-- drywall band (background) -->
+  <div class="clip atn05-band atn05-band-dry" data-start="2.3" data-duration="7.321" data-track-index="1">
+    <span class="atn05-band-label">DRYWALL</span>
+  </div>
+
+  <!-- concrete / metal band (background) -->
+  <div class="clip atn05-band atn05-band-concrete" data-start="5.0" data-duration="4.621" data-track-index="1">
+    <span class="atn05-band-label">CONCRETE / METAL</span>
+  </div>
+
+  <!-- scene 4: side-by-side comparison -->
+  <div class="clip atn05-callout atn05-callout-dry" data-start="7.5" data-duration="2.121" data-track-index="3">
+    <svg viewBox="0 0 56 56"><circle class="atn05-callout-ring" cx="28" cy="28" r="18" stroke-opacity="0.75"></circle></svg>
+    <span class="atn05-callout-text">MINIMAL LOSS</span>
+  </div>
+  <div class="clip atn05-callout atn05-callout-concrete" data-start="7.5" data-duration="2.121" data-track-index="3">
+    <svg viewBox="0 0 56 56"><circle class="atn05-callout-ring" cx="28" cy="28" r="18" stroke-opacity="0.05"></circle></svg>
+    <span class="atn05-callout-text">NEAR-TOTAL LOSS</span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      var root = "#root";
+
+      // --- top tag ---
+      tl.fromTo(root + " .atn05-tag", { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power1.out" }, 0);
+
+      // --- router icon (hero visible by 0.4s) ---
+      tl.fromTo(root + " .atn05-router", { opacity: 0, scale: 0.85, transformOrigin: "50% 65%" }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.4)" }, 0);
+
+      // --- wave ring: self-draw, then expand + fade across the two material bands ---
+      var ring = root + " .atn05-ring";
+
+      // self-draw the initial small ring (0 -> 0.4s)
+      tl.to(ring, { attr: { "stroke-dashoffset": 0 }, duration: 0.4, ease: "power1.out" }, 0);
+      // remove the dash pattern once drawn so later growth renders a clean solid stroke
+      tl.set(ring, { attr: { "stroke-dasharray": "none" } }, 0.4);
+
+      // leg 1: free-space spread toward the drywall band (0.4 -> 2.3)
+      tl.to(ring, { attr: { r: 340 }, duration: 1.9, ease: "sine.out" }, 0.4);
+      tl.to(ring, { attr: { "stroke-opacity": 0.82 }, duration: 1.9, ease: "sine.out" }, 0.4);
+
+      // leg 2: crossing the drywall band — barely touches it (2.3 -> 3.0)
+      tl.to(ring, { attr: { r: 392 }, duration: 0.7, ease: "sine.inOut" }, 2.3);
+      tl.to(ring, { attr: { "stroke-opacity": 0.68 }, duration: 0.7, ease: "sine.inOut" }, 2.3);
+
+      // leg 3: continuing toward the concrete band (3.0 -> 5.0)
+      tl.to(ring, { attr: { r: 840 }, duration: 2.0, ease: "sine.inOut" }, 3.0);
+      tl.to(ring, { attr: { "stroke-opacity": 0.62 }, duration: 2.0, ease: "sine.inOut" }, 3.0);
+
+      // leg 4: crossing concrete / metal — the steep, dramatic cut (5.0 -> 5.8)
+      tl.to(ring, { attr: { r: 930 }, duration: 0.8, ease: "power3.in" }, 5.0);
+      tl.to(ring, { attr: { "stroke-opacity": 0.04, "stroke-width": 2 }, duration: 0.8, ease: "power3.in" }, 5.0);
+
+      // leg 5: settle near-invisible beyond the wall (5.8 -> 7.3), then hold
+      tl.to(ring, { attr: { r: 1000, "stroke-opacity": 0.02 }, duration: 1.5, ease: "sine.out" }, 5.8);
+
+      // --- drywall band wipes in, label settles ---
+      tl.fromTo(root + " .atn05-band-dry", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.5, ease: "power2.out" }, 2.3);
+      tl.fromTo(root + " .atn05-band-dry .atn05-band-label", { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power1.out" }, 2.45);
+
+      // --- concrete band wipes in (heavier), label settles ---
+      tl.fromTo(root + " .atn05-band-concrete", { opacity: 0, scaleX: 0 }, { opacity: 0.92, scaleX: 1, duration: 0.55, ease: "power2.out" }, 5.0);
+      tl.fromTo(root + " .atn05-band-concrete .atn05-band-label", { opacity: 0, x: 18 }, { opacity: 1, x: 0, duration: 0.4, ease: "power1.out" }, 5.2);
+
+      // --- scene 4: direct side-by-side proof, settles and holds ---
+      tl.fromTo(root + " .atn05-callout-dry", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power1.out" }, 7.5);
+      tl.fromTo(root + " .atn05-callout-concrete", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power1.out" }, 7.7);
+
+      window.__timelines["05-attenuation"] = tl;
+      tl.seek(0);
+    })();
+  </script>
+</div></template>

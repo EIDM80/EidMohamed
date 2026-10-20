@@ -1,0 +1,359 @@
+<template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 1080px;
+          height: 1920px;
+          overflow: hidden;
+          background: #f0ebde;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        /* ---- full-bleed ground: grid + hairlines (clip, never on #root) ---- */
+        .enc-bg {
+          position: absolute;
+          inset: 0;
+          background-color: #f0ebde;
+          background-image:
+            linear-gradient(rgba(31, 43, 224, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(31, 43, 224, 0.1) 1px, transparent 1px);
+          background-size: 22px 22px;
+        }
+        .enc-hairline {
+          position: absolute;
+          left: 44px;
+          right: 44px;
+          height: 2px;
+          background: #1f2be0;
+        }
+        .enc-hairline--top {
+          top: 92px;
+        }
+        .enc-hairline--bottom {
+          top: 1550px;
+        }
+
+        .enc-kicker {
+          position: absolute;
+          left: 44px;
+          top: 138px;
+          font-size: 26px;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: #1f2be0;
+        }
+
+        .enc-wave-wrap {
+          position: absolute;
+          left: 90px;
+          top: 420px;
+          width: 900px;
+          height: 360px;
+        }
+        .enc-wave-wrap svg {
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+        #enc-wave-path {
+          fill: none;
+          stroke: #1f2be0;
+          stroke-width: 6;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+        }
+
+        .enc-label-swap {
+          position: absolute;
+          left: 90px;
+          top: 824px;
+          width: 900px;
+          height: 70px;
+          text-align: center;
+        }
+        .enc-label {
+          display: inline-block;
+          font-size: 46px;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #1f2be0;
+          opacity: 0;
+        }
+
+        .enc-ticker-row {
+          position: absolute;
+          left: 90px;
+          top: 1044px;
+          width: 900px;
+          height: 64px;
+          overflow: hidden;
+          opacity: 0;
+        }
+        .enc-ticker-strip {
+          position: absolute;
+          top: 0;
+          left: 0;
+          white-space: nowrap;
+          font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, "Liberation Mono", monospace;
+          font-size: 40px;
+          font-variant-numeric: tabular-nums;
+          letter-spacing: 0.3em;
+          color: #1f2be0;
+        }
+
+        .enc-counter-group {
+          position: absolute;
+          left: 0;
+          top: 1150px;
+          width: 1080px;
+          text-align: center;
+          opacity: 0;
+        }
+        .enc-counter-wrap {
+          display: flex;
+          align-items: baseline;
+          justify-content: center;
+        }
+        .enc-counter-num {
+          font-family: Georgia, "Times New Roman", "Noto Serif", serif;
+          font-size: 150px;
+          font-weight: 400;
+          letter-spacing: -0.01em;
+          color: #1f2be0;
+          font-variant-numeric: tabular-nums;
+          display: inline-block;
+          transform-origin: center center;
+        }
+        .enc-counter-suffix {
+          font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+          font-size: 48px;
+          color: #1f2be0;
+          margin-left: 10px;
+          opacity: 0;
+        }
+        .enc-counter-label {
+          margin-top: 14px;
+          font-size: 24px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #1f2be0;
+        }
+
+        .enc-chrome {
+          position: absolute;
+          left: 44px;
+          right: 44px;
+          top: 1498px;
+          display: flex;
+          justify-content: space-between;
+          font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+          font-size: 16px;
+          letter-spacing: 0.08em;
+          color: #1f2be0;
+          text-transform: uppercase;
+        }
+      </style>
+
+      <div
+        id="root"
+        data-composition-id="04-encoding"
+        data-width="1080"
+        data-height="1920"
+      >
+        <div class="enc-bg clip" data-start="0" data-duration="11.584" data-track-index="0"></div>
+        <div class="enc-hairline enc-hairline--top clip" data-start="0" data-duration="11.584" data-track-index="0"></div>
+        <div class="enc-hairline enc-hairline--bottom clip" data-start="0" data-duration="11.584" data-track-index="0"></div>
+
+        <div class="enc-kicker clip" data-start="0" data-duration="11.584" data-track-index="1">Signal Encoding</div>
+
+        <div class="enc-wave-wrap clip" data-start="0" data-duration="11.584" data-track-index="1">
+          <svg viewBox="0 0 900 360">
+            <path id="enc-wave-path" d="" />
+          </svg>
+        </div>
+
+        <div class="enc-label-swap clip" data-start="2.8" data-duration="3.7" data-track-index="2">
+          <span class="enc-label" id="enc-label-amp">Amplitude</span>
+          <span class="enc-label" id="enc-label-phase">Phase</span>
+          <span class="enc-label" id="enc-label-freq">Frequency</span>
+        </div>
+
+        <div class="enc-ticker-row clip" data-start="6.5" data-duration="5.084" data-track-index="3">
+          <div class="enc-ticker-strip" id="enc-ticker-strip"></div>
+        </div>
+
+        <div class="enc-counter-group clip" data-start="6.5" data-duration="5.084" data-track-index="4">
+          <div class="enc-counter-wrap">
+            <span class="enc-counter-num" id="enc-counter-num">0</span><span class="enc-counter-suffix">/s</span>
+          </div>
+          <div class="enc-counter-label">Bits Encoded</div>
+        </div>
+
+        <div class="enc-chrome clip" data-start="0" data-duration="11.584" data-track-index="0">
+          <span>Encoding</span>
+          <span>04 / 07</span>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          var WAVE_W = 900;
+          var WAVE_H = 360;
+          var MID_Y = WAVE_H / 2;
+          var SAMPLES = 160;
+
+          function buildWaveD(amp, freq, phase) {
+            var d = "";
+            for (var i = 0; i <= SAMPLES; i++) {
+              var x = (i / SAMPLES) * WAVE_W;
+              var t = (i / SAMPLES) * freq * Math.PI * 2 + phase;
+              var y = MID_Y - amp * Math.sin(t);
+              d += (i === 0 ? "M" : "L") + x.toFixed(2) + "," + y.toFixed(2) + " ";
+            }
+            return d.trim();
+          }
+
+          var wavePath = document.getElementById("enc-wave-path");
+          var waveState = { amp: 70, freq: 4, phase: 0 };
+
+          function redrawWave() {
+            wavePath.setAttribute("d", buildWaveD(waveState.amp, waveState.freq, waveState.phase));
+          }
+
+          // initial calm path, then reveal it with a measured stroke draw
+          redrawWave();
+          var waveLen = wavePath.getTotalLength();
+          wavePath.style.strokeDasharray = String(waveLen);
+          wavePath.style.strokeDashoffset = String(waveLen);
+
+          // deterministic bit-stream strip
+          var BIT_PATTERN = "1011001101001110100101100111010010110100111010010110011101001011001101";
+          var stripEl = document.getElementById("enc-ticker-strip");
+          stripEl.textContent = (BIT_PATTERN + " ").repeat(4);
+
+          var counterEl = document.getElementById("enc-counter-num");
+          var counterState = { value: 0 };
+
+          var tl = gsap.timeline({ paused: true });
+
+          // ---- Scene 1 (0.0 - 2.8s): calm wave draws in ----
+          tl.fromTo(
+            "#enc-wave-path",
+            { strokeDashoffset: waveLen },
+            {
+              strokeDashoffset: 0,
+              duration: 0.85,
+              ease: "power2.out",
+              onComplete: function () {
+                wavePath.style.strokeDasharray = "none";
+                wavePath.style.strokeDashoffset = "0";
+              },
+            },
+            0,
+          );
+          tl.fromTo(".enc-kicker", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.1);
+
+          // ---- Scene 2 (2.8 - 6.5s): amplitude -> phase -> frequency ----
+
+          // AMPLITUDE beat
+          tl.fromTo(
+            "#enc-label-amp",
+            { opacity: 0, scale: 1.15, filter: "blur(8px)" },
+            { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "power2.out" },
+            2.8,
+          );
+          tl.to(waveState, { amp: 130, duration: 0.55, ease: "power2.out", onUpdate: redrawWave }, 2.85);
+          tl.to(waveState, { amp: 70, duration: 0.55, ease: "power2.inOut", onUpdate: redrawWave }, 3.4);
+          tl.to(
+            "#enc-label-amp",
+            { opacity: 0, scale: 1.15, filter: "blur(8px)", duration: 0.28, ease: "power2.inOut" },
+            3.75,
+          );
+
+          // PHASE beat
+          tl.fromTo(
+            "#enc-label-phase",
+            { opacity: 0, scale: 1.15, filter: "blur(8px)" },
+            { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "power2.out" },
+            4.03,
+          );
+          tl.to(waveState, { phase: Math.PI * 1.6, duration: 1.0, ease: "sine.inOut", onUpdate: redrawWave }, 4.1);
+          tl.to(
+            "#enc-label-phase",
+            { opacity: 0, scale: 1.15, filter: "blur(8px)", duration: 0.28, ease: "power2.inOut" },
+            4.95,
+          );
+
+          // FREQUENCY beat
+          tl.fromTo(
+            "#enc-label-freq",
+            { opacity: 0, scale: 1.15, filter: "blur(8px)" },
+            { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "power2.out" },
+            5.27,
+          );
+          tl.to(waveState, { freq: 9, duration: 0.6, ease: "power2.out", onUpdate: redrawWave }, 5.35);
+          tl.to(waveState, { freq: 6, duration: 0.5, ease: "power2.inOut", onUpdate: redrawWave }, 5.95);
+          tl.to(
+            "#enc-label-freq",
+            { opacity: 0, scale: 1.15, filter: "blur(8px)", duration: 0.28, ease: "power2.inOut" },
+            6.15,
+          );
+
+          // ---- Scene 3 (6.5 - 9.3s): bit stream ticks + counter climbs ----
+          tl.fromTo(".enc-ticker-row", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 6.5);
+          tl.fromTo("#enc-ticker-strip", { x: 0 }, { x: -1600, duration: 2.3, ease: "none" }, 6.8);
+          tl.to(
+            "#enc-ticker-strip",
+            { y: 3, duration: 0.4, ease: "sine.inOut", yoyo: true, repeat: 5 },
+            9.1,
+          );
+
+          tl.fromTo(".enc-counter-group", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 6.8);
+          tl.fromTo(
+            ".enc-counter-label",
+            { opacity: 0, y: 12 },
+            { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+            6.85,
+          );
+          tl.fromTo(
+            counterEl,
+            { scale: 0.55 },
+            { scale: 1, duration: 1.7, ease: "power3.out" },
+            6.9,
+          );
+          tl.to(
+            counterState,
+            {
+              value: 9600,
+              duration: 1.7,
+              ease: "power3.out",
+              onUpdate: function () {
+                counterEl.textContent = Math.round(counterState.value).toLocaleString();
+              },
+            },
+            6.9,
+          );
+          tl.fromTo(
+            ".enc-counter-suffix",
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+            8.6,
+          );
+
+          // ---- Scene 4 (9.3 - 11.584s): settle, subtle jitter only ----
+          tl.to(
+            waveState,
+            { amp: 76, duration: 0.38, ease: "sine.inOut", yoyo: true, repeat: 5, onUpdate: redrawWave },
+            9.3,
+          );
+
+          window.__timelines = window.__timelines || {};
+          window.__timelines["04-encoding"] = tl;
+          tl.seek(0);
+        })();
+      </script>
+    </template>

@@ -1,0 +1,461 @@
+<template>
+  <style>
+    #root {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    /* ---------- full-bleed ground (paper + permanent grid + hairlines) ---------- */
+    .f03bands-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #f0ebde;
+      background-image:
+        linear-gradient(rgba(31, 43, 224, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 43, 224, 0.1) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .f03bands-hairline {
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      height: 2px;
+      background: #1f2be0;
+      opacity: 0.55;
+    }
+    .f03bands-hairline-top {
+      top: 70px;
+    }
+    .f03bands-hairline-bottom {
+      top: 1560px;
+    }
+
+    /* ---------- ambient glow blooms (behind each card) ---------- */
+    .f03bands-glow {
+      position: absolute;
+      left: 50%;
+      width: 820px;
+      height: 820px;
+      border-radius: 0;
+      background: radial-gradient(
+        circle,
+        rgba(31, 43, 224, 0.55) 0%,
+        rgba(31, 43, 224, 0.18) 42%,
+        rgba(31, 43, 224, 0) 72%
+      );
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .f03bands-glow-top {
+      top: 550px;
+    }
+    .f03bands-glow-bottom {
+      top: 1120px;
+    }
+
+    /* ---------- title ---------- */
+    .f03bands-title-wrap {
+      position: absolute;
+      top: 140px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+    .f03bands-title {
+      display: inline-block;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      font-weight: 400;
+      font-size: 58px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: #1f2be0;
+      margin: 0;
+    }
+
+    /* ---------- stage (perspective scene root for the split-tilt pair) ---------- */
+    .f03bands-stage-wrap {
+      position: absolute;
+      top: 300px;
+      left: 50%;
+      width: 860px;
+      height: 1070px;
+      transform: translateX(-50%);
+      perspective: 1800px;
+    }
+    .f03bands-stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+    .f03bands-card {
+      position: absolute;
+      left: 0;
+      width: 860px;
+      height: 500px;
+      background: #e6e0ce;
+      border: 2px solid #1f2be0;
+      border-radius: 0;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .f03bands-card-top {
+      top: 0;
+      box-shadow: 0 20px 34px rgba(31, 43, 224, 0.16);
+    }
+    .f03bands-card-bottom {
+      top: 570px;
+      box-shadow: 0 -20px 34px rgba(31, 43, 224, 0.16);
+    }
+
+    .f03bands-tag {
+      position: absolute;
+      top: 40px;
+      left: 46px;
+      font-family: "SF Mono", "Courier New", monospace;
+      font-size: 22px;
+      letter-spacing: 0.08em;
+      color: #5560e5;
+    }
+    .f03bands-label {
+      position: absolute;
+      top: 74px;
+      left: 46px;
+      width: 768px;
+      font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      font-weight: 400;
+      font-size: 92px;
+      line-height: 0.95;
+      letter-spacing: -0.015em;
+      color: #1f2be0;
+      transform-origin: 0% 50%;
+    }
+    .f03bands-wave-wrap {
+      position: absolute;
+      top: 198px;
+      left: 46px;
+      width: 768px;
+      height: 150px;
+      overflow: hidden;
+      clip-path: inset(0% 100% 0% 0%);
+    }
+    .f03bands-wave-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .f03bands-wave-path {
+      fill: none;
+      stroke: #1f2be0;
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .f03bands-badge {
+      position: absolute;
+      padding: 12px 22px;
+      background: #1f2be0;
+      color: #f0ebde;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      border-radius: 0;
+      transform-origin: 50% 50%;
+    }
+    .f03bands-badge-top {
+      top: 460px;
+      right: 46px;
+    }
+    .f03bands-badge-bottom {
+      top: 40px;
+      left: 46px;
+    }
+  </style>
+
+  <div id="root" data-composition-id="03-bands">
+    <div
+      class="f03bands-bg clip"
+      data-start="0"
+      data-duration="9.493"
+      data-track-index="0"
+    ></div>
+    <div class="f03bands-hairline f03bands-hairline-top"></div>
+    <div class="f03bands-hairline f03bands-hairline-bottom"></div>
+
+    <div
+      class="f03bands-glow f03bands-glow-top clip"
+      id="f03bands-glow-top"
+      data-start="0.5"
+      data-duration="8.993"
+      data-track-index="1"
+    ></div>
+    <div
+      class="f03bands-glow f03bands-glow-bottom clip"
+      id="f03bands-glow-bottom"
+      data-start="0.7"
+      data-duration="8.793"
+      data-track-index="1"
+    ></div>
+
+    <div
+      class="f03bands-title-wrap clip"
+      id="f03bands-title-wrap"
+      data-start="0.05"
+      data-duration="9.443"
+      data-track-index="2"
+    >
+      <h2 class="f03bands-title" id="f03bands-title">Two Bands</h2>
+    </div>
+
+    <div class="f03bands-stage-wrap">
+      <div class="f03bands-stage">
+        <div
+          class="f03bands-card f03bands-card-top clip"
+          id="f03bands-card-top"
+          data-start="0.2"
+          data-duration="9.293"
+          data-track-index="3"
+        >
+          <div class="f03bands-tag" id="f03bands-tag-top">01</div>
+          <div class="f03bands-label" id="f03bands-label-top">2.4 GHz</div>
+          <div class="f03bands-wave-wrap" id="f03bands-wave-wrap-top">
+            <svg
+              class="f03bands-wave-svg"
+              id="f03bands-wave-svg-top"
+              viewBox="0 0 768 150"
+              preserveAspectRatio="none"
+            >
+              <path class="f03bands-wave-path" id="f03bands-wave-path-top"></path>
+            </svg>
+          </div>
+          <div class="f03bands-badge f03bands-badge-top" id="f03bands-badge-top">
+            far &middot; slow
+          </div>
+        </div>
+
+        <div
+          class="f03bands-card f03bands-card-bottom clip"
+          id="f03bands-card-bottom"
+          data-start="0.4"
+          data-duration="9.093"
+          data-track-index="4"
+        >
+          <div class="f03bands-tag" id="f03bands-tag-bottom">02</div>
+          <div class="f03bands-label" id="f03bands-label-bottom">5 GHz</div>
+          <div class="f03bands-wave-wrap" id="f03bands-wave-wrap-bottom">
+            <svg
+              class="f03bands-wave-svg"
+              id="f03bands-wave-svg-bottom"
+              viewBox="0 0 768 150"
+              preserveAspectRatio="none"
+            >
+              <path class="f03bands-wave-path" id="f03bands-wave-path-bottom"></path>
+            </svg>
+          </div>
+          <div class="f03bands-badge f03bands-badge-bottom" id="f03bands-badge-bottom">
+            fast &middot; shorter range
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      // ---- deterministic sine-wave path builder (no Date.now / no Math.random) ----
+      function buildWavePath(width, height, cycles, amplitude, steps) {
+        var midY = height / 2;
+        var d = "";
+        for (var i = 0; i <= steps; i++) {
+          var t = i / steps;
+          var x = t * width;
+          var y = midY - Math.sin(t * Math.PI * 2 * cycles) * amplitude;
+          d += (i === 0 ? "M" : "L") + x.toFixed(2) + "," + y.toFixed(2) + " ";
+        }
+        return d.trim();
+      }
+
+      var pathTop = document.getElementById("f03bands-wave-path-top");
+      var pathBottom = document.getElementById("f03bands-wave-path-bottom");
+      // 2.4GHz: long wavelength, generous amplitude — reads as a slow, far-reaching wave.
+      pathTop.setAttribute("d", buildWavePath(768, 150, 2, 42, 160));
+      // 5GHz: short wavelength, tighter amplitude — reads as a quick, tightly-packed ripple.
+      pathBottom.setAttribute("d", buildWavePath(768, 150, 9, 22, 220));
+
+      var waveWrapTop = document.getElementById("f03bands-wave-wrap-top");
+      var waveWrapBottom = document.getElementById("f03bands-wave-wrap-bottom");
+
+      var tl = gsap.timeline({ paused: true });
+
+      // ===== Scene 1 (0.0 – 2.3s): title settles, two empty card outlines split-tilt in =====
+      tl.fromTo(
+        "#f03bands-title",
+        { y: -46, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
+        0.05,
+      );
+
+      // Split-tilt entry — mirrored rotateX (vertical book-open for the portrait stack).
+      tl.fromTo(
+        "#f03bands-card-top",
+        { y: -230, rotateX: -22, opacity: 0 },
+        { y: 0, rotateX: -14, opacity: 1, duration: 0.9, ease: "power3.out" },
+        0.2,
+      );
+      tl.fromTo(
+        "#f03bands-card-bottom",
+        { y: 230, rotateX: 22, opacity: 0 },
+        { y: 0, rotateX: 14, opacity: 1, duration: 0.9, ease: "power3.out" },
+        0.42,
+      );
+
+      // Ambient ink glow blooms land on each card's settle.
+      tl.fromTo(
+        "#f03bands-glow-top",
+        { opacity: 0, scale: 0.85 },
+        { opacity: 0.22, scale: 1, duration: 0.9, ease: "power2.out" },
+        0.5,
+      );
+      tl.fromTo(
+        "#f03bands-glow-bottom",
+        { opacity: 0, scale: 0.85 },
+        { opacity: 0.22, scale: 1, duration: 0.9, ease: "power2.out" },
+        0.7,
+      );
+
+      // Counter-phase idle bob on the settled pair (finite — reads alive, then goes still).
+      tl.to(
+        "#f03bands-card-top",
+        { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 },
+        1.4,
+      );
+      tl.to(
+        "#f03bands-card-bottom",
+        { y: 4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 },
+        1.4,
+      );
+
+      // ===== Scene 2 (2.3 – 5.7s): "2.4 gigahertz — travels far, goes slow" =====
+      tl.fromTo(
+        "#f03bands-tag-top",
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" },
+        2.3,
+      );
+      tl.fromTo(
+        "#f03bands-label-top",
+        { opacity: 0, y: 18, scale: 0.92 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" },
+        2.35,
+      );
+      // Long, slow wave stretches across the card's full width.
+      tl.fromTo(
+        waveWrapTop,
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 1.3, ease: "power2.out" },
+        2.5,
+      );
+      // Pill badge spring-pops at the card's inner (bottom) edge — the lone overshoot.
+      tl.fromTo(
+        "#f03bands-badge-top",
+        { scale: 0, opacity: 0, y: 10 },
+        { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" },
+        3.9,
+      );
+
+      // Slow idle wobble on the long wave — low amplitude, fades out before the hold.
+      (function () {
+        var phase = { p: 0 };
+        var START = 4.4;
+        var DUR = 3.9; // ends 8.3s — settled before the frame's final beat
+        var CYCLES = 1.4;
+        var AMP = 5;
+        var FADE_FRAC = 0.25;
+        tl.to(
+          phase,
+          {
+            p: Math.PI * 2 * CYCLES,
+            duration: DUR,
+            ease: "none",
+            onUpdate: function () {
+              var t = phase.p / (Math.PI * 2 * CYCLES);
+              var env = t < 1 - FADE_FRAC ? 1 : (1 - t) / FADE_FRAC;
+              var s = Math.sin(phase.p) * AMP * env;
+              waveWrapTop.style.transform = "translateX(" + s + "px)";
+            },
+          },
+          START,
+        );
+      })();
+
+      // ===== Scene 3 (5.7 – 9.493s): "5 gigahertz — fast, but it doesn't go as far" =====
+      tl.fromTo(
+        "#f03bands-tag-bottom",
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" },
+        5.7,
+      );
+      tl.fromTo(
+        "#f03bands-label-bottom",
+        { opacity: 0, y: 18, scale: 0.92 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power3.out" },
+        5.78,
+      );
+      // Short, fast wave ripples tightly across the card — a quick, snappy reveal.
+      tl.fromTo(
+        waveWrapBottom,
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 0.45, ease: "power3.out" },
+        5.9,
+      );
+      // Pill badge spring-pops at the card's inner (top) edge.
+      tl.fromTo(
+        "#f03bands-badge-bottom",
+        { scale: 0, opacity: 0, y: -10 },
+        { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.6)" },
+        6.5,
+      );
+
+      // Fast idle wobble on the short wave — tighter period, fades out before the hold.
+      (function () {
+        var phase = { p: 0 };
+        var START = 6.95;
+        var DUR = 1.55; // ends 8.5s
+        var CYCLES = 1.7;
+        var AMP = 3;
+        var FADE_FRAC = 0.3;
+        tl.to(
+          phase,
+          {
+            p: Math.PI * 2 * CYCLES,
+            duration: DUR,
+            ease: "none",
+            onUpdate: function () {
+              var t = phase.p / (Math.PI * 2 * CYCLES);
+              var env = t < 1 - FADE_FRAC ? 1 : (1 - t) / FADE_FRAC;
+              var s = Math.sin(phase.p) * AMP * env;
+              waveWrapBottom.style.transform = "translateX(" + s + "px)";
+            },
+          },
+          START,
+        );
+      })();
+
+      // Both cards hold, settled, side by side top/bottom through the end.
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["03-bands"] = tl;
+      tl.seek(0);
+    })();
+  </script>
+</template>

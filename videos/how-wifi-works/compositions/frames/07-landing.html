@@ -1,0 +1,104 @@
+<template>
+<div id="root" data-composition-id="07-landing">
+
+  <!-- Full-bleed ground: cobalt graph-paper grid on warm paper, 10% ink lines -->
+  <div class="clip" data-start="0" data-duration="6.677" data-track-index="0"
+       style="position:absolute; inset:0; width:100%; height:100%;
+              background-color:#F0EBDE;
+              background-image:
+                linear-gradient(90deg, rgba(31,43,224,0.10) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(31,43,224,0.10) 1px, transparent 1px);
+              background-size: 22px 22px;">
+  </div>
+
+  <!-- Top cobalt hairline (frame furniture) -->
+  <div class="clip" data-start="0" data-duration="6.677" data-track-index="1"
+       style="position:absolute; top:32px; left:43px; right:43px; height:1.3px; background:#1F2BE0;">
+  </div>
+
+  <!-- Bottom cobalt hairline — pulled above the caption keep-out line (y=1590), never at the true canvas edge -->
+  <div class="clip" data-start="0" data-duration="6.677" data-track-index="2"
+       style="position:absolute; top:1558px; left:43px; right:43px; height:1.3px; background:#1F2BE0;">
+  </div>
+
+  <!-- Connecting signal path + traveling pulse, device <-> router -->
+  <svg class="clip" data-start="0" data-duration="6.677" data-track-index="3"
+       viewBox="0 0 1080 1920" preserveAspectRatio="none"
+       style="position:absolute; inset:0; width:100%; height:100%;">
+    <line id="landing07-path" x1="540" y1="552" x2="540" y2="1080"
+          stroke="rgba(31,43,224,0.22)" stroke-width="3" stroke-dasharray="6 14" />
+    <rect id="landing07-pulse" x="534" y="546" width="12" height="12"
+          fill="#1F2BE0" style="transform-box: fill-box; transform-origin: 50% 50%;" />
+  </svg>
+
+  <!-- Device icon (top) -->
+  <div class="clip" data-start="0" data-duration="6.677" data-track-index="4"
+       style="position:absolute; top:300px; left:50%; width:140px; height:252px; margin-left:-70px;">
+    <svg id="landing07-device" viewBox="0 0 100 180" width="100%" height="100%" fill="none">
+      <rect x="5" y="5" width="90" height="170" stroke="#1F2BE0" stroke-width="4" />
+      <line x1="35" y1="22" x2="65" y2="22" stroke="#1F2BE0" stroke-width="4" stroke-linecap="square" />
+      <rect x="42" y="158" width="16" height="8" stroke="#1F2BE0" stroke-width="3" />
+    </svg>
+  </div>
+
+  <!-- Router icon (bottom) -->
+  <div class="clip" data-start="0" data-duration="6.677" data-track-index="5"
+       style="position:absolute; top:1080px; left:50%; width:320px; height:149px; margin-left:-160px;">
+    <svg id="landing07-router" viewBox="0 0 300 140" width="100%" height="100%" fill="none">
+      <rect x="40" y="80" width="220" height="40" stroke="#1F2BE0" stroke-width="5" />
+      <line x1="90" y1="80" x2="70" y2="10" stroke="#1F2BE0" stroke-width="5" stroke-linecap="square" />
+      <line x1="150" y1="80" x2="150" y2="0" stroke="#1F2BE0" stroke-width="5" stroke-linecap="square" />
+      <line x1="210" y1="80" x2="230" y2="10" stroke="#1F2BE0" stroke-width="5" stroke-linecap="square" />
+      <rect x="68" y="94" width="10" height="10" fill="#1F2BE0" />
+      <rect x="145" y="94" width="10" height="10" fill="#1F2BE0" />
+      <rect x="222" y="94" width="10" height="10" fill="#1F2BE0" />
+    </svg>
+  </div>
+
+  <!-- Thesis line: slide-up crossfade reveal, then a complete hold -->
+  <div id="landing07-thesis" class="clip" data-start="3.0" data-duration="3.677" data-track-index="6"
+       style="position:absolute; top:1300px; left:0; width:100%; text-align:center; padding:0 90px;
+              font-family: Georgia, 'Times New Roman', serif; font-weight:400; font-style:normal;
+              letter-spacing:-0.01em; font-size:68px; line-height:1.12; color:#1F2BE0;">
+    A radio conversation,<br>bound by physics.
+  </div>
+
+</div>
+
+<style>
+  #root { position:absolute; inset:0; width:100%; height:100%; overflow:hidden; background:#F0EBDE; }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+(function () {
+  var scope = document.querySelector('[data-composition-id="07-landing"]');
+
+  var deviceWrap = scope.querySelector('#landing07-device').parentElement;
+  var routerWrap = scope.querySelector('#landing07-router').parentElement;
+  var line   = scope.querySelector('#landing07-path');
+  var pulse  = scope.querySelector('#landing07-pulse');
+  var thesis = scope.querySelector('#landing07-thesis');
+
+  gsap.set([deviceWrap, routerWrap], { opacity: 0 });
+  gsap.set(line, { opacity: 0 });
+  gsap.set(thesis, { opacity: 0 });
+
+  var tl = gsap.timeline({ paused: true });
+
+  // Scene 1 (0.0-3.0s): device + router settle, one calm pulse travels between them
+  tl.fromTo(deviceWrap, { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 0);
+  tl.fromTo(routerWrap, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, 0);
+  tl.fromTo(line, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0);
+
+  tl.fromTo(pulse, { y: 0, opacity: 1, scale: 1 }, { y: 528, duration: 1.0, ease: 'power2.inOut' }, 0.8);
+  tl.to(pulse, { scale: 2.2, opacity: 0, duration: 0.4, ease: 'power3.out' }, 1.8);
+
+  // Scene 2 (3.0-6.677s): thesis line slide-up crossfade, then holds completely still
+  tl.fromTo(thesis, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 3.0);
+
+  window.__timelines = window.__timelines || {};
+  window.__timelines['07-landing'] = tl;
+})();
+</script>
+</template>
