@@ -86,13 +86,11 @@
       width: 860px;
       height: 1070px;
       transform: translateX(-50%);
-      perspective: 1800px;
     }
     .f03bands-stage {
       position: relative;
       width: 100%;
       height: 100%;
-      transform-style: preserve-3d;
     }
     .f03bands-card {
       position: absolute;
@@ -102,7 +100,6 @@
       background: #e6e0ce;
       border: 2px solid #1f2be0;
       border-radius: 0;
-      transform-style: preserve-3d;
       will-change: transform;
     }
     .f03bands-card-top {
@@ -314,17 +311,20 @@
         0.05,
       );
 
-      // Split-tilt entry — mirrored rotateX (vertical book-open for the portrait stack).
+      // Split-tilt entry — mirrored 2D rotation (vertical book-open for the portrait stack).
+      // Uses a plain 2D `rotation`, not `rotateX`/perspective: this headless Chrome's
+      // software (SwiftShader) rasterizer corrupts preserve-3d + rotateX boxes into a
+      // notched polygon instead of a clean trapezoid once they settle.
       tl.fromTo(
         "#f03bands-card-top",
-        { y: -230, rotateX: -22, opacity: 0 },
-        { y: 0, rotateX: -14, opacity: 1, duration: 0.9, ease: "power3.out" },
+        { y: -230, rotation: -10, opacity: 0 },
+        { y: 0, rotation: -3, opacity: 1, duration: 0.9, ease: "power3.out" },
         0.2,
       );
       tl.fromTo(
         "#f03bands-card-bottom",
-        { y: 230, rotateX: 22, opacity: 0 },
-        { y: 0, rotateX: 14, opacity: 1, duration: 0.9, ease: "power3.out" },
+        { y: 230, rotation: 10, opacity: 0 },
+        { y: 0, rotation: 3, opacity: 1, duration: 0.9, ease: "power3.out" },
         0.42,
       );
 

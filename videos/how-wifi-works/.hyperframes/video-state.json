@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "b9e3b5b2-b45c-48e1-9479-c93826621c06",
-  "currentRevision": "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1",
+  "currentRevision": "a56f924b-27a4-42d5-8588-c60469672295",
   "pendingChanges": false,
   "files": {
     "AGENTS.md": {
@@ -149,8 +149,8 @@
       "content": "/root/.cache/hyperframes/history/b9e3b5b2-b45c-48e1-9479-c93826621c06/blobs/79/79635694e25799197fdded7c766816249488b6f993c1ef1c09215f1fb0e5c7c1"
     },
     "compositions/frames/03-bands.html": {
-      "hash": "d83a85c241847d144f7d0e7e6ebf94b7866b1a4c991e5053ea2229dd9f02bdc4",
-      "content": "/root/.cache/hyperframes/history/b9e3b5b2-b45c-48e1-9479-c93826621c06/blobs/d8/d83a85c241847d144f7d0e7e6ebf94b7866b1a4c991e5053ea2229dd9f02bdc4"
+      "hash": "8d7957aeec1ec0c2654d1b3209562d392d324c428da3c0565cddc6d95d6e2224",
+      "content": "/root/.cache/hyperframes/history/b9e3b5b2-b45c-48e1-9479-c93826621c06/blobs/8d/8d7957aeec1ec0c2654d1b3209562d392d324c428da3c0565cddc6d95d6e2224"
     },
     "compositions/frames/04-encoding.html": {
       "hash": "2729a9bcc83490fa5139c34140e8bc9e02e73e766db51eef354a82304ec46e44",
@@ -263,12 +263,27 @@
           "after": "/root/.cache/hyperframes/history/b9e3b5b2-b45c-48e1-9479-c93826621c06/blobs/68/682e4b2c1328b14d59b7dbc56102656339431b45325caf37d4ee927c47d4adc5"
         }
       }
+    },
+    "a56f924b-27a4-42d5-8588-c60469672295": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792490184556,
+      "endedAt": 1792490184557,
+      "files": {
+        "compositions/frames/03-bands.html": {
+          "before": "/root/.cache/hyperframes/history/b9e3b5b2-b45c-48e1-9479-c93826621c06/blobs/d8/d83a85c241847d144f7d0e7e6ebf94b7866b1a4c991e5053ea2229dd9f02bdc4",
+          "after": "/root/.cache/hyperframes/history/b9e3b5b2-b45c-48e1-9479-c93826621c06/blobs/8d/8d7957aeec1ec0c2654d1b3209562d392d324c428da3c0565cddc6d95d6e2224"
+        }
+      }
     }
   },
   "checks": {
     "latest": {
-      "revision": "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1",
-      "id": "af592d8a-53d8-45dd-afd4-b7435ade3193"
+      "revision": "a56f924b-27a4-42d5-8588-c60469672295",
+      "id": "d1b1ee93-b726-42cd-9c91-e0dc2ecaaf7a"
     },
     "revisions": {
       "185220ec-0720-4243-8146-a0015a82837a": [
@@ -328,6 +343,35 @@
           "inputScope": "local-project-files",
           "attribution": "recorded-revision"
         }
+      ],
+      "a56f924b-27a4-42d5-8588-c60469672295": [
+        {
+          "id": "d1b1ee93-b726-42cd-9c91-e0dc2ecaaf7a",
+          "scope": "project",
+          "report": "/home/user/EidMohamed/videos/how-wifi-works/.hyperframes/artifacts/checks/d1b1ee93-b726-42cd-9c91-e0dc2ecaaf7a.json",
+          "metadata": {
+            "ok": true,
+            "browserSkipped": false,
+            "options": {
+              "samples": 9,
+              "atTransitions": false,
+              "maxIssues": 80,
+              "collapseStatic": true,
+              "tolerance": 2,
+              "timeout": 3000,
+              "contrast": true,
+              "strict": false,
+              "snapshots": false,
+              "browserGpuMode": "auto"
+            }
+          },
+          "createdAt": 1792490201236,
+          "contentHash": "4515d3e8a38bfbb4983c9535afdb98870f4fbd70530295b96560e0de89ff9de7",
+          "revision": "a56f924b-27a4-42d5-8588-c60469672295",
+          "inputFingerprint": "250fa4732d3533326b47a41b81f16d95533003d502e0a9ca2b26de02fb428d2e",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
       ]
     },
     "unversioned": [
@@ -361,8 +405,236 @@
     ]
   },
   "snapshots": {
-    "latest": null,
-    "revisions": {},
+    "latest": {
+      "revision": "a56f924b-27a4-42d5-8588-c60469672295",
+      "id": "f74443a9-b6ad-4ea4-9d21-b8e682a61967-3"
+    },
+    "revisions": {
+      "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1": [
+        {
+          "scope": "full",
+          "id": "8bdb9031-e7d3-49dc-8000-32abbda48787-0",
+          "image": "/home/user/EidMohamed/videos/how-wifi-works/renders/contact-sheet/frame-00-at-1.92s.png",
+          "time": 1.92,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792490049831,
+          "contentHash": "e6764f4dd0c308e52ba8fb121e504d7e7e7e23fd368389f548d1d7bc0fe1a7a8",
+          "revision": "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1",
+          "inputFingerprint": "e2a32bb37bee8b4cc343c7ae83fb89b2176593ab655e0a60f7632bbc09eed22b",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "8bdb9031-e7d3-49dc-8000-32abbda48787-1",
+          "image": "/home/user/EidMohamed/videos/how-wifi-works/renders/contact-sheet/frame-01-at-7.03s.png",
+          "time": 7.03,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792490049831,
+          "contentHash": "475455c836cafea34d17148d6d6fbf8c3179faa53602f576acdd556c481ce77c",
+          "revision": "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1",
+          "inputFingerprint": "e2a32bb37bee8b4cc343c7ae83fb89b2176593ab655e0a60f7632bbc09eed22b",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "8bdb9031-e7d3-49dc-8000-32abbda48787-2",
+          "image": "/home/user/EidMohamed/videos/how-wifi-works/renders/contact-sheet/frame-02-at-14.97s.png",
+          "time": 14.97,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792490049831,
+          "contentHash": "c1b427a637e84e74c079e3a6f9c45dcfa993a2a71c93a73b60e880b83835ca89",
+          "revision": "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1",
+          "inputFingerprint": "e2a32bb37bee8b4cc343c7ae83fb89b2176593ab655e0a60f7632bbc09eed22b",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "8bdb9031-e7d3-49dc-8000-32abbda48787-3",
+          "image": "/home/user/EidMohamed/videos/how-wifi-works/renders/contact-sheet/frame-03-at-25.5s.png",
+          "time": 25.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792490049831,
+          "contentHash": "d775fbecb453d16614be35741164db5371d1eb317acfc79e197d64bab5d29d16",
+          "revision": "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1",
+          "inputFingerprint": "e2a32bb37bee8b4cc343c7ae83fb89b2176593ab655e0a60f7632bbc09eed22b",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "8bdb9031-e7d3-49dc-8000-32abbda48787-4",
+          "image": "/home/user/EidMohamed/videos/how-wifi-works/renders/contact-sheet/frame-04-at-36.11s.png",
+          "time": 36.11,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792490049831,
+          "contentHash": "bd15e6f7c50f59644ba997fa3e0d9b2a6451dc3f3d8c781a4d32a0c477f2ed2a",
+          "revision": "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1",
+          "inputFingerprint": "e2a32bb37bee8b4cc343c7ae83fb89b2176593ab655e0a60f7632bbc09eed22b",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "8bdb9031-e7d3-49dc-8000-32abbda48787-5",
+          "image": "/home/user/EidMohamed/videos/how-wifi-works/renders/contact-sheet/frame-05-at-47.21s.png",
+          "time": 47.21,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792490049831,
+          "contentHash": "a3cdf62612d4d19cd3ccae040b33fc3f1a5e5ee8770bd4bf73c9aebc49940cba",
+          "revision": "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1",
+          "inputFingerprint": "e2a32bb37bee8b4cc343c7ae83fb89b2176593ab655e0a60f7632bbc09eed22b",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "8bdb9031-e7d3-49dc-8000-32abbda48787-6",
+          "image": "/home/user/EidMohamed/videos/how-wifi-works/renders/contact-sheet/frame-06-at-56.84s.png",
+          "time": 56.84,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792490049831,
+          "contentHash": "de3cc9c5b54bf0f5568557d5c6054a7d391f267eceb0550aba0247245406e1c0",
+          "revision": "9a588d02-a6ae-4bd2-9104-7a763dc7a2d1",
+          "inputFingerprint": "e2a32bb37bee8b4cc343c7ae83fb89b2176593ab655e0a60f7632bbc09eed22b",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ],
+      "a56f924b-27a4-42d5-8588-c60469672295": [
+        {
+          "scope": "full",
+          "id": "f74443a9-b6ad-4ea4-9d21-b8e682a61967-0",
+          "image": "/home/user/EidMohamed/videos/how-wifi-works/renders/band-check/frame-00-at-13s.png",
+          "time": 13,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792490186995,
+          "contentHash": "507ae75f2ce8d21b98be5c4111c5b6e4cb2f9546fe9580c8c6819e3b93a0cc8e",
+          "revision": "a56f924b-27a4-42d5-8588-c60469672295",
+          "inputFingerprint": "250fa4732d3533326b47a41b81f16d95533003d502e0a9ca2b26de02fb428d2e",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "f74443a9-b6ad-4ea4-9d21-b8e682a61967-1",
+          "image": "/home/user/EidMohamed/videos/how-wifi-works/renders/band-check/frame-01-at-15.5s.png",
+          "time": 15.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792490186995,
+          "contentHash": "16a7596a3c4dec759e22e0babc088d397c225005d1a0b6a4e3a2045f4777e2ca",
+          "revision": "a56f924b-27a4-42d5-8588-c60469672295",
+          "inputFingerprint": "250fa4732d3533326b47a41b81f16d95533003d502e0a9ca2b26de02fb428d2e",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "f74443a9-b6ad-4ea4-9d21-b8e682a61967-2",
+          "image": "/home/user/EidMohamed/videos/how-wifi-works/renders/band-check/frame-02-at-18.5s.png",
+          "time": 18.5,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792490186995,
+          "contentHash": "895a79e7dc2d36378884089e6f5a1ac3df26eb40e4a612e344aa9a827afa0d2f",
+          "revision": "a56f924b-27a4-42d5-8588-c60469672295",
+          "inputFingerprint": "250fa4732d3533326b47a41b81f16d95533003d502e0a9ca2b26de02fb428d2e",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "f74443a9-b6ad-4ea4-9d21-b8e682a61967-3",
+          "image": "/home/user/EidMohamed/videos/how-wifi-works/renders/band-check/frame-03-at-19.9s.png",
+          "time": 19.9,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1792490186995,
+          "contentHash": "b015991cc18e310c8376593f7b4dc16296e2cd2a18e127ff5fc52d643d7c59d7",
+          "revision": "a56f924b-27a4-42d5-8588-c60469672295",
+          "inputFingerprint": "250fa4732d3533326b47a41b81f16d95533003d502e0a9ca2b26de02fb428d2e",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
+      ]
+    },
     "unversioned": []
   }
 }
